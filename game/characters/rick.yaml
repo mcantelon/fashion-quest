@@ -1,0 +1,27 @@
+--- 
+rick: 
+  mobility: 0
+  name: Rick
+  gender: male
+  strength: 7
+  discusses: 
+    ?
+      - party
+      - parties
+      - partying
+      - party times 
+    : 
+      - Parties are a real gas.
+
+  description: Rick looks kind of sad. He's wearing a shirt that says 'Party Times'.
+  hp: 10
+  aggression: 1
+  location: alcove
+  events:
+    on_discuss:
+    - "Rick stares intently at you.\n"
+    on_attack:
+    - "Rick shrugs, then takes a swing at you.\n"
+    on_death:
+    - "Rick shrugs, then falls to the floor in a heap.\n"
+

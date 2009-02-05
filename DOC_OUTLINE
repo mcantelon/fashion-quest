@@ -1,0 +1,115 @@
+-document events
+-document game state hash
+
+Name:
+-Fashion Quest Engine
+-YAML interactive fiction framework
+
+Design Aims:
+-minimalist
+-modern
+-easy
+-cross-platform
+-leverage existing language
+-extensible
+
+Game:
+-game is defined by files within the the game's base path
+-the game base path is, by default, "game" but can be changed by specifying an alternate path as a command line argument
+-alternate paths allow you to work on, or play, multiple games with the same codebase
+-unless you like to hack, igore the 'engine' directory
+-if you wish to hack, see Appendix A for a guide to the engine directory's files
+
+Presentation Configuration:
+-in the game's base path, config.yaml allows configuration of how game is presented
+-configuration options include game title, widow width/height, whether window is resizable, and game startup message.
+
+Game Components:
+-there are three types of game components: locations, props, characters, and commands
+-game components are defined in YAML
+-game component files are put in subdirectories of the game base directory
+
+Creating Locations:
+-locations are put in the 'rooms' subdirectory
+-exits can be directions "north" or arbitrary names "stairs"
+
+Creating Props:
+-props are put in the 'props' subdirectory
+
+Creating Characters:
+-characters are put in the 'characters' subdirectory
+-characters are defined in YAML
+-any props a character will accept being given are indicated by the "exchanges" property
+
+Creating Commands:
+-commands are defined in YAML
+-command files are put in the commands directory of the game's base directory
+-within the commands directory, commands can be placed in subdirectories if desired
+-commands are made up of syntax and logic
+-command syntax can have multiple forms
+  -each syntax form is composed of keywords and references
+  -keywords are static words: verbs
+  -references refer to "things": nouns
+    -three types of references: prop, character, ad-hoc
+    -prop and character references can refer to any prop or character accessible by the player
+    -a prop is accessible if it is in the same location as the player or in the player's inventory
+    -a character is accessible if it is in the same location as the player
+    -if a prop or character is inaccessible, an error will be returned and the command logic will not execute
+    -ad-hoc references can refer to anything... there is no checking before passing an ad-hoc reference to command logic
+    -in syntax form, references enclosed in less-than and greater-than symbols
+    -examples:
+      -"<prop>" for unnamed prop reference
+      -"<character>" for unnamed prop reference
+      -"<prop:some name>" for a named prop reference
+      -"<character:some other name>" for a named character reference
+      -"<anything>" for an ad-hoc reference
+-command logic is written in Ruby
+  -variables are passed to the command logic
+  -references are passed as variables
+    -"<prop>" unnamed prop reference passed as "prop" variable
+    -"<character>" unnamed character reference passed as "character" variable
+    -"<prop:some name>" named prop reference passed as "arg['some name']" variable
+    -"<character:some other name>" named character reference passed as "arg['some other name']" variable
+    -"<anything>" ad-hoc refrence passed as "arg[anything]"
+  -"game", "player", "characters", "props" variables allow interaction with game engine and game data
+    -"game" spec
+    -"player" spec
+    -"characters" spec
+    -"props" spec
+  -example commands
+
+Events:
+-characters and props can have events associated with them
+-built-in character events are: on_death, etc.
+-props can also have events
+-events can contain text and/or logic
+-to trgger events, simply add the logic into a command
+-for example, the get command could trigger an "on_get" event in a prop:
+   output << game.event(props[prop], 'on_get')
+-the above example would have the game check a certain prop for an on_get response
+-an example response could be:
+   @locations['alcove'].add_to_description("There is a bookcase with a secret passage beyond.\n"); "There's a strange sound.\n";
+-the above example would add to a rooms description and give the player a hint that something in the game has changed
+
+Transitions:
+
+
+Abbreviations, Synonyms, and Garbage Words:
+-the command_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined
+-for example: "n" for "go north"
+-in the above example, "north" was a parameter to the "go" command
+-in the case of abbreviations that don't need to specify a parameter, like "i" for "inventory", those should be included as a syntax of the command itself
+
+-the global_synonyms.yaml file, in the game parsing path, allow a list of words that should be replaced with other words
+-for example: "using" for "with"
+-in the above example, this synonym would elimiate the need to make the syntax "attack <character> with <prop>" also work when the player issues the command like "attack bear using hat"
+
+-the garbage_words.yaml file, found in the game's parsing path, allows certain words to be discarded from player input
+-these words should be words like "the" and "a" which have little semantic meaning
+-this makes specifying command syntax easier
+
+Debugging:
+-use the Shoes debugger... press alt-/ to see error messages
+
+-no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn't exist or isn't located near player
+

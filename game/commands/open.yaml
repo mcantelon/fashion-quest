@@ -1,0 +1,32 @@
+---
+syntax:
+- "open <prop:prop>"
+- "open <prop:prop> with <prop:with_prop>"
+- "use <prop:with_prop> to open <prop:prop>"
+
+logic: |
+
+  prop      = arg['prop']
+  with_prop = arg['with_prop']
+
+  output = ''
+
+  if defined? props[prop].opened
+    if props[prop].opened
+      output << "It's already open.\n"
+    elsif props[prop].opens_with
+      if with_prop
+        if game.prop_located_at(with_prop, 'player') and props[prop].opens_with.index(with_prop)
+          output << game.prop_open(prop)
+        end
+      else
+        output << "It won't open.\n"
+      end
+    else
+      return game.prop_open(prop)
+    end
+  else
+    output << "You can't open the #{prop}.\n"
+  end
+
+  output

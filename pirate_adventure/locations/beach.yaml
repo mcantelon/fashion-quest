@@ -1,0 +1,7 @@
+--- 
+name: beach
+exits:
+  east: meadow
+
+description: |
+  I'm in a sandy beach on a tropical isle. There is a lagoon. A sign in the sand says: "Welcome to Pirates Island, watch out for the tide!".

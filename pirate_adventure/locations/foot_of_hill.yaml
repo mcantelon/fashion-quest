@@ -1,0 +1,9 @@
+--- 
+name: foot_of_hill
+exits:
+  up: top_of_hill
+  path: top_of_hill
+  west: meadow
+
+description: |
+  I'm at the foot of a cave ridden hill, a pathway leads on up to the top.

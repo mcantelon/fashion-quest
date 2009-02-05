@@ -1,0 +1,56 @@
+---
+syntax:
+- "l"
+- "look"
+- "look <prop:prop_or_character>"
+- "look <character:prop_or_character>"
+
+logic: |
+
+  prop_or_character = arg['prop_or_character']
+
+  prop_or_character = '' if not prop_or_character
+
+  output = ''
+
+  if not prop_or_character.empty?
+
+    description = ''
+
+    # If attempting to look at a character, check for description
+    if characters[prop_or_character]
+      if characters[prop_or_character].dead == true
+        description = "#{characters[prop_or_character].noun_cap} appears to be dead.\n"
+      elsif characters[prop_or_character].description
+        description = characters[prop_or_character].description + "\n"
+      end
+    end
+
+    # If attempting to look at an prop, check for description
+    if props[prop_or_character]
+      if props[prop_or_character].description
+        description = props[prop_or_character].description + "\n"
+      end
+    end
+
+    # If no description was found, inform user
+    if description == ''
+      description = 'You see nothing special.'
+    end
+
+    output = description
+
+  else
+
+    # Show image, if any
+    if FileTest.exists?(locations[location].image_file)
+      @image_stack.clear { @image_stack.image locations[location].image_file }
+    else
+      @image_stack.clear { }
+    end
+
+    output = locations[location].describe(props, characters)
+
+  end
+
+  output

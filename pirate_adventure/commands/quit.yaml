@@ -1,0 +1,9 @@
+---
+syntax:
+- ":q"
+- "quit"
+- "exit"
+
+logic: |
+
+  exit()

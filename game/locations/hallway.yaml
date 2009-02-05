@@ -1,0 +1,7 @@
+--- 
+name: hallway
+exits: 
+  north: entrance
+
+description: |
+  You are in a dimly-lit hallway.

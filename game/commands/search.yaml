@@ -1,0 +1,23 @@
+---
+syntax:
+- "search <character>"
+
+logic: |
+
+  output = ''
+
+  if (game.characters[character].dead)
+
+    output << "You search the #{character}.\n"
+
+    props.each do |prop_key, prop_data|
+      if props[prop_key].location == character
+        output << "You find a #{prop_key}.\n"
+        props[prop_key].location = locations[location].name
+      end
+    end
+  else
+    output << "#{characters[character].noun_cap} won't let you.\n"
+  end
+
+  output

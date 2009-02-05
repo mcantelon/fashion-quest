@@ -1,0 +1,16 @@
+syntax:
+- "read <prop>"
+
+logic: |
+
+  output = ''
+
+  if props[prop].text
+    File.open("#{game.path}#{props[prop].text}", 'r') { |f|
+      output << f.read
+    }
+  else
+    output << "You look for words, but find none.\n"
+  end
+
+  output

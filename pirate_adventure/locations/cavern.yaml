@@ -1,0 +1,9 @@
+---
+name : cavern
+exits:
+  west: hallway
+  crack: top_of_hill
+  shed: shed
+
+description: |
+  I'm in a large cavern. There's a tool shed in here. A crack leads outside.

@@ -1,0 +1,10 @@
+---
+syntax:
+- "save"
+- "save game"
+
+logic: |
+
+  game.save
+
+  "Game saved.\n"

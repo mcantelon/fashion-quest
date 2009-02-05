@@ -1,0 +1,28 @@
+---
+syntax:
+- "ask <character> about <topic>"
+- "say <topic> to <character>"
+
+logic: |
+
+  topic = arg['topic']
+
+  response = characters[character].discuss topic
+
+  if response
+
+    if response != ''
+
+      return response
+
+    else
+
+      alert('woog')
+
+    end
+
+  else
+    output << "#{noun_cap} doesn't look oriented towards conversation.\n"
+  end
+
+  output

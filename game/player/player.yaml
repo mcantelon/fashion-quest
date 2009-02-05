@@ -1,0 +1,7 @@
+---
+name: player
+location: 'entrance'
+hp: 20
+strength: 5
+dead: false
+

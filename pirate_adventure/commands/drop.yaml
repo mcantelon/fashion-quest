@@ -1,0 +1,16 @@
+---
+syntax:
+- "drop <prop>"
+
+logic: |
+
+  output = ''
+
+  if props[prop].location == 'player'
+    props[prop].location = locations[location].name
+    output << "You drop #{props[prop].noun}.\n"
+  else
+    output << (game.prop_404 prop)
+  end
+
+  output

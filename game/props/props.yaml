@@ -1,0 +1,65 @@
+--- 
+necklace: 
+  name: necklace
+  description: The necklace is made up of brightly colored beads.
+  portable: true
+  location: deadbeat
+leaflet: 
+  name: leaflet
+  text: props/text/leaflet.txt
+  description: The leaflet is faded yellow and seems to warn against something.
+  portable: true
+  location: ""
+shiv: 
+  name: shiv
+  attack strength: 7
+  description: The shiv looks sharp... useful.
+  portable: true
+  location: deadbeat
+walking stick: 
+  attack strength: 5
+  description: The walking stick is gnarled, but sturdy.
+  portable: true
+  location: player
+door: 
+  name: door
+  opened: false
+  description: The door is made of dark-brown wood.
+  contains: 
+    exit: 
+      south: bedroom
+  portable: false
+  opens_with: 
+  - brass key
+  location: hallway
+smokes: 
+  name: smokes
+  description: The smokes look tempting.
+  portable: true
+  location: ""
+dresser: 
+  name: dresser
+  opened: false
+  description: The dresser looks like it has seen better days.
+  contains: 
+    prop: smokes
+  portable: false
+  location: bedroom
+brass key: 
+  name: brass key
+  size: 1
+  weight: 1
+  description: The key is small and made of brass.
+  portable: true
+  location: yard
+book: 
+  name: book
+  size: 5
+  text: props/text/book.txt
+  opened: false
+  weight: 5
+  description: The book is light green and seems to be about the maths.
+  contains: 
+    prop: leaflet
+  portable: true
+  location: alcove

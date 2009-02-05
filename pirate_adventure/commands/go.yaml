@@ -1,0 +1,25 @@
+---
+syntax:
+- "go <direction>"
+
+logic: |
+
+  direction = arg['direction']
+
+  #if player.location == 'apartment' and direction == 'stairs'
+  #  player.location = 'alcove'
+  #  return '>look'
+  #end
+
+  # If an exit exists, load destination location and issue look command
+  if (locations[location].exits[direction])
+
+    player.location = locations[location].exits[direction]
+
+    return '>look'
+
+  else
+
+    return "You can't go that way.\n"
+
+  end

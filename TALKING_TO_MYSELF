@@ -1,0 +1,121 @@
+Fashion Quest
+
+-make sure to copy pirate version of get and go commands to main commands
+
+-have option to add exit that isn't visible by default (or just have it so dynamic exits aren't shown, make it dependent to add a description)
+
+-what do plans say when read?
+
+-need bottle, water to get fish
+-Crocs eat fish and leave
+
+-add visible property to props (for nails)
+
+max 6 items carried?
+
+-clean up event handler situation
+
+-add bottle
+
+-can't "climb crack" if carrying book: "Sorry I can't. Something won't fit!"
+  -add check for this in go command
+-should have "dark" setting for locations
+  -you break neck if trying to move in dark
+-locked door in hallway (easy)
+-build ship: "I can't! I've no plans!"
+  -need build command leveraging build_with and on_build
+-"go lagoon": goes to never neverland if tide is in
+-The tide is coming in I'm underwater, I guess I don't swim well. Blub Blub...
+-use transitions for tide cycles
+-in lagoon all exits but north go back to beach
+-north goes to ocean death (unless you have and are wearing water wings)
+  -add wear command leveraging wearable attribute
+  -use transition to test for this
+-ocean has fish which can be given to the crocodiles
+  -use get_with to make sure player has water (and bottle?)
+-foot of hill you can "go cave" to do to maze of caves
+-you need safety sneakers or you slip off the window after a few turns
+
+CAVE ROOM 1 (*S2 *E3 *W *D)
+CAVE ROOM 2 (*N *E W3)
+CAVE ROOM 3 (*N4? *S *E2 *W4)
+CAVE ROOM 4 (*S *E *W3?)
+
+
+
+Bugs:
+
+  -make sure character events in original game work... prolly don't cuz they're set up to have it pick a random
+   one
+
+Refactoring?
+
+  -can character room exit getting be refactored? (maybe exits function for room class?)
+  -what is player name for?
+
+  -look at commands... make sure the code looks civilized
+
+Feature enhancements:
+
+  Putting:
+  -how to implement 'put'... only for props, not characters... uses mechanism like exchange
+    -put together gun and silencer
+    -put cake in oven
+    -look in oven
+    -get cake from oven
+
+  Naming:
+  -characters and props should have gender for pronoun support
+  -characters and props should have plural=true as well
+  -characters and props should have proper=true as well (look at search command to see why)
+  -in characters, make sure replacing of "name" with "id" doesn't cause problems
+
+  *Doors:
+  -should doors be a subclass or props?
+  -make "chutes": one-way doors
+
+Finishing:
+
+  -refine existing code/data structures
+  -test on all platforms
+  -versions
+    -v0.5a will be first version
+      -resolve remaining issues
+      -rough out roadmap
+    -0.6
+      -begin unit tests
+      -firm up whether class methods are public or private
+      -rough out documentation
+    -0.7
+      -complete documentation
+    -0.8
+      -
+    -0.9
+      -
+    -1
+      -
+  -review IF engine framework comparisons: put anything I don't want to do right now on roadmap
+  -roadmap will outline goals for each point release
+  -have semi-enjoyable sample adventure
+
+Maybe:
+
+  -change the necklace to shoes, have it so the shoes can be given to another character
+  -add GPL
+  -move appropriate synonyms to command_abbreviations
+  -locations and player should be singletons
+  -change 'prop_404' to 'not_found_message'
+  -if character is dead and has stuff on him, hint at that during look
+  -add alert if garbage word appears in command keywords and filter out
+
+Roadmap:
+
+  -proof coding style
+  -add unit tests to classes
+  -document (rdoc and human doc)
+  -create demo game
+
+Remember:
+
+  -using is equivelant to others... i.e. use knife to open door = open door with knife
+

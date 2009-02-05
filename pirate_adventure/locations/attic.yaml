@@ -1,0 +1,7 @@
+--- 
+name: attic
+exits:
+  west: passageway
+
+description: |
+  I'm in a musty attic. A bottle has been smashed into pieces here. There is a sign that says "The opposite of LIGHT is unlight"

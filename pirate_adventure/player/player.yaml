@@ -1,0 +1,7 @@
+---
+name: player
+location: 'apartment'
+hp: 20
+strength: 5
+dead: false
+

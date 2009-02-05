@@ -1,0 +1,8 @@
+---
+syntax:
+- "wait"
+- "loiter"
+
+logic: |
+
+  "Time passes...\n"

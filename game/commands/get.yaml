@@ -1,0 +1,25 @@
+---
+syntax:
+- "get <prop>"
+- "take <prop>"
+
+logic: |
+
+  output = ''
+
+  if props[prop].location == locations[location].name
+    if props[prop].portable
+      props[prop].location = 'player'
+      output << "You take #{props[prop].noun}.\n"
+      on_get_output = props[prop].event('on_get')
+      if on_get_output
+        output << on_get_output
+      end
+    else
+      output << "It won't budge.\n"
+    end
+  else
+    output << (game.prop_404 prop)
+  end
+
+  output

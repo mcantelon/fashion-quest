@@ -1,0 +1,8 @@
+--- 
+name: top_of_hill
+exits:
+  down: foot_of_hill
+  crack: cavern
+
+description: |
+  I'm on top of a hill. Below is Pirates Island. Across the sea way off in the distance I see Treasure Island. There is a rock wall with a narrow crack in it.

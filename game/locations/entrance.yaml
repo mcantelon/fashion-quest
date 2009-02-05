@@ -1,0 +1,11 @@
+--- 
+name: entrance
+exits: 
+  north: yard
+  south: hallway
+  east: alcove
+
+description: |
+  You are in the sunlit entranceway of a sizeable home. The walls are clean and it smells pleasant. There is no air of sadness or decay.
+
+  To the north is a door leading outside. To the east is a curtain. A hallway leads south.

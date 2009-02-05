@@ -1,0 +1,121 @@
+--- 
+characters: 
+  deadbeat: !ruby/object:Character 
+    aggression: 5
+    description: The deadbeat has watery eyes. He seems jumpy.
+    discusses: 
+      ? 
+        - weather
+        - hoes
+      : 
+        - Looks like it could rain sometime.
+        - Yup.
+        - I feel alive.
+
+    exchanges: 
+      smokes: 
+      - necklace
+      - shiv
+    hp: 6
+    location: yard
+    mobility: 5
+    name: deadbeat
+    player: &id003 !ruby/object:Player 
+      dead: false
+      hp: 20
+      name: player
+      props: 
+      strength: 5
+    player_location: &id002 !ruby/object:Room 
+      additional_exit_data: 
+        hallway: 
+          south: 
+            destination: bedroom
+            prop: door
+      description: |
+        You are in a dimly-lit hallway.
+
+      exits: &id001 
+        south: bedroom
+        north: entrance
+      image_file: rooms/images/hallway.jpg
+      location: 
+        name: hallway
+        exits: *id001
+        description: |
+          You are in a dimly-lit hallway.
+
+      name: hallway
+    props: &id004 
+      necklace: !ruby/object:Prop 
+        description: The necklace is made up of brightly colored beads.
+        location: deadbeat
+        name: necklace
+        portable: true
+      shiv: !ruby/object:Prop 
+        attack_strength: 7
+        description: The shiv looks sharp... useful.
+        location: deadbeat
+        name: shiv
+        portable: true
+      walking stick: !ruby/object:Prop 
+        attack_strength: 5
+        description: The walking stick is gnarled, but sturdy.
+        location: player
+        name: walking stick
+        portable: true
+      door: !ruby/object:Prop 
+        contains: 
+          exit: 
+            south: bedroom
+        description: The door is made of dark-brown wood.
+        location: hallway
+        name: door
+        opened: true
+        opens: true
+        opens_with: 
+        - brass key
+        portable: false
+      brass key: !ruby/object:Prop 
+        description: The key is small and made of brass.
+        location: player
+        name: brass key
+        portable: true
+        size: 1
+        weight: 1
+      smokes: !ruby/object:Prop 
+        description: The smokes look tempting.
+        location: player
+        name: smokes
+        portable: true
+      dresser: !ruby/object:Prop 
+        contains: 
+          prop: smokes
+        description: The dresser looks like it has seen better days.
+        location: bedroom
+        name: dresser
+        opened: true
+        opens: true
+        portable: false
+      leaflet: !ruby/object:Prop 
+        description: The leaflet is faded yellow and seems to warn against something.
+        location: ""
+        name: leaflet
+        portable: true
+        text: props/text/leaflet.txt
+      book: !ruby/object:Prop 
+        contains: 
+          prop: leaflet
+        description: The book is light green and seems to be about the maths.
+        location: alcove
+        name: book
+        opened: false
+        opens: true
+        portable: true
+        size: 5
+        text: props/text/book.txt
+        weight: 5
+    strength: 3
+location: *id002
+player: *id003
+props: *id004

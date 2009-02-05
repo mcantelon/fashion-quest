@@ -1,0 +1,20 @@
+---
+syntax:
+- "unlight <prop>"
+
+logic: |
+
+  output = ""
+
+  if props[prop].lit == false
+
+      output << "It's not lit.\n"
+
+  elsif props[prop].lit == true
+
+    output << "You unlight the #{prop}.\n"
+    props[prop].lit = false
+
+  end
+
+  output

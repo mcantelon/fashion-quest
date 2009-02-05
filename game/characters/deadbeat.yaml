@@ -1,0 +1,32 @@
+--- 
+deadbeat: 
+  mobility: 50
+  strength: 3
+  discusses: 
+    ? 
+      - weather
+      - hoes
+    : 
+      - Looks like it could rain sometime.
+      - Yup.
+      - I feel alive.
+
+  exchanges: 
+    smokes: 
+    - necklace
+    - shiv
+  description: The deadbeat has watery eyes. He seems jumpy.
+  hp: 6
+  aggression: 5
+  location: yard
+  events:
+    on_discuss:
+    - "The deadbeat squints at you and shuffles his feet before answering.\n"
+    - "The deadbeat tilts his head sceptically before answering.\n"
+    on_exchange:
+    - "The deadbeat smiles.\n"
+    on_attack:
+    - "The deadbeat grits his tooth as he lunges for you.\n"
+    on_death:
+    - "The deadbeat howls as he collapses.\n"
+

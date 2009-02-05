@@ -1,0 +1,8 @@
+--- 
+name: apartment
+exits:
+  stairs: alcove
+  up: alcove
+
+description: |
+  I'm in a flat in London. You see a flight of stairs leading up. A sign says: "Bring *TREASURES* here, say: SCORE".

@@ -1,0 +1,8 @@
+--- 
+name: passageway
+exits:
+  west: alcove
+  east: attic
+
+description: |
+  I'm in a secret passageway. You can go east or west.

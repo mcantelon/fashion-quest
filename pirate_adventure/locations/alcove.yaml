@@ -1,0 +1,8 @@
+--- 
+name: alcove
+exits:
+  down: apartment
+  window: ledge
+
+description: |
+  I'm in an alcove. There is an open window.

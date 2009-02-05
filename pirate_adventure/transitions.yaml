@@ -1,0 +1,48 @@
+---
+conditions:
+  ?
+    - @turns == 0
+  :
+    - begin
+  ?
+    - @state['entered_neverneverland']
+  :
+    - neverneverland
+  ?
+    - @player.hp < 1
+  :
+    - death
+  ?
+    - @props['book'].location == 'yard'
+  :
+    - win
+  ?
+    - @props['book'].location == 'hallway'
+  :
+    - loss
+  ?
+    - @props['rum'].location == 'pirate' and !@props['bottle'].location
+  :
+    - pirate_runs_off
+outcomes:
+  begin: |
+    # beginning logic can be put here
+  neverneverland: |
+    if (@state['entered_neverneverland'] + 6) < @turns
+      @over = true
+      "Since nothing is happening this adventure is over.\nWould you like to restart? (y/n)\n"
+    end
+  death: |
+    @over = true
+    "You have died.\nWould you like to restart? (y/n)"
+  win: |
+    # winning logic can be put here
+  loss: |
+    # losing logic can be put here
+  pirate_runs_off: |
+    @characters['pirate'].location = 'attic'
+    characters['parrot'].location = ''
+    @characters['pirate'].description = 'The pirate is sleeping.'
+    @props['bottle'].location = 'attic'
+    "The pirate grabs the rum and scuttles off chortling.\nThe parrot flies off looking very unhappy.\n"
+

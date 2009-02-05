@@ -1,0 +1,9 @@
+--- 
+name: meadow
+exits:
+  east: foot_of_hill
+  west: beach
+  shack: shack
+
+description: |
+  I'm in a meadow. There's a shack here.

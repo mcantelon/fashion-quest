@@ -1,0 +1,11 @@
+---
+n: "go north"
+s: "go south"
+e: "go east"
+w: "go west"
+u: "go up"
+d: "go down"
+nw: "go northwest"
+ne: "go northeast"
+sw: "go southwest"
+se: "go southeast"
