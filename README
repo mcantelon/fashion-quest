@@ -1,0 +1,19 @@
+I know it is wrong to make frameworks, but it happens.
+
+Fashion Quest is an interactive fiction framework being created so we can make
+a text adventure game about fashion because we do not have the resources to
+make a movie.
+
+It uses Shoes for cross-platform interface and is thus written in the Ruby.
+
+The framework is in progress. To test the framework I am converting the 1978
+game Pirate Adventure to the framework. This is also in progress.
+
+The game is largely defined using YAML files.
+
+Some super rough documentation is present as DOC_OUTLINE.
+
+Some scrawls about intentions and feelings is present as TALKING_TO_MYSQL.
+
+Okay!
+
