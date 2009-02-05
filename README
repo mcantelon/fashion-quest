@@ -13,7 +13,12 @@ The game is largely defined using YAML files.
 
 Some super rough documentation is present as DOC_OUTLINE.
 
-Some scrawls about intentions and feelings is present as TALKING_TO_MYSQL.
+Some scrawls about intentions and feelings is present as TALKING_TO_MYSELF.
 
-Okay!
+You can check out what's done so far in the Pirate Adventure conversion
+by going:
+
+  shoes fq.rb pirate_adventure
+
+But it's still gettin' made so you prolly should wait.
 
