@@ -9,9 +9,19 @@ logic: |
   # If an exit exists, load destination location and issue look command
   if (locations[location].exits[direction])
 
-    player.location = locations[location].exits[direction]
+    # If player is trying to move around in the dark, kill player
+    if locations[location].dark and !player.has_lit_item
 
-    return ">look"
+      game.over = true
+      return "You trip in the dark and break your neck.\nWould you like to restart? (y/n)\n"
+
+    else
+
+      player.location = locations[location].exits[direction]
+
+      return '>look'
+
+    end
 
   else
 

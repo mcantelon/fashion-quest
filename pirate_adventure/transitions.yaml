@@ -45,4 +45,3 @@ outcomes:
     @characters['pirate'].description = 'The pirate is sleeping.'
     @props['bottle'].location = 'attic'
     "The pirate grabs the rum and scuttles off chortling.\nThe parrot flies off looking very unhappy.\n"
-

@@ -1,6 +1,6 @@
 class Locations
 
-  attr_accessor :path, :loaded, :name, :description, :exits, :revealed_exit_data, :description_notes, :image_file
+  attr_accessor :path, :loaded, :name, :description, :dark, :exits, :revealed_exit_data, :description_notes, :image_file
 
   include Handles_YAML_Files
 
@@ -38,6 +38,7 @@ class Locations
 
       @name        = @location['name']
       @description = @location['description']
+      @dark        = @location['dark']
       @exits       = @location['exits'] ? @location['exits'] : {}
       @image_file  = "#{@path}images/#{@name}.jpg"
 
@@ -101,26 +102,34 @@ class Locations
 
   end
 
-  def describe(props, characters)
+  def describe(props, characters, light = nil)
 
-    # describe current location
-    description = @description.dup
-    description += @description_notes[@name] if @description_notes[@name]
+    if @dark and light != true
 
-    # describe any characters in the location
-    characters.each do |character, character_data|
-      if characters[character].location == @name
-        description << ("You see " + characters[character].noun + ".\n")
+      description = "It is dark.\n"
+
+    else
+
+      # describe current location
+      description = @description.dup
+      description += @description_notes[@name] if @description_notes[@name]
+
+      # describe any characters in the location
+      characters.each do |character, character_data|
+        if characters[character].location == @name
+          description << ("You see " + characters[character].noun + ".\n")
+        end
       end
-    end
 
-    description << describe_revealed_exit_data(props)
+      description << describe_revealed_exit_data(props)
 
-    # describe any props in the location (or doors that lead to the location)
-    props.each do |prop, prop_data|
-      if props[prop].location == @name and props[prop].visible == true
-        description << "You see a #{props[prop].name}.\n"
+      # describe any props in the location (or doors that lead to the location)
+      props.each do |prop, prop_data|
+        if props[prop].location == @name and props[prop].visible == true
+          description << "You see a #{props[prop].name}.\n"
+        end
       end
+
     end
 
     description

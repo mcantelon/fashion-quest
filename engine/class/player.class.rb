@@ -48,16 +48,26 @@ class Player
     end
   end
 
-  def has_prop_with_attribute(attribute)
+  def has_prop_with_attribute(attribute, value = nil)
 
     items.each do |id, prop_data|
 
       if eval('@props[id].' + attribute)
-        return true
+        if value != nil
+          if eval('@props[id].' + attribute) == value
+            return true
+          end
+        else
+          return true
+        end
       end
     end
 
     false
+  end
+
+  def has_lit_item
+    has_prop_with_attribute('lit', true)
   end
 
 end
