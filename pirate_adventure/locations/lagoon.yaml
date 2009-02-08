@@ -1,0 +1,9 @@
+--- 
+name: lagoon
+exits:
+  north: ocean
+  south: beach
+  beach: beach
+
+description: |
+  I'm in a shallow lagoon. To the north is the ocean.

@@ -1,0 +1,8 @@
+--- 
+name: ocean
+exits:
+  north: ocean
+  south: lagoon
+
+description: |
+  I'm in the ocean.

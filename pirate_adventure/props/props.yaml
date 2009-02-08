@@ -37,6 +37,14 @@ hammer:
   name: hammer
   description: It's a claw hammer!
   location: shed
+lumber:
+  name: lumber
+  description: The lumber is precut.
+  location: cavern
+sails:
+  name: sails
+  description: The sails are in a pile.
+  location: cavern
 water wings:
   name: water wings
   description: They float.
@@ -70,6 +78,16 @@ torch:
   location: attic
   lit: false
   burn_turns: 10
+fish:
+  name: fish
+  location: ocean
+  get_with:
+  - water
+water:
+  name: water
+  location: ocean
+  get_with:
+  - bottle
 bottle:
   name: bottle
   description: The bottle is empty.

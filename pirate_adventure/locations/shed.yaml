@@ -1,7 +1,7 @@
 --- 
 name: shed
 exits:
-  west: cavern
+  north: cavern
 
 description: |
-  I'm in a shed. There's an exit to the west.
+  I'm in a shed. There's an exit to the north.

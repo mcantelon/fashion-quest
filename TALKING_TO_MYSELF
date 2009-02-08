@@ -6,7 +6,6 @@ Fashion Quest
 
 -what do plans say when read?
 
--need bottle, water to get fish
 -Crocs eat fish and leave
 
 -add visible property to props (for nails)
@@ -36,10 +35,10 @@ max 6 items carried?
 -foot of hill you can "go cave" to do to maze of caves
 -you need safety sneakers or you slip off the window after a few turns
 
-CAVE ROOM 1 (*S2 *E3 *W *D)
-CAVE ROOM 2 (*N *E W3)
-CAVE ROOM 3 (*N4? *S *E2 *W4)
-CAVE ROOM 4 (*S *E *W3?)
+CAVE ROOM 1 (*S2 *E3 *W foot_of_hill *D pit)
+CAVE ROOM 2 (*N1 *E foot_of_hill W3)
+CAVE ROOM 3 (*N1 *S foot_of_hill *E2 *W4)
+CAVE ROOM 4 (*S foot_of_hill *E foot_of_hill *W3)
 
 
 

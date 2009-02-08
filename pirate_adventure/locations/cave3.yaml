@@ -1,0 +1,10 @@
+--- 
+name: cave3
+exits:
+  north: cave1
+  south: foot_of_hill
+  east: cave2
+  west: cave4
+
+description: |
+  I'm in a cave.
