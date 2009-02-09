@@ -1,0 +1,9 @@
+--- 
+crocodile: 
+  description: The crocodile looks mean and hungry.
+  location: pit
+  exchanges:
+    fish
+  events:
+    on_exchange:
+    - @location = ''; return "The croc eats the fish and leaves.\n"

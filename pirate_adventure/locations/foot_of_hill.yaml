@@ -4,6 +4,7 @@ exits:
   up: top_of_hill
   path: top_of_hill
   west: meadow
+  cave: cave1
 
 description: |
   I'm at the foot of a cave ridden hill, a pathway leads on up to the top.

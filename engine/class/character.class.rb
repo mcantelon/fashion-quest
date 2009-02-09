@@ -198,8 +198,7 @@ class Character
       if @exchanges[prop]
         if @events
           if @events['on_exchange']
-            alert('implement on exchange')
-            #output << event('on_exchange')
+            output << event('on_exchange')
           end
         else
           output << "#{noun_cap} takes the #{prop}.\n"

@@ -81,6 +81,7 @@ torch:
 fish:
   name: fish
   location: ocean
+  #location: player
   get_with:
   - water
 water:

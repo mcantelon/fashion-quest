@@ -14,15 +14,24 @@ logic: |
       exchange_output = (characters[character].attempt_exchange prop)
 
       if exchange_output != ''
+
+        output << exchange_output
         props[prop].location = character
+
       else
+
         output << "#{characters[character].noun_cap} isn't interested.\n"
       end
+
     else
+
       output << "#{characters[character].noun_cap} is dead and not feeling particularly receptive.\n"
+
     end
   else
+
     output << (game.prop_404 prop)
+
   end
 
   output

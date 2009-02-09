@@ -1,0 +1,7 @@
+--- 
+name: pit
+exits:
+  up: cave1
+
+description: |
+  I'm in a pit.
