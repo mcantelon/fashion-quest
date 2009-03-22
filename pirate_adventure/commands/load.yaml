@@ -1,0 +1,10 @@
+---
+syntax:
+- "load"
+- "load game"
+
+logic: |
+
+  game.load
+
+  "Game loaded.\n"

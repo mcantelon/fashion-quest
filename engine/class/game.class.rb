@@ -157,6 +157,10 @@ class Game
   def save
 
     game_data = {
+      'turn'       => @turns,
+      'state'      => @state,
+      'over'       => @over,
+
       'player'     => @player,
       'locations'  => @locations,
       'characters' => @characters,
@@ -170,6 +174,10 @@ class Game
   def load
 
     game_data = load_yaml_file("#{path}player/saved_game.yaml")
+
+    @turn       = game_data['turns']
+    @state      = game_data['state']
+    @over       = game_data['over']
 
     @player     = game_data['player']
     @locations  = game_data['locations']
