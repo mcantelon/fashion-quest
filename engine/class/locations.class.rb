@@ -67,6 +67,21 @@ class Locations
 
   end
 
+  def has_exit(direction)
+
+    revealed_found = false
+
+    if @revealed_exit_data[@name]
+      if @revealed_exit_data[@name][direction]
+        revealed_found = true
+      end
+    end
+
+    if @exits[direction] or revealed_found
+      true
+    end
+  end
+
   def add_to_description(text)
 
     @description_notes[@name] ||= ''
