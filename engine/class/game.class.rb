@@ -296,7 +296,7 @@ class Game
         # if evaluation of event response fails, return the response as text
         rescue SyntaxError, NameError
 
-          alert('erra!')
+          alert('Error evaluating event response ' + type + ' for ' + object.name)
           return event_response
 
         end
