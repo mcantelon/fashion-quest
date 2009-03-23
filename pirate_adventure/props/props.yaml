@@ -59,10 +59,13 @@ book:
   text: props/text/book.txt
   events:
     on_get: |
-      @locations['alcove'].add_to_description("There is a bookcase with a secret passage beyond.\n")
-      @locations['alcove'].add_exit('alcove', 'book', 'passage', 'passageway')
-      @locations.load('alcove')
-      "There's a strange sound.\n";
+      if not (@locations['alcove'].has_exit('passage'))
+        @locations['alcove'].add_to_description("There is a bookcase with a secret passage beyond.\n")
+        @locations['alcove'].add_exit('alcove', 'book', 'passage', 'passageway')
+        @locations.load('alcove')
+        @state['passage_opened'] = true
+        "There's a strange sound.\n";
+      end
 bag:
   name: bag
   description: It's a pirate's duffel bag.
