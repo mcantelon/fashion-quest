@@ -47,11 +47,6 @@ Bugs:
   -make sure character events in original game work... prolly don't cuz they're set up to have it pick a random
    one
 
-  -"The torch has gone out" displays twice
-  -getting book twice creates strange sound both times
-  "foiled" alert pops up
-  -after dropping nails, can't see them anymore
-
 Refactoring?
 
   -can character room exit getting be refactored? (maybe exits function for room class?)

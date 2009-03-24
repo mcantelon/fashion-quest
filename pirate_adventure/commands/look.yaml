@@ -35,7 +35,7 @@ logic: |
 
     # If no description was found, inform user
     if description == ''
-      description = 'You see nothing special.'
+      description = "You see nothing special.\n"
     end
 
     output = description

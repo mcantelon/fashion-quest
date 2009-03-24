@@ -17,7 +17,6 @@ logic: |
 
         props[prop].get_with.each do |needed_prop|
           if props[needed_prop].location != 'player'
-            alert('foiled')
             can_get = false
           end
         end

@@ -29,6 +29,7 @@ nails:
   events:
     on_get: |
       if @props['rug'].portable == false
+        @props['nails'].visible = true
         @props['rug'].portable = true
         @props['rug'].description = "It looks like there's something underneath the rug."
         "The rug comes loose.\n"
