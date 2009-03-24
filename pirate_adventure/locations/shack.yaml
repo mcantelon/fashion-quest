@@ -1,7 +1,8 @@
 --- 
 name: shack
 exits:
-  west: meadow
+  west:
+    destination: meadow
 
 description: |
   I'm in a grass shack.

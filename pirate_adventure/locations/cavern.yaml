@@ -1,9 +1,12 @@
 ---
 name : cavern
 exits:
-  west: hallway
-  crack: top_of_hill
-  shed: shed
+  west:
+    destination: hallway
+  crack:
+    destination: top_of_hill
+  shed:
+    destination: shed
 dark: true
 
 description: |

@@ -1,9 +1,12 @@
 --- 
 name: beach
 exits:
-  east: meadow
-  north: lagoon
-  lagoon: lagoon
+  east:
+    destintion: meadow
+  north:
+    destination: lagoon
+  lagoon:
+    destination: lagoon
 
 description: |
   I'm in a sandy beach on a tropical isle. There is a lagoon. A sign in the sand says: "Welcome to Pirates Island, watch out for the tide!".

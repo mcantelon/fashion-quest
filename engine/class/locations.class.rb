@@ -45,7 +45,7 @@ class Locations
       # add any exits revealed by player actions
       if @revealed_exit_data[@name]
         @revealed_exit_data[@name].each do |direction, exit_data|
-          @exits[direction] = exit_data['destination']
+          @exits[direction] = {'destination' => exit_data['destination']}
         end
       end
     else

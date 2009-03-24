@@ -1,10 +1,14 @@
 --- 
 name: cave1
 exits:
-  south: cave2
-  east: cave3
-  west: foot_of_hill
-  down: pit
+  south:
+    destination: cave2
+  east:
+    destination: cave3
+  west:
+    destination: foot_of_hill
+  down:
+    destination: pit
 
 description: |
   I'm in a cave.

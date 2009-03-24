@@ -17,7 +17,7 @@ logic: |
 
     else
 
-      player.location = locations[location].exits[direction]
+      player.location = locations[location].exits[direction]['destination']
 
       return '>look'
 

@@ -1,9 +1,12 @@
 --- 
 name: meadow
 exits:
-  east: foot_of_hill
-  west: beach
-  shack: shack
+  east:
+    destination: foot_of_hill
+  west:
+    destination: beach
+  shack:
+    destination: shack
 
 description: |
   I'm in a meadow. There's a shack here.
