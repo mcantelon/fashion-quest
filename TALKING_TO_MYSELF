@@ -2,24 +2,24 @@ Fashion Quest
 
 -make sure to copy pirate version of get and go commands to main commands
 
--have option to add exit that isn't visible by default (or just have it so dynamic exits aren't shown, make it dependent to add a description)
+-have option to add exit that isn't visible by default (or just have it so dynamic 
+ exits aren't shown, make it dependent to add a description)
 
 -what do plans say when read?
 
--Crocs eat fish and leave
+-max 6 items carried
 
--add visible property to props (for nails)
+EXITS:
+-need to make exits more complex... currently simple <exit>: <destination> ...
+ need something like <exit>: -destination: <destination> -size: <size> in YAML definition
+-still problem of doors... a door can exist in two locations, but this isn't reflected in current
+ prop paradigm
 
-max 6 items carried?
 
 -clean up event handler situation
 
--add bottle
-
 -can't "climb crack" if carrying book: "Sorry I can't. Something won't fit!"
-  -add check for this in go command
--should have "dark" setting for locations
-  -you break neck if trying to move in dark
+  -give props size attribute and give exits size attributes as well
 -locked door in hallway (easy)
 -build ship: "I can't! I've no plans!"
   -need build command leveraging build_with and on_build
@@ -30,9 +30,6 @@ max 6 items carried?
 -north goes to ocean death (unless you have and are wearing water wings)
   -add wear command leveraging wearable attribute
   -use transition to test for this
--ocean has fish which can be given to the crocodiles
-  -use get_with to make sure player has water (and bottle?)
--foot of hill you can "go cave" to do to maze of caves
 -you need safety sneakers or you slip off the window after a few turns
 
 CAVE ROOM 1 (*S2 *E3 *W foot_of_hill *D pit)
@@ -46,6 +43,7 @@ Bugs:
 
   -make sure character events in original game work... prolly don't cuz they're set up to have it pick a random
    one
+  -when you go west in the cavern you go to a no-man's-land
 
 Refactoring?
 
