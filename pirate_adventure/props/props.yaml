@@ -36,11 +36,15 @@ nails:
       end
 hammer:
   name: hammer
-  description: It's a claw hammer!
+  description: It's a hammer of the claw variety.
+  location: shed
+shovel:
+  name: shovel
+  description: It's shovel-like in nature.
   location: shed
 lumber:
   name: lumber
-  description: The lumber is precut.
+  description: The lumber is precut. How fortunate for you.
   location: cavern
 sails:
   name: sails

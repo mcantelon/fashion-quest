@@ -2,7 +2,7 @@
 name: beach
 exits:
   east:
-    destintion: meadow
+    destination: meadow
   north:
     destination: lagoon
   lagoon:

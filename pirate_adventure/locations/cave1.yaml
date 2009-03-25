@@ -9,6 +9,7 @@ exits:
     destination: foot_of_hill
   down:
     destination: pit
+dark: true
 
 description: |
-  I'm in a cave.
+  I'm in a maze of caves. Exits lead south, east, and west. A ladder leads down.

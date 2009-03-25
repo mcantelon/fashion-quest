@@ -136,7 +136,6 @@ class Game
         if prop.lit == true
           if prop.burn_turns > 0
             @props[name].burn_turns -= 1
-            alert(@props[name].burn_turns)
           else
             output << "The #{name} has gone out.\n"
             @props[name].lit = false

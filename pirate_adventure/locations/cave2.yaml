@@ -7,6 +7,7 @@ exits:
     destination: foot_of_hill
   west:
     destination: cave3
+dark: true
 
 description: |
-  I'm in a cave.
+  I'm in a maze of caves. Exits lead north, east, and west.
