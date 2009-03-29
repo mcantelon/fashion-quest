@@ -10,4 +10,15 @@ class Door
     @visible  = true
   end
 
+  def destination_from(location)
+
+    # determine possible destinations
+    possible_destinations = @locations.dup
+    possible_destinations.delete(location)
+
+    # randomly select a possible destination
+    return possible_destinations[rand(possible_destinations.length)]
+
+  end
+
 end

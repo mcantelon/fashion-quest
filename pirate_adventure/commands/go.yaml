@@ -24,24 +24,28 @@ logic: |
     end
 
   # Otherwise check for a door
-  elsif doors[direction].locations.include?(player.location)
+  elsif doors[direction]
 
-    # Go through door, if it's open
+    door = direction
 
-    if doors[direction].opened
+    # If the door exists in the player's location, try it
+    if doors[door].locations.include?(player.location)
 
-      # determine possible destinations
-      possible_destinations = doors[direction].locations.dup
-      possible_destinations.delete(player.location)
+      # Go through door, if it's open
+      if doors[door].opened
 
-      # randomly select a possible destination
-      player.location = possible_destinations[rand(possible_destinations.length)]
+        player.location = doors[door].destination_from(player.location)
 
-      return '>look'
+        return '>look'
 
+      else
+
+        return "It's not open.\n"
+
+      end
     else
 
-      return "It's not open.\n"
+      return "You can't go that way.\n"
     end
 
   else
