@@ -2,34 +2,42 @@
 syntax:
 - "l"
 - "look"
-- "look <prop:prop_or_character>"
-- "look <character:prop_or_character>"
+- "look <prop:noun>"
+- "look <character:noun>"
+- "look <door:noun>"
 
 logic: |
 
-  prop_or_character = arg['prop_or_character']
+  noun = arg['noun']
 
-  prop_or_character = '' if not prop_or_character
+  noun = '' if not noun
 
   output = ''
 
-  if not prop_or_character.empty?
+  if not noun.empty?
 
     description = ''
 
     # If attempting to look at a character, check for description
-    if characters[prop_or_character]
-      if characters[prop_or_character].dead == true
-        description = "#{characters[prop_or_character].noun_cap} appears to be dead.\n"
-      elsif characters[prop_or_character].description
-        description = characters[prop_or_character].description + "\n"
+    if characters[noun]
+      if characters[noun].dead == true
+        description = "#{characters[noun].noun_cap} appears to be dead.\n"
+      elsif characters[noun].description
+        description = characters[noun].description + "\n"
       end
     end
 
     # If attempting to look at an prop, check for description
-    if props[prop_or_character]
-      if props[prop_or_character].description
-        description = props[prop_or_character].description + "\n"
+    if props[noun]
+      if props[noun].description
+        description = props[noun].description + "\n"
+      end
+    end
+
+    # If attempting to look at a door, check for descripton
+    if doors[noun]
+      if doors[noun].description
+        description = doors[noun].description + "\n"
       end
     end
 
@@ -49,7 +57,7 @@ logic: |
       @image_stack.clear { }
     end
 
-    output = locations[location].describe(props, characters, player.has_lit_item)
+    output = locations[location].describe(doors, props, characters, player.has_lit_item)
 
     if output == ''
       output = 'Whoa!'

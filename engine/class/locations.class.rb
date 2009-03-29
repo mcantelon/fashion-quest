@@ -117,7 +117,7 @@ class Locations
 
   end
 
-  def describe(props, characters, light = nil)
+  def describe(doors, props, characters, light = nil)
 
     if @dark and light != true
 
@@ -138,7 +138,14 @@ class Locations
 
       description << describe_revealed_exit_data(props)
 
-      # describe any props in the location (or doors that lead to the location)
+      # describe any doors in the location
+      doors.each do |door, door_data|
+        if doors[door].locations.include?(@name)
+          description << "You see a #{doors[door].name}.\n"
+        end
+      end
+
+      # describe any props in the location
       props.each do |prop, prop_data|
         if props[prop].location == @name and props[prop].visible == true
           description << "You see a #{props[prop].name}.\n"

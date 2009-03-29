@@ -25,13 +25,18 @@ Presentation Configuration:
 -configuration options include game title, widow width/height, whether window is resizable, and game startup message.
 
 Game Components:
--there are three types of game components: locations, props, characters, and commands
+-there are three types of game components: locations, doors, props, characters, and commands
 -game components are defined in YAML
 -game component files are put in subdirectories of the game base directory
 
 Creating Locations:
 -locations are put in the 'rooms' subdirectory
 -exits can be directions "north" or arbitrary names "stairs"
+
+Creating Doors:
+-doors are put in the 'doors' subdirectory
+-doors connect two or more locations
+-if a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations
 
 Creating Props:
 -props are put in the 'props' subdirectory

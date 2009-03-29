@@ -43,6 +43,7 @@ class Command
             arg       = result['arg']
             prop      = result['prop']
             character = result['character']
+            door      = result['door']
 
             if character
               noun = @game.characters[character].noun
@@ -58,6 +59,7 @@ class Command
             player     = @game.player
             characters = @game.characters
             locations  = @game.locations
+            doors      = @game.doors
 
             if @game.player
               location   = @game.player.location
@@ -113,18 +115,36 @@ class Command
 
     # arg, prop, and character are all variables meant to be utilized by command logic
     arg   = {}
-    prop  = character = nil
+    door = prop  = character = nil
     error = nil
 
     syntax_lexemes.each do |lexeme|
 
-      # lexeme references a prop or character
+      # lexeme references a door or prop or character
       if lexeme[0] == ?<
 
         # trim "<" and ">" from reference to determine reference type
         reference_type, reference_name = lexeme[1..-2].split(':')
 
         case reference_type
+
+          # handle named or unnamed door references
+          when 'door':
+
+            potential_door = lexemes[lexeme_to_test]
+
+            # need to test that door exists and near player
+            if not @game.doors[potential_door]
+              error = @game.prop_404(potential_door)
+            elsif not @game.doors[potential_door].locations.include?(@game.locations[@game.player.location].name)
+              error = @game.prop_404(potential_door)
+            end
+
+            if reference_name
+              arg[reference_name] = potential_door
+            else
+              door = potential_door
+            end
 
           # handle named or unnamed prop references
           when 'prop':

@@ -1,0 +1,10 @@
+--- 
+door:
+  name: door
+  opened: false
+  description: The door looks stupid.
+  opens_with:
+  - keys
+  locations:
+  - hallway
+  - pit

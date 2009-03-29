@@ -4,3 +4,5 @@ exits:
   east:
     destination: cavern
 
+description: |
+  You are in a hallway.

@@ -14,15 +14,11 @@ Fashion Quest
 EXITS:
 -need to make exits more complex... currently simple <exit>: <destination> ...
  need something like <exit>: -destination: <destination> -size: <size> in YAML definition
--still problem of doors... a door can exist in two locations, but this isn't reflected in current
- prop paradigm
-
 
 -clean up event handler situation
 
 -can't "climb crack" if carrying book: "Sorry I can't. Something won't fit!"
   -give props size attribute and give exits size attributes as well
--locked door in hallway (easy)
 -build ship: "I can't! I've no plans!"
   -need build command leveraging build_with and on_build
 -"go lagoon": goes to never neverland if tide is in
@@ -68,10 +64,6 @@ Feature enhancements:
   -characters and props should have plural=true as well
   -characters and props should have proper=true as well (look at search command to see why)
   -in characters, make sure replacing of "name" with "id" doesn't cause problems
-
-  *Doors:
-  -should doors be a subclass or props?
-  -make "chutes": one-way doors
 
 Finishing:
 

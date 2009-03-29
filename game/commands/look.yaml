@@ -49,7 +49,7 @@ logic: |
       @image_stack.clear { }
     end
 
-    output = locations[location].describe(props, characters)
+    output = locations[location].describe(doors, props, characters)
 
   end
 

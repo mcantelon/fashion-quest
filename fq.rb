@@ -21,6 +21,7 @@ Shoes.app(
   require 'engine/class/player.class.rb'
   require 'engine/class/character.class.rb'
   require 'engine/class/locations.class.rb'
+  require 'engine/class/door.class.rb'
   require 'engine/class/prop.class.rb'
   require 'engine/class/cli.class.rb'
   require 'engine/class/command.class.rb'

@@ -23,6 +23,27 @@ logic: |
 
     end
 
+  # Otherwise check for a door
+  elsif doors[direction].locations.include?(player.location)
+
+    # Go through door, if it's open
+
+    if doors[direction].opened
+
+      # determine possible destinations
+      possible_destinations = doors[direction].locations.dup
+      possible_destinations.delete(player.location)
+
+      # randomly select a possible destination
+      player.location = possible_destinations[rand(possible_destinations.length)]
+
+      return '>look'
+
+    else
+
+      return "It's not open.\n"
+    end
+
   else
 
     return "You can't go that way.\n"

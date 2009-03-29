@@ -2,7 +2,7 @@
 #
 class Game
 
-  attr_accessor :state, :path, :player, :characters, :locations, :props, :turns, :over
+  attr_accessor :state, :path, :player, :characters, :locations, :doors, :props, :turns, :over
 
   include Handles_YAML_Files
 
@@ -27,9 +27,10 @@ class Game
 
     @output_text = ''
 
+    @locations  = Locations.new(@path + 'locations/')
+    @doors      = initialize_doors
     @props      = initialize_props
     @player     = initialize_player
-    @locations  = Locations.new(@path + 'locations/')
     @characters = initialize_characters(@locations, @player, @props)
 
   end
@@ -86,6 +87,28 @@ class Game
     end
 
     characters
+
+  end
+
+  def initialize_doors
+
+    doors = {}
+
+    # door data is stored in YAML as a hash
+    door_config_path = "#{path}doors/doors.yaml"
+    door_data = load_yaml_file(door_config_path)
+
+    if door_data
+      # create objects from hash of object hashes
+      door_data.each do |id, door_definition|
+        doors[id] = map_hash_to_object_attributes(Door.new, door_definition)
+        doors[id].id = id
+      end
+    else
+      error('No door config files found at ' + door_config_path)
+    end
+
+    doors
 
   end
 
@@ -230,6 +253,65 @@ class Game
         end
 
       end
+    end
+
+    output
+
+  end
+
+  def attempt_open_item(item, with_prop)
+
+    output = ''
+
+    if @props[item]
+      item_object = @props[item]
+    elsif
+      item_object = @doors[item]
+    end
+
+    if defined? item_object.opened
+      if item_object.opened
+        output << "It's already open.\n"
+      elsif item_object.opens_with
+        if with_prop
+          if prop_located_at(with_prop, 'player') and item_object.opens_with.index(with_prop)
+            output << open(item)
+          end
+        else
+          output << "It won't open. Maybe you need something to open it with?\n"
+        end
+      else
+        return open(item)
+      end
+    else
+      output << "You can't open the #{item}.\n"
+    end
+
+    output
+
+  end
+
+  def open(item)
+
+    if @props[item]
+      prop_open(item)
+    elsif @doors[item]
+      door_open(item)
+    else
+      error("game.open called on item that isn't a prop or door.")
+    end
+  end
+
+  def door_open(door)
+
+    output = ''
+
+    if @doors[door]
+
+      output << "You open the #{@doors[door].name}.\n"
+
+      @doors[door].opened = true
+
     end
 
     output

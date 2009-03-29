@@ -139,19 +139,6 @@ walking stick:
   description: The walking stick is gnarled, but sturdy.
   portable: true
   location: player
-door:
-  name: door
-  opened: false
-  description: There's nothing special about the door.
-  contains:
-    exit:
-      west: pit
-  portable: false
-  opens_with:
-  - keys
-  location: hallway
-
-
 smokes: 
   name: smokes
   description: The smokes look tempting.

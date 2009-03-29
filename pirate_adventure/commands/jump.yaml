@@ -13,7 +13,7 @@ logic: |
 
     # chastise player and show description of new location
     output << "That's not very smart.\n"
-    output << locations['neverneverland'].describe(props, characters)
+    output << locations['neverneverland'].describe(doors, props, characters)
 
     # take note of when player entered neverneverland
     # (this will trigger a transition that will end the player's
