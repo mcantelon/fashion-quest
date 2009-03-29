@@ -48,6 +48,24 @@ class Player
     end
   end
 
+  def largest_carried_item_size
+
+    largest_size = 0
+
+    carrying.each do |prop|
+
+      if @props[prop].size
+
+        if @props[prop].size > largest_size
+
+          largest_size = @props[prop].size
+        end
+      end
+    end
+
+    largest_size
+  end
+
   def has_prop_with_attribute(attribute, value = nil)
 
     items.each do |id, prop_data|

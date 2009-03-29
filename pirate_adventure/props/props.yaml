@@ -2,12 +2,15 @@
 crackers:
   name: crackers
   location: apartment
+
 sneakers:
   name: sneakers
   location: apartment
+
 rum:
   name: rum
   location: apartment
+
 rug:
   name: rug
   portable: false
@@ -19,6 +22,7 @@ rug:
         @props['keys'].location = 'apartment'
         "You hear a jingling sound.\n"
       end
+
 nails:
   name: nails
   visible: false
@@ -34,29 +38,36 @@ nails:
         @props['rug'].description = "It looks like there's something underneath the rug."
         "The rug comes loose.\n"
       end
+
 hammer:
   name: hammer
   description: It's a hammer of the claw variety.
   location: shed
+
 shovel:
   name: shovel
   description: It's shovel-like in nature.
   location: shed
+
 lumber:
   name: lumber
   description: The lumber is precut. How fortunate for you.
   location: cavern
+
 sails:
   name: sails
   description: The sails are in a pile.
   location: cavern
+
 water wings:
   name: water wings
   description: They float.
   location: shed
+
 keys:
   name: keys
   description: The keys are shiny. You like that.
+
 book:
   name: book
   description: The book is large and blood-soaked.
@@ -71,6 +82,8 @@ book:
         @state['passage_opened'] = true
         "There's a strange sound.\n";
       end
+  size: 2
+
 bag:
   name: bag
   description: It's a pirate's duffel bag.
@@ -78,31 +91,37 @@ bag:
   opened: false
   contains:
     prop: matches
+
 matches:
   name: matches
   firestarter: true
+
 torch:
   name: torch
   location: attic
   lit: false
   burn_turns: 10000
+
 fish:
   name: fish
   location: ocean
-  #location: player
   get_with:
   - water
+
 water:
   name: water
   location: ocean
   get_with:
   - bottle
+
 bottle:
   name: bottle
   description: The bottle is empty.
+
 mongoose:
   name: mongoose
   location: meadow
+
 chest:
   name: chest
   portable: false
@@ -110,40 +129,49 @@ chest:
   opens_with: keys
   contains:
     prop: plans
+
 plans:
   name: plans
+
 keel and mast:
   name: keel and mast
   description: The keel and mast look like they belonged to a small ship.
   portable: false
   location: beach
+
+# these are just in here for reference for me while I work on thingz
 necklace: 
   name: necklace
   description: The necklace is made up of brightly colored beads.
   portable: true
   location: deadbeat
+
 leaflet: 
   name: leaflet
   text: props/text/leaflet.txt
   description: The leaflet is faded yellow and seems to warn against something.
   portable: true
   location: ""
+
 shiv: 
   name: shiv
   attack strength: 7
   description: The shiv looks sharp... useful.
   portable: true
   location: deadbeat
+
 walking stick: 
   attack strength: 5
   description: The walking stick is gnarled, but sturdy.
   portable: true
   location: player
+
 smokes: 
   name: smokes
   description: The smokes look tempting.
   portable: true
   location: ""
+
 dresser: 
   name: dresser
   opened: false
@@ -152,6 +180,7 @@ dresser:
     prop: smokes
   portable: false
   location: bedroom
+
 brass key: 
   name: brass key
   size: 1
@@ -159,6 +188,7 @@ brass key:
   description: The key is small and made of brass.
   portable: true
   location: yard
+
 book2: 
   name: book2
   size: 5

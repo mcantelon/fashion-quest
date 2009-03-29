@@ -34,9 +34,13 @@ logic: |
       # Go through door, if it's open
       if doors[door].opened
 
-        player.location = doors[door].destination_from(player.location)
+        attempt_successful = doors[door].attempt_entry(player, props)
 
-        return '>look'
+        if attempt_successful
+          return '>look'
+        else
+          return "Something won't fit through.\n"
+        end
 
       else
 

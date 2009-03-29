@@ -10,6 +10,31 @@ class Door
     @visible  = true
   end
 
+  def attempt_entry(player, props)
+
+    new_player_location = false
+
+    largest_prop_size = player.largest_carried_item_size
+
+    if @size
+
+      if @size >= largest_prop_size
+
+        new_player_location = destination_from(player.location)
+
+      end
+    else
+      new_player_location = destination_from(player.location)
+    end
+
+    if new_player_location
+      player.location = new_player_location
+    end
+
+    new_player_location
+
+  end
+
   def destination_from(location)
 
     # determine possible destinations

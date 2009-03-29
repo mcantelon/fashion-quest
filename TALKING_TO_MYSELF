@@ -11,14 +11,8 @@ Fashion Quest
 
 -max 6 items carried
 
-EXITS:
--need to make exits more complex... currently simple <exit>: <destination> ...
- need something like <exit>: -destination: <destination> -size: <size> in YAML definition
-
 -clean up event handler situation
 
--can't "climb crack" if carrying book: "Sorry I can't. Something won't fit!"
-  -give props size attribute and give exits size attributes as well
 -build ship: "I can't! I've no plans!"
   -need build command leveraging build_with and on_build
 -"go lagoon": goes to never neverland if tide is in
