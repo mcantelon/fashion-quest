@@ -176,7 +176,7 @@ class Game
 
   end
 
-  def save
+  def save(filename = "#{path}player/saved_game.yaml")
 
     game_data = {
       'turn'       => @turns,
@@ -190,13 +190,13 @@ class Game
       'props'      => @props
     }
 
-    save_data_as_yaml_file(game_data, "#{path}player/saved_game.yaml")
+    save_data_as_yaml_file(game_data, filename)
 
   end
 
-  def load
+  def load(filename = "#{path}player/saved_game.yaml")
 
-    game_data = load_yaml_file("#{path}player/saved_game.yaml")
+    game_data = load_yaml_file(filename)
 
     @turn       = game_data['turns']
     @state      = game_data['state']
@@ -207,6 +207,24 @@ class Game
     @doors      = game_data['doors']
     @characters = game_data['characters']
     @props      = game_data['props']
+
+  end
+
+  def save_history(filename = "#{path}player/saved_history.yaml")
+
+    game_data = {
+      'turn'       => @turns,
+      'state'      => @state,
+      'over'       => @over,
+
+      'player'     => @player,
+      'locations'  => @locations,
+      'doors'      => @doors,
+      'characters' => @characters,
+      'props'      => @props
+    }
+
+    save_data_as_yaml_file(game_data, filename)
 
   end
 
