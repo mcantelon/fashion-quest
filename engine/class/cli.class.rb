@@ -122,16 +122,17 @@ class Cli
         @output_text = ''
         @input_text =  ''
 
+      when 'save history':
+        save_history
+
+      when 'load history':
+        load_history
+
       else
 
         character_output = ''
 
         output_add('>' + input_text) if show_input
-
-        ## execute turn logic if not executing a compound command
-        #if show_input == true
-        #  @message_text << @game.turn
-        #end
 
         result = parse(input_text)
 
@@ -153,6 +154,13 @@ class Cli
 
     display_prompt
 
+  end
+
+  def save_history
+
+    save_data_as_yaml_file(@command_history[0...-1], ask_save_file)
+    @output_text << "History saved.\n"
+    @input_text = ''
   end
 
   def backspace
