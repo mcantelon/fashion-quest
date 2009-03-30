@@ -15,6 +15,8 @@ class Cli
     @message_text = ''
     @input_text   = ''
 
+    @command_history = []
+
     @commands = []
     commands_loaded = 0
 
@@ -75,6 +77,7 @@ class Cli
 
         # execute command
         if k == :enter or k == "\n"
+          @command_history << @input_text
           issue_command(@input_text)
 
         end
@@ -97,8 +100,12 @@ class Cli
   def restart
 
     @game.restart
+
     @output_text = ''
     @output_stack.clear { }
+
+    @command_history = []
+
     issue_command('look')
     display_prompt
 
