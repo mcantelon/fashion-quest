@@ -163,6 +163,25 @@ class Cli
     @input_text = ''
   end
 
+  def load_history
+
+    history_file = ask_open_file
+
+    if history_file
+
+      load_yaml_file(history_file).each do |command|
+
+        issue_command(command)
+      end
+
+    else
+
+      @input_text = ''
+
+    end
+
+  end
+
   def backspace
 
     @input_text = @input_text.length > 1 ? @input_text[0..-2] : ''
