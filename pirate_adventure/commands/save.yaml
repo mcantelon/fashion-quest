@@ -2,15 +2,9 @@
 syntax:
 - "save"
 - "save game"
-- "save <filename>"
-- "save game <filename>"
 
 logic: |
 
-  if arg['filename']
-    game.save(arg['filename'])
-  else
-    game.save
-  end
+  game.save(ask_save_file)
 
   "Game saved.\n"

@@ -5,6 +5,6 @@ syntax:
 
 logic: |
 
-  game.load
+  game.load(ask_open_file)
 
   "Game loaded.\n"
