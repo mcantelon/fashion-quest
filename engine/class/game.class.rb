@@ -185,6 +185,7 @@ class Game
 
       'player'     => @player,
       'locations'  => @locations,
+      'doors'      => @doors,
       'characters' => @characters,
       'props'      => @props
     }
@@ -203,6 +204,7 @@ class Game
 
     @player     = game_data['player']
     @locations  = game_data['locations']
+    @doors      = game_data['doors']
     @characters = game_data['characters']
     @props      = game_data['props']
 
