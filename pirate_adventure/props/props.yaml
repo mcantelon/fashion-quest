@@ -71,12 +71,14 @@ keys:
 book:
   name: book
   description: The book is large and blood-soaked.
+  visible: false
   location: alcove
   text: props/text/book.txt
   events:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
-        @locations['alcove'].add_to_description("There is a bookcase with a secret passage beyond.\n")
+        @props['book'].visible = true
+        @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
         @locations['alcove'].add_exit('alcove', 'book', 'passage', 'passageway')
         @locations.load('alcove')
         @state['passage_opened'] = true
