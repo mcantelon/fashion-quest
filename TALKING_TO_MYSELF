@@ -1,5 +1,3 @@
-GOT TO FINISH TRANSITION TO NEW LOCATIOn EXIT SPEC
-
 Fashion Quest
 
 -make sure to copy pirate version of get and go commands to main commands
@@ -11,16 +9,17 @@ Fashion Quest
 
 -max 6 items carried
 
+-should there be a visible property for exits (for hidden exits?)
+-should there be a description property for exits (for fancier language?)
+
 -clean up event handler situation
 
 -build ship: "I can't! I've no plans!"
   -need build command leveraging build_with and on_build
 -"go lagoon": goes to never neverland if tide is in
 -The tide is coming in I'm underwater, I guess I don't swim well. Blub Blub...
--use transitions for tide cycles
 -in lagoon all exits but north go back to beach
--north goes to ocean death (unless you have and are wearing water wings)
-  -add wear command leveraging wearable attribute
+-north goes to ocean death (unless you have water wings)
   -use transition to test for this
 -you need safety sneakers or you slip off the window after a few turns
 
@@ -29,13 +28,10 @@ CAVE ROOM 2 (*N1 *E foot_of_hill W3)
 CAVE ROOM 3 (*N1 *S foot_of_hill *E2 *W4)
 CAVE ROOM 4 (*S foot_of_hill *E foot_of_hill *W3)
 
-
-
 Bugs:
 
   -make sure character events in original game work... prolly don't cuz they're set up to have it pick a random
    one
-  -when you go west in the cavern you go to a no-man's-land
 
 Refactoring?
 
