@@ -128,8 +128,11 @@ class Cli
       when 'load walkthrough':
         load_walkthrough
 
-      when 'save history':
-        save_history
+      when 'save transcript':
+        save_transcript
+
+      when 'compare to transcript':
+        compare_to_transcript
 
       else
 
@@ -185,11 +188,33 @@ class Cli
 
   end
 
-  def save_history
+  def save_transcript
 
-    save_data_as_yaml_file(@output, ask_save_file)
-    @output_text << "History saved.\n"
-    @input_text = ''
+    if (filename = ask_save_file)
+      file = File.new(filename, "w")
+      file.write(@output_text)
+      file.close
+
+      @output_text << "History saved.\n"
+      @input_text = ''
+    end
+  end
+
+  def compare_to_transcript
+
+    if (filename = ask_open_file)
+      transcript = ''
+      f = File.open(filename, "r") 
+      f.each_line do |line|
+        transcript += line
+      end
+
+      if (transcript == @output_text)
+        @output_text << "Pass!\n"
+      else
+        @output_text << "Fail!\n"
+      end
+    end
   end
 
   def backspace
