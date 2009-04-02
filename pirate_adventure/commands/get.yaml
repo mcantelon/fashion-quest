@@ -24,15 +24,22 @@ logic: |
 
       if can_get == true
 
-        props[prop].location = 'player'
-        output << "You take #{props[prop].noun}.\n"
+        # player is only allowed to carry 6 items
+        if player.carrying.size <= 5
 
-        on_get_output = game.event(props[prop], 'on_get')
+          props[prop].location = 'player'
+          output << "You take #{props[prop].noun}.\n"
 
-        if on_get_output
+          on_get_output = game.event(props[prop], 'on_get')
 
-          output << on_get_output
+          if on_get_output
 
+            output << on_get_output
+
+          end
+        else
+
+          output << "You are carrying too much.\n"
         end
 
       else
