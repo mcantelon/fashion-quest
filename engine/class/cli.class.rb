@@ -123,10 +123,10 @@ class Cli
         @input_text =  ''
 
       when 'save walkthrough':
-        save_history
+        save_walkthrough
 
       when 'load walkthrough':
-        load_history
+        load_walkthrough
 
       else
 
@@ -156,14 +156,14 @@ class Cli
 
   end
 
-  def save_history
+  def save_walkthrough
 
     save_data_as_yaml_file(@command_history[0...-1], ask_save_file)
     @output_text << "History saved.\n"
     @input_text = ''
   end
 
-  def load_history
+  def load_walkthrough
 
     history_file = ask_open_file
 
