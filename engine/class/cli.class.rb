@@ -122,10 +122,10 @@ class Cli
         @output_text = ''
         @input_text =  ''
 
-      when 'save history':
+      when 'save walkthrough':
         save_history
 
-      when 'load history':
+      when 'load walkthrough':
         load_history
 
       else
