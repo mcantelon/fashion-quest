@@ -1,14 +1,10 @@
 ---
 conditions:
+
   ?
     - @turns == 0
   :
     - begin
-
-  ?
-    - @state['entered_neverneverland']
-  :
-    - neverneverland
 
   ?
     - @player.hp < 1
@@ -16,14 +12,9 @@ conditions:
     - death
 
   ?
-    - @props['book'].location == 'yard'
+    - @state['entered_neverneverland']
   :
-    - win
-
-  ?
-    - @props['book'].location == 'hallway'
-  :
-    - loss
+    - neverneverland
 
   ?
     - (@turns % 8) < 4
@@ -45,6 +36,10 @@ outcomes:
   begin: |
     # beginning logic can be put here
 
+  death: |
+    @over = true
+    "You have died.\nWould you like to restart? (y/n)"
+
   neverneverland: |
     if (@state['entered_neverneverland'] + 6) < @turns
       @over = true
@@ -52,8 +47,14 @@ outcomes:
     end
 
   tide_in: |
+    transition_output = ''
     if @player.location == 'lagoon'
-      "The tide is coming in. Flotsam and jetsam surrounds.\n"
+      transition_output << "The tide is coming in. Flotsam and jetsam surrounds.\n"
+      if @props['water wings'].location != 'player'
+        transition_output << "I'm underwater, I guess I don't swim well. Blub Blub...\n"
+        transition_output << eval(@transitions['outcomes']['death'])
+      end
+      transition_output
     end
 
   tide_out: |
@@ -61,19 +62,15 @@ outcomes:
       "The tide is out.\n"
     end
 
-  death: |
-    @over = true
-    "You have died.\nWould you like to restart? (y/n)"
-
-  win: |
-    # winning logic can be put here
-
-  loss: |
-    # losing logic can be put here
-
   pirate_runs_off: |
     @characters['pirate'].location = 'attic'
     characters['parrot'].location = ''
     @characters['pirate'].description = 'The pirate is sleeping.'
     @props['bottle'].location = 'attic'
     "The pirate grabs the rum and scuttles off chortling.\nThe parrot flies off looking very unhappy.\n"
+
+  win: |
+    # winning logic can be put here
+
+  loss: |
+    # losing logic can be put here

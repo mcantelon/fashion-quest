@@ -7,8 +7,6 @@ Fashion Quest
 
 -what do plans say when read?
 
--max 6 items carried
-
 -should there be a visible property for exits (for hidden exits?)
 -should there be a description property for exits (for fancier language?)
 
@@ -16,11 +14,7 @@ Fashion Quest
 
 -build ship: "I can't! I've no plans!"
   -need build command leveraging build_with and on_build
--"go lagoon": goes to never neverland if tide is in
--The tide is coming in I'm underwater, I guess I don't swim well. Blub Blub...
 -in lagoon all exits but north go back to beach
--north goes to ocean death (unless you have water wings)
-  -use transition to test for this
 -you need safety sneakers or you slip off the window after a few turns
 
 CAVE ROOM 1 (*S2 *E3 *W foot_of_hill *D pit)
