@@ -128,6 +128,9 @@ class Cli
       when 'load walkthrough':
         load_walkthrough
 
+      when 'save history':
+        save_history
+
       else
 
         character_output = ''
@@ -159,7 +162,7 @@ class Cli
   def save_walkthrough
 
     save_data_as_yaml_file(@command_history[0...-1], ask_save_file)
-    @output_text << "History saved.\n"
+    @output_text << "Walkthrough saved.\n"
     @input_text = ''
   end
 
@@ -180,6 +183,13 @@ class Cli
 
     end
 
+  end
+
+  def save_history
+
+    save_data_as_yaml_file(@output, ask_save_file)
+    @output_text << "History saved.\n"
+    @input_text = ''
   end
 
   def backspace
