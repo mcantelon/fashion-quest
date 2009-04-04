@@ -141,6 +141,17 @@ keel and mast:
   portable: false
   location: beach
 
+anchor:
+  name: anchor
+  description: The anchor!
+  portable: false
+  location: lagoon
+  get_with:
+  - shovel
+  events:
+    on_get: |
+      "You dig the bastard up!\n"
+ 
 # these are just in here for reference for me while I work on thingz
 necklace: 
   name: necklace

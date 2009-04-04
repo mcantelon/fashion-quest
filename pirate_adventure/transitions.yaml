@@ -48,6 +48,7 @@ outcomes:
 
   tide_in: |
     transition_output = ''
+    @props['anchor'].visible = false
     if @player.location == 'lagoon'
       transition_output << "The tide is coming in. Flotsam and jetsam surrounds.\n"
       if @props['water wings'].location != 'player'
@@ -58,6 +59,7 @@ outcomes:
     end
 
   tide_out: |
+    @props['anchor'].visible = true
     if @player.location == 'lagoon'
       "The tide is out.\n"
     end
