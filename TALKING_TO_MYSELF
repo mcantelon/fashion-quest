@@ -12,6 +12,10 @@ Fashion Quest
 
 -clean up event handler situation
 
+-make it so "You see XXX" doesn't show each item on a new line... gets wacky
+-work out what things are too big to go through crack and set their sizes
+-bottle/water thing is inelegant... water should get contained in bottle
+
 -build ship: "I can't! I've no plans!"
   -need build command leveraging build_with and on_build
 -in lagoon all exits but north go back to beach
