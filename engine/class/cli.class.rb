@@ -214,6 +214,7 @@ class Cli
       else
         @output_text << "Fail!\n"
       end
+      @input_text = ''
     end
   end
 
