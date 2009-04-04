@@ -144,7 +144,6 @@ keel and mast:
 anchor:
   name: anchor
   description: The anchor!
-  portable: false
   location: lagoon
   get_with:
   - shovel
