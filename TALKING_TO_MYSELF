@@ -1,5 +1,46 @@
 Fashion Quest
 
+
+-when does the parrot return to the shack? when does parrot fly off? maybe when you got no crackers?
+
+-build_with?
+-build ship requires lumber, sails, (keel and mast), plans*, anchor, (prolly nails), (prolly hammer)
+-on_build?
+  change ship materials' locations to ''
+  add "there is a Pirate ship" or something to beach description
+  add exit "ship"
+  CONGRATULATIONS !!! But your Adventure is not over yet...
+
+-add location ship (with one exit at first: shore)
+
+-on ship, "set sail" will bring you to treasure island?
+  pirate isn't awake: Sorry I can't I've no crew
+  don't have map: Sorry I can't Pirate says: `Aye matey we be needing a map first`.
+  tide is out: Pirate says: `Aye me Buckeroo, we be waiting for the tide to come in!`
+  success: After a day at sea we set anchor off of a sandy beach. All Ashore who's going Ashore...
+
+-when you get water
+  -changes bottle's description
+  -lets you know the water is in the bottle
+  -changes water location to 'limbo'
+Bottle of salt water
+
+dig anchor <- makes anchor portable
+get anchor
+
+you do have to look in chest twice... ass :/
+
+wake pirate
+if location == 'atic' and pirate is asleep
+  Wicked looking pirate
+  Pirate awakens and says `Aye matey we be casting off soon` He then VANISHES!
+  will he say this before ship is built?
+
+
+
+
+
+
 -make sure to copy pirate version of get and go commands to main commands
 
 -have option to add exit that isn't visible by default (or just have it so dynamic 
