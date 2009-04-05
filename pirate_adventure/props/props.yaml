@@ -48,11 +48,13 @@ shovel:
   name: shovel
   description: It's shovel-like in nature.
   location: shed
+  size: 2
 
 lumber:
   name: lumber
   description: The lumber is precut. How fortunate for you.
   location: cavern
+  size: 2
 
 sails:
   name: sails
