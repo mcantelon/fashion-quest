@@ -113,10 +113,14 @@ Abbreviations, Synonyms, and Garbage Words:
 -these words should be words like "the" and "a" which have little semantic meaning
 -this makes specifying command syntax easier
 
-Dev tips and gotchas:
--use the Shoes debugger... press alt-/ to see error messages
+Testing:
 -when saving and loading games be mindful that prop, etc., definitions get saved as well so your game changes may not be
  reflected
+-use "save walkthrough" command to save your previous commands
+-use "load walkthrough" command to run through commands you've previously saved
+-these commands can be used for testing
+-walkthrough files are YAML, so easy to edit
+-use the Shoes debugger... press alt-/ to see error messages
 
 -no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn't exist or isn't located near player
 
