@@ -77,7 +77,9 @@ class Cli
 
         # execute command
         if k == :enter or k == "\n"
-          @command_history << @input_text
+          if @input_text != 'load walkthrough'
+            @command_history << @input_text
+          end
           issue_command(@input_text)
 
         end
