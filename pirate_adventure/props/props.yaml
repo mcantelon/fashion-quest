@@ -23,6 +23,15 @@ rug:
         "You hear a jingling sound.\n"
       end
 
+ship:
+  name: ship
+  portable: false
+  location:
+  build_with:
+  - nails
+  - lumber
+  - hammer
+
 nails:
   name: nails
   visible: false
