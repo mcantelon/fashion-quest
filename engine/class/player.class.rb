@@ -48,6 +48,20 @@ class Player
     end
   end
 
+  def can_build(prop)
+
+    can_build = true
+
+    @props[prop].build_with.each do |component|
+      if !carrying(component) and @props[component].location != @location
+        can_build = false
+      end
+    end
+
+    can_build
+
+  end
+
   def largest_carried_item_size
 
     largest_size = 0

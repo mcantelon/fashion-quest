@@ -1,0 +1,39 @@
+---
+syntax:
+- "build <thing>"
+
+logic: |
+
+  prop = arg['thing']
+
+  output = ''
+
+  if props[prop]
+
+    if props[prop].build_with
+
+      if player.can_build(prop)
+
+        output << "You've build it.\n"
+
+        props[prop].location = player.location
+
+      else
+
+        output << "Something is missing!\n"
+
+      end
+
+    else
+
+      output << "You can't do that.\n"
+
+    end
+
+  else
+
+    output << "I don't see that here.\n"
+
+  end
+
+  output
