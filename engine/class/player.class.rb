@@ -62,6 +62,16 @@ class Player
 
   end
 
+  def build(prop)
+
+    @props[prop].build_with.each do |component|
+      @props[component].location = ''
+    end
+
+    @props[prop].location = @location
+
+  end
+
   def largest_carried_item_size
 
     largest_size = 0

@@ -1,9 +1,13 @@
 Fashion Quest
 
+NEXT: add "prop_anywhere" argument support for commands that work on props that don't have
+a location yet (i.e. building or conjuring)
+
+NEXT: add on_build logic to add an exit to "ship".
+Also add "ship" as a location.
 
 -when does the parrot return to the shack? when does parrot fly off? maybe when you got no crackers?
 
--build_with?
 -build ship requires lumber, sails, (keel and mast), plans*, anchor, (prolly nails), (prolly hammer)
 -on_build?
   change ship materials' locations to ''

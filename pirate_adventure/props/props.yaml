@@ -31,6 +31,10 @@ ship:
   - nails
   - lumber
   - hammer
+  - plans
+  - sails
+  - keel and mast
+  - anchor
 
 nails:
   name: nails
