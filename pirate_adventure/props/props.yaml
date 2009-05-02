@@ -103,6 +103,8 @@ book:
   visible: false
   location: alcove
   text: props/text/book.txt
+  contains:
+    prop: flyer
   events:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
@@ -113,7 +115,14 @@ book:
         @state['passage_opened'] = true
         "There's a strange sound.\n";
       end
+    on_open: |
+      alert('you opened it')
   size: 2
+
+flyer:
+  name: flyer
+  description: It's a small advertising flyer.
+  text: props/text/flyer.txt
 
 bag:
   name: bag
