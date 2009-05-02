@@ -41,6 +41,15 @@ ship:
       @locations.load('beach')
       "You have built the ship!\n"
 
+dubloons:
+  name: dubloons
+  location: monastery
+  events:
+    on_get: |
+      # need check to see if you have parrot... if not you die
+      # That's not very smart I'm snake bit
+      alert('getting')
+
 nails:
   name: nails
   visible: false

@@ -1,0 +1,8 @@
+--- 
+name: monastery
+exits:
+  west:
+    destination: field
+
+description: |
+  I'm in a sacked and deserted monastary.
