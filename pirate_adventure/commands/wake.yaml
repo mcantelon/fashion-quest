@@ -1,0 +1,15 @@
+---
+syntax:
+- "wake pirate"
+- "wake up pirate"
+
+logic: |
+
+  output = ''
+
+  if @characters['pirate'].location == 'attic'
+    output << "Pirate awakens and says `Aye matey we be casting off soon` He then VANISHES\n"
+    @characters['pirate'].location = 'ship'
+  end
+
+  output

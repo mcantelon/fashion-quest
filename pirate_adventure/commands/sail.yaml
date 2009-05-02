@@ -1,0 +1,36 @@
+---
+syntax:
+- "sail"
+- "set sail"
+
+logic: |
+
+  output = ''
+
+  if location == 'ship'
+
+    if props['book'].location == 'player' or props['book'].location == 'ship'
+
+      output << "The pirate says 'First Yee be getting that ACCURSED thing off me ship!\n"
+
+    else
+
+      if characters['pirate'].location == 'ship'
+
+        alert('sail')
+
+      else
+
+        alert('no pirate')
+
+      end
+
+    end
+
+  else
+
+    output << "You need to be on a ship!\n"
+
+  end
+
+  output
