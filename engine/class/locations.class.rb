@@ -55,7 +55,7 @@ class Locations
   end
 
   # ?
-  def add_exit(location, prop, direction, destination)
+  def set_exit(location, prop, direction, destination)
 
     @revealed_exit_data[location] ||= {}
     @revealed_exit_data[location][direction] = {'prop' => prop, 'destination' => destination}
@@ -64,8 +64,6 @@ class Locations
       @revealed_exit_data[destination] ||= {}
       @revealed_exit_data[destination][opposite_direction(direction)] = {'prop' => prop, 'destination' => location}
     end
-
-    alert(@revealed_exit_data[location])
 
   end
 

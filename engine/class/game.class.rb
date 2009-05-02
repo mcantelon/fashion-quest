@@ -363,7 +363,7 @@ class Game
               @locations.exits[direction] = destination
 
               # let location engine know of this new exit for future location loads
-              @locations[@player.location].add_exit(@player.location, prop, direction, destination)
+              @locations[@player.location].set_exit(@player.location, prop, direction, destination)
 
             end
           end
