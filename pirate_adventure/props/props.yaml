@@ -35,6 +35,11 @@ ship:
   - sails
   - keel and mast
   - anchor
+  events:
+    on_build: |
+      @locations['beach'].add_exit('beach', 'ship', 'ship', 'ship')
+      @locations.load('beach')
+      "You have built the ship!\n"
 
 nails:
   name: nails

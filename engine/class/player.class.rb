@@ -64,6 +64,8 @@ class Player
 
   def build(prop)
 
+    return
+
     @props[prop].build_with.each do |component|
       @props[component].location = ''
     end

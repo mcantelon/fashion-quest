@@ -65,6 +65,8 @@ class Locations
       @revealed_exit_data[destination][opposite_direction(direction)] = {'prop' => prop, 'destination' => location}
     end
 
+    alert(@revealed_exit_data[location])
+
   end
 
   def has_exit(direction)
@@ -91,7 +93,8 @@ class Locations
 
   def opposite_direction(direction)
 
-    opposite = {'north' => 'south',
+    opposite = {
+      'north' => 'south',
       'south' => 'north',
       'east' => 'west',
       'west' => 'east',
