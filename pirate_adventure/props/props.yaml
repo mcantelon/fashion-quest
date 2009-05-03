@@ -106,7 +106,7 @@ book:
   location: alcove
   text: props/text/book.txt
   contains:
-    prop: flyer
+    - prop: flyer
   events:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
@@ -132,7 +132,7 @@ bag:
   location: attic
   opened: false
   contains:
-    prop: matches
+    - prop: matches
 
 matches:
   name: matches
@@ -179,8 +179,8 @@ chest:
   location: shack
   opens_with: keys
   contains:
-    prop: plans
-    prop: map
+    - prop: plans
+    - prop: map
 
 mongoose:
   name: mongoose
