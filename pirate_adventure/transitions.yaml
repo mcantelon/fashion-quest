@@ -35,6 +35,7 @@ outcomes:
 
   begin: |
     @state['ship_location'] = 'beach'
+    "" # don't return any output for this
 
   death: |
     @over = true
