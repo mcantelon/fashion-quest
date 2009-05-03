@@ -183,8 +183,4 @@ anchor:
   name: anchor
   description: The anchor!
   location: lagoon
-  get_with:
-  - shovel
-  events:
-    on_get: |
-      "You dig the bastard up!\n"
+  portable: false

@@ -47,13 +47,13 @@ outcomes:
     end
 
   tide_in: |
+    # sail and dig commands need to know whether tide is in or out
     @state['tide'] = 'in'
 
     transition_output = ''
     # even if character has shovel, prevent seeing or taking anchor while tide is in and anchor in lagoon
     if @props['anchor'].location == 'lagoon'
       @props['anchor'].visible = false
-      @props['anchor'].portable = false
     end
     if @player.location == 'lagoon'
       transition_output << "The tide is coming in. Flotsam and jetsam surrounds.\n"
@@ -65,12 +65,12 @@ outcomes:
     end
 
   tide_out: |
+    # sail and dig commands need to know whether tide is in or out
     @state['tide'] = 'out'
 
-    # if anchor is in lagoon, let character see it (and take it if character has shovel)
+    # if anchor is in lagoon, let character see it
     if @props['anchor'].location == 'lagoon'
       @props['anchor'].visible = true
-      @props['anchor'].portable = true
     end
     if @player.location == 'lagoon'
       "The tide is out.\n"
