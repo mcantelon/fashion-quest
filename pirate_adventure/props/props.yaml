@@ -170,6 +170,10 @@ chest:
   contains:
     prop: plans
 
+mongoose:
+  name: mongoose
+  location: meadow
+
 plans:
   name: plans
 

@@ -45,7 +45,7 @@ logic: |
 
       else
 
-        alert('no pirate')
+        output << "Sorry I can't I've no crew!\n"
 
       end
 
