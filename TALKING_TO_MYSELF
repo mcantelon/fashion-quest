@@ -6,22 +6,15 @@ can get parrot, can't get parrot in shack unless pirate isn't there... maybe can
 NEXT: add "prop_anywhere" argument support for commands that work on props that don't have
 a location yet (i.e. building or conjuring)
 
+NEXT: add traits property to props so traits can be added without changing class definition
+
+if user can_dig (has prop that can_dig)
+add location.buried ... returns list of buried stuff in location
+  "Found " + prop
+  each one becomes visible and portable
+
+
 -when does the parrot return to the shack? when does parrot fly off? maybe when you got no crackers?
-
--build ship requires lumber, sails, (keel and mast), plans*, anchor, (prolly nails), (prolly hammer)
--on_build?
-  change ship materials' locations to ''
-  add "there is a Pirate ship" or something to beach description
-  add exit "ship"
-  CONGRATULATIONS !!! But your Adventure is not over yet...
-
--add location ship (with one exit at first: shore)
-
--on ship, "set sail" will bring you to treasure island?
-  pirate isn't awake: Sorry I can't I've no crew
-  don't have map: Sorry I can't Pirate says: `Aye matey we be needing a map first`.
-  tide is out: Pirate says: `Aye me Buckeroo, we be waiting for the tide to come in!`
-  success: After a day at sea we set anchor off of a sandy beach. All Ashore who's going Ashore...
 
 -when you get water
   -changes bottle's description
@@ -33,17 +26,6 @@ dig anchor <- makes anchor portable
 get anchor
 
 you do have to look in chest twice... ass :/
-
-wake pirate
-if location == 'atic' and pirate is asleep
-  Wicked looking pirate
-  Pirate awakens and says `Aye matey we be casting off soon` He then VANISHES!
-  will he say this before ship is built?
-
-
-
-
-
 
 -make sure to copy pirate version of get and go commands to main commands
 
@@ -61,8 +43,6 @@ if location == 'atic' and pirate is asleep
 -work out what things are too big to go through crack and set their sizes
 -bottle/water thing is inelegant... water should get contained in bottle
 
--build ship: "I can't! I've no plans!"
-  -need build command leveraging build_with and on_build
 -in lagoon all exits but north go back to beach
 -you need safety sneakers or you slip off the window after a few turns
 

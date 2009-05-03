@@ -28,6 +28,7 @@ Game Components:
 -there are three types of game components: locations, doors, props, characters, and commands
 -game components are defined in YAML
 -game component files are put in subdirectories of the game base directory
+-idea is to try to define attributes of game components and use commands to manipulate them
 
 Creating Locations:
 -locations are put in the 'rooms' subdirectory
