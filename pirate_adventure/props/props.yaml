@@ -163,9 +163,9 @@ bottles of rum:
   portable: false
   visible: false
 
-bottles:
-  name: bottles
-  description: The bottles are empty.
+bottle:
+  name: bottle
+  description: The bottle is empty.
 
 mongoose:
   name: mongoose

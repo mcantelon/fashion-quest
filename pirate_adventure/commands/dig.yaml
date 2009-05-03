@@ -1,28 +1,49 @@
 ---
 syntax:
 - "dig <prop>"
+- "dig"
 
 logic: |
 
   output = ''
 
-  if prop == 'anchor' && props['anchor'].visible == true
+  # this is a special case for the anchor... can only be dug up at low tide
+  if prop
 
-    if props['shovel'].location == 'player'
+    if prop == 'anchor' && props['anchor'].visible == true
 
-      props['anchor'].portable = true
+      if props['shovel'].location == 'player'
 
-      output << "You dig it up!\n"
+        props['anchor'].portable = true
+
+        output << "You dig it up!\n"
+
+      else
+
+        output << "With what?\n"
+
+      end
 
     else
 
-      output << "With what?\n"
+      output << "You can't do that.\n"
 
     end
 
   else
 
-    output << "You can't do that.\n"
+    if (player.can_dig)
+
+      output << "You can dig!\n"
+
+    else
+
+      output << "You have nothing to dig with.\n"
+
+    end
+
+    # normal digging
+    #alert(props['shovel'].traits['can_dig'].to_s)    
 
   end
 

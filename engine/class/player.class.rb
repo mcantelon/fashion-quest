@@ -62,6 +62,22 @@ class Player
 
   end
 
+  def can_dig
+
+    can_dig = false
+
+    carrying.each do |prop|
+      if props[prop].traits
+        if props[prop].traits['can_dig']
+          can_dig = true
+        end
+      end
+    end
+
+    can_dig
+
+  end
+
   def build(prop)
 
     return
