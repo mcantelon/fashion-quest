@@ -85,7 +85,11 @@ class Player
     @props.each do |prop, data|
       if data.location == @location
         if data.traits['buried']
-          alert('unearth')
+          @props[prop].traits['buried'] = false
+          @props[prop].portable = true
+          @props[prop].visible = true
+
+          output << "You found something!\n"
         end
       end
     end

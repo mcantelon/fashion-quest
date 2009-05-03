@@ -350,15 +350,8 @@ class Game
 
         @props[prop].contains.each do |contained_item|
 
-          #require 'pp'
-
-          #alert(pp(contained_item))
-
           type           = contained_item.keys[0]
           contained_prop = contained_item.values[0]
-
-          alert(type)
-          alert(contained_prop)
 
           if type == 'prop'
 
