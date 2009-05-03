@@ -39,7 +39,7 @@ ship:
     on_build: |
       @locations['beach'].set_exit('beach', 'ship', 'ship', 'ship')
       @locations.load('beach')
-      "You have built the ship!\n"
+      "CONGRATULATIONS !!! But your Adventure is not over yet...\n"
 
 dubloons:
   name: dubloons

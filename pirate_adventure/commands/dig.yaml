@@ -1,0 +1,29 @@
+---
+syntax:
+- "dig <prop>"
+
+logic: |
+
+  output = ''
+
+  if prop == 'anchor' && props['anchor'].visible == true
+
+    if props['shovel'].location == 'player'
+
+      props['anchor'].portable = true
+
+      output << "You dig it up!\n"
+
+    else
+
+      output << "With what?\n"
+
+    end
+
+  else
+
+    output << "You can't do that.\n"
+
+  end
+
+  output
