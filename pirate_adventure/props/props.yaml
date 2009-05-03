@@ -110,7 +110,7 @@ book:
       if not (@locations['alcove'].has_exit('passage'))
         @props['book'].visible = true
         @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
-        @locations['alcove'].set_exit('alcove', 'book', 'passage', 'passageway')
+        @locations['alcove'].set_exit('alcove', 'passage', 'passageway', 'book')
         @locations.load('alcove')
         @state['passage_opened'] = true
         "There's a strange sound.\n";

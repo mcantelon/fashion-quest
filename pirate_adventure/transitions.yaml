@@ -34,7 +34,7 @@ conditions:
 outcomes:
 
   begin: |
-    # beginning logic can be put here
+    @state['ship_location'] = 'beach'
 
   death: |
     @over = true
