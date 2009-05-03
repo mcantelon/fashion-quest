@@ -1,17 +1,10 @@
--document events
--document game state hash
-
-Name:
--Fashion Quest Engine
--YAML interactive fiction framework
-
 Design Aims:
 -minimalist
 -modern
 -easy
 -cross-platform
 -leverage existing language
--extensible
+-imposes some structure, but aims to be as extensible as possible
 
 Game:
 -game is defined by files within the the game's base path
@@ -98,7 +91,18 @@ Events:
 -the above example would add to a rooms description and give the player a hint that something in the game has changed
 
 Transitions:
+-transitions allow manipulation of components to be triggered by game conditions, rather than user commands
+-this allows you to avoid having to add the same logic in multiple commands
+-transitions return output
+-if you want a transition to be silent, end it with the line ""
 
+State:
+-state can be used to keep track of global game conditions
+-state can be referred to or manipulated in transitions or commands
+-within transtions, use @state
+-example: @state['tide'] = 'in'
+-within commands, use game.state
+-example: game.state['tide'] = 'out'
 
 Abbreviations, Synonyms, and Garbage Words:
 -the command_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined
