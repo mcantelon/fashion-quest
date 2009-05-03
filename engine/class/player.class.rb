@@ -78,6 +78,22 @@ class Player
 
   end
 
+  def dig
+
+    output = ''
+
+    @props.each do |prop, data|
+      if data.location == @location
+        if data.traits['buried']
+          alert('unearth')
+        end
+      end
+    end
+
+    output
+
+  end
+
   def build(prop)
 
     return

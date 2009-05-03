@@ -162,6 +162,8 @@ bottles of rum:
   location: shore
   portable: false
   visible: false
+  traits:
+    buried: true
 
 bottle:
   name: bottle
@@ -178,6 +180,7 @@ chest:
   opens_with: keys
   contains:
     prop: plans
+    prop: map
 
 mongoose:
   name: mongoose
@@ -185,6 +188,9 @@ mongoose:
 
 plans:
   name: plans
+
+map:
+  name: map
 
 keel and mast:
   name: keel and mast

@@ -34,7 +34,7 @@ logic: |
 
     if (player.can_dig)
 
-      output << "You can dig!\n"
+      output << player.dig
 
     else
 
