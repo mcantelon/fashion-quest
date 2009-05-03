@@ -54,7 +54,7 @@ class Locations
 
   end
 
-  # ?
+  # note: set_exit is to allow exits to be added whenever location loads
   def set_exit(location, prop, direction, destination)
 
     @revealed_exit_data[location] ||= {}
@@ -165,9 +165,13 @@ class Locations
 
     if @revealed_exit_data[@name]
       @revealed_exit_data[@name].each do |direction, exit_data|
-        prop = exit_data['prop']
-        if props[prop].location == @name
-          description << "The #{exit_data['prop']} leads #{direction}.\n"
+        if exit_data['prop'] && exit_data['prop'] != ''
+          prop = exit_data['prop']
+          if props[prop].location == @name
+            description << "The #{exit_data['prop']} leads #{direction}.\n"
+          else
+            description << "An exit leads #{direction}.\n"
+          end
         else
           description << "An exit leads #{direction}.\n"
         end

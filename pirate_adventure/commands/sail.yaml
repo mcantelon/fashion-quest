@@ -17,7 +17,13 @@ logic: |
 
       if characters['pirate'].location == 'ship'
 
-        alert('sail')
+        # shuttle ship between two locations
+        game.state['ship_location'] = game.state['ship_location'] == 'beach' ? 'shore' : 'beach';
+
+        # OKAY... shit's fucked up... need to rethink whole exit situation
+        game.locations['beach'].set_exit('ship', '', 'beach', game.state['ship_location'])
+        game.locations['beach'].set_exit('ship', '', 'shore', game.state['ship_location'])
+        #game.locations.load('ship')
 
       else
 

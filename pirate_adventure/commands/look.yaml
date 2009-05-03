@@ -59,10 +59,6 @@ logic: |
 
     output = locations[location].describe(doors, props, characters, player.has_lit_item)
 
-    if output == ''
-      output = 'Whoa!'
-    end
-
   end
 
   output

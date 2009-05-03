@@ -1,5 +1,12 @@
 Fashion Quest
 
+NEXT:
+can get parrot, can't get parrot in shack unless pirate isn't there... maybe can use on_get logic?
+have to "dig anchor" before getting anchor
+
+set sail changes exits for ship
+ship exits beach and shore should lead to same place
+
 NEXT: add "prop_anywhere" argument support for commands that work on props that don't have
 a location yet (i.e. building or conjuring)
 

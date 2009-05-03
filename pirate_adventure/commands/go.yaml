@@ -6,16 +6,8 @@ logic: |
 
   direction = arg['direction']
 
-  if location == 'beach'
-    alert('go')
-  end
-
   # If an exit exists, load destination location and issue look command
   if (locations[location].exits[direction])
-
-    if location == 'beach'
-      alert('has exit')
-    end
 
     # If player is trying to move around in the dark, kill player
     if locations[location].dark and !player.has_lit_item
