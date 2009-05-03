@@ -76,6 +76,8 @@ shovel:
   description: It's shovel-like in nature.
   location: shed
   size: 2
+  traits:
+    can_dig: true
 
 lumber:
   name: lumber
@@ -154,9 +156,16 @@ water:
   get_with:
   - bottle
 
-bottle:
-  name: bottle
-  description: The bottle is empty.
+bottles of rum:
+  name: bottles of rum
+  description: These bottle contain rum as fine as any dug out of the ground.
+  location: shore
+  portable: false
+  visible: false
+
+bottles:
+  name: bottles
+  description: The bottles are empty.
 
 mongoose:
   name: mongoose
