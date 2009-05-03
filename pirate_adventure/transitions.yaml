@@ -47,6 +47,8 @@ outcomes:
     end
 
   tide_in: |
+    @state['tide'] = 'in'
+
     transition_output = ''
     # even if character has shovel, prevent seeing or taking anchor while tide is in and anchor in lagoon
     if @props['anchor'].location == 'lagoon'
@@ -63,7 +65,9 @@ outcomes:
     end
 
   tide_out: |
-    # if anchor is in lagoon, let character see shovel (and take it if character has shovel)
+    @state['tide'] = 'out'
+
+    # if anchor is in lagoon, let character see it (and take it if character has shovel)
     if @props['anchor'].location == 'lagoon'
       @props['anchor'].visible = true
       @props['anchor'].portable = true
@@ -74,7 +78,7 @@ outcomes:
 
   pirate_runs_off: |
     @characters['pirate'].location = 'attic'
-    characters['parrot'].location = ''
+    @characters['parrot'].location = ''
     @characters['pirate'].description = 'The pirate is sleeping.'
     @props['bottle'].location = 'attic'
     "The pirate grabs the rum and scuttles off chortling.\nThe parrot flies off looking very unhappy.\n"

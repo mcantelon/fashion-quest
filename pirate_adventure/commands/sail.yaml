@@ -17,15 +17,23 @@ logic: |
 
       if characters['pirate'].location == 'ship'
 
-        # shuttle ship between two locations
-        game.state['ship_location'] = game.state['ship_location'] == 'beach' ? 'shore' : 'beach';
+        if game.state['tide'] == 'in'
 
-        # OKAY... shit's fucked up... need to rethink whole exit situation
-        game.locations['beach'].set_exit('ship', 'beach', game.state['ship_location'])
-        game.locations['beach'].set_exit('ship', 'shore', game.state['ship_location'])
-        game.locations.load('ship')
+          # shuttle ship between two locations
+          game.state['ship_location'] = game.state['ship_location'] == 'beach' ? 'shore' : 'beach';
 
-        output << "After a day at sea we set anchor off of a sandy beach. All Ashore who's going Ashore...\n"
+          # OKAY... shit's fucked up... need to rethink whole exit situation
+          game.locations['beach'].set_exit('ship', 'beach', game.state['ship_location'])
+          game.locations['beach'].set_exit('ship', 'shore', game.state['ship_location'])
+          game.locations.load('ship')
+
+          output << "After a day at sea we set anchor off of a sandy beach. All Ashore who's going Ashore...\n"
+
+        else
+
+          output << "The pirate say 'Tide needs to be in to sail!'\n"
+
+        end
 
       else
 
