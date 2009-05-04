@@ -1,18 +1,18 @@
 Fashion Quest
 
 NEXT:
+-check new_pirate_notes.txt
+
+NEXT:
 can get parrot, can't get parrot in shack unless pirate isn't there... maybe can use on_get logic?
+
+NEXT:
+add support for on_look event for revealing map in chest
 
 NEXT: add "prop_anywhere" argument support for commands that work on props that don't have
 a location yet (i.e. building or conjuring)
 
-NEXT: add traits property to props so traits can be added without changing class definition
-
-if user can_dig (has prop that can_dig)
-add location.buried ... returns list of buried stuff in location
-  "Found " + prop
-  each one becomes visible and portable
-
+NEXT: migrate properties to traits
 
 -when does the parrot return to the shack? when does parrot fly off? maybe when you got no crackers?
 
@@ -21,11 +21,6 @@ add location.buried ... returns list of buried stuff in location
   -lets you know the water is in the bottle
   -changes water location to 'limbo'
 Bottle of salt water
-
-dig anchor <- makes anchor portable
-get anchor
-
-you do have to look in chest twice... ass :/
 
 -make sure to copy pirate version of get and go commands to main commands
 
