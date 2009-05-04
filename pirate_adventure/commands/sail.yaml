@@ -19,7 +19,7 @@ logic: |
 
         if game.state['tide'] == 'in'
 
-          if props['map'] == 'player'
+          if props['map'].location == 'player'
 
             # shuttle ship between two locations
             game.state['ship_location'] = game.state['ship_location'] == 'beach' ? 'shore' : 'beach';
