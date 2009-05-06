@@ -34,7 +34,23 @@ logic: |
 
     if (player.can_dig)
 
-      output << player.dig
+      if location == 'field'
+
+        if game.state['paces'].to_i == 30
+
+          output << player.dig
+
+        else
+
+          output << "You find nothing.\n"
+
+        end
+
+      else
+
+        output << player.dig
+
+      end
 
     else
 
@@ -42,8 +58,11 @@ logic: |
 
     end
 
-    # normal digging
-    #alert(props['shovel'].traits['can_dig'].to_s)    
+    if output == ''
+
+      output << "You find nothing.\n"
+
+    end
 
   end
 

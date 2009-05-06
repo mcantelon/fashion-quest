@@ -1,0 +1,13 @@
+---
+syntax:
+- "pace <distance>"
+
+logic: |
+
+  output = ''
+
+  game.state['paces'] = game.state['paces'] + arg['distance'].to_s
+
+  output << "You pace " + arg['distance']
+
+  output

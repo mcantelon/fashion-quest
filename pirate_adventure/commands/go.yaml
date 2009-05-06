@@ -6,6 +6,8 @@ logic: |
 
   direction = arg['direction']
 
+  game.state['paces'] = 0
+
   # If an exit exists, load destination location and issue look command
   if (locations[location].exits[direction])
 
