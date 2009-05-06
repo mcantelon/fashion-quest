@@ -6,8 +6,8 @@ logic: |
 
   output = ''
 
-  game.state['paces'] = game.state['paces'] + arg['distance'].to_s
+  game.state['paces'] = game.state['paces'] + arg['distance'].to_i
 
-  output << "You pace " + arg['distance']
+  output << "You move " + arg['distance'] + " paces.\n"
 
   output

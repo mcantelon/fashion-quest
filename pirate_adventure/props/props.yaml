@@ -169,6 +169,15 @@ bottle:
   name: bottle
   description: The bottle is empty.
 
+box:
+  name: box
+  description: The box is made of wood.
+  location: field
+  portable: false
+  visible: false
+  traits:
+    buried: true
+
 mongoose:
   name: mongoose
   location: meadow
