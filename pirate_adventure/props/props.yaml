@@ -200,6 +200,7 @@ plans:
 
 map:
   name: map
+  text: props/text/map.txt
 
 keel and mast:
   name: keel and mast
