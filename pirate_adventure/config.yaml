@@ -2,5 +2,6 @@
 title: Pirate Adventure Knockoff
 width: 600
 height: 600
+image_height: 200
 resizable: true
 startup_message: "Welcome to Pirate Adventure Clone.\n\n"
