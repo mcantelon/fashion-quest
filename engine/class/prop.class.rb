@@ -10,6 +10,7 @@ class Prop
 
     @portable = true
     @visible  = true
+    @traits   = {}
   end
 
 end

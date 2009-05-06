@@ -1,0 +1,21 @@
+---
+syntax:
+- "weigh anchor"
+
+logic: |
+
+  output = ''
+
+  if location == 'ship'
+
+    output << "About 20 pounds. "
+
+    output << "Try: `SET SAIL`.\r"
+
+  else
+
+    output << "Why would you want to do that?\n"
+
+  end
+
+  output
