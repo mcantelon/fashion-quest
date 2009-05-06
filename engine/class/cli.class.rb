@@ -31,7 +31,7 @@ class Cli
         if command_data
 
           # commands can access the game and image stack
-          command = Command.new :game => @game, :image_stack => @image_stack
+          command = Command.new :game => @game, :image_stack => @image_stack, :output_stack => @output_stack
 
           # commands have syntax and logic
           command.syntax = command_data['syntax']

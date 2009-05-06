@@ -27,14 +27,18 @@ Shoes.app(
   require 'engine/class/command.class.rb'
 
   # Initialize image display area
-  @image_stack = stack :background => white, :width => 600, :height => 200
+  @image_stack = stack :background => white,
+    :width => config['width'],
+    :height => config['image_height']
 
   # Initialize output area
-  @output_stack = stack :scroll => true, :width => 600, :height => 400
+  @output_stack = stack :scroll => true,
+    :width => config['width'],
+    :height => (config['height'] - config['image_height'])
   @output_stack.hide
 
   # Initialize game
-  @game = Game.new path
+  @game = Game.new(config, path)
 
   # Initialize CLI (showing/hiding the output stack fixes a platform-specific issue)
   @cli = Cli.new :output_stack => @output_stack, :image_stack => @image_stack, :game => @game, :initial_text => config['startup_message']

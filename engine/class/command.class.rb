@@ -6,8 +6,9 @@ class Command
 
   def initialize(params)
 
-    @game        = params[:game]
-    @image_stack = params[:image_stack]
+    @game         = params[:game]
+    @image_stack  = params[:image_stack]
+    @output_stack = params[:output_stack]
 
   end
 
