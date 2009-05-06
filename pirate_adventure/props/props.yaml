@@ -173,10 +173,17 @@ box:
   name: box
   description: The box is made of wood.
   location: field
+  opens_with: hammer
   portable: false
   visible: false
   traits:
     buried: true
+  contains:
+    - prop: stamps
+
+stamps:
+  name: stamps
+  description: Rare stamps!
 
 mongoose:
   name: mongoose
