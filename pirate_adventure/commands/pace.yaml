@@ -6,8 +6,16 @@ logic: |
 
   output = ''
 
-  game.state['paces'] = game.state['paces'] + arg['distance'].to_i
+  if arg['distance'].to_i > 0
 
-  output << "You move " + arg['distance'] + " paces.\n"
+    game.state['paces'] = game.state['paces'] + arg['distance'].to_i
+
+    output << "You move " + arg['distance'] + " paces.\n"
+
+  else
+
+    output << "Take how many paces?\n"
+
+  end
 
   output
