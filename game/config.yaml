@@ -2,5 +2,6 @@
 title: Fashion Quest
 width: 600
 height: 600
+image_height: 200
 resizable: true
-startup_message: "Welcome mister to your doom.\n"
+startup_message: "Welcome to your doom.\n\n"

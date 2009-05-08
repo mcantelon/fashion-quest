@@ -21,17 +21,17 @@ walking stick:
   description: The walking stick is gnarled, but sturdy.
   portable: true
   location: player
-door: 
-  name: door
-  opened: false
-  description: The door is made of dark-brown wood.
-  contains: 
-    exit: 
-      south: bedroom
-  portable: false
-  opens_with: 
-  - brass key
-  location: hallway
+#door: 
+#  name: door
+#  opened: false
+#  description: The door is made of dark-brown wood.
+#  contains: 
+#    - exit: 
+#      south: bedroom
+#  portable: false
+#  opens_with: 
+#  - brass key
+#  location: hallway
 smokes: 
   name: smokes
   description: The smokes look tempting.
@@ -42,7 +42,7 @@ dresser:
   opened: false
   description: The dresser looks like it has seen better days.
   contains: 
-    prop: smokes
+    - prop: smokes
   portable: false
   location: bedroom
 brass key: 
@@ -60,6 +60,6 @@ book:
   weight: 5
   description: The book is light green and seems to be about the maths.
   contains: 
-    prop: leaflet
+    - prop: leaflet
   portable: true
   location: alcove

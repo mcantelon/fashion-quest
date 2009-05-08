@@ -117,7 +117,7 @@ class Character
       if decision(aggression)
         @hostile = true
         output << event('on_attack')
-        output << "#{nound_cap} attacks!\n"
+        output << "#{noun_cap} attacks!\n"
       end
     end
 

@@ -6,6 +6,8 @@ logic: |
 
   direction = arg['direction']
 
+  game.state['paces'] = 0
+
   # If an exit exists, load destination location and issue look command
   if (locations[location].exits[direction])
 
@@ -17,10 +19,39 @@ logic: |
 
     else
 
-      player.location = locations[location].exits[direction]
+      player.location = locations[location].exits[direction]['destination']
 
       return '>look'
 
+    end
+
+  # Otherwise check for a door
+  elsif doors[direction]
+
+    door = direction
+
+    # If the door exists in the player's location, try it
+    if doors[door].locations.include?(player.location)
+
+      # Go through door, if it's open
+      if doors[door].opened
+
+        attempt_successful = doors[door].attempt_entry(player, props)
+
+        if attempt_successful
+          return '>look'
+        else
+          return "Something won't fit through.\n"
+        end
+
+      else
+
+        return "It's not open.\n"
+
+      end
+    else
+
+      return "You can't go that way.\n"
     end
 
   else

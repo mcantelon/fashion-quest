@@ -1,9 +1,12 @@
 --- 
 name: entrance
 exits: 
-  north: yard
-  south: hallway
-  east: alcove
+  north:
+    destination: yard
+  south:
+    destination: hallway
+  east:
+    destination: alcove
 
 description: |
   You are in the sunlit entranceway of a sizeable home. The walls are clean and it smells pleasant. There is no air of sadness or decay.
