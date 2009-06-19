@@ -196,7 +196,13 @@ chest:
   opens_with: keys
   contains:
     - prop: plans
-    - prop: map
+  events:
+    on_look: |
+      if @props['map'].visible == false
+        @props['map'].visible  = true
+        @props['map'].portable = true
+        "A map fall out.\n"
+      end
 
 mongoose:
   name: mongoose
@@ -208,6 +214,9 @@ plans:
 map:
   name: map
   text: props/text/map.txt
+  location: shack
+  visible: false
+  portable: false
 
 keel and mast:
   name: keel and mast

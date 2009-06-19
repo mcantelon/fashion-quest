@@ -1,13 +1,25 @@
 Fashion Quest
 
 NEXT:
+- get rid of support for exits in contains
+- update props files to support this
+
+NEXT:
+-make prop properties into traits
+-merge prop class with character class... why?
+
+-move character methods out into a module
+-have character methods test for alive trait
+
+NEXT:
+-how can a character be gettable?
+ could extend "carrying" to check for characters
+
+NEXT:
 -check new_pirate_notes.txt
 
 NEXT:
-can get parrot, can't get parrot in shack unless pirate isn't there... maybe can use on_get logic?
-
-NEXT:
-add support for on_look event for revealing map in chest
+-can get parrot, can't get parrot in shack unless pirate isn't there... maybe can use on_get logic?
 
 NEXT: add "prop_anywhere" argument support for commands that work on props that don't have
 a location yet (i.e. building or conjuring)
