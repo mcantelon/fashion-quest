@@ -156,7 +156,7 @@ water:
   get_with:
   - bottle
 
-bottles of rum:
+bottles:
   name: bottles of rum
   description: These bottle contain rum as fine as any dug out of the ground.
   location: shore
