@@ -198,7 +198,7 @@ chest:
     - prop: plans
   events:
     on_look: |
-      if @props['map'].visible == false
+      if @props['map'].visible == false and @props['chest'].opened == true
         @props['map'].visible  = true
         @props['map'].portable = true
         "A map fall out.\n"
