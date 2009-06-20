@@ -1,9 +1,9 @@
-class Door
+class Door < GameComponent
 
   include May_Have_Name
   include Has_Events
 
-  attr_accessor :id, :name, :description, :locations, :size, :text, :events, :visible, :traits
+  attr_accessor :locations, :size, :text, :events, :visible, :traits
 
   def initialize
 

@@ -5,7 +5,7 @@ class Character < GameComponent
   include May_Have_Name
   include Has_Events
 
-  attr_accessor :gender, :hp, :aggression, :strength, \
+  attr_accessor :location, :gender, :hp, :aggression, :strength, \
     :mobility, :exchanges, :discusses, :dead, :hostile, :events, :logic
 
   def initialize(params)
