@@ -48,7 +48,6 @@ dresser:
 brass key: 
   name: brass key
   size: 1
-  weight: 1
   description: The key is small and made of brass.
   portable: true
   location: yard
@@ -57,7 +56,6 @@ book:
   size: 5
   text: props/text/book.txt
   opened: false
-  weight: 5
   description: The book is light green and seems to be about the maths.
   contains: 
     - prop: leaflet
