@@ -296,8 +296,8 @@ class Game
       item_object = @doors[item]
     end
 
-    if defined? item_object.opened
-      if item_object.opened
+    if item_object.traits.has_key?('opened')
+      if item_object.traits['opened']
         output << "It's already open.\n"
       elsif item_object.traits['opens_with']
         if with_prop
@@ -337,7 +337,7 @@ class Game
 
       output << "You open the #{@doors[door].name}.\n"
 
-      @doors[door].opened = true
+      @doors[door].traits['opened'] = true
 
     end
 
@@ -380,7 +380,7 @@ class Game
         end
       end
 
-      @props[prop].opened = true
+      @props[prop].traits['opened'] = true
 
     end
 

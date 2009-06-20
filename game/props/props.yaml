@@ -35,10 +35,10 @@ smokes:
   location: ""
 dresser: 
   name: dresser
-  opened: false
   description: The dresser looks like it has seen better days.
   location: bedroom
   traits:
+    opened: false
     portable: false
     contains: 
       - prop: smokes
@@ -50,10 +50,10 @@ brass key:
 book: 
   name: book
   size: 5
-  opened: false
   description: The book is light green and seems to be about the maths.
   location: alcove
   traits:
+    opened: false
     contains:
       - prop: leaflet
     text: props/text/book.txt

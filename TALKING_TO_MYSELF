@@ -5,6 +5,8 @@ NEXT:
 - then make it so when you give him the bottles, he goes to sleep wherever he goes to sleep
 - when you wake the pirate he'll go back to the ship I guess then you can sail again
 
+-in order for somethign to be openable, must have opened trait (usually set to false)... maybe this is dumb?
+
 NEXT:
 - get rid of support for exits in contains
 - update props files to support this

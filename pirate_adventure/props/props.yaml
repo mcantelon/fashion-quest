@@ -136,8 +136,8 @@ bag:
   name: bag
   description: It's a pirate's duffel bag.
   location: attic
-  opened: false
   traits:
+    opened: false
     contains:
       - prop: matches
 
@@ -205,13 +205,14 @@ chest:
   location: shack
   events:
     on_look: |
-      if @props['map'].traits['visible'] == false and @props['chest'].opened == true
+      if @props['map'].traits['visible'] == false and @props['chest'].traits['opened'] == true
         @props['map'].traits['visible']  = true
         @props['map'].traits['portable'] = true
         "A map fall out.\n"
       end
   traits:
     portable: false
+    opened: false
     opens_with: keys
     contains:
       - prop: plans

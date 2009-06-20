@@ -1,18 +1,19 @@
 ---
 crack:
   name: crack
-  opened: true
   description: The crack is big enough to squeeze through, but too narrow to bring large items through.
   locations:
   - top_of_hill
   - cavern
   size: 1
+  traits:
+    opened: true
 
 door:
   name: door
-  opened: false
   description: The door looks solid.
   traits:
+    opened: false
     opens_with:
     - keys
   locations:

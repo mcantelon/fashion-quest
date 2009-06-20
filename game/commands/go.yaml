@@ -34,7 +34,7 @@ logic: |
     if doors[door].locations.include?(player.location)
 
       # Go through door, if it's open
-      if doors[door].opened
+      if doors[door].traits['opened']
 
         attempt_successful = doors[door].attempt_entry(player, props)
 

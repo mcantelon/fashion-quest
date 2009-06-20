@@ -3,7 +3,7 @@ class Door
   include May_Have_Name
   include Has_Events
 
-  attr_accessor :id, :name, :description, :locations, :size, :opened, :text, :events, :visible, :traits
+  attr_accessor :id, :name, :description, :locations, :size, :text, :events, :visible, :traits
 
   def initialize
 
