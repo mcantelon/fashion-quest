@@ -136,13 +136,15 @@ bag:
 
 matches:
   name: matches
-  firestarter: true
+  traits:
+    firestarter: true
 
 torch:
   name: torch
   location: attic
-  lit: false
   burn_turns: 10000
+  traits:
+    lit: false
 
 fish:
   name: fish

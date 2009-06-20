@@ -128,6 +128,7 @@ class Player
     largest_size
   end
 
+  # get rid of
   def has_prop_with_attribute(attribute, value = nil)
 
     items.each do |id, prop_data|
@@ -146,8 +147,26 @@ class Player
     false
   end
 
+  def has_prop_with_trait(trait, value = nil)
+
+    items.each do |id, prop_data|
+
+      if @props[id].traits[trait]
+        if value != nil
+          if @props[id].traits[trait] == value
+            return true
+          end
+        else
+          return true
+        end
+      end
+    end
+
+    false
+  end
+
   def has_lit_item
-    has_prop_with_attribute('lit', true)
+    has_prop_with_trait('lit', true)
   end
 
 end

@@ -156,13 +156,13 @@ class Game
 
     @props.each do |name, prop|
 
-      if prop.lit
-        if prop.lit == true
+      if prop.traits['lit']
+        if prop.traits['lit'] == true
           if prop.burn_turns > 0
             @props[name].burn_turns -= 1
           else
             output << "The #{name} has gone out.\n"
-            @props[name].lit = false
+            @props[name].traits['lit'] = false
           end
         end
       end

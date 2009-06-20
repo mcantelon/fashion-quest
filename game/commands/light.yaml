@@ -12,7 +12,7 @@ logic: |
 
   elsif props[prop].lit == false
 
-    if player.has_prop_with_attribute('firestarter')
+    if player.has_prop_with_trait('firestarter')
 
       output << "You light it on fire.\n"
       props[prop].lit = true
