@@ -107,7 +107,6 @@ book:
   name: book
   description: The book is large and blood-soaked.
   location: alcove
-  text: props/text/book.txt
   events:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
@@ -125,11 +124,13 @@ book:
     size: 2
     contains:
       - prop: flyer
+    text: props/text/book.txt
 
 flyer:
   name: flyer
   description: It's a small advertising flyer.
-  text: props/text/flyer.txt
+  traits:
+    text: props/text/flyer.txt
 
 bag:
   name: bag
@@ -224,11 +225,11 @@ plans:
 
 map:
   name: map
-  text: props/text/map.txt
   location: shack
   traits:
     portable: false
     visible: false
+    text: props/text/map.txt
 
 keel and mast:
   name: keel and mast

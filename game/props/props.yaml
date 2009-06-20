@@ -5,9 +5,10 @@ necklace:
   location: deadbeat
 leaflet: 
   name: leaflet
-  text: props/text/leaflet.txt
   description: The leaflet is faded yellow and seems to warn against something.
   location: ""
+  traits:
+    text: props/text/leaflet.txt
 shiv: 
   name: shiv
   attack strength: 7
@@ -49,11 +50,11 @@ brass key:
 book: 
   name: book
   size: 5
-  text: props/text/book.txt
   opened: false
   description: The book is light green and seems to be about the maths.
   location: alcove
   traits:
     contains:
       - prop: leaflet
+    text: props/text/book.txt
 
