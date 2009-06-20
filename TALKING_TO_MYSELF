@@ -12,8 +12,8 @@ NEXT:
 - update props files to support this
 
 NEXT:
-- make prop properties into traits
-- merge prop class with character class... why?
+- make prop attack_strength property into traits
+- merge prop class with character class... why? we need to make some characters gettable
 
 - move character methods out into a module
 - have character methods test for alive trait
