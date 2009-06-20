@@ -86,7 +86,7 @@ class Player
       if data.location == @location
         if data.traits['buried']
           @props[prop].traits['buried'] = false
-          @props[prop].portable = true
+          @props[prop].traits['portable'] = true
           @props[prop].traits['visible'] = true
 
           output << "You found something!\n"

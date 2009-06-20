@@ -8,7 +8,7 @@ logic: |
   output = ''
 
   if props[prop].location == locations[location].name
-    if props[prop].portable
+    if props[prop].traits['portable']
       props[prop].location = 'player'
       output << "You take #{props[prop].noun}.\n"
       on_get_output = props[prop].event('on_get')

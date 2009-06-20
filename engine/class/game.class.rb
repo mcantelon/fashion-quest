@@ -126,6 +126,12 @@ class Game
       prop_data.each do |id, prop_definition|
         props[id] = map_hash_to_object_attributes(Prop.new, prop_definition)
         props[id].id = id
+	if !props[id].traits.has_key?('portable')
+          props[id].traits['portable'] = true
+        end
+        if !props[id].traits.has_key?('visible')
+          props[id].traits['visible'] = true
+        end
       end
     else
       error('No prop config files found at ' + prop_config_path)

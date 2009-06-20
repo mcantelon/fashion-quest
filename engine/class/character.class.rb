@@ -205,7 +205,6 @@ class Character
         end
         if @exchanges[prop].class == 'Array'
           @exchanges[prop].each do |prop|
-            alert('coot')
             output << "#{noun_cap} drops a #{prop}.\n"
             @props[prop].location = @player.location
             @hostile = false

@@ -14,7 +14,7 @@ logic: |
 
       if props['shovel'].location == 'player'
 
-        props['anchor'].portable = true
+        props['anchor'].traits['portable'] = true
 
         output << "You dig it up!\n"
 

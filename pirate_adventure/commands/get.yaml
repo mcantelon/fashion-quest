@@ -9,7 +9,7 @@ logic: |
 
   if props[prop].location == locations[location].name
 
-    if props[prop].portable
+    if props[prop].traits['portable']
 
       can_get = true
 

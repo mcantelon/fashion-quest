@@ -13,7 +13,6 @@ rum:
 
 rug:
   name: rug
-  portable: false
   description: The rug is nailed to the floor.
   location: apartment
   events:
@@ -22,12 +21,14 @@ rug:
         @props['keys'].location = 'apartment'
         "You hear a jingling sound.\n"
       end
+  traits:
+    portable: false
 
 ship:
   name: ship
-  portable: false
   location:
   traits:
+    portable: false
     build_with:
     - nails
     - lumber
@@ -61,9 +62,9 @@ nails:
     - hammer
   events:
     on_get: |
-      if @props['rug'].portable == false
+      if @props['rug'].traits['portable'] == false
         @props['nails'].traits['visible'] = true
-        @props['rug'].portable = true
+        @props['rug'].traits['portable'] = true
         @props['rug'].description = "It looks like there's something underneath the rug."
         "The rug comes loose.\n"
       end
@@ -168,8 +169,8 @@ bottles:
   name: bottles of rum
   description: These bottle contain rum as fine as any dug out of the ground.
   location: shore
-  portable: false
   traits:
+    portable: false
     visible: false
     buried: true
 
@@ -181,8 +182,8 @@ box:
   name: box
   description: The box is made of wood.
   location: field
-  portable: false
   traits:
+    portable: false
     visible: false
     buried: true
     opens_with: hammer
@@ -199,7 +200,6 @@ mongoose:
 
 chest:
   name: chest
-  portable: false
   location: shack
   contains:
     - prop: plans
@@ -207,10 +207,11 @@ chest:
     on_look: |
       if @props['map'].traits['visible'] == false and @props['chest'].opened == true
         @props['map'].traits['visible']  = true
-        @props['map'].portable = true
+        @props['map'].traits['portable'] = true
         "A map fall out.\n"
       end
   traits:
+    portable: false
     opens_with: keys
 
 mongoose:
@@ -224,18 +225,20 @@ map:
   name: map
   text: props/text/map.txt
   location: shack
-  portable: false
   traits:
+    portable: false
     visible: false
 
 keel and mast:
   name: keel and mast
   description: The keel and mast look like they belonged to a small ship.
-  portable: false
   location: beach
+  traits:
+    portable: false
 
 anchor:
   name: anchor
   description: The anchor!
   location: lagoon
-  portable: false
+  traits:
+    portable: false
