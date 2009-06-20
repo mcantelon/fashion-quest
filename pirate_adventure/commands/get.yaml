@@ -13,9 +13,9 @@ logic: |
 
       can_get = true
 
-      if props[prop].get_with
+      if props[prop].traits['get_with']
 
-        props[prop].get_with.each do |needed_prop|
+        props[prop].traits['get_with'].each do |needed_prop|
           if props[needed_prop].location != 'player'
             can_get = false
           end

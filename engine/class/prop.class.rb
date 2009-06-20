@@ -4,7 +4,7 @@ class Prop
   include Has_Events
 
   attr_accessor :id, :name, :description, :location, :portable, :contains, :opened, \
-    :get_with, :text, :attack_strength, :events, :visible, :traits
+    :text, :attack_strength, :events, :visible, :traits
 
   def initialize
 

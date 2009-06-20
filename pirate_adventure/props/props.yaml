@@ -56,8 +56,9 @@ nails:
   visible: false
   description: The nails are lookin' good tonight.
   location: apartment
-  get_with:
-  - hammer
+  traits:
+    get_with:
+    - hammer
   events:
     on_get: |
       if @props['rug'].portable == false
@@ -152,14 +153,16 @@ torch:
 fish:
   name: fish
   location: ocean
-  get_with:
-  - water
+  traits:
+    get_with:
+    - water
 
 water:
   name: water
   location: ocean
-  get_with:
-  - bottle
+  traits:
+    get_with:
+    - bottle
 
 bottles:
   name: bottles of rum
