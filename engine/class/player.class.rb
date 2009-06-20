@@ -116,11 +116,11 @@ class Player
 
     carrying.each do |prop|
 
-      if @props[prop].size
+      if @props[prop].traits['size']
 
-        if @props[prop].size > largest_size
+        if @props[prop].traits['size'] > largest_size
 
-          largest_size = @props[prop].size
+          largest_size = @props[prop].traits['size']
         end
       end
     end

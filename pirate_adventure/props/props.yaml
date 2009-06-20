@@ -75,15 +75,16 @@ shovel:
   name: shovel
   description: It's shovel-like in nature.
   location: shed
-  size: 2
   traits:
+    size: 2
     can_dig: true
 
 lumber:
   name: lumber
   description: The lumber is precut. How fortunate for you.
   location: cavern
-  size: 2
+  traits:
+    size: 2
 
 sails:
   name: sails
@@ -119,7 +120,8 @@ book:
       end
     on_open: |
       alert('you opened it')
-  size: 2
+  traits:
+    size: 2
 
 flyer:
   name: flyer
