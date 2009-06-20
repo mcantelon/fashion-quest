@@ -148,7 +148,7 @@ class Locations
 
       # describe any props in the location
       props.each do |prop, prop_data|
-        if props[prop].location == @name and props[prop].visible == true
+        if props[prop].location == @name and props[prop].traits['visible'] == true
           description << "You see a #{props[prop].name}.\n"
         end
       end

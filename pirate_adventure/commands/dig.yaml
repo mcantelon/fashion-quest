@@ -10,7 +10,7 @@ logic: |
   # this is a special case for the anchor... can only be dug up at low tide
   if prop
 
-    if prop == 'anchor' && props['anchor'].visible == true
+    if prop == 'anchor' && props['anchor'].traits['visible'] == true
 
       if props['shovel'].location == 'player'
 

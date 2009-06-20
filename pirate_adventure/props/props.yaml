@@ -53,16 +53,16 @@ dubloons:
 
 nails:
   name: nails
-  visible: false
   description: The nails are lookin' good tonight.
   location: apartment
   traits:
+    visible: false
     get_with:
     - hammer
   events:
     on_get: |
       if @props['rug'].portable == false
-        @props['nails'].visible = true
+        @props['nails'].traits['visible'] = true
         @props['rug'].portable = true
         @props['rug'].description = "It looks like there's something underneath the rug."
         "The rug comes loose.\n"
@@ -105,7 +105,6 @@ keys:
 book:
   name: book
   description: The book is large and blood-soaked.
-  visible: false
   location: alcove
   text: props/text/book.txt
   contains:
@@ -113,7 +112,7 @@ book:
   events:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
-        @props['book'].visible = true
+        @props['book'].traits['visible'] = true
         @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
         @locations['alcove'].set_exit('alcove', 'passage', 'passageway', 'book')
         @locations.load('alcove')
@@ -123,6 +122,7 @@ book:
     on_open: |
       alert('you opened it')
   traits:
+    visible: false
     size: 2
 
 flyer:
@@ -169,8 +169,8 @@ bottles:
   description: These bottle contain rum as fine as any dug out of the ground.
   location: shore
   portable: false
-  visible: false
   traits:
+    visible: false
     buried: true
 
 bottle:
@@ -182,8 +182,8 @@ box:
   description: The box is made of wood.
   location: field
   portable: false
-  visible: false
   traits:
+    visible: false
     buried: true
     opens_with: hammer
   contains:
@@ -205,8 +205,8 @@ chest:
     - prop: plans
   events:
     on_look: |
-      if @props['map'].visible == false and @props['chest'].opened == true
-        @props['map'].visible  = true
+      if @props['map'].traits['visible'] == false and @props['chest'].opened == true
+        @props['map'].traits['visible']  = true
         @props['map'].portable = true
         "A map fall out.\n"
       end
@@ -224,8 +224,9 @@ map:
   name: map
   text: props/text/map.txt
   location: shack
-  visible: false
   portable: false
+  traits:
+    visible: false
 
 keel and mast:
   name: keel and mast
