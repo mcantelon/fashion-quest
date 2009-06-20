@@ -44,15 +44,16 @@ dresser:
       - prop: smokes
 brass key: 
   name: brass key
-  size: 1
   description: The key is small and made of brass.
   location: yard
+  traits:
+    size: 1
 book: 
   name: book
-  size: 5
   description: The book is light green and seems to be about the maths.
   location: alcove
   traits:
+    size: 5
     opened: false
     contains:
       - prop: leaflet
