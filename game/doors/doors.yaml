@@ -1,0 +1,12 @@
+---
+door:
+  name: door
+  description: The door is made of dark-brown wood.
+  locations:
+  - hallway
+  - bedroom
+  traits:
+    opened: false
+    opens_with:
+    - brass key
+
