@@ -36,11 +36,11 @@ dresser:
   name: dresser
   opened: false
   description: The dresser looks like it has seen better days.
-  contains: 
-    - prop: smokes
   location: bedroom
   traits:
     portable: false
+    contains: 
+      - prop: smokes
 brass key: 
   name: brass key
   size: 1
@@ -52,6 +52,8 @@ book:
   text: props/text/book.txt
   opened: false
   description: The book is light green and seems to be about the maths.
-  contains: 
-    - prop: leaflet
   location: alcove
+  traits:
+    contains:
+      - prop: leaflet
+

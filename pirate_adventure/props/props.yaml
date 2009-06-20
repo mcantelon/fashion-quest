@@ -108,8 +108,6 @@ book:
   description: The book is large and blood-soaked.
   location: alcove
   text: props/text/book.txt
-  contains:
-    - prop: flyer
   events:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
@@ -125,6 +123,8 @@ book:
   traits:
     visible: false
     size: 2
+    contains:
+      - prop: flyer
 
 flyer:
   name: flyer
@@ -136,8 +136,9 @@ bag:
   description: It's a pirate's duffel bag.
   location: attic
   opened: false
-  contains:
-    - prop: matches
+  traits:
+    contains:
+      - prop: matches
 
 matches:
   name: matches
@@ -187,8 +188,8 @@ box:
     visible: false
     buried: true
     opens_with: hammer
-  contains:
-    - prop: stamps
+    contains:
+      - prop: stamps
 
 stamps:
   name: stamps
@@ -201,8 +202,6 @@ mongoose:
 chest:
   name: chest
   location: shack
-  contains:
-    - prop: plans
   events:
     on_look: |
       if @props['map'].traits['visible'] == false and @props['chest'].opened == true
@@ -213,6 +212,8 @@ chest:
   traits:
     portable: false
     opens_with: keys
+    contains:
+      - prop: plans
 
 mongoose:
   name: mongoose

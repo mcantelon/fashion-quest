@@ -353,9 +353,9 @@ class Game
 
       output << "You open the #{@props[prop].name}.\n"
 
-      if @props[prop].contains
+      if @props[prop].traits['contains']
 
-        @props[prop].contains.each do |contained_item|
+        @props[prop].traits['contains'].each do |contained_item|
 
           type           = contained_item.keys[0]
           contained_prop = contained_item.values[0]
