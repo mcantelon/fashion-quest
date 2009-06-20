@@ -52,7 +52,7 @@ class Player
 
     can_build = true
 
-    @props[prop].build_with.each do |component|
+    @props[prop].traits['build_with'].each do |component|
       if !carrying(component) and @props[component].location != @location
         can_build = false
       end
@@ -102,7 +102,7 @@ class Player
 
     return
 
-    @props[prop].build_with.each do |component|
+    @props[prop].traits['build_with'].each do |component|
       @props[component].location = ''
     end
 

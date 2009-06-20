@@ -10,7 +10,7 @@ logic: |
 
   if props[prop]
 
-    if props[prop].build_with
+    if props[prop].traits['build_with']
 
       if player.can_build(prop)
 

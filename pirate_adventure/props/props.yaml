@@ -27,14 +27,15 @@ ship:
   name: ship
   portable: false
   location:
-  build_with:
-  - nails
-  - lumber
-  - hammer
-  - plans
-  - sails
-  - keel and mast
-  - anchor
+  traits:
+    build_with:
+    - nails
+    - lumber
+    - hammer
+    - plans
+    - sails
+    - keel and mast
+    - anchor
   events:
     on_build: |
       @locations['beach'].set_exit('beach', 'ship', 'ship', 'ship')
