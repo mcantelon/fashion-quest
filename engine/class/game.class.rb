@@ -293,9 +293,9 @@ class Game
     if defined? item_object.opened
       if item_object.opened
         output << "It's already open.\n"
-      elsif item_object.opens_with
+      elsif item_object.traits['opens_with']
         if with_prop
-          if prop_located_at(with_prop, 'player') and item_object.opens_with.index(with_prop)
+          if prop_located_at(with_prop, 'player') and item_object.traits['opens_with'].index(with_prop)
             output << open(item)
           end
         else

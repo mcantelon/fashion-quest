@@ -178,11 +178,11 @@ box:
   name: box
   description: The box is made of wood.
   location: field
-  opens_with: hammer
   portable: false
   visible: false
   traits:
     buried: true
+    opens_with: hammer
   contains:
     - prop: stamps
 
@@ -198,7 +198,6 @@ chest:
   name: chest
   portable: false
   location: shack
-  opens_with: keys
   contains:
     - prop: plans
   events:
@@ -208,6 +207,8 @@ chest:
         @props['map'].portable = true
         "A map fall out.\n"
       end
+  traits:
+    opens_with: keys
 
 mongoose:
   name: mongoose
