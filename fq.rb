@@ -18,6 +18,7 @@ Shoes.app(
   require 'engine/module/has_events.rb'
 
   require 'engine/class/game.class.rb'
+  require 'engine/class/game_component.class.rb'
   require 'engine/class/player.class.rb'
   require 'engine/class/character.class.rb'
   require 'engine/class/locations.class.rb'

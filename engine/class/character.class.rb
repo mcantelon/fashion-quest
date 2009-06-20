@@ -1,11 +1,11 @@
-class Character
+class Character < GameComponent
 
   include Uses_Weapons
   include Handles_YAML_Files
   include May_Have_Name
   include Has_Events
 
-  attr_accessor :id, :name, :gender, :description, :location, :hp, :aggression, :strength, \
+  attr_accessor :gender, :hp, :aggression, :strength, \
     :mobility, :exchanges, :discusses, :dead, :hostile, :events, :logic
 
   def initialize(params)
