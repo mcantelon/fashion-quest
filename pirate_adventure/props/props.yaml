@@ -142,9 +142,9 @@ matches:
 torch:
   name: torch
   location: attic
-  burn_turns: 10000
   traits:
     lit: false
+    burn_turns: 10000
 
 fish:
   name: fish

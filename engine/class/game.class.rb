@@ -158,8 +158,8 @@ class Game
 
       if prop.traits['lit']
         if prop.traits['lit'] == true
-          if prop.burn_turns > 0
-            @props[name].burn_turns -= 1
+          if prop.traits['burn_turns'] > 0
+            @props[name].traits['burn_turns'] -= 1
           else
             output << "The #{name} has gone out.\n"
             @props[name].traits['lit'] = false
