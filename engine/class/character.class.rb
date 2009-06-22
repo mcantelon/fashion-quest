@@ -96,7 +96,7 @@ class Character < GameComponent
       # pick one of the exits and make it the character's new location
       exit_choice = rand(possible_exits.length)
       chosen_direction = possible_exits.keys[exit_choice]
-      @location = possible_exits[chosen_direction]
+      @location = possible_exits[chosen_direction]['destination']
 
       # if character was originally in the same place as the player, report movement
       if character_initial_location == @player.location
