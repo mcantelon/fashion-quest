@@ -7,17 +7,19 @@ logic: |
 
   topic = arg['topic']
 
+  output = ''
+
   response = characters[character].discuss topic
 
   if response
 
     if response != ''
 
-      return response
+      output << response
 
     else
 
-      alert('woog')
+      output << "#{noun_cap} doesn't know anything about that.\n"
 
     end
 
