@@ -1,11 +1,16 @@
 Fashion Quest
 
 NEXT:
+-make old game make some sense... it is primarily to show character behaviour
+-maybe have "talk <character>" command to get some hints as to what can be talked about
+
+
+NEXT:
 - make a transition so when you first go to the shore, the pirate follows
 - then make it so when you give him the bottles, he goes to sleep wherever he goes to sleep
 - when you wake the pirate he'll go back to the ship I guess then you can sail again
 
--in order for somethign to be openable, must have opened trait (usually set to false)... maybe this is dumb?
+-in order for somethign to be openable, must have opened trait (usually set to false)... maybe this is dumb? maybe change "opened" to "open" at any rate
 
 NEXT:
 - get rid of support for exits in contains
