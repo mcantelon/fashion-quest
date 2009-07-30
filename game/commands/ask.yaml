@@ -9,7 +9,7 @@ logic: |
 
   output = ''
 
-  response = characters[character].discuss topic
+  response = character.discuss topic
 
   if response
 

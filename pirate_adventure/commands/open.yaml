@@ -12,4 +12,9 @@ logic: |
   prop      = arg['item']
   with_prop = arg['with_prop']
 
-  @game.attempt_open_item(prop, with_prop)
+  if (with_prop)
+    @game.attempt_open_item(prop.name, with_prop.name)
+  else
+    @game.attempt_open_item(prop.name, nil)
+  end
+

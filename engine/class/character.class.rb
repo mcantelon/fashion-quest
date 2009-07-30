@@ -210,6 +210,7 @@ class Character < GameComponent
             @hostile = false
           end
         end
+        @props[prop].location = @id
       end
     else
       output << "#{noun_cap} doesn't seem interested.\n"

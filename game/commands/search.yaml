@@ -6,18 +6,18 @@ logic: |
 
   output = ''
 
-  if (game.characters[character].dead)
+  if (character.dead)
 
-    output << "You search the #{character}.\n"
+    output << "You search the #{character.noun}.\n"
 
     props.each do |prop_key, prop_data|
-      if props[prop_key].location == character
+      if props[prop_key].location == character.id
         output << "You find a #{prop_key}.\n"
         props[prop_key].location = locations[location].name
       end
     end
   else
-    output << "#{characters[character].noun_cap} won't let you.\n"
+    output << "#{character.noun_cap} won't let you.\n"
   end
 
   output

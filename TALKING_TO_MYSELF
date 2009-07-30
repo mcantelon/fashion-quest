@@ -1,9 +1,11 @@
 Fashion Quest
 
+-<any> works, but maybe something other than any ... anything? component? object? thing?
+-old game giving smokes to deadbeat doesn't seem to work
+
 NEXT:
 -make old game make some sense... it is primarily to show character behaviour
 -maybe have "talk <character>" command to get some hints as to what can be talked about
-
 
 NEXT:
 - make a transition so when you first go to the shore, the pirate follows

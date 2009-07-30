@@ -6,14 +6,14 @@ logic: |
 
   output = ""
 
-  if props[prop].traits['lit'] == false
+  if prop.traits['lit'] == false
 
       output << "It's not lit.\n"
 
-  elsif props[prop].traits['lit'] == true
+  elsif prop.traits['lit'] == true
 
-    output << "You unlight the #{prop}.\n"
-    props[prop].traits['lit'] = false
+    output << "You unlight the #{prop.name}.\n"
+    prop.traits['lit'] = false
 
   end
 

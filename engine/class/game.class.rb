@@ -36,6 +36,31 @@ class Game
 
   end
 
+  # ah shit this doesn't work cuz we can't set things
+  # maybe this should be called component or something instead of being weird
+  def [](name)
+
+    # Need to figure out how to deal with this...
+    #if @locations[name]
+    #  alert('furnd')
+    #  alert(@locations[name])
+    #  return @locations[name]
+    #end
+
+    if @doors.has_key?(name)
+      return @doors[name]
+    end
+
+    if @props.has_key?(name)
+      return @props[name]
+    end
+
+    if @characters.has_key?(name)
+      return @characters[name]
+    end
+
+  end
+
   def initialize_player
 
     # player data is stored in YAML as a hash

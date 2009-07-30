@@ -7,15 +7,15 @@ logic: |
 
   output = ''
 
-  if props[prop].location == locations[location].name
+  if prop.location == locations[location].name
 
-    if props[prop].traits['portable']
+    if prop.traits['portable']
 
       can_get = true
 
-      if props[prop].traits['get_with']
+      if prop.traits['get_with']
 
-        props[prop].traits['get_with'].each do |needed_prop|
+        prop.traits['get_with'].each do |needed_prop|
           if props[needed_prop].location != 'player'
             can_get = false
           end
@@ -27,10 +27,10 @@ logic: |
         # player is only allowed to carry 6 items
         if player.carrying.size <= 5
 
-          props[prop].location = 'player'
-          output << "You take #{props[prop].noun}.\n"
+          prop.location = 'player'
+          output << "You take #{prop.noun}.\n"
 
-          on_get_output = game.event(props[prop], 'on_get')
+          on_get_output = game.event(prop, 'on_get')
 
           if on_get_output
 
@@ -56,7 +56,7 @@ logic: |
 
   else
 
-    output << (game.prop_404 prop)
+    output << (game.prop_404 prop.name)
 
   end
 

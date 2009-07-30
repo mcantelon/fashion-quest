@@ -7,11 +7,11 @@ logic: |
 
   output = ''
 
-  if props[prop].location == locations[location].name
-    if props[prop].traits['portable']
-      props[prop].location = 'player'
-      output << "You take #{props[prop].noun}.\n"
-      on_get_output = props[prop].event('on_get')
+  if prop.location == locations[location].name
+    if prop.traits['portable']
+      prop.location = 'player'
+      output << "You take #{prop.noun}.\n"
+      on_get_output = prop.event('on_get')
       if on_get_output
         output << on_get_output
       end
@@ -19,7 +19,7 @@ logic: |
       output << "It won't budge.\n"
     end
   else
-    output << (game.prop_404 prop)
+    output << (game.prop_404 prop.name)
   end
 
   output

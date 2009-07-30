@@ -45,10 +45,11 @@ class Command
             prop      = result['prop']
             character = result['character']
             door      = result['door']
+            any       = result['any']
 
             if character
-              noun = @game.characters[character].noun
-              noun_cap = @game.characters[character].noun_cap
+              noun = character.noun
+              noun_cap = character.noun_cap
             end
 
           end
@@ -116,7 +117,7 @@ class Command
 
     # arg, prop, and character are all variables meant to be utilized by command logic
     arg   = {}
-    door = prop  = character = nil
+    door = prop = character = any = nil
     error = nil
 
     syntax_lexemes.each do |lexeme|
@@ -128,6 +129,14 @@ class Command
         reference_type, reference_name = lexeme[1..-2].split(':')
 
         case reference_type
+
+          when 'any':
+
+            potential_component = lexemes[lexeme_to_test]
+
+            if @game[potential_component]
+              any = @game[potential_component]
+            end
 
           # handle named or unnamed door references
           when 'door':
@@ -142,9 +151,9 @@ class Command
             end
 
             if reference_name
-              arg[reference_name] = potential_door
+              arg[reference_name] = @game.doors[potential_door]
             else
-              door = potential_door
+              door = @game.doors[potential_door]
             end
 
           # handle named or unnamed prop references
@@ -162,9 +171,9 @@ class Command
             end
 
             if reference_name
-              arg[reference_name] = potential_prop
+              arg[reference_name] = @game.props[potential_prop]
             else
-              prop = potential_prop
+              prop = @game.props[potential_prop]
             end
 
           # handle named or unnamed character references
@@ -180,9 +189,9 @@ class Command
             end
 
             if reference_name
-              arg[reference_name] = potential_character
+              arg[reference_name] = @game.characters[potential_character]
             else
-              character = potential_character
+              character = @game.characters[potential_character]
             end
 
           # handle ad-hoc (neither a prop or character) arguments
@@ -197,7 +206,7 @@ class Command
 
     end
 
-    {'error' => error, 'arg' => arg, 'prop' => prop, 'character' => character}
+    {'error' => error, 'arg' => arg, 'door' => door, 'prop' => prop, 'character' => character, 'any' => any}
 
   end
 

@@ -7,16 +7,16 @@ syntax:
 
 logic: |
 
-  weapon = prop ? prop : ''
+  weapon = prop ? prop.name : ''
 
   output = ''
 
-  if !characters[character].dead
+  if !character.dead
 
     attack_strength = player.strength
 
     # target character is now hostile
-    characters[character].hostile = true
+    character.hostile = true
 
     # if a weapon hasn't been selected, pick best one
     if weapon.empty?
@@ -36,15 +36,15 @@ logic: |
 
     damage = rand attack_strength
 
-    characters[character].hp = characters[character].hp - damage
+    character.hp = character.hp - damage
 
     output << "You attack #{noun} with #{weapon} for #{damage.to_s} HP damage.\n"
 
-    if characters[character].hp < 1
-      output << characters[character].kill
+    if character.hp < 1
+      output << character.kill
       output << "You have killed #{noun}.\n"
     else
-      output << "#{noun_cap} has #{(characters[character].hp).to_s} HP.\n"
+      output << "#{noun_cap} has #{(character.hp).to_s} HP.\n"
     end
 
   else

@@ -6,16 +6,16 @@ logic: |
 
   output = ""
 
-  if props[prop].traits['lit'] == true
+  if prop.traits['lit'] == true
 
       output << "It's already lit!\n"
 
-  elsif props[prop].traits['lit'] == false
+  elsif prop.traits['lit'] == false
 
     if player.has_prop_with_trait('firestarter')
 
       output << "You light it on fire.\n"
-      props[prop].traits['lit'] = true
+      prop.traits['lit'] = true
 
     else
 

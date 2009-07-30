@@ -10,35 +10,35 @@ logic: |
 
   noun = arg['noun']
 
-  noun = '' if not noun
+  #noun = '' if not noun
 
   output = ''
 
-  if not noun.empty?
+  if noun
 
     description = ''
 
     # If attempting to look at a character, check for description
-    if characters[noun]
-      if characters[noun].dead == true
-        description = "#{characters[noun].noun_cap} appears to be dead.\n"
-      elsif characters[noun].description
-        description = characters[noun].description + "\n"
+    if characters[noun.name]
+      if noun.dead == true
+        description = "#{noun.noun_cap} appears to be dead.\n"
+      elsif noun.description
+        description = noun.description + "\n"
       end
     end
 
     # If attempting to look at an prop, check for description and trigger on_look event
-    if props[noun]
-      if props[noun].description
-        description = props[noun].description + "\n"
+    if props[noun.name]
+      if noun.description
+        description = noun.description + "\n"
       end
-      description << game.event(props[noun], 'on_look')
+      description << game.event(noun, 'on_look')
     end
 
     # If attempting to look at a door, check for descripton
-    if doors[noun]
-      if doors[noun].description
-        description = doors[noun].description + "\n"
+    if doors[noun.name]
+      if noun.description
+        description = noun.description + "\n"
       end
     end
 

@@ -6,11 +6,11 @@ logic: |
 
   output = ''
 
-  if props[prop].location == 'player'
-    props[prop].location = locations[location].name
-    output << "You drop #{props[prop].noun}.\n"
+  if prop.location == 'player'
+    prop.location = locations[location].name
+    output << "You drop #{prop.noun}.\n"
   else
-    output << (game.prop_404 prop)
+    output << (game.prop_404 prop.name)
   end
 
   output
