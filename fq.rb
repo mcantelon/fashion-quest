@@ -16,6 +16,7 @@ Shoes.app(
   require 'engine/module/uses_weapons.module.rb'
   require 'engine/module/may_have_name.rb'
   require 'engine/module/has_events.rb'
+  require 'engine/module/has_traits.rb'
 
   require 'engine/class/game.class.rb'
   require 'engine/class/game_component.class.rb'

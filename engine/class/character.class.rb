@@ -4,6 +4,7 @@ class Character < GameComponent
   include Handles_YAML_Files
   include May_Have_Name
   include Has_Events
+  include Has_Traits
 
   attr_accessor :location, :gender, :hp, :aggression, :strength, \
     :mobility, :exchanges, :discusses, :dead, :hostile, :events, :logic
@@ -203,7 +204,7 @@ class Character < GameComponent
         else
           output << "#{noun_cap} takes the #{prop}.\n"
         end
-        if @exchanges[prop].class == 'Array'
+        if @exchanges[prop].class == Array
           @exchanges[prop].each do |prop|
             output << "#{noun_cap} drops a #{prop}.\n"
             @props[prop].location = @player.location
