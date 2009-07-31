@@ -2,8 +2,14 @@
 syntax:
 - "get <prop>"
 - "take <prop>"
+- "get <character>"
+- "take <character>"
 
 logic: |
+
+  if character
+    prop = character
+  end
 
   output = ''
 
