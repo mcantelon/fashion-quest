@@ -2,6 +2,8 @@
 parrot: 
   description: The parrot looks great.
   location: shack
+  traits:
+    portable: true
   logic: |
     output = ''
 
