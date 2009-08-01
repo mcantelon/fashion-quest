@@ -31,8 +31,9 @@ class Game
     @locations  = Locations.new(@path + 'locations/')
     @doors      = initialize_doors
     @props      = initialize_props
+    @characters = {}
     @player     = initialize_player
-    @characters = initialize_characters(@locations, @player, @props)
+    initialize_characters(@locations, @player, @props)
 
   end
 
@@ -71,6 +72,7 @@ class Game
       # create object from hash
       Player.new \
         :props => @props,
+        :characters => @characters,
         :name => player_data['name'],
         :hp => player_data['hp'],
         :strength => player_data['strength'],
@@ -86,7 +88,6 @@ class Game
 
     require 'find'
 
-    characters = {}
     character_config_path = "#{@path}characters"
 
     # load all commands, recursively, contained in command directory
@@ -101,10 +102,10 @@ class Game
           # create objects from hash of object hashes
           character_data.each do |id, character_definition|
             character = Character.new :locations => locations, :player => player, :props => props
-            characters[id] = map_hash_to_object_attributes(character, character_definition)
+            @characters[id] = map_hash_to_object_attributes(character, character_definition)
 
             # set object id, so it can be read
-            characters[id].id = id
+            @characters[id].id = id
           end
         end
       end

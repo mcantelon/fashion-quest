@@ -49,6 +49,7 @@ logic: |
         return "It's not open.\n"
 
       end
+
     else
 
       return "You can't go that way.\n"

@@ -122,7 +122,7 @@ class Locations
 
     if @dark and light != true
 
-      description = "It is too dark to see.\n"
+     description = "It is too dark to see.\n"
 
     else
 

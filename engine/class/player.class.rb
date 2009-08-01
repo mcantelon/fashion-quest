@@ -12,7 +12,24 @@ class Player
     @dead     = params[:dead]
     @location = params[:location]
 
-    @props = params[:props]
+    @props      = params[:props]
+    @characters = params[:characters]
+
+  end
+
+  def carried
+
+    items = []
+
+    @props.each do |id, prop|
+      (items << prop) if @props[id].location == 'player'
+    end
+
+    @characters.each do |id, character|
+        (items << character) if @characters[id].location == 'player'
+    end
+
+    items
 
   end
 
@@ -24,6 +41,10 @@ class Player
       (items << id) if @props[id].location == 'player'
     end
 
+    @characters.each do |id, char_data|
+        (items << id) if @characters[id].location == 'player'
+    end
+
     items
   end
 
@@ -31,13 +52,13 @@ class Player
 
     inventory ||= []
 
-    items.each do |id, prop_data|
+    carried.each do |object|
 
-      if id == prop
+      if object.id == prop
         return true
       end
 
-      inventory << id
+      inventory << object
 
     end
 
@@ -116,11 +137,11 @@ class Player
 
     carrying.each do |prop|
 
-      if @props[prop].traits['size']
+      if prop.traits['size']
 
-        if @props[prop].traits['size'] > largest_size
+        if prop.traits['size'] > largest_size
 
-          largest_size = @props[prop].traits['size']
+          largest_size = prop.traits['size']
         end
       end
     end
@@ -131,11 +152,11 @@ class Player
   # get rid of
   def has_prop_with_attribute(attribute, value = nil)
 
-    items.each do |id, prop_data|
+    carried.each do |prop|
 
-      if eval('@props[id].' + attribute)
+      if eval('prop.' + attribute)
         if value != nil
-          if eval('@props[id].' + attribute) == value
+          if eval('props.' + attribute) == value
             return true
           end
         else
@@ -149,11 +170,11 @@ class Player
 
   def has_prop_with_trait(trait, value = nil)
 
-    items.each do |id, prop_data|
+    carried.each do |prop|
 
-      if @props[id].traits[trait]
+      if prop.traits[trait]
         if value != nil
-          if @props[id].traits[trait] == value
+          if prop.traits[trait] == value
             return true
           end
         else

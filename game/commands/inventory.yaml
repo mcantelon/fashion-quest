@@ -1,6 +1,7 @@
 ---
 syntax:
 - "i"
+- "inv"
 - "inventory"
 
 logic: |
@@ -16,7 +17,7 @@ logic: |
     if prop_counter > 0
       output << ', '
     end
-    output << props[prop].noun
+    output << prop.noun
 
     prop_counter += 1
   end
