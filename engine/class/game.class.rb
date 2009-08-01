@@ -102,10 +102,6 @@ class Game
           character_data.each do |id, character_definition|
             character = Character.new :locations => locations, :player => player, :props => props
             characters[id] = map_hash_to_object_attributes(character, character_definition)
-            # set traits to empty to lessen errors in commands
-            if !characters[id].traits
-              characters[id].traits = {}
-            end
 
             # set object id, so it can be read
             characters[id].id = id
@@ -157,7 +153,7 @@ class Game
       prop_data.each do |id, prop_definition|
         props[id] = map_hash_to_object_attributes(Prop.new, prop_definition)
         props[id].id = id
-	if !props[id].traits.has_key?('portable')
+        if !props[id].traits.has_key?('portable')
           props[id].traits['portable'] = true
         end
         if !props[id].traits.has_key?('visible')

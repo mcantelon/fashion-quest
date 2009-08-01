@@ -9,6 +9,7 @@ class Door < GameComponent
   def initialize
 
     @visible  = true
+    @traits = {}
   end
 
   def attempt_entry(player, props)

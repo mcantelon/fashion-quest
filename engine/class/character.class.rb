@@ -14,6 +14,7 @@ class Character < GameComponent
     @locations = params[:locations]
     @player    = params[:player]
     @props     = params[:props]
+    @traits    = {}
 
   end
 
