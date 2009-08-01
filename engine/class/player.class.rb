@@ -33,21 +33,6 @@ class Player
 
   end
 
-  def items
-
-    items = []
-
-    @props.each do |id, prop_data|
-      (items << id) if @props[id].location == 'player'
-    end
-
-    @characters.each do |id, char_data|
-        (items << id) if @characters[id].location == 'player'
-    end
-
-    items
-  end
-
   def carrying(prop = '')
 
     inventory ||= []
@@ -147,25 +132,6 @@ class Player
     end
 
     largest_size
-  end
-
-  # get rid of
-  def has_prop_with_attribute(attribute, value = nil)
-
-    carried.each do |prop|
-
-      if eval('prop.' + attribute)
-        if value != nil
-          if eval('props.' + attribute) == value
-            return true
-          end
-        else
-          return true
-        end
-      end
-    end
-
-    false
   end
 
   def has_prop_with_trait(trait, value = nil)
