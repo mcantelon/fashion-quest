@@ -1,9 +1,9 @@
 Fashion Quest
 
 -<any> works, but maybe something other than any ... anything? component? object? thing?
--how to include characters in inventory (need to pass character array to player)
 -should get prop and door traits by default if not set by yaml to lessen errors in
  commands (we do this for characters)
+-phase out use of items function cause it redundant... maybe already phased out
 
 NEXT:
 -make old game make some sense... it is primarily to show character behaviour
