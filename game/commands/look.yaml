@@ -2,34 +2,43 @@
 syntax:
 - "l"
 - "look"
-- "look <prop:prop_or_character>"
-- "look <character:prop_or_character>"
+- "look <prop:noun>"
+- "look <character:noun>"
+- "look <door:noun>"
 
 logic: |
 
-  prop_or_character = arg['prop_or_character']
+  noun = arg['noun']
 
-  #prop_or_character = '' if not prop_or_character
+  #noun = '' if not noun
 
   output = ''
 
-  if prop_or_character
+  if noun
 
     description = ''
 
     # If attempting to look at a character, check for description
-    if characters[prop_or_character.name]
-      if prop_or_character.dead == true
-        description = "#{prop_or_character.noun_cap} appears to be dead.\n"
-      elsif prop_or_character.description
-        description = prop_or_character.description + "\n"
+    if characters[noun.name]
+      if noun.dead == true
+        description = "#{noun.noun_cap} appears to be dead.\n"
+      elsif noun.description
+        description = noun.description + "\n"
       end
     end
 
-    # If attempting to look at an prop, check for description
-    if props[prop_or_character.name]
-      if prop_or_character.description
-        description = prop_or_character.description + "\n"
+    # If attempting to look at an prop, check for description and trigger on_look event
+    if props[noun.name]
+      if noun.description
+        description = noun.description + "\n"
+      end
+      description << game.event(noun, 'on_look')
+    end
+
+    # If attempting to look at a door, check for descripton
+    if doors[noun.name]
+      if noun.description
+        description = noun.description + "\n"
       end
     end
 
@@ -44,12 +53,16 @@ logic: |
 
     # Show image, if any
     if FileTest.exists?(locations[location].image_file)
+      @image_stack.height = game.config['image_height']
       @image_stack.clear { @image_stack.image locations[location].image_file }
+      @output_stack.height = (game.config['height'] - game.config['image_height'])
     else
+      @image_stack.height = 0
       @image_stack.clear { }
+      @output_stack.height = game.config['height']
     end
 
-    output = locations[location].describe(doors, props, characters)
+    output = locations[location].describe(doors, props, characters, player.has_lit_item)
 
   end
 
