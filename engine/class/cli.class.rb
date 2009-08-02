@@ -1,5 +1,7 @@
 class Cli
 
+  require 'pathname'
+
   include Parses_Commands
   include Handles_YAML_Files
 
@@ -21,12 +23,18 @@ class Cli
     commands_loaded = 0
 
     # load all commands, recursively, contained in command directory
-    Find.find("#{@game.path}commands") do |command_file|
+    Find.find("#{@game.path}commands") do |command_path|
 
-      if !FileTest.directory?(command_file) and (command_file.index('.yaml') or command_file.index('.yml'))
+      if !FileTest.directory?(command_path) and (command_path.index('.yaml') or command_path.index('.yml'))
 
         # each command is stored in YAML as a hash
-        command_data = load_yaml_file(command_file)
+        command_data = load_yaml_file(command_path)
+
+        # if no command data has loaded, try to load from shared commands directory
+        if not command_data
+          command_filename = Pathname.new(command_path).basename
+          command_data = load_yaml_file(@game.app_base_path + '/shared_commands/' + command_filename)
+        end
 
         if command_data
 
@@ -40,6 +48,8 @@ class Cli
           @commands << command
 
           commands_loaded += 1
+        else
+          alert('Error: No command data found in ' + command_path + ' (and no command of same name found in shared_commands directory)')
         end
 
       end

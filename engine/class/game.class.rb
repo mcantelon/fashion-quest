@@ -2,16 +2,17 @@
 #
 class Game
 
-  attr_accessor :state, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over
+  attr_accessor :state, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over
 
   include Handles_YAML_Files
 
   # I am a pig!
   #
-  def initialize(config, path = 'game/')
+  def initialize(config, app_base_path, path = 'game/')
 
-    @path   = path
-    @config = config
+    @config        = config
+    @app_base_path = app_base_path
+    @path          = path
 
     # transitions are sets of triggering conditions and resulting outcomes
     @transitions = load_yaml_file("#{path}transitions.yaml")

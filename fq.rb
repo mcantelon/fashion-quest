@@ -1,6 +1,11 @@
 require 'yaml'
 
-path = ARGV[1] ? ARGV[1] + '/' : 'game/'
+app_base_path = File.expand_path(File.dirname(__FILE__))
+path          = ARGV[1] ? ARGV[1] + '/' : 'game/'
+
+if not File.directory? path
+  path = app_base_path + '/' + path
+end
 
 config = File.open("#{path}config.yaml", 'r') { |f| YAML::load(f.read) }
 
@@ -40,7 +45,7 @@ Shoes.app(
   @output_stack.hide
 
   # Initialize game
-  @game = Game.new(config, path)
+  @game = Game.new(config, app_base_path, path)
 
   # Initialize CLI (showing/hiding the output stack fixes a platform-specific issue)
   @cli = Cli.new :output_stack => @output_stack, :image_stack => @image_stack, :game => @game, :initial_text => config['startup_message']
