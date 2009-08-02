@@ -206,9 +206,9 @@ class Character < GameComponent
           output << "#{noun_cap} takes the #{prop}.\n"
         end
         if @exchanges[prop].class == Array
-          @exchanges[prop].each do |prop|
-            output << "#{noun_cap} drops a #{prop}.\n"
-            @props[prop].location = @player.location
+          @exchanges[prop].each do |drop_prop|
+            output << "#{noun_cap} drops a #{drop_prop}.\n"
+            @props[drop_prop].location = @player.location
             @hostile = false
           end
         end
