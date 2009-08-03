@@ -18,17 +18,6 @@ walking stick:
   attack strength: 5
   description: The walking stick is gnarled, but sturdy.
   location: player
-#door: 
-#  name: door
-#  opened: false
-#  description: The door is made of dark-brown wood.
-#  contains: 
-#    - exit: 
-#      south: bedroom
-#  portable: false
-#  opens_with: 
-#  - brass key
-#  location: hallway
 smokes: 
   name: smokes
   description: The smokes look tempting.
