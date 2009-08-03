@@ -5,7 +5,7 @@ if not File.directory? path
   path = app_base_path + '/' + path
 end
 
-require 'engine/requirements.rb'
+require 'engine/setup.rb'
 
 config = File.open("#{path}config.yaml", 'r') { |f| YAML::load(f.read) }
 
