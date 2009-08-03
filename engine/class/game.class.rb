@@ -389,22 +389,12 @@ class Game
           type           = contained_item.keys[0]
           contained_prop = contained_item.values[0]
 
+          # we leave open the possibility of having objects contain characters, etc.
+          # ...but maybe we should just have it be any key or any game component?
           if type == 'prop'
 
             output << "The #{@props[prop].name} contains a #{@props[contained_prop].name}.\n"
             @props[contained_prop].location = @player.location
-
-          elsif type == 'exit'
-
-            contained_prop.each do |direction,destination|
-
-              # create new exit
-              @locations.exits[direction] = destination
-
-              # let location engine know of this new exit for future location loads
-              @locations[@player.location].set_exit(@player.location, direction, destination, prop)
-
-            end
           end
         end
       end
