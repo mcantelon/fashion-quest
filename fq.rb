@@ -1,13 +1,13 @@
 app_base_path = File.expand_path(File.dirname(__FILE__))
-path          = ARGV[1] ? ARGV[1] + '/' : 'game/'
+game_path     = ARGV[1] ? ARGV[1] + '/' : 'game/'
 
-if not File.directory? path
-  path = app_base_path + '/' + path
+if not File.directory? game_path
+  game_path = app_base_path + '/' + game_path
 end
 
 require 'engine/setup.rb'
 
-config = File.open("#{path}config.yaml", 'r') { |f| YAML::load(f.read) }
+config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
 
 Shoes.app(
   :title     => config['title'],
@@ -28,7 +28,7 @@ Shoes.app(
 #  @output_stack.hide
 
   # Initialize game
-  @game = Game.new(config, app_base_path, path)
+  @game = Game.new(config, app_base_path, game_path)
 
   # Initialize CLI (showing/hiding the output stack fixes a platform-specific issue)
   @cli = Cli.new :output_stack => @output_stack, :image_stack => @image_stack, :game => @game, :initial_text => config['startup_message']
