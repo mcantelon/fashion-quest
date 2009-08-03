@@ -91,6 +91,7 @@ class Cli
             @command_history << @input_text
           end
           issue_command(@input_text)
+          display_prompt
 
         end
       end
@@ -148,8 +149,6 @@ class Cli
 
       else
 
-        character_output = ''
-
         output_add('>' + input_text) if show_input
 
         result = parse(input_text)
@@ -164,14 +163,10 @@ class Cli
           @message_text << @game.turn
         end
 
-
-        @output_text << character_output + result
+        @output_text << result
         @input_text  = ''
 
     end
-
-    display_prompt
-
   end
 
   def save_walkthrough
@@ -190,6 +185,7 @@ class Cli
       load_yaml_file(history_file).each do |command|
 
         issue_command(command)
+        display_prompt
       end
 
     else
@@ -257,6 +253,10 @@ class Cli
         input_text
     }
     @output_stack.scroll_top = @output_stack.scroll_max
+
+#if (@message_text != '')
+#  alert(output_text)
+#end
 
   end
 

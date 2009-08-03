@@ -42,7 +42,7 @@ Shoes.app(
   @output_stack = stack :scroll => true,
     :width => config['width'],
     :height => (config['height'] - config['image_height'])
-  @output_stack.hide
+#  @output_stack.hide
 
   # Initialize game
   @game = Game.new(config, app_base_path, path)
@@ -50,7 +50,8 @@ Shoes.app(
   # Initialize CLI (showing/hiding the output stack fixes a platform-specific issue)
   @cli = Cli.new :output_stack => @output_stack, :image_stack => @image_stack, :game => @game, :initial_text => config['startup_message']
   @cli.issue_command('look', false)
-  @output_stack.show
+#  @output_stack.show
+  @cli.display_prompt
 
   # Set up keystroke processing
   keypress do |k|
