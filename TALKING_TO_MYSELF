@@ -1,9 +1,19 @@
 Fashion Quest
 
--<any> works, but maybe something other than any ... anything? component? object? thing?
+-maybe sleep should be a character state or something :|
+-wake pirate
+-moving pirate to shore ... how?
+-maybe need to make sense out of naming conundrum first as well
+
+-make look command show a nicer list like inventory command
+
+-on_exchange event... what if different events for different types of exchanges?
+
+-need to clarify how naming works (noun, etc.)
+-for descriptions: id, short, long?
+-<any> works, but maybe something other than any ... anything? component? object? thing? noun?
 -should get prop and door traits by default if not set by yaml to lessen errors in
- commands (we do this for characters)
--phase out use of items function cause it redundant... maybe already phased out
+ commands (we do this for characters)... test this by looping through everything and trying to access traits
 
 NEXT:
 -make old game make some sense... it is primarily to show character behaviour
@@ -14,22 +24,8 @@ NEXT:
 - then make it so when you give him the bottles, he goes to sleep wherever he goes to sleep
 - when you wake the pirate he'll go back to the ship I guess then you can sail again
 
--in order for somethign to be openable, must have opened trait (usually set to false)... maybe this is dumb? maybe change "opened" to "open" at any rate
-
-NEXT:
-- get rid of support for exits in contains
-- update props files to support this
-
 NEXT:
 - make prop attack_strength property into traits
-- merge prop class with character class... why? we need to make some characters gettable
-
-- move character methods out into a module
-- have character methods test for alive trait
-
-NEXT:
--how can a character be gettable?
- could extend "carrying" to check for characters
 
 NEXT:
 - check new_pirate_notes.txt
@@ -52,13 +48,14 @@ Bottle of salt water
 
 -make sure to copy pirate version of get and go commands to main commands
 
+Exits:
 -have option to add exit that isn't visible by default (or just have it so dynamic 
  exits aren't shown, make it dependent to add a description)
-
--what do plans say when read?
-
+or...
 -should there be a visible property for exits (for hidden exits?)
 -should there be a description property for exits (for fancier language?)
+
+-what do plans say when read?
 
 -clean up event handler situation
 
@@ -147,4 +144,7 @@ Remember:
   -using is equivelant to others... i.e. use knife to open door = open door with knife
 
 low priority - make sure the map only falls out when you look at the opened chest
+
+Documentation:
+-document how prop setting work (opened, etc.)
 

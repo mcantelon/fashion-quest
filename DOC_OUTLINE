@@ -49,11 +49,9 @@ Creating Commands:
   -each syntax form is composed of keywords and references
   -keywords are static words: verbs
   -references refer to "things": nouns
-    -three types of references: prop, character, ad-hoc
-    -prop and character references can refer to any prop or character accessible by the player
-    -a prop is accessible if it is in the same location as the player or in the player's inventory
-    -a character is accessible if it is in the same location as the player
-    -if a prop or character is inaccessible, an error will be returned and the command logic will not execute
+    -types of references: prop, character, door, ad-hoc
+    -prop, character, and door references can refer to any prop, character, or door in the same location as the player
+    -if a prop, character, or door doesn't have the same location as the player, an error will be returned
     -ad-hoc references can refer to anything... there is no checking before passing an ad-hoc reference to command logic
     -in syntax form, references enclosed in less-than and greater-than symbols
     -examples:
@@ -76,6 +74,11 @@ Creating Commands:
     -"characters" spec
     -"props" spec
   -example commands
+-commands can be shared between games
+  -if you want to share a command between games, put the command in the shared_commands dirctory
+  -to include a shared command in a game, put an empty file in your game's command directory with the same filename
+   as the shared command
+  -alternately, if you're not using Windows you can use symlinks
 
 Events:
 -characters and props can have events associated with them
