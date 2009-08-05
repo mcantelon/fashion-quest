@@ -164,8 +164,8 @@ class Command
             # need to test that prop exists and near player
             if not @game.props[potential_prop]
               error = @game.prop_404(potential_prop)
-            elsif (@game.props[potential_prop].location != @game.locations[@game.player.location].name and
-              @game.props[potential_prop].location != 'player')
+            elsif @game.props[potential_prop].location != @game.locations[@game.player.location].name and
+              @game.props[potential_prop].location != 'player'
 
               error = @game.prop_404(potential_prop)
             end
@@ -184,7 +184,8 @@ class Command
             # need to not only test that character exists, but that it's here
             if not @game.characters[potential_character]
               error = @game.prop_404(potential_character)
-            elsif @game.characters[potential_character].location != @game.locations[@game.player.location].name
+            elsif @game.characters[potential_character].location != @game.locations[@game.player.location].name and
+              @game.characters[potential_character].location != 'player'
               error = @game.prop_404(potential_character)
             end
 
