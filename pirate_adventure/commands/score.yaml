@@ -1,0 +1,34 @@
+---
+syntax:
+- "score"
+
+logic: |
+
+  output = ''
+
+  if location == 'apartment'
+
+    score = 0
+
+    if props['dubloons'].location == 'apartment' || props['dubloons'].location == 'player'
+      score = score + 50
+    end
+
+    if props['stamps'].location == 'apartment' || props['stamps'].location == 'player'
+      score = score + 50
+    end
+
+    output << "Score: " + score.to_s + "\n"
+
+    if score == 100
+      game.over
+      output << "You have won the game!\nWould you like to restart?\n"
+    end
+
+  else
+
+    output << "Perhaps this is not the place or time.\n"
+
+  end
+
+  output
