@@ -130,32 +130,62 @@ class Locations
       description = @description.dup
       description += @description_notes[@name] if @description_notes[@name]
 
-      # describe any characters in the location
-      characters.each do |character, character_data|
-        if characters[character].location == @name
-          description << ("You see " + characters[character].noun + ".\n")
-        end
-      end
+      description << describe_characters(characters)
 
       description << describe_revealed_exit_data(props)
 
-      # describe any doors in the location
-      doors.each do |door, door_data|
-        if doors[door].locations.include?(@name)
-          description << "You see a #{doors[door].name}.\n"
-        end
-      end
+      description << describe_doors(doors)
 
-      # describe any props in the location
-      props.each do |prop, prop_data|
-        if props[prop].location == @name and props[prop].traits['visible'] == true
-          description << "You see a #{props[prop].name}.\n"
-        end
-      end
+      description << describe_props(props)
 
     end
 
     description
+
+  end
+
+  def describe_characters(characters)
+
+    output = ''
+
+    # describe any characters in the location
+    characters.each do |character, character_data|
+      if characters[character].location == @name
+        output << ("You see " + characters[character].noun + ".\n")
+      end
+    end
+
+    output
+
+  end
+
+  def describe_doors(doors)
+
+    output = ''
+
+    # describe any doors in the location
+    doors.each do |door, door_data|
+      if doors[door].locations.include?(@name)
+        output << "You see a #{doors[door].name}.\n"
+      end
+    end
+
+    output
+
+  end
+
+  def describe_props(props)
+
+    output = ''
+
+    # describe any props in the location
+    props.each do |prop, prop_data|
+      if props[prop].location == @name and props[prop].traits['visible'] == true
+        output << "You see a #{props[prop].name}.\n"
+      end
+    end
+
+    output
 
   end
 
