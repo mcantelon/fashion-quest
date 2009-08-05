@@ -48,9 +48,10 @@ dubloons:
   location: monastery
   events:
     on_get: |
-      # need check to see if you have parrot... if not you die
-      # That's not very smart I'm snake bit
-      alert('getting')
+      if @characters['snakes'].location == 'monastery'
+        @over = true
+        "That's not very smart I'm snake bit.\nWould you like to restart? (y/n)\n"
+      end
 
 nails:
   name: nails
