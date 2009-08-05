@@ -31,6 +31,16 @@ conditions:
   :
     - pirate_runs_off
 
+  ?
+    - @props['bottles'].location == 'shore' && @props['bottles'].location == 'shore' && @props['bottles'].traits['buried'] == false
+  :
+    - pirate_grabs_rum
+
+  ?
+    - @characters['parrot'].location == 'monastery' && @characters['snakes'].location == 'monastery'
+  :
+    - snakes_run_off
+
 outcomes:
 
   begin: |
@@ -79,10 +89,19 @@ outcomes:
 
   pirate_runs_off: |
     @characters['pirate'].location = 'attic'
-    @characters['parrot'].location = ''
     @characters['pirate'].description = 'The pirate is sleeping.'
     @props['bottle'].location = 'attic'
-    "The pirate grabs the rum and scuttles off chortling.\nThe parrot flies off looking very unhappy.\n"
+    "The pirate grabs the rum and scuttles off chortling.\n"
+
+  pirate_grabs_rum: |
+    @props['bottles'].location = 'pirate'
+    @characters['pirate'].location = 'graveyard'
+    @characters['pirate'].description = 'The pirate is sleeping.'
+    "You dug up bottles of rum!\nThe pirate grabs the rum and scuttles off chortling.\n"
+
+  snakes_run_off: |
+    @characters['snakes'].location = ''
+    "Parrot attacks snakes and drives them off.\n"
 
   win: |
     # winning logic can be put here

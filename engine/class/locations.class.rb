@@ -151,7 +151,7 @@ class Locations
     # describe any characters in the location
     characters.each do |character, character_data|
       if characters[character].location == @name
-        output << ("You see " + characters[character].noun + ".\n")
+        output << "You see #{characters[character].noun}.\n"
       end
     end
 

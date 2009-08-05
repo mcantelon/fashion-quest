@@ -189,6 +189,7 @@ box:
     portable: false
     visible: false
     buried: true
+    opened: false
     opens_with: hammer
     contains:
       - prop: stamps

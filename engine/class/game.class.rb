@@ -415,7 +415,7 @@ class Game
 
       if object.events[type]
 
-        event_response = object.events[type] #[rand(object.events[type].length)]
+        event_response = object.events[type]
 
         begin
 
