@@ -152,7 +152,7 @@ torch:
   location: attic
   traits:
     lit: false
-    burn_turns: 10000
+    burn_turns: 150
 
 fish:
   name: fish
