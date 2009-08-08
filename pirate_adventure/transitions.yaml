@@ -27,6 +27,11 @@ conditions:
     - tide_out
 
   ?
+    - @props['torch'].traits['lit'] == true && @props['torch'].traits['burn_turns'] == 25
+  :
+    - warn_that_torch_will_go_out
+
+  ?
     - @props['rum'].location == 'pirate' and !@props['bottle'].location
   :
     - pirate_runs_off
@@ -101,6 +106,9 @@ outcomes:
     if @player.location == 'lagoon'
       "The tide is out.\n"
     end
+
+  warn_that_torch_will_go_out: |
+    "Your torch will run out in 24 turns!\n"
 
   pirate_runs_off: |
     @characters['pirate'].location = 'attic'
