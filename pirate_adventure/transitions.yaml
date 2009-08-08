@@ -32,6 +32,13 @@ conditions:
     - warn_that_torch_will_go_out
 
   ?
+    - @player.location == @characters['parrot'].location
+        && @characters['parrot'].location != @characters['pirate'].location
+        && @characters['parrot'].location != @props['crackers'].location
+  :
+    - parrot_flies_off
+
+  ?
     - @props['rum'].location == 'pirate' and !@props['bottle'].location
   :
     - pirate_runs_off
@@ -109,6 +116,12 @@ outcomes:
 
   warn_that_torch_will_go_out: |
     "Your torch will run out in 24 turns!\n"
+
+  parrot_flies_off: |
+    if @props['crackers'].location != 'player'
+      @characters['parrot'].location = @props['crackers'].location
+      "The parrot flies off looking very unhappy...\n"
+    end
 
   pirate_runs_off: |
     @characters['pirate'].location = 'attic'
