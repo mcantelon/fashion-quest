@@ -19,6 +19,8 @@ logic: |
 
     else
 
+      game.state['last_location'] = location
+
       player.location = locations[location].exits[direction]['destination']
 
       return '>look'
