@@ -16,10 +16,19 @@ parrot:
           output << "The Parrot cries: 'Pieces of eight!'\n"
 
         when 2:
-          output << "The Parrot cries: 'Check the book, matey!'\n"
+          if @props['flyer'].location == nil
+            output << "The Parrot cries: 'Check the book, matey!'\n"
+          end
 
         when 3:
-          output << "The Parrot cries: 'Check the chest, matey!'\n"
+          if @props['map'].traits['visible'] == false
+            output << "The Parrot cries: 'Check the chest, matey!'\n"
+          end
+
+        when 4:
+          if @props['bag'].traits['opened'] == false
+            output << "The Parrot cries: 'Check the bag, matey!'\n"
+          end
       end
 
       # The parrot occasionally eats a cracker if player has them
