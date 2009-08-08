@@ -1,8 +1,30 @@
 Fashion Quest
 
--maybe sleep should be a character state or something :|
--wake pirate
--moving pirate to shore ... how?
+Parrot:
+-if crackers or pirate aren't in the same room at the parrot, the parrot flies off looking very unhappy and goes to crackers
+-make sure pirate doesn't rush off to go to sleep when back at the first beach
+
+-parrot says "Check the bag matey" if bag not opened or matches in bag
+-torch burns for 150 turns, you get warning "LIGHT RUNS OUT IN 24 TURNS" at 125
+-"LIGHT RAN OUT!"
+
+
+NAMING:
+-id, name, description
+-props: singular (pronoun: it), plural (pronoun: they), proper (no pronoun) / gender (default none)
+-character: singluar (he/she/it), plural (the <noun>s), proper (no pronoun) / gender (default none)
+-doors too?
+
+-maybe noun type defaults to singular 
+
+-should include init logic in config yaml (for includes, etc.)
+
+-naming scheme for props: id for inventory, name for listing in locations (describe method), description for looking
+
+-how exactly does pirate rum->sleep cycle work in Inform version? maybe when pirate is woken up move bottles object back to shore or something
+-moving pirate to shore ...
+  -if pirate is on ship and character is on shore move pirate to shore
+  -what about when pirate is on ship and character is on beach? then move pirate to attic and have him be asleep?
 -maybe need to make sense out of naming conundrum first as well
 
 -make look command show a nicer list like inventory command

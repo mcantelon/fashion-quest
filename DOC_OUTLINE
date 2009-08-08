@@ -107,6 +107,10 @@ State:
 -within commands, use game.state
 -example: game.state['tide'] = 'out'
 
+Style:
+-whenever possible, keep game-specific "rules" in transitions instead of commands
+-keeping game-specific logic out of commands allows them to be reused in different games
+
 Abbreviations, Synonyms, and Garbage Words:
 -the command_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined
 -for example: "n" for "go north"
@@ -129,6 +133,7 @@ Testing:
 -these commands can be used for testing
 -walkthrough files are YAML, so easy to edit
 -use the Shoes debugger... press alt-/ to see error messages
+-alert('some message') is also handy to deduce the flow of logic
 
 -no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn't exist or isn't located near player
 
