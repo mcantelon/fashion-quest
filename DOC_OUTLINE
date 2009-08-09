@@ -132,6 +132,7 @@ Testing:
 -use "load walkthrough" command to run through commands you've previously saved
 -these commands can be used for testing
 -walkthrough files are YAML, so easy to edit
+-COMPARE, TRANSCRIPT?
 -use the Shoes debugger... press alt-/ to see error messages
 -alert('some message') is also handy to deduce the flow of logic
 

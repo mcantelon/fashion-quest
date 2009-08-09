@@ -32,6 +32,11 @@ conditions:
     - warn_that_torch_will_go_out
 
   ?
+    - @player.location == 'ledge' && @props['sneakers'].location != 'player'
+  :
+    - risk_of_falling
+
+  ?
     - @player.location == @characters['parrot'].location
         && @characters['parrot'].location != @characters['pirate'].location
         && @characters['parrot'].location != @props['crackers'].location
@@ -116,6 +121,13 @@ outcomes:
 
   warn_that_torch_will_go_out: |
     "Your torch will run out in 24 turns!\n"
+
+  risk_of_falling: |
+    if rand(4) + 1 == 1
+      @player.location = 'neverneverland'
+      @state['entered_neverneverland'] = @turns
+      "I slipped and fell...\nI'm dead!\n"
+    end
 
   parrot_flies_off: |
     if @props['crackers'].location != 'player'

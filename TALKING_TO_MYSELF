@@ -1,13 +1,14 @@
 Fashion Quest
 
+-replace game's go command with pirate_adventure's go command
+-have game and pirate_adventure share go command
+
+-score needs work and doesn't end game
+
 Parrot:
--if crackers or pirate aren't in the same room at the parrot, the parrot flies off looking very unhappy and goes to crackers
 -make sure pirate doesn't rush off to go to sleep when back at the first beach
 
--parrot says "Check the bag matey" if bag not opened or matches in bag
--torch burns for 150 turns, you get warning "LIGHT RUNS OUT IN 24 TURNS" at 125
--"LIGHT RAN OUT!"
-
+-instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
 
 NAMING:
 -id, name, description
