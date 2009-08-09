@@ -18,6 +18,7 @@ class Cli
     @input_text   = ''
 
     @command_history = []
+    @command_index   = 0
 
     @commands = []
     commands_loaded = 0
@@ -62,6 +63,7 @@ class Cli
 
   end
 
+  # the flow of this function seems weird
   def keystroke(k)
 
     if k == :backspace
@@ -71,24 +73,39 @@ class Cli
     else
 
       # add keystroke to input
-      if k != :enter and k != "\n"
+      if k.class != Symbol and k != "\n"
         @input_text << k
       end
 
+      if k == :up and @command_index > 0
+        @command_index = @command_index - 1
+        @input_text = @command_history[@command_index]
+      end
+
+      if k == :down and @command_index < @command_history.size
+        @command_index = @command_index + 1
+        if @command_index == @command_history.size
+          @input_text = ''
+        else
+          @input_text = @command_history[@command_index]
+        end
+      end
+
       # if there has been input, display prompt
-      if not @input_text.empty?
+      #if not @input_text.empty?
         display_prompt(@input_text)
 
         # execute command
         if k == :enter or k == "\n"
           if @input_text != 'load walkthrough'
             @command_history << @input_text
+            @command_index = @command_history.size
           end
           issue_command(@input_text)
           display_prompt
 
         end
-      end
+      #end
     end
 
   end
