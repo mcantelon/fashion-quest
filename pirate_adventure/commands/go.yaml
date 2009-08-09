@@ -15,7 +15,7 @@ logic: |
     if locations[location].dark and !player.has_lit_item
 
       game.over = true
-      return "You trip in the dark and break your neck.\nWould you like to restart? (y/n)\n"
+      return "You trip in the dark and break your neck.\n"
 
     else
 

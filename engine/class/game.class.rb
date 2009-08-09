@@ -17,24 +17,46 @@ class Game
     # transitions are sets of triggering conditions and resulting outcomes
     @transitions = load_yaml_file("#{path}transitions.yaml")
 
-    restart
+    restart(false)
 
   end
 
-  def restart
+  def restart(require_confirmation = true, prompt = "Are you sure you want to restart your game?")
 
-    @turns = 0
-    @state = {}
-    @over  = false
+    if (require_confirmation == true)
 
-    @output_text = ''
+      restart_confirmed = confirm(prompt)
+    else
+      restart_confirmed = true
+    end
 
-    @locations  = Locations.new(@path + 'locations/')
-    @doors      = initialize_doors
-    @props      = initialize_props
-    @characters = {}
-    @player     = initialize_player
-    initialize_characters(@locations, @player, @props)
+    if restart_confirmed
+
+      @turns = 0
+      @state = {}
+      @over  = false
+
+      @output_text = ''
+
+      @locations  = Locations.new(@path + 'locations/')
+      @doors      = initialize_doors
+      @props      = initialize_props
+      @characters = {}
+      @player     = initialize_player
+      initialize_characters(@locations, @player, @props)
+    end
+
+    restart_confirmed
+
+  end
+
+  def restart_or_exit
+
+    if restart(true, "Would you like to play again?")
+      true
+    else
+      exit()
+    end
 
   end
 

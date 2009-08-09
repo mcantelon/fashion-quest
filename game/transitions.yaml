@@ -22,7 +22,6 @@ outcomes:
   death: |
     @over = true
     output = "You have died.\n"
-    output << "Would you like to restart? (y/n)"
   win: |
     # winning logic can be put here
   loss: |

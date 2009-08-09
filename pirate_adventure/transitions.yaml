@@ -81,12 +81,12 @@ outcomes:
 
   death: |
     @over = true
-    "You have died.\nWould you like to restart? (y/n)"
+    "You have died.\n"
 
   neverneverland: |
     if (@state['entered_neverneverland'] + 6) < @turns
       @over = true
-      "Since nothing is happening this adventure is over.\nWould you like to restart? (y/n)\n"
+      "Since nothing is happening this adventure is over.\n"
     end
 
   tide_in: |

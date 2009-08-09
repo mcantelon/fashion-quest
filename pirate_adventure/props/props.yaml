@@ -50,7 +50,7 @@ dubloons:
     on_get: |
       if @characters['snakes'].location == 'monastery'
         @over = true
-        "That's not very smart I'm snake bit.\nWould you like to restart? (y/n)\n"
+        "That's not very smart I'm snake bit.\n"
       end
 
 nails:

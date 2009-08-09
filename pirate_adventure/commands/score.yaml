@@ -21,8 +21,7 @@ logic: |
     output << "Score: " + score.to_s + "\n"
 
     if score == 100
-      game.over
-      output << "You have won the game!\nWould you like to restart?\n"
+      game.over = true
     end
 
   else

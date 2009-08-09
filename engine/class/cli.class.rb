@@ -64,12 +64,6 @@ class Cli
 
   def keystroke(k)
 
-    # allow player to restart if dead
-    if @game.over == true
-      restart_or_exit(k)
-      return
-    end
-
     if k == :backspace
 
       backspace
@@ -99,28 +93,30 @@ class Cli
 
   end
 
-  def restart_or_exit(k)
+  def reset
 
-    case k
-      when 'y':
-        restart
-      when 'n':
-        exit()
-    end
+      @output_text = ''
+      @output_stack.clear { }
+
+      @command_history = []
+
+      issue_command('look')
+      display_prompt
 
   end
 
   def restart
 
-    @game.restart
+    if restarted = @game.restart
 
-    @output_text = ''
-    @output_stack.clear { }
+      reset
 
-    @command_history = []
+    else
 
-    issue_command('look')
-    display_prompt
+      @input_text = ''
+    end
+
+    restarted
 
   end
 
@@ -253,10 +249,6 @@ class Cli
         input_text
     }
     @output_stack.scroll_top = @output_stack.scroll_max
-
-#if (@message_text != '')
-#  alert(output_text)
-#end
 
   end
 

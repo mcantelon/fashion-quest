@@ -39,5 +39,9 @@ Shoes.app(
   # Set up keystroke processing
   keypress do |k|
     @cli.keystroke(k)
+    if @game.over
+      @game.restart_or_exit
+      @cli.reset
+    end
   end
 }
