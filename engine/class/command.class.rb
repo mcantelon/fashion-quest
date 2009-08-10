@@ -211,4 +211,19 @@ class Command
 
   end
 
+  def show_image(image_file)
+
+    # Show image, if any
+    if FileTest.exists?(image_file)
+      @image_stack.height = @game.config['image_height']
+      @image_stack.clear { @image_stack.image image_file }
+      @output_stack.height = (@game.config['height'] - @game.config['image_height'])
+    else
+      @image_stack.height = 0
+      @image_stack.clear { }
+      @output_stack.height = @game.config['height']
+    end
+
+  end
+
 end

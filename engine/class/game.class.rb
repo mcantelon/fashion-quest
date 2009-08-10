@@ -429,8 +429,6 @@ class Game
 
   end
 
-
-
   def event(object, type)
 
     if object.events
