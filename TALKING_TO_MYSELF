@@ -1,13 +1,6 @@
 Fashion Quest
-
--replace game's go command with pirate_adventure's go command
--have game and pirate_adventure share go command
-
--score needs work and doesn't end game
-
-Parrot:
--make sure pirate doesn't rush off to go to sleep when back at the first beach
-
+-load game should be built-in
+-score isn't quite like the real game's score command
 -instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
 
 NAMING:
@@ -21,12 +14,6 @@ NAMING:
 -should include init logic in config yaml (for includes, etc.)
 
 -naming scheme for props: id for inventory, name for listing in locations (describe method), description for looking
-
--how exactly does pirate rum->sleep cycle work in Inform version? maybe when pirate is woken up move bottles object back to shore or something
--moving pirate to shore ...
-  -if pirate is on ship and character is on shore move pirate to shore
-  -what about when pirate is on ship and character is on beach? then move pirate to attic and have him be asleep?
--maybe need to make sense out of naming conundrum first as well
 
 -make look command show a nicer list like inventory command
 
@@ -43,33 +30,24 @@ NEXT:
 -maybe have "talk <character>" command to get some hints as to what can be talked about
 
 NEXT:
-- make a transition so when you first go to the shore, the pirate follows
-- then make it so when you give him the bottles, he goes to sleep wherever he goes to sleep
-- when you wake the pirate he'll go back to the ship I guess then you can sail again
-
-NEXT:
 - make prop attack_strength property into traits
 
 NEXT:
 - check new_pirate_notes.txt
 
 NEXT:
-- can get parrot, can't get parrot in shack unless pirate isn't there... maybe can use on_get logic?
+-will pirate stop you from getting parrot?
 
 NEXT: add "prop_anywhere" argument support for commands that work on props that don't have
 a location yet (i.e. building or conjuring)
 
 NEXT: migrate properties to traits
 
--when does the parrot return to the shack? when does parrot fly off? maybe when you got no crackers?
-
 -when you get water
   -changes bottle's description
   -lets you know the water is in the bottle
   -changes water location to 'limbo'
 Bottle of salt water
-
--make sure to copy pirate version of get and go commands to main commands
 
 Exits:
 -have option to add exit that isn't visible by default (or just have it so dynamic 
@@ -87,17 +65,11 @@ or...
 -bottle/water thing is inelegant... water should get contained in bottle
 
 -in lagoon all exits but north go back to beach
--you need safety sneakers or you slip off the window after a few turns
 
 CAVE ROOM 1 (*S2 *E3 *W foot_of_hill *D pit)
 CAVE ROOM 2 (*N1 *E foot_of_hill W3)
 CAVE ROOM 3 (*N1 *S foot_of_hill *E2 *W4)
 CAVE ROOM 4 (*S foot_of_hill *E foot_of_hill *W3)
-
-Bugs:
-
-  -make sure character events in original game work... prolly don't cuz they're set up to have it pick a random
-   one
 
 Refactoring?
 
@@ -143,7 +115,6 @@ Finishing:
       -
   -review IF engine framework comparisons: put anything I don't want to do right now on roadmap
   -roadmap will outline goals for each point release
-  -have semi-enjoyable sample adventure
 
 Maybe:
 
@@ -160,7 +131,6 @@ Roadmap:
   -proof coding style
   -add unit tests to classes
   -document (rdoc and human doc)
-  -create demo game
 
 Remember:
 
