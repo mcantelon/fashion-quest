@@ -10,8 +10,6 @@ logic: |
 
   noun = arg['noun']
 
-  #noun = '' if not noun
-
   output = ''
 
   if noun
