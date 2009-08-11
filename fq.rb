@@ -1,6 +1,11 @@
 require 'engine/setup.rb'
 
-Shoes.app do
+Shoes.app(
+  :title     => '',
+  :width     => 300,
+  :height    => 100,
+  :resizable => true
+) {
 
   def main(game_selector, app_base_path, game_path, config)
 
@@ -63,8 +68,10 @@ Shoes.app do
   para "Choose game:"
   game_select = list_box :items => game_directories
   btn = button 'OK' do
-    game_path = app_base_path + '/' + game_select.text() + '/'
-    config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
-    main(app, app_base_path, game_path, config)
+    if game_select.text()
+      game_path = app_base_path + '/' + game_select.text() + '/'
+      config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
+      main(app, app_base_path, game_path, config)
+    end
   end
-end
+}
