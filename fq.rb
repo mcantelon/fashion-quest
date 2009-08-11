@@ -1,47 +1,70 @@
-app_base_path = File.expand_path(File.dirname(__FILE__))
-game_path     = ARGV[1] ? ARGV[1] + '/' : 'game/'
-
-if not File.directory? game_path
-  game_path = app_base_path + '/' + game_path
-end
-
 require 'engine/setup.rb'
 
-config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
+Shoes.app do
 
-Shoes.app(
-  :title     => config['title'],
-  :width     => config['width'],
-  :height    => config['height'],
-  :resizable => config['resizable']
-) {
+  def main(game_selector, app_base_path, game_path, config)
 
-  # Initialize image display area
-  @image_stack = stack :background => white,
-    :width => config['width'],
-    :height => config['image_height']
+    Shoes.app(
+      :title     => config['title'],
+      :width     => config['width'],
+      :height    => config['height'],
+      :resizable => config['resizable']
+    ) {
 
-  # Initialize output area
-  @output_stack = stack :scroll => true,
-    :width => config['width'],
-    :height => (config['height'] - config['image_height'])
-#  @output_stack.hide
+      # Close game selector
+      game_selector.close
 
-  # Initialize game
-  @game = Game.new(config, app_base_path, game_path)
+      # Initialize image display area
+      @image_stack = stack :background => white,
+        :width => config['width'],
+        :height => config['image_height']
 
-  # Initialize CLI (showing/hiding the output stack fixes a platform-specific issue)
-  @cli = Cli.new :output_stack => @output_stack, :image_stack => @image_stack, :game => @game, :initial_text => config['startup_message']
-  @cli.issue_command('look', false)
-#  @output_stack.show
-  @cli.display_prompt
+      # Initialize output area
+      @output_stack = stack :scroll => true,
+        :width => config['width'],
+        :height => (config['height'] - config['image_height'])
 
-  # Set up keystroke processing
-  keypress do |k|
-    @cli.keystroke(k)
-    if @game.over
-      @game.restart_or_exit
-      @cli.reset
+      # Initialize game
+      @game = Game.new(config, app_base_path, game_path)
+
+      # Initialize CLI (showing/hiding the output stack fixes a platform-specific issue)
+      @cli = Cli.new :output_stack => @output_stack, :image_stack => @image_stack, :game => @game, :initial_text => config['startup_message']
+      @cli.issue_command('look', false)
+      @cli.display_prompt
+
+      # Set up keystroke processing
+      keypress do |k|
+        @cli.keystroke(k)
+        if @game.over
+          @game.restart_or_exit
+          @cli.reset
+        end
+      end
+    }
+
+  end
+
+  app_base_path = File.expand_path(File.dirname(__FILE__))
+
+  # can this get factored into an include?
+  game_directories = []
+
+  Dir.entries(app_base_path).each do |entry|
+    path = app_base_path + '/' + entry
+    if path != '.' && path != '..' && FileTest.directory?(path)
+      Dir.entries(path).each do |child_entry|
+        if child_entry == 'config.yaml'
+          game_directories << entry
+        end
+      end
     end
   end
-}
+
+  para "Choose game:"
+  game_select = list_box :items => game_directories
+  btn = button 'OK' do
+    game_path = app_base_path + '/' + game_select.text() + '/'
+    config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
+    main(app, app_base_path, game_path, config)
+  end
+end
