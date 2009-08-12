@@ -4,20 +4,31 @@ def game_selector(app, app_base_path)
 
   # To do: put logic to return game path and config into a function
   if game_directories.size == 1
-    game_path = app_base_path + '/' + game_directories.first + '/'
-    config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
-    main(app, app_base_path, game_path, config)
+
+    game_selector_launch(app, app_base_path, game_directories.first)
+
   else
-    para "Choose game:"
+
+    text = para "Choose game:"
+    text.align = 'center'
+
     game_select = list_box :items => game_directories
+
     btn = button 'OK' do
       if game_select.text()
-        game_path = app_base_path + '/' + game_select.text() + '/'
-        config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
-        main(app, app_base_path, game_path, config)
+        game_selector_launch(app, app_base_path, game_select.text())
       end
     end
+
   end
+
+end
+
+def game_selector_launch(app, app_base_path, game_directory)
+
+  game_path = app_base_path + '/' + game_directory + '/'
+  config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
+  main(app, app_base_path, game_path, config)
 
 end
 
