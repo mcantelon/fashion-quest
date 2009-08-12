@@ -1,4 +1,7 @@
 require 'yaml'
+
+require 'engine/game_selector.rb'
+
 require 'engine/module/handles_yaml_files.module.rb'
 require 'engine/module/parses_commands.module.rb'
 require 'engine/module/uses_weapons.module.rb'

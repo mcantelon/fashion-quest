@@ -7,7 +7,8 @@ Shoes.app(
   :resizable => true
 ) {
 
-  def main(game_selector, app_base_path, game_path, config)
+  # Main loop of game
+  def main(game_selector_window, app_base_path, game_path, config)
 
     Shoes.app(
       :title     => config['title'],
@@ -17,7 +18,7 @@ Shoes.app(
     ) {
 
       # Close game selector
-      game_selector.close
+      game_selector_window.close
 
       # Initialize image display area
       @image_stack = stack :background => white,
@@ -49,29 +50,10 @@ Shoes.app(
 
   end
 
+  # Application path is the directory in which this file lives
   app_base_path = File.expand_path(File.dirname(__FILE__))
 
-  # can this get factored into an include?
-  game_directories = []
+  # Allow player to select game, if applicable, before proceeding to main loop
+  game_selector(app, app_base_path)
 
-  Dir.entries(app_base_path).each do |entry|
-    path = app_base_path + '/' + entry
-    if path != '.' && path != '..' && FileTest.directory?(path)
-      Dir.entries(path).each do |child_entry|
-        if child_entry == 'config.yaml'
-          game_directories << entry
-        end
-      end
-    end
-  end
-
-  para "Choose game:"
-  game_select = list_box :items => game_directories
-  btn = button 'OK' do
-    if game_select.text()
-      game_path = app_base_path + '/' + game_select.text() + '/'
-      config = File.open("#{game_path}config.yaml", 'r') { |f| YAML::load(f.read) }
-      main(app, app_base_path, game_path, config)
-    end
-  end
 }
