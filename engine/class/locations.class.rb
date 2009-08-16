@@ -149,11 +149,15 @@ class Locations
     output = ''
 
     # describe any characters in the location
+    characters_seen = []
+
     characters.each do |character, character_data|
       if characters[character].location == @name
-        output << "You see #{characters[character].noun}.\n"
+        characters_seen << character
       end
     end
+
+    output << describe_game_components(characters_seen)
 
     output
 
@@ -164,11 +168,15 @@ class Locations
     output = ''
 
     # describe any doors in the location
+    doors_seen = []
+
     doors.each do |door, door_data|
       if doors[door].locations.include?(@name)
-        output << "You see a #{doors[door].name}.\n"
+        doors_seen << door
       end
     end
+
+    output << describe_game_components(doors_seen)
 
     output
 
@@ -179,10 +187,36 @@ class Locations
     output = ''
 
     # describe any props in the location
+    props_seen = []
+
     props.each do |prop, prop_data|
       if props[prop].location == @name and props[prop].traits['visible'] == true
-        output << "You see a #{props[prop].name}.\n"
+        props_seen << prop
       end
+    end
+
+    output << describe_game_components(props_seen)
+
+    output
+
+  end
+
+  def describe_game_components(components)
+
+    output = ''
+
+    if components.size > 0
+      output << "You see: "
+      component_output = ''
+      components.each do |prop|
+        if component_output != ''
+           component_output << ', '
+        end
+        component_output << prop
+      end
+      component_output << ".\n"
+
+      output << component_output
     end
 
     output
