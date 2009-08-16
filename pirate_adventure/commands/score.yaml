@@ -8,19 +8,27 @@ logic: |
 
   if location == 'apartment'
 
-    score = 0
+    score  = 0
+    stored = 0
 
     if props['dubloons'].location == 'apartment' || props['dubloons'].location == 'player'
       score = score + 50
+      stored = stored + 1
     end
 
     if props['stamps'].location == 'apartment' || props['stamps'].location == 'player'
       score = score + 50
+      stored = stored + 1
     end
 
-    output << "Score: " + score.to_s + "\n"
+    output << "Stored " + stored.to_s + " treasures\n"
+
+    output << "Scale 0-100 that's " + score.to_s + "\n"
 
     if score == 100
+
+      output << "YOU WON!\n"
+      output << "Adventure over!\n"
       game.over = true
     end
 

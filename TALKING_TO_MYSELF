@@ -1,13 +1,17 @@
 Fashion Quest
 -load game should be built-in
--score isn't quite like the real game's score command
 -instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
+
+"The pirate says 'First ye be getting that accursed thing off of me ship!'"
+(when you set sail but have book)
 
 NAMING:
 -id, name, description
 -props: singular (pronoun: it), plural (pronoun: they), proper (no pronoun) / gender (default none)
 -character: singluar (he/she/it), plural (the <noun>s), proper (no pronoun) / gender (default none)
 -doors too?
+
+-maybe noun/noun_cap paradigm will work? try it
 
 -maybe noun type defaults to singular 
 
