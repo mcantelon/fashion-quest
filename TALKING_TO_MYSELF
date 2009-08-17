@@ -1,138 +1,96 @@
 Fashion Quest
--load game should be built-in
--instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
 
-"The pirate says 'First ye be getting that accursed thing off of me ship!'"
-(when you set sail but have book)
+Notes:
 
-NAMING:
--id, name, description
--props: singular (pronoun: it), plural (pronoun: they), proper (no pronoun) / gender (default none)
--character: singluar (he/she/it), plural (the <noun>s), proper (no pronoun) / gender (default none)
--doors too?
+[High priority]
 
--maybe noun/noun_cap paradigm will work? try it
-
--maybe noun type defaults to singular 
-
+-add GPL
+-make sure command code is civilized
+-make old demo game make some sense
+-maybe have "talk <character>" command to get some hints as to what can be talked about
 -should include init logic in config yaml (for includes, etc.)
+-instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
+-further refactoring of location describe logic
+-de-weirdify location class
+-have location exit visibility option
+-is there a description property for exits?
 
--naming scheme for props: id for inventory, name for listing in locations (describe method), description for looking
+[Medium priority]
 
--make look command show a nicer list like inventory command
-
+-what is player name for?
+-in lagoon all exits but north go back to beach
+-work out what things are too big to go through crack and set their sizes
+-bottle/water thing is inelegant... water should get contained in bottle
+-what do plans say when read?
+-finish migrating propertis to traits
+-add "prop_anywhere" argument support for commands that work on props that don't have a location yet (i.e. building or conjuring)
 -on_exchange event... what if different events for different types of exchanges?
 
--need to clarify how naming works (noun, etc.)
--for descriptions: id, short, long?
+-Naming
+  -id, name, description
+  -props: singular (pronoun: it), plural (pronoun: they), proper (no pronoun) / gender (default none)
+  -character: singluar (he/she/it), plural (the <noun>s), proper (no pronoun) / gender (default none)
+  -doors too?
+  -maybe noun/noun_cap paradigm will work? try it
+  -naming scheme for props: id for inventory, name for listing in locations (describe method), description for looking
+  -to test naming could create function that lists all objects and possible names for them
+
+-RDOC documentation
+
 -<any> works, but maybe something other than any ... anything? component? object? thing? noun?
 -should get prop and door traits by default if not set by yaml to lessen errors in
  commands (we do this for characters)... test this by looping through everything and trying to access traits
 
-NEXT:
--make old game make some sense... it is primarily to show character behaviour
--maybe have "talk <character>" command to get some hints as to what can be talked about
+[Low priority]
 
-NEXT:
-- make prop attack_strength property into traits
+  Feature enhancements:
 
-NEXT:
-- check new_pirate_notes.txt
+    Putting:
+    -how to implement 'put'... only for props, not characters... uses mechanism like exchange
+      -put together gun and silencer
+      -put cake in oven
+      -look in oven
+      -get cake from oven
 
-NEXT:
--will pirate stop you from getting parrot?
+    Naming:
+    -characters and props should have gender for pronoun support
+    -characters and props should have plural=true as well
+    -characters and props should have proper=true as well (look at search command to see why)
+    -in characters, make sure replacing of "name" with "id" doesn't cause problems
 
-NEXT: add "prop_anywhere" argument support for commands that work on props that don't have
-a location yet (i.e. building or conjuring)
+  Finishing:
 
-NEXT: migrate properties to traits
-
--when you get water
-  -changes bottle's description
-  -lets you know the water is in the bottle
-  -changes water location to 'limbo'
-Bottle of salt water
-
-Exits:
--have option to add exit that isn't visible by default (or just have it so dynamic 
- exits aren't shown, make it dependent to add a description)
-or...
--should there be a visible property for exits (for hidden exits?)
--should there be a description property for exits (for fancier language?)
-
--what do plans say when read?
-
--clean up event handler situation
-
--make it so "You see XXX" doesn't show each item on a new line... gets wacky
--work out what things are too big to go through crack and set their sizes
--bottle/water thing is inelegant... water should get contained in bottle
-
--in lagoon all exits but north go back to beach
-
-CAVE ROOM 1 (*S2 *E3 *W foot_of_hill *D pit)
-CAVE ROOM 2 (*N1 *E foot_of_hill W3)
-CAVE ROOM 3 (*N1 *S foot_of_hill *E2 *W4)
-CAVE ROOM 4 (*S foot_of_hill *E foot_of_hill *W3)
-
-Refactoring?
-
-  -can character room exit getting be refactored? (maybe exits function for room class?)
-  -what is player name for?
-
-  -look at commands... make sure the code looks civilized
-
-Feature enhancements:
-
-  Putting:
-  -how to implement 'put'... only for props, not characters... uses mechanism like exchange
-    -put together gun and silencer
-    -put cake in oven
-    -look in oven
-    -get cake from oven
-
-  Naming:
-  -characters and props should have gender for pronoun support
-  -characters and props should have plural=true as well
-  -characters and props should have proper=true as well (look at search command to see why)
-  -in characters, make sure replacing of "name" with "id" doesn't cause problems
-
-Finishing:
-
-  -refine existing code/data structures
-  -test on all platforms
-  -versions
-    -v0.5a will be first version
-      -resolve remaining issues
-      -rough out roadmap
-    -0.6
-      -begin unit tests
-      -firm up whether class methods are public or private
-      -rough out documentation
-    -0.7
-      -complete documentation
-    -0.8
-      -
-    -0.9
-      -
-    -1
-      -
-  -review IF engine framework comparisons: put anything I don't want to do right now on roadmap
-  -roadmap will outline goals for each point release
+    -refine existing code/data structures
+    -test on all platforms
+    -versions
+      -v0.5a will be first version
+        -resolve remaining issues
+        -rough out roadmap
+      -0.6
+        -begin unit tests
+        -firm up whether class methods are public or private
+        -rough out documentation
+      -0.7
+        -complete documentation
+      -0.8
+        -
+      -0.9
+        -
+      -1
+        -
+    -review IF engine framework comparisons: put anything I don't want to do right now on roadmap
+    -roadmap will outline goals for each point release
 
 Maybe:
 
   -change the necklace to shoes, have it so the shoes can be given to another character
-  -add GPL
   -move appropriate synonyms to command_abbreviations
-  -locations and player should be singletons
   -change 'prop_404' to 'not_found_message'
   -if character is dead and has stuff on him, hint at that during look
   -add alert if garbage word appears in command keywords and filter out
 
 Roadmap:
 
-  -proof coding style
   -add unit tests to classes
   -document (rdoc and human doc)
 
