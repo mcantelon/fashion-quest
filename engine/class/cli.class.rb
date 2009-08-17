@@ -144,6 +144,16 @@ class Cli
         @output_text = ''
         @input_text =  ''
 
+      when 'load':
+        @game.load(ask_open_file)
+        output_add("Game loaded.")
+        @input_text = ''
+
+      when 'save':
+        @game.save(ask_open_file)
+        output_add("Game saved.")
+        @input_text = ''
+
       when 'save walkthrough':
         save_walkthrough
 
