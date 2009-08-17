@@ -16,34 +16,15 @@ logic: |
 
     description = ''
 
-    # If attempting to look at a character, check for description
-    if noun.class == Character
-      if noun.dead == true
-        description = "#{noun.noun_cap} appears to be dead.\n"
-      elsif noun.description
-        description = noun.description + "\n"
-      end
+    if noun.methods.include?('dead') && noun.dead == true
+      description << "#{noun.noun_cap} appears to be dead.\n"
+    elsif noun.description
+      description << noun.description + "\n"
+    else
+      description << "You see nothing special.\n"
     end
 
-    # If attempting to look at an prop, check for description and trigger on_look event
-    if noun.class == Prop
-      if noun.description
-        description = noun.description + "\n"
-      end
-      description << game.event(noun, 'on_look')
-    end
-
-    # If attempting to look at a door, check for descripton
-    if noun.class == Door
-      if noun.description
-        description = noun.description + "\n"
-      end
-    end
-
-    # If no description was found, inform user
-    if description == ''
-      description = "You see nothing special.\n"
-    end
+    description << game.event(noun, 'on_look')
 
     output = description
 
