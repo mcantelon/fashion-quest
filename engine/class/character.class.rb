@@ -159,12 +159,6 @@ class Character < GameComponent
     @player.hp = @player.hp - damage
     output << "You now have #{@player.hp.to_s} HP.\n"
 
-    # report if player has been killed
-    #if @player.hp < 1
-    #  output << "You are dead.\n"
-    #  @player.dead = true
-    #end
-
     output
 
   end
@@ -244,4 +238,3 @@ class Character < GameComponent
   end
 
 end
-

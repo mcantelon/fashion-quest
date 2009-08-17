@@ -27,10 +27,6 @@ class Command
           # test submitted lexemes against this syntax
           valid = try_syntax_keywords(syntax_lexemes, lexemes)
 
-          # arg, prop, and character are all variables meant to be utilized by command logic
-          #arg  = {}
-          #prop = character = ''
-
           # if keywords match, test references
           if valid
 
@@ -86,7 +82,6 @@ class Command
      false
     end
 
-    #return false
   end
 
   def try_syntax_keywords(syntax_lexemes, submitted_lexemes)
@@ -117,8 +112,7 @@ class Command
 
     # arg, prop, and character are all variables meant to be utilized by command logic
     arg   = {}
-    door = prop = character = any = nil
-    error = nil
+    door = prop = character = any = error = nil
 
     syntax_lexemes.each do |lexeme|
 

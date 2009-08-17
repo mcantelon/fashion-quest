@@ -91,9 +91,9 @@ class Player
     @props.each do |prop, data|
       if data.location == @location
         if data.traits['buried']
-          @props[prop].traits['buried'] = false
+          @props[prop].traits['buried']   = false
           @props[prop].traits['portable'] = true
-          @props[prop].traits['visible'] = true
+          @props[prop].traits['visible']  = true
 
           output << "You found something!\n"
         end
@@ -157,4 +157,3 @@ class Player
   end
 
 end
-

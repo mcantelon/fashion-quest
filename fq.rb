@@ -34,11 +34,18 @@ Shoes.app(
       @game = Game.new(config, app_base_path, game_path)
 
       # Initialize CLI (showing/hiding the output stack fixes a platform-specific issue)
-      @cli = Cli.new :output_stack => @output_stack, :image_stack => @image_stack, :game => @game, :initial_text => config['startup_message']
+      @cli = Cli.new :output_stack => @output_stack,
+        :image_stack => @image_stack,
+        :game => @game,
+        :initial_text => config['startup_message']
+
+      # Issue 'look' command to begin game (perhaps this should be a config option?)
       @cli.issue_command('look', false)
+
+      # Display CLI prompt
       @cli.display_prompt
 
-      # Set up keystroke processing
+      # Process keystrokes
       keypress do |k|
         @cli.keystroke(k)
         if @game.over

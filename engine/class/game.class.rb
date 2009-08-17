@@ -1,13 +1,9 @@
-# I am a walrus!
-#
 class Game
 
   attr_accessor :state, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over
 
   include Handles_YAML_Files
 
-  # I am a pig!
-  #
   def initialize(config, app_base_path, path = 'game/')
 
     @config        = config
@@ -60,8 +56,7 @@ class Game
 
   end
 
-  # ah shit this doesn't work cuz we can't set things
-  # maybe this should be called component or something instead of being weird
+  # maybe this should be called component or something more descriptive
   def [](name)
 
     # Need to figure out how to deal with this...
@@ -92,17 +87,17 @@ class Game
     player_data = load_yaml_file(player_config_file)
 
     if player_data
-      # create object from hash
-      Player.new \
+
+      player = Player.new \
         :props => @props,
-        :characters => @characters,
-        :name => player_data['name'],
-        :hp => player_data['hp'],
-        :strength => player_data['strength'],
-        :dead => player_data['dead'],
-        :location => player_data['location']
+        :characters => @characters
+
+      map_hash_to_object_attributes(player, player_data)
+
     else
+
       error('No player data found at ' + player_config_file)
+
     end
 
   end
@@ -122,13 +117,16 @@ class Game
         character_data = load_yaml_file(character_file)
 
         if character_data
+
           # create objects from hash of object hashes
           character_data.each do |id, character_definition|
+
             character = Character.new :locations => locations, :player => player, :props => props
             @characters[id] = map_hash_to_object_attributes(character, character_definition)
 
             # set object id, so it can be read
             @characters[id].id = id
+
           end
         end
       end

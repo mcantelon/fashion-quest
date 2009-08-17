@@ -2,14 +2,13 @@ def game_selector(app, app_base_path)
 
   game_directories = game_selector_directories(app_base_path)
 
-  # To do: put logic to return game path and config into a function
   if game_directories.size == 1
 
     game_selector_launch(app, app_base_path, game_directories.first)
 
   else
 
-    text = para "Choose game:"
+    text       = para "Choose game:"
     text.align = 'center'
 
     game_select = list_box :items => game_directories

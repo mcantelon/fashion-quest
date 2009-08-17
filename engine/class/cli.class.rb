@@ -91,21 +91,17 @@ class Cli
         end
       end
 
-      # if there has been input, display prompt
-      #if not @input_text.empty?
-        display_prompt(@input_text)
+      display_prompt(@input_text)
 
-        # execute command
-        if k == :enter or k == "\n"
-          if @input_text != 'load walkthrough'
-            @command_history << @input_text
-            @command_index = @command_history.size
-          end
-          issue_command(@input_text)
-          display_prompt
-
+      # execute command
+      if k == :enter or k == "\n"
+        if @input_text != 'load walkthrough'
+          @command_history << @input_text
+          @command_index = @command_history.size
         end
-      #end
+        issue_command(@input_text)
+        display_prompt
+      end
     end
 
   end
