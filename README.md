@@ -9,13 +9,15 @@ It uses Shoes for cross-platform interface and is thus written in the Ruby.
 Games created with the framework define the game using YAML files and bits
 of Ruby.
 
-The framework is in progress. To test the framework I am converting the 1978
-game Pirate Adventure to the framework. This is not yet complete!
+The framework is in progress. Two test games come with the source. The game
+"Fashion Quest: Daydream" is very small and mainly for demo purposes. It lives
+in the "game" directory. The game "Pirate Adventure Knockoff" is a port of the
+1978 text adventure "Pirate Adventure" by Scott Adams and lives in the
+"pirate_adventure" directory.
 
-You can see where things are at by typing:
-
-  shoes fq.rb pirate_adventure
+To play either of these use Shoes to run fq.rb and select which you'd like
+to play.
 
 Some super rough documentation is present as DOC_OUTLINE.
 
-TALKING_TO_MYSELF is my private time.
+TALKING_TO_MYSELF is crude notes to myself.
