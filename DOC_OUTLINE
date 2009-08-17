@@ -6,6 +6,10 @@ Design Aims:
 -leverage existing language
 -imposes some structure, but aims to be as extensible as possible
 
+Playing:
+-to start you game run fq.run using Shoes
+-if there is more than one game specification directory in the same directory as fq.rb you'll be prompted with a game selector
+
 Game:
 -game is defined by files within the the game's base path
 -the game base path is, by default, "game" but can be changed by specifying an alternate path as a command line argument
