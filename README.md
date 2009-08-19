@@ -21,3 +21,7 @@ to play.
 Some super rough documentation is present as DOC_OUTLINE.
 
 TALKING_TO_MYSELF is crude notes to myself.
+
+The yard photo at game/locations/images/yard.jpg is by Patrick Q, (c)
+Creative Commons Attribution-Noncommercial 2.0 Generic. It was cropped.
+His other photos can be seen at http://www.flickr.com/photos/patrick_q.
