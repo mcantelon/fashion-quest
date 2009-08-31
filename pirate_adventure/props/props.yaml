@@ -1,18 +1,14 @@
 --- 
 crackers:
-  name: crackers
   location: apartment
 
 sneakers:
-  name: sneakers
   location: apartment
 
 rum:
-  name: rum
   location: apartment
 
 rug:
-  name: rug
   description: The rug is nailed to the floor.
   location: apartment
   events:
@@ -25,7 +21,6 @@ rug:
     portable: false
 
 ship:
-  name: ship
   location:
   traits:
     portable: false
@@ -44,7 +39,6 @@ ship:
       "CONGRATULATIONS !!! But your Adventure is not over yet...\n"
 
 dubloons:
-  name: dubloons
   location: monastery
   events:
     on_get: |
@@ -54,7 +48,6 @@ dubloons:
       end
 
 nails:
-  name: nails
   description: The nails are lookin' good tonight.
   location: apartment
   traits:
@@ -71,12 +64,10 @@ nails:
       end
 
 hammer:
-  name: hammer
   description: It's a hammer of the claw variety.
   location: shed
 
 shovel:
-  name: shovel
   description: It's shovel-like in nature.
   location: shed
   traits:
@@ -84,28 +75,23 @@ shovel:
     can_dig: true
 
 lumber:
-  name: lumber
   description: The lumber is precut. How fortunate for you.
   location: cavern
   traits:
     size: 2
 
 sails:
-  name: sails
   description: The sails are in a pile.
   location: cavern
 
 water wings:
-  name: water wings
   description: They float.
   location: shed
 
 keys:
-  name: keys
   description: The keys are shiny. You like that.
 
 book:
-  name: book
   description: The book is large and blood-soaked.
   location: alcove
   events:
@@ -128,13 +114,11 @@ book:
     text: props/text/book.txt
 
 flyer:
-  name: flyer
   description: It's a small advertising flyer.
   traits:
     text: props/text/flyer.txt
 
 bag:
-  name: bag
   description: It's a pirate's duffel bag.
   location: attic
   traits:
@@ -143,26 +127,22 @@ bag:
       - prop: matches
 
 matches:
-  name: matches
   traits:
     firestarter: true
 
 torch:
-  name: torch
   location: attic
   traits:
     lit: false
     burn_turns: 150
 
 fish:
-  name: fish
   location: ocean
   traits:
     get_with:
     - water
 
 water:
-  name: water
   location: ocean
   traits:
     get_with:
@@ -178,11 +158,9 @@ bottles:
     buried: true
 
 bottle:
-  name: bottle
   description: The bottle is empty.
 
 box:
-  name: box
   description: The box is made of wood.
   location: field
   traits:
@@ -195,15 +173,12 @@ box:
       - prop: stamps
 
 stamps:
-  name: stamps
   description: Rare stamps!
 
 mongoose:
-  name: mongoose
   location: meadow
 
 chest:
-  name: chest
   location: shack
   events:
     on_look: |
@@ -220,14 +195,12 @@ chest:
       - prop: plans
 
 mongoose:
-  name: mongoose
   location: meadow
 
 plans:
-  name: plans
+  description: These look like plans!
 
 map:
-  name: map
   location: shack
   traits:
     portable: false
@@ -235,14 +208,12 @@ map:
     text: props/text/map.txt
 
 keel and mast:
-  name: keel and mast
   description: The keel and mast look like they belonged to a small ship.
   location: beach
   traits:
     portable: false
 
 anchor:
-  name: anchor
   description: The anchor!
   location: lagoon
   traits:

@@ -400,7 +400,7 @@ class Game
 
     if @props[prop]
 
-      output << "You open the #{@props[prop].name}.\n"
+      output << "You open #{@props[prop].noun}.\n"
 
       if @props[prop].traits['contains']
 
@@ -413,7 +413,7 @@ class Game
           # ...but maybe we should just have it be any key or any game component?
           if type == 'prop'
 
-            output << "The #{@props[prop].name} contains a #{@props[contained_prop].name}.\n"
+            output << "#{@props[prop].noun_cap} contains a #{@props[contained_prop].name}.\n"
             @props[contained_prop].location = @player.location
           end
         end

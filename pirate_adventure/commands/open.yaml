@@ -12,9 +12,10 @@ logic: |
   prop      = arg['item']
   with_prop = arg['with_prop']
 
+  # we should prolly change so just send the object, not id
   if (with_prop)
-    @game.attempt_open_item(prop.name, with_prop.name)
+    @game.attempt_open_item(prop.id, with_prop.id)
   else
-    @game.attempt_open_item(prop.name, nil)
+    @game.attempt_open_item(prop.id, nil)
   end
 

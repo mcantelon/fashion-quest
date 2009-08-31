@@ -12,7 +12,7 @@ logic: |
 
   elsif prop.traits['lit'] == true
 
-    output << "You unlight the #{prop.name}.\n"
+    output << "You unlight #{prop.noun}.\n"
     prop.traits['lit'] = false
 
   end

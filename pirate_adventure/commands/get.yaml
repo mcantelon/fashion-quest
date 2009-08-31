@@ -62,7 +62,7 @@ logic: |
 
   else
 
-    output << (game.prop_404 prop.name)
+    output << (game.prop_404 prop.noun)
 
   end
 

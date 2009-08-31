@@ -15,7 +15,7 @@ logic: |
     prop.location = locations[location].name
     output << "You drop #{prop.noun}.\n"
   else
-    output << (game.prop_404 prop.name)
+    output << (game.prop_404 prop.noun)
   end
 
   output

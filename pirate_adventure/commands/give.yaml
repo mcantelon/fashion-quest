@@ -7,11 +7,11 @@ logic: |
 
   output = ''
 
-  if game.prop_located_at(prop.name, 'player')
+  if game.prop_located_at(prop.id, 'player')
 
     if !character.dead
 
-      exchange_output = (character.attempt_exchange prop.name)
+      exchange_output = (character.attempt_exchange prop.id)
 
       if exchange_output != ''
 
@@ -29,7 +29,7 @@ logic: |
     end
   else
 
-    output << (game.prop_404 prop.name)
+    output << (game.prop_404 prop.noun)
 
   end
 
