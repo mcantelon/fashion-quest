@@ -13,21 +13,21 @@ parrot:
       # The parrot occasionally says things
       case rand(9) + 1
         when 1:
-          output << "The Parrot cries: 'Pieces of eight!'\n"
+          output << "The parrot cries: 'Pieces of eight!'\n"
 
         when 2:
           if @props['flyer'].location == nil
-            output << "The Parrot cries: 'Check the book, matey!'\n"
+            output << "The parrot cries: 'Check the book, matey!'\n"
           end
 
         when 3:
           if @props['map'].traits['visible'] == false
-            output << "The Parrot cries: 'Check the chest, matey!'\n"
+            output << "The parrot cries: 'Check the chest, matey!'\n"
           end
 
         when 4:
           if @props['bag'].traits['opened'] == false
-            output << "The Parrot cries: 'Check the bag, matey!'\n"
+            output << "The parrot cries: 'Check the bag, matey!'\n"
           end
       end
 

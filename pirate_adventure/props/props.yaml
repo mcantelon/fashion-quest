@@ -127,6 +127,7 @@ bag:
       - prop: matches
 
 matches:
+  plural: true
   traits:
     firestarter: true
 
@@ -173,6 +174,7 @@ box:
       - prop: stamps
 
 stamps:
+  plural: true
   description: Rare stamps!
 
 mongoose:

@@ -413,7 +413,7 @@ class Game
           # ...but maybe we should just have it be any key or any game component?
           if type == 'prop'
 
-            output << "#{@props[prop].noun_cap} contains a #{@props[contained_prop].name}.\n"
+            output << "#{@props[prop].noun_cap} contains #{@props[contained_prop].noun_direct}.\n"
             @props[contained_prop].location = @player.location
           end
         end

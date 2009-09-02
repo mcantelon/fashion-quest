@@ -2,29 +2,33 @@ module May_Have_Name
 
   attr_accessor :name, :proper, :plural
 
-  def noun
+  def noun(specific = true)
 
     output = ''
 
-    if @name
-
-      if @name != ''
-
-        if proper != true
-          output << 'the '
-        end
-
-        output << @name
-
-        if plural == true
-          output << 's'
-        end
-
-        return @name
-      end
+    if specific
+      prefix = 'the'
     else
+      if @plural == true
+        prefix = 'some'
+      else
+        prefix = 'a'
+      end
+    end
 
-      output << ('the ' + @id)
+    if @name
+      name = @name
+    else
+      name = id
+    end
+
+    if name != ''
+
+      if @proper != true
+        output << (prefix + ' ')
+      end
+
+      output << name
 
     end
 
@@ -35,6 +39,18 @@ module May_Have_Name
   def noun_cap
 
     noun.capitalize
+
+  end
+
+  def noun_direct
+
+    noun(false)
+
+  end
+
+  def noun_direct_cap
+
+    noun(false).capitalize
 
   end
 
