@@ -7,4 +7,4 @@ crocodiles:
     fish
   events:
     on_exchange:
-    - @location = ''; return "The croc eats the fish and leaves.\n"
+    - @location = ''; return "The crocs eat the fish and leave.\n"
