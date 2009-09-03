@@ -1,6 +1,7 @@
 --- 
-necklace: 
-  description: The necklace is made up of brightly colored beads.
+shoes:
+  plural: true 
+  description: The shoes are small and pretty.
   location: deadbeat
 leaflet: 
   description: The leaflet is faded yellow and seems to warn against something.

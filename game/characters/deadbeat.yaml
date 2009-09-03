@@ -13,7 +13,7 @@ deadbeat:
 
   exchanges: 
     smokes: 
-    - necklace
+    - shoes
     - shiv
   description: The deadbeat has watery eyes. He seems jumpy.
   hp: 6

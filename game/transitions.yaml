@@ -4,25 +4,26 @@ conditions:
     - @turns == 0
   :
     - begin
+
   ?
     - @player.hp < 1
   :
     - death
+
   ?
-    - @props['book'].location == 'yard'
+    - @props['shoes'].location == 'child'
   :
     - win
-  ?
-    - @props['book'].location == 'hallway'
-  :
-    - loss
+
 outcomes:
+
   begin: |
     # beginning logic can be put here
+
   death: |
     @over = true
     output = "You have died.\n"
+
   win: |
-    # winning logic can be put here
-  loss: |
-    # losing logic can be put here
+    @over = true
+    "You have touched the life of a child.\nCongratulations you have won these game!\n"
