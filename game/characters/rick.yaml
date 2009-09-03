@@ -1,5 +1,6 @@
 --- 
-rick: 
+rick:
+  proper: true 
   mobility: 0
   name: Rick
   gender: male

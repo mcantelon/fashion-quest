@@ -1,16 +1,13 @@
 --- 
 necklace: 
-  name: necklace
   description: The necklace is made up of brightly colored beads.
   location: deadbeat
 leaflet: 
-  name: leaflet
   description: The leaflet is faded yellow and seems to warn against something.
   location: ""
   traits:
     text: props/text/leaflet.txt
 shiv: 
-  name: shiv
   attack strength: 7
   description: The shiv looks sharp... useful.
   location: deadbeat
@@ -19,11 +16,10 @@ walking stick:
   description: The walking stick is gnarled, but sturdy.
   location: player
 smokes: 
-  name: smokes
+  plural: true
   description: The smokes look tempting.
   location: ""
 dresser: 
-  name: dresser
   description: The dresser looks like it has seen better days.
   location: bedroom
   traits:
@@ -32,13 +28,11 @@ dresser:
     contains: 
       - prop: smokes
 brass key: 
-  name: brass key
   description: The key is small and made of brass.
   location: yard
   traits:
     size: 1
 book: 
-  name: book
   description: The book is light green and seems to be about the maths.
   location: alcove
   traits:
