@@ -1,6 +1,7 @@
 --- 
-crocodile: 
-  description: The crocodile looks mean and hungry.
+crocodiles:
+  plural: true 
+  description: The crocodiles looks mean and hungry.
   location: pit
   exchanges:
     fish
