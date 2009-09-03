@@ -12,7 +12,7 @@ logic: |
 
     props.each do |prop_key, prop_data|
       if props[prop_key].location == character.id
-        output << "You find a #{prop_key}.\n"
+        output << "You find #{props[prop_key].noun_direct}.\n"
         props[prop_key].location = locations[location].name
       end
     end
