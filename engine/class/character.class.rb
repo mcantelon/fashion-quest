@@ -196,7 +196,8 @@ class Character < GameComponent
           if @events['on_exchange']
             output << event('on_exchange')
           end
-        else
+        end
+        if output == ''
           output << "#{noun_cap} takes the #{prop}.\n"
         end
         if @exchanges[prop].class == Array
@@ -208,8 +209,7 @@ class Character < GameComponent
         end
         @props[prop].location = @id
       end
-    else
-      output << "#{noun_cap} doesn't seem interested.\n"
+    #output << "#{noun_cap} doesn't seem interested.\n"
     end
 
     output
