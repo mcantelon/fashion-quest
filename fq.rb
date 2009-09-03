@@ -17,6 +17,10 @@ Shoes.app(
       :resizable => config['resizable']
     ) {
 
+      if config['startup_logic']
+        eval(config['startup_logic'])
+      end
+
       # Close game selector
       game_selector_window.close
 
