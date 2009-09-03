@@ -1,0 +1,21 @@
+---
+syntax:
+- "open <prop:item>"
+- "open <prop:item> with <prop:with_prop>"
+- "use <prop:with_prop> to open <prop:item>"
+- "open <door:item>"
+- "open <door:item> with <prop:with_prop>"
+- "use <prop:with_prop> to open <door:item>"
+
+logic: |
+
+  prop      = arg['item']
+  with_prop = arg['with_prop']
+
+  # we should prolly change so just send the object, not id
+  if (with_prop)
+    @game.attempt_open_item(prop.id, with_prop.id)
+  else
+    @game.attempt_open_item(prop.id, nil)
+  end
+
