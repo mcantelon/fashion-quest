@@ -9,7 +9,7 @@ logic: |
   game.state['paces'] = 0
 
   # If an exit exists, load destination location and issue look command
-  if (locations[location].exits[direction])
+  if (locations[location].exits && locations[location].exits[direction])
 
     # If player is trying to move around in the dark, kill player
     if locations[location].dark and !player.has_lit_item
