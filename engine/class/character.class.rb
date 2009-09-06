@@ -84,11 +84,9 @@ class Character < GameComponent
     # take note of character location and find exits
     character_initial_location = @location
 
-    character_location = @locations[@location]
+    possible_exits = @locations[@location].exits
 
-    possible_exits = character_location.exits
-
-    if possible_exits.length > 0
+    if possible_exits && possible_exits.length > 0
 
       # pick one of the exits and make it the character's new location
       exit_choice = rand(possible_exits.length)
