@@ -99,7 +99,6 @@ book:
         @props['book'].traits['visible'] = true
         @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
         set_exit('alcove', 'passage', 'passageway')
-        @state['passage_opened'] = true
         "There's a strange sound.\n";
       end
     on_open: |
