@@ -31,21 +31,6 @@ class Locations
 
   end
 
-  def opposite_direction(direction)
-
-    opposite = {
-      'north' => 'south',
-      'south' => 'north',
-      'east' => 'west',
-      'west' => 'east',
-      'up' => 'down',
-      'down' => 'up'
-    }
-
-    opposite[direction]
-
-  end
-
   def describe(doors, props, characters, light = nil)
 
     if @dark and light != true
