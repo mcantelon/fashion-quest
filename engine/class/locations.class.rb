@@ -1,6 +1,6 @@
 class Locations
 
-  attr_accessor :id, :path, :loaded, :name, :description, :dark, :exits, :revealed_exit_data, :description_notes, :image_file
+  attr_accessor :id, :path, :loaded, :name, :description, :dark, :exits, :description_notes, :image_file
 
   include Handles_YAML_Files
 
@@ -9,9 +9,6 @@ class Locations
 
     @path = path
 
-    # exits revealed by player actions get stored here
-    @revealed_exit_data = {}
-
     # additional description details revealed by player actions get stored here
     @description_notes = {}
 
@@ -19,17 +16,12 @@ class Locations
 
   def has_exit(direction)
 
-    revealed_found = false
-
-    if @revealed_exit_data[@name]
-      if @revealed_exit_data[@name][direction]
-        revealed_found = true
-      end
-    end
-
-    if @exits[direction] or revealed_found
+    if @exits[direction]
       true
+    else
+      false
     end
+
   end
 
   def add_to_description(text)
@@ -54,20 +46,6 @@ class Locations
 
   end
 
-  def revealed_exits
-
-    exits = {}
-
-    if (@revealed_exit_data[@name])
-      @revealed_exit_data[@name].each do |direction, exit_data|
-        exits[direction] = exit_data['destination']
-      end
-    end
-
-    exits
-
-  end
-
   def describe(doors, props, characters, light = nil)
 
     if @dark and light != true
@@ -81,8 +59,6 @@ class Locations
       description += @description_notes[@name] if @description_notes[@name]
 
       description << describe_characters(characters)
-
-      description << describe_revealed_exit_data(props)
 
       description << describe_doors(doors)
 
@@ -170,29 +146,6 @@ class Locations
     end
 
     output
-
-  end
-
-  def describe_revealed_exit_data(props)
-
-    description = ''
-
-    if @revealed_exit_data[@name]
-      @revealed_exit_data[@name].each do |direction, exit_data|
-        if exit_data['prop'] && exit_data['prop'] != ''
-          prop = exit_data['prop']
-          if props[prop].location == @name
-            description << "The #{exit_data['prop']} leads #{direction}.\n"
-          else
-            description << "An exit leads #{direction}.\n"
-          end
-        else
-          description << "An exit leads #{direction}.\n"
-        end
-      end
-    end
-
-    description
 
   end
 
