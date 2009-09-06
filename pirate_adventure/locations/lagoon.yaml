@@ -1,5 +1,4 @@
 lagoon: 
-  name: lagoon
   exits:
     north:
       destination: ocean

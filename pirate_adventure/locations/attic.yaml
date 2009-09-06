@@ -1,5 +1,4 @@
 attic:
-  name: attic
   exits:
     west:
       destination: passageway

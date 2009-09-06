@@ -1,5 +1,4 @@
 pit: 
-  name: pit
   exits:
     up:
       destination: cave1

@@ -1,5 +1,4 @@
 beach:
-  name: beach
   exits:
     east:
       destination: meadow

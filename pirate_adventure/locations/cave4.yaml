@@ -1,5 +1,4 @@
 cave4: 
-  name: cave4
   exits:
     south:
       destination: foot_of_hill

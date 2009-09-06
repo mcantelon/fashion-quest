@@ -1,5 +1,4 @@
 shed: 
-  name: shed
   exits:
     north:
       destination: cavern

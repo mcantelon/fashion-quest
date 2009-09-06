@@ -1,5 +1,4 @@
 field: 
-  name: field
   exits:
     west:
       destination: graveyard

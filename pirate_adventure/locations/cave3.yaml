@@ -1,5 +1,4 @@
 cave3:
-  name: cave3
   exits:
     north:
       destination: cave1

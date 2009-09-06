@@ -1,5 +1,4 @@
 ledge: 
-  name: ledge
   exits:
     window:
       destination: alcove

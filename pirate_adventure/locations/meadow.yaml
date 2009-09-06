@@ -1,5 +1,4 @@
 meadow:
-  name: meadow
   exits:
     east:
       destination: foot_of_hill

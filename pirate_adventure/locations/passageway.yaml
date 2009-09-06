@@ -1,5 +1,4 @@
 passageway:
-  name: passageway
   exits:
     west:
       destination: alcove

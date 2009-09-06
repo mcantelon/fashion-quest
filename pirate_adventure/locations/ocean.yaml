@@ -1,5 +1,4 @@
 ocean: 
-  name: ocean
   exits:
     north:
       destination: ocean

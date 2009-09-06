@@ -1,5 +1,4 @@
 apartment: 
-  name: apartment
   exits:
     stairs:
       destination: alcove

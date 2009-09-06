@@ -1,5 +1,4 @@
 foot_of_hill:
-  name: foot_of_hill
   exits:
     pathway:
       destination: top_of_hill

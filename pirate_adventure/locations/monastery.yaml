@@ -1,5 +1,4 @@
 monastery:
-  name: monastery
   exits:
     west:
       destination: field

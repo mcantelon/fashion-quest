@@ -1,5 +1,4 @@
 graveyard:
-  name: graveyard
   exits:
     north:
       destination: shore

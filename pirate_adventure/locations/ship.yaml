@@ -1,5 +1,4 @@
 ship:
-  name: ship
   exits:
     beach:
       destination: beach

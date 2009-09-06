@@ -1,5 +1,4 @@
 shack:
-  name: shack
   exits:
     west:
       destination: meadow

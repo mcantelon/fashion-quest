@@ -1,5 +1,4 @@
 cavern:
-  name : cavern
   exits:
     west:
       destination: hallway
