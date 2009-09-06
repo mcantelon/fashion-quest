@@ -1,0 +1,21 @@
+---
+syntax:
+- "drop <prop>"
+- "drop <character>"
+
+logic: |
+
+  if character
+    prop = character
+  end
+
+  output = ''
+
+  if prop.location == 'player'
+    prop.location = locations[location].id
+    output << "You drop #{prop.noun_direct}.\n"
+  else
+    output << (game.prop_404 prop.noun)
+  end
+
+  output
