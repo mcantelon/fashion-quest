@@ -57,19 +57,6 @@ class Locations
 
   end
 
-  # note: set_exit is to allow exits to be added whenever location loads
-  def set_exit(location, direction, destination, prop = false)
-
-    @revealed_exit_data[location] ||= {}
-    @revealed_exit_data[location][direction] = {'prop' => prop, 'destination' => destination}
-
-    if opposite_direction(direction)
-      @revealed_exit_data[destination] ||= {}
-      @revealed_exit_data[destination][opposite_direction(direction)] = {'prop' => prop, 'destination' => location}
-    end
-
-  end
-
   def has_exit(direction)
 
     revealed_found = false
