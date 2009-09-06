@@ -21,6 +21,8 @@ class Game
 
     if (require_confirmation == true)
 
+      #zzzz
+
       restart_confirmed = confirm(prompt)
     else
       restart_confirmed = true
@@ -34,7 +36,8 @@ class Game
 
       @output_text = ''
 
-      @locations  = Locations.new(@path + 'locations/')
+      #@locations  = Locations.new(@path + 'locations/')
+      @locations  = initialize_locations
       @doors      = initialize_doors
       @props      = initialize_props
       @characters = {}
@@ -51,6 +54,7 @@ class Game
     if restart(true, "Would you like to play again?")
       true
     else
+      # should add way to not exit for debugging, etc.
       exit()
     end
 
@@ -137,6 +141,49 @@ class Game
     end
 
     characters
+
+  end
+
+  def initialize_locations
+
+    @locations = {}
+
+    require 'find'
+
+    location_config_path = "#{@path}locations"
+
+    # load all commands, recursively, contained in command directory
+    Find.find(location_config_path) do |location_file|
+
+      if !FileTest.directory?(location_file) and (location_file.index('.yaml') or location_file.index('.yml'))
+
+        # character data is stored in YAML as a hash
+        location_data = load_yaml_file(location_file)
+
+        if location_data
+
+          # create objects from hash of object hashes
+          location_data.each do |id, location_definition|
+
+            # what are args?
+            location = Locations.new(location_config_path) # this line differs from character init
+            @locations[id] = map_hash_to_object_attributes(location, location_definition)
+
+            @locations[id].path = location_config_path # this line differs from character init
+
+            # set object id, so it can be read
+            @locations[id].id = id
+
+          end
+        end
+      end
+    end
+
+    if @locations.length < 1
+      error('No location config files found at ' + location_config_path)
+    end
+
+    locations
 
   end
 

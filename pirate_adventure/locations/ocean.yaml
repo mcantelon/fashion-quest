@@ -1,10 +1,10 @@
---- 
-name: ocean
-exits:
-  north:
-    destination: ocean
-  south:
-    destination: lagoon
+ocean: 
+  name: ocean
+  exits:
+    north:
+      destination: ocean
+    south:
+      destination: lagoon
 
-description: |
-  I'm in the ocean.
+  description: |
+    I'm in the ocean.

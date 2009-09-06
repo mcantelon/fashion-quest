@@ -1,9 +1,10 @@
 class Locations
 
-  attr_accessor :path, :loaded, :name, :description, :dark, :exits, :revealed_exit_data, :description_notes, :image_file
+  attr_accessor :id, :path, :loaded, :name, :description, :dark, :exits, :revealed_exit_data, :description_notes, :image_file
 
   include Handles_YAML_Files
 
+  # is this function needed?
   def initialize(path)
 
     @path = path
@@ -16,25 +17,26 @@ class Locations
 
   end
 
-  def [](name)
+  #def [](name)
 
     # don't load the location if it's already been loaded
-    if @name != name
-      load(name)
-    end
+  #  if @name != name
+  #    load(name)
+  #  end
 
-    self
+  #  self
 
-  end
+  #end
 
   def load(name)
 
-    location_file = "#{@path}#{name}.yaml"
+    location_file = "#{@path}/#{name}.yaml"
+
     location_data = load_yaml_file(location_file)
 
     if location_data
 
-      @location = location_data
+      @location = location_data[name]
 
       @name        = @location['name']
       @description = @location['description']
@@ -48,6 +50,7 @@ class Locations
           @exits[direction] = {'destination' => exit_data['destination']}
         end
       end
+
     else
       error('Location data not found at ' + "#{@path}#{name}.yaml")
     end
@@ -190,7 +193,7 @@ class Locations
     props_seen = []
 
     props.each do |prop, prop_data|
-      if props[prop].location == @name and props[prop].traits['visible'] == true
+      if props[prop].location == @id and props[prop].traits['visible'] == true
         props_seen << prop
       end
     end

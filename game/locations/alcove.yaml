@@ -1,8 +1,8 @@
---- 
-name: alcove
-exits: 
-  west:
-    destination: entrance
+alcove:
+  name: alcove
+  exits: 
+    west:
+      destination: entrance
 
-description: |
-  You are in an alcove separated from the entrance by a curtain. There are a number of shelves here.
+  description: |
+    You are in an alcove separated from the entrance by a curtain. There are a number of shelves here.

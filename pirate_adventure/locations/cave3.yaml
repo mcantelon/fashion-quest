@@ -1,15 +1,15 @@
---- 
-name: cave3
-exits:
-  north:
-    destination: cave1
-  south:
-    destination: foot_of_hill
-  east:
-    destination: cave2
-  west:
-    destination: cave4
-dark: true
+cave3:
+  name: cave3
+  exits:
+    north:
+      destination: cave1
+    south:
+      destination: foot_of_hill
+    east:
+      destination: cave2
+    west:
+      destination: cave4
+  dark: true
 
-description: |
-  I'm in a maze of caves. Exits lead north, south, east, and west.
+  description: |
+    I'm in a maze of caves. Exits lead north, south, east, and west.

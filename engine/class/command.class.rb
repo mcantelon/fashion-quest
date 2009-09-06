@@ -140,7 +140,7 @@ class Command
             # need to test that door exists and near player
             if not @game.doors[potential_door]
               error = @game.prop_404(potential_door)
-            elsif not @game.doors[potential_door].locations.include?(@game.locations[@game.player.location].name)
+            elsif not @game.doors[potential_door].locations.include?(@game.locations[@game.player.location].id)
               error = @game.prop_404(potential_door)
             end
 
@@ -158,7 +158,7 @@ class Command
             # need to test that prop exists and near player
             if not @game.props[potential_prop]
               error = @game.prop_404(potential_prop)
-            elsif @game.props[potential_prop].location != @game.locations[@game.player.location].name and
+            elsif @game.props[potential_prop].location != @game.locations[@game.player.location].id and
               @game.props[potential_prop].location != 'player'
 
               error = @game.prop_404(potential_prop)
@@ -178,7 +178,7 @@ class Command
             # need to not only test that character exists, but that it's here
             if not @game.characters[potential_character]
               error = @game.prop_404(potential_character)
-            elsif @game.characters[potential_character].location != @game.locations[@game.player.location].name and
+            elsif @game.characters[potential_character].location != @game.locations[@game.player.location].id and
               @game.characters[potential_character].location != 'player'
               error = @game.prop_404(potential_character)
             end
@@ -207,15 +207,17 @@ class Command
 
   def show_image(image_file)
 
-    # Show image, if any
-    if FileTest.exists?(image_file)
-      @image_stack.height = @game.config['image_height']
-      @image_stack.clear { @image_stack.image image_file }
-      @output_stack.height = (@game.config['height'] - @game.config['image_height'])
-    else
-      @image_stack.height = 0
-      @image_stack.clear { }
-      @output_stack.height = @game.config['height']
+    if image_file
+      # Show image, if any
+      if FileTest.exists?(image_file)
+        @image_stack.height = @game.config['image_height']
+        @image_stack.clear { @image_stack.image image_file }
+        @output_stack.height = (@game.config['height'] - @game.config['image_height'])
+      else
+        @image_stack.height = 0
+        @image_stack.clear { }
+        @output_stack.height = @game.config['height']
+      end
     end
 
   end

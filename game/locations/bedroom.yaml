@@ -1,6 +1,6 @@
---- 
-name: bedroom
+bedroom:
+  name: bedroom
 
-description: |
-  You are in a bedroom.
+  description: |
+    You are in a bedroom.
 

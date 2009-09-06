@@ -7,10 +7,10 @@ logic: |
   output = ''
 
   if prop.location == 'player'
-    prop.location = locations[location].name
+    prop.location = locations[location].id
     output << "You drop #{prop.noun}.\n"
   else
-    output << (game.prop_404 prop.name)
+    output << (game.prop_404 prop.noun)
   end
 
   output

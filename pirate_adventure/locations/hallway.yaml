@@ -1,8 +1,8 @@
----
-name: hallway
-exits:
-  east:
-    destination: cavern
+hallway:
+  name: hallway
+  exits:
+    east:
+      destination: cavern
 
-description: |
-  You are in a hallway. There is a cavern to the east.
+  description: |
+    You are in a hallway. There is a cavern to the east.

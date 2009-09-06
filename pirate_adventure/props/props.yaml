@@ -35,7 +35,7 @@ ship:
   events:
     on_build: |
       @locations['beach'].set_exit('beach', 'ship', 'ship', 'ship')
-      @locations.load('beach')
+      @locations['beach'].load('beach')
       "CONGRATULATIONS !!! But your Adventure is not over yet...\n"
 
 dubloons:
@@ -100,7 +100,7 @@ book:
         @props['book'].traits['visible'] = true
         @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
         @locations['alcove'].set_exit('alcove', 'passage', 'passageway', 'book')
-        @locations.load('alcove')
+        @locations['alcove'].load('alcove')
         @state['passage_opened'] = true
         "There's a strange sound.\n";
       end

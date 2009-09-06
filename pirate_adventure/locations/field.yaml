@@ -1,10 +1,10 @@
---- 
-name: field
-exits:
-  west:
-    destination: graveyard
-  monastery:
-    destination: monastery
+field: 
+  name: field
+  exits:
+    west:
+      destination: graveyard
+    monastery:
+      destination: monastery
 
-description: |
-  I'm in a large barren field. You see a monastery in the distance.
+  description: |
+    I'm in a large barren field. You see a monastery in the distance.

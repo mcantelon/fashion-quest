@@ -1,13 +1,13 @@
----
-name : cavern
-exits:
-  west:
-    destination: hallway
-  crack:
-    destination: top_of_hill
-  shed:
-    destination: shed
-dark: true
+cavern:
+  name : cavern
+  exits:
+    west:
+      destination: hallway
+    crack:
+      destination: top_of_hill
+    shed:
+      destination: shed
+  dark: true
 
-description: |
-  I'm in a large cavern. There's a tool shed in here. A crack leads outside. A hallway leads west.
+  description: |
+    I'm in a large cavern. There's a tool shed in here. A crack leads outside. A hallway leads west.

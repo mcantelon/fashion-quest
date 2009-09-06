@@ -1,8 +1,8 @@
---- 
-name: hallway
-exits: 
-  north:
-    destination: entrance
+hallway:
+  name: hallway
+  exits: 
+    north:
+      destination: entrance
 
-description: |
-  You are in a dimly-lit hallway.
+  description: |
+    You are in a dimly-lit hallway.

@@ -1,8 +1,8 @@
---- 
-name: pit
-exits:
-  up:
-    destination: cave1
+pit: 
+  name: pit
+  exits:
+    up:
+      destination: cave1
 
-description: |
-  I'm in a pit. A ladder leads up.
+  description: |
+    I'm in a pit. A ladder leads up.

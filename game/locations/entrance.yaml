@@ -1,14 +1,13 @@
---- 
-name: entrance
-exits: 
-  north:
-    destination: yard
-  south:
-    destination: hallway
-  east:
-    destination: alcove
+entrance:
+  exits: 
+    north:
+      destination: yard
+    south:
+      destination: hallway
+    east:
+      destination: alcove
 
-description: |
-  You are in the sunlit entranceway of a sizeable home. The walls are clean and it smells pleasant. There is no air of sadness or decay.
+  description: |
+    You are in the sunlit entranceway of a sizeable home. The walls are clean and it smells pleasant. There is no air of sadness or decay.
 
-  To the north is a door leading outside. To the east is a curtain. A hallway leads south.
+    To the north is a door leading outside. To the east is a curtain. A hallway leads south.

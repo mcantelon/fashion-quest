@@ -23,7 +23,6 @@ logic: |
       output << "#{character.noun_cap} is dead and not feeling particularly receptive.\n"
     end
   else
-    alert('a')
     output << (game.prop_404 prop.noun)
   end
 

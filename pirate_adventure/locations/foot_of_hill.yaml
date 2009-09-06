@@ -1,14 +1,14 @@
---- 
-name: foot_of_hill
-exits:
-  pathway:
-    destination: top_of_hill
-  path:
-    destination: top_of_hill
-  west:
-    destination: meadow
-  cave:
-    destination: cave1
+foot_of_hill:
+  name: foot_of_hill
+  exits:
+    pathway:
+      destination: top_of_hill
+    path:
+      destination: top_of_hill
+    west:
+      destination: meadow
+    cave:
+      destination: cave1
 
-description: |
-  I'm at the foot of a cave ridden hill, a pathway leads on up to the top.
+  description: |
+    I'm at the foot of a cave ridden hill, a pathway leads on up to the top.

@@ -1,10 +1,10 @@
---- 
-name: ship
-exits:
-  beach:
-    destination: beach
-  shore:
-    destination: beach
+ship:
+  name: ship
+  exits:
+    beach:
+      destination: beach
+    shore:
+      destination: beach
 
-description: |
-  You on a ship! You can sail towards the beach or the shore.
+  description: |
+    You on a ship! You can sail towards the beach or the shore.

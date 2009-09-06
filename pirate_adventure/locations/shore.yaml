@@ -1,10 +1,10 @@
---- 
-name: shore
-exits:
-  south:
-    destination: graveyard
-  ship:
-    destination: ship
+shore: 
+  name: shore
+  exits:
+    south:
+      destination: graveyard
+    ship:
+      destination: ship
 
-description: |
-  I'm on the shore. A path leads south.
+  description: |
+    I'm on the shore. A path leads south.

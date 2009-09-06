@@ -88,6 +88,9 @@ class Character < GameComponent
 
     # add exits created during the game, if any
     if @locations[@location].revealed_exits
+      if not character_location.exits
+        character_location.exits = {}
+      end
       possible_exits = character_location.exits.merge(@locations[@location].revealed_exits)
     else
       possible_exits = character_location.exits
