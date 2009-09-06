@@ -171,6 +171,8 @@ class Game
 
             @locations[id].path = location_config_path # this line differs from character init
 
+            @locations[id].image_file  = "#{location_config_path}/images/#{id}.jpg" # this should be changed to a function not a variable
+
             # set object id, so it can be read
             @locations[id].id = id
 
