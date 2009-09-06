@@ -17,46 +17,6 @@ class Locations
 
   end
 
-  #def [](name)
-
-    # don't load the location if it's already been loaded
-  #  if @name != name
-  #    load(name)
-  #  end
-
-  #  self
-
-  #end
-
-  def load(name)
-
-    location_file = "#{@path}/#{name}.yaml"
-
-    location_data = load_yaml_file(location_file)
-
-    if location_data
-
-      @location = location_data[name]
-
-      @name        = @location['name']
-      @description = @location['description']
-      @dark        = @location['dark']
-      @exits       = @location['exits'] ? @location['exits'] : {}
-      @image_file  = "#{@path}images/#{@name}.jpg"
-
-      # add any exits revealed by player actions
-      if @revealed_exit_data[@name]
-        @revealed_exit_data[@name].each do |direction, exit_data|
-          @exits[direction] = {'destination' => exit_data['destination']}
-        end
-      end
-
-    else
-      error('Location data not found at ' + "#{@path}#{name}.yaml")
-    end
-
-  end
-
   def has_exit(direction)
 
     revealed_found = false
