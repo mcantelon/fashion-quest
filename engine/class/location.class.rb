@@ -74,7 +74,7 @@ class Location
 
     components.each do |component_id, component_data|
       if eval(visibility_condition)
-        components_seen << component_id
+        components_seen << components[component_id].noun
       end
     end
 

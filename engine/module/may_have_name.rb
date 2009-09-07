@@ -2,6 +2,22 @@ module May_Have_Name
 
   attr_accessor :name, :proper, :plural
 
+  def noun_base
+
+    if @name
+      name = @name
+    else
+      if @proper == true
+        name = id.capitalize
+      else
+        name = id
+      end
+    end
+
+    name
+
+  end
+
   def noun(specific = true)
 
     output = ''
@@ -16,11 +32,7 @@ module May_Have_Name
       end
     end
 
-    if @name
-      name = @name
-    else
-      name = id
-    end
+    name = noun_base
 
     if name != ''
 
@@ -51,6 +63,14 @@ module May_Have_Name
   def noun_direct_cap
 
     noun(false).capitalize
+
+  end
+
+  def noun_direct_specific
+
+  end
+
+  def noun_direct_specific_cap
 
   end
 
