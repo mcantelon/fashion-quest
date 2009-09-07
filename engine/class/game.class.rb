@@ -36,8 +36,7 @@ class Game
 
       @output_text = ''
 
-      #@locations  = Locations.new(@path + 'locations/')
-      @locations  = initialize_locations
+      initialize_locations
       @doors      = initialize_doors
       @props      = initialize_props
       @characters = {}
@@ -129,44 +128,30 @@ class Game
 
     @locations = {}
 
-    require 'find'
-
     location_config_path = "#{@path}locations"
 
-    # load all commands, recursively, contained in command directory
-    Find.find(location_config_path) do |location_file|
+    recursive_find_of_yaml_file_data(location_config_path).each do |location_data|
 
-      if !FileTest.directory?(location_file) and (location_file.index('.yaml') or location_file.index('.yml'))
+      # create objects from hash of object hashes
+      location_data.each do |id, location_definition|
 
-        # character data is stored in YAML as a hash
-        location_data = load_yaml_file(location_file)
+        location = Locations.new(location_config_path)
 
-        if location_data
+        @locations[id] = map_hash_to_object_attributes(location, location_definition)
 
-          # create objects from hash of object hashes
-          location_data.each do |id, location_definition|
+        @locations[id].path = location_config_path
 
-            # what are args?
-            location = Locations.new(location_config_path) # this line differs from character init
-            @locations[id] = map_hash_to_object_attributes(location, location_definition)
+        @locations[id].image_file  = "#{location_config_path}/images/#{id}.jpg" # this should be changed to a function not a variable
 
-            @locations[id].path = location_config_path # this line differs from character init
+        # set object id, so it can be read
+        @locations[id].id = id
 
-            @locations[id].image_file  = "#{location_config_path}/images/#{id}.jpg" # this should be changed to a function not a variable
-
-            # set object id, so it can be read
-            @locations[id].id = id
-
-          end
-        end
       end
     end
 
     if @locations.length < 1
       error('No location config files found at ' + location_config_path)
     end
-
-    locations
 
   end
 
