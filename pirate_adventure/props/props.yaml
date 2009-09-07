@@ -32,6 +32,12 @@ ship:
     - sails
     - keel and mast
     - anchor
+    build_consumes:
+    - nails
+    - lumber
+    - sails
+    - keel and mast
+    - anchor
   events:
     on_build: |
       set_exit('beach', 'ship', 'ship')

@@ -63,7 +63,7 @@ class Locations
     characters_seen = []
 
     characters.each do |character, character_data|
-      if characters[character].location == @name
+      if characters[character].location == @id
         characters_seen << character
       end
     end

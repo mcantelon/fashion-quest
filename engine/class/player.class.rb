@@ -106,9 +106,7 @@ class Player
 
   def build(prop)
 
-    return
-
-    @props[prop].traits['build_with'].each do |component|
+    @props[prop].traits['build_consumes'].each do |component|
       @props[component].location = ''
     end
 
