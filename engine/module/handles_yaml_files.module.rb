@@ -10,4 +10,38 @@ module Handles_YAML_Files
     File.open(file_path, 'w') { |f| YAML.dump(data, f) }
   end
 
+  def recursive_find_of_yaml_files(path)
+
+    require 'find'
+
+    files = []
+
+    Find.find(path) do |file|
+
+      if !FileTest.directory?(file) and (file.index('.yaml') or file.index('.yml'))
+
+        files << file
+
+      end
+
+    end
+
+    files
+
+  end
+
+  def recursive_find_of_yaml_file_data(path)
+
+    data = []
+
+    recursive_find_of_yaml_files(path).each do |file|
+
+      data << load_yaml_file(file)
+
+    end
+
+    data
+
+  end
+
 end
