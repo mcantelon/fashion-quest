@@ -1,4 +1,4 @@
-class Locations
+class Location
 
   attr_accessor :id, :path, :loaded, :name, :description, :dark, :exits, :description_notes, :image_file
 

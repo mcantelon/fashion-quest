@@ -135,7 +135,7 @@ class Game
       # create objects from hash of object hashes
       location_data.each do |id, location_definition|
 
-        location = Locations.new(location_config_path)
+        location = Location.new(location_config_path)
 
         @locations[id] = map_hash_to_object_attributes(location, location_definition)
 
