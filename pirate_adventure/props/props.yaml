@@ -35,6 +35,8 @@ ship:
   events:
     on_build: |
       set_exit('beach', 'ship', 'ship')
+      @locations['beach'].add_to_description("There is a ship near shore.\n")
+      @locations['shore'].add_to_description("There is a ship near shore.\n")
       "CONGRATULATIONS !!! But your Adventure is not over yet...\n"
 
 dubloons:
