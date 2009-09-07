@@ -39,18 +39,30 @@ class Locations
 
     else
 
-      # describe current location
+      # describe current location, including any additions added during game play
       description = @description.dup
       description += @description_notes[@name] if @description_notes[@name]
 
+      # specify visibility conditions for different types of game components
+      components_to_describe = {
+        characters => "components[component_id].location == @id",
+        doors      => "components[component_id].locations.include?(@id)",
+        props      => "components[component_id].location == @id and components[component_id].traits['visible'] == true"
+      }
+
+      # figure out which game components are visible in this location
       things_present = []
 
-      things_present = things_present | characters_seen(characters)
+      components_to_describe.each do |components, visibility_condition|
 
-      things_present = things_present | doors_seen(doors)
+        things_present = things_present | components_seen(
+          components,
+          visibility_condition
+        )
 
-      things_present = things_present | props_seen(props)
+      end
 
+      # add a listing of the visible components to the location description
       description += describe_game_components(things_present)
 
     end
@@ -59,54 +71,17 @@ class Locations
 
   end
 
-  def characters_seen(characters)
+  def components_seen(components, visibility_condition)
 
-    output = ''
+    components_seen = []
 
-    # describe any characters in the location
-    characters_seen = []
-
-    characters.each do |character, character_data|
-      if characters[character].location == @id
-        characters_seen << character
+    components.each do |component_id, component_data|
+      if eval(visibility_condition)
+        components_seen << component_id
       end
     end
 
-    characters_seen
-
-  end
-
-  def doors_seen(doors)
-
-    output = ''
-
-    # describe any doors in the location
-    doors_seen = []
-
-    doors.each do |door, door_data|
-      if doors[door].locations.include?(@name)
-        doors_seen << door
-      end
-    end
-
-    doors_seen
-
-  end
-
-  def props_seen(props)
-
-    output = ''
-
-    # describe any props in the location
-    props_seen = []
-
-    props.each do |prop, prop_data|
-      if props[prop].location == @id and props[prop].traits['visible'] == true
-        props_seen << prop
-      end
-    end
-
-    props_seen
+    components_seen
 
   end
 
