@@ -43,11 +43,15 @@ class Locations
       description = @description.dup
       description += @description_notes[@name] if @description_notes[@name]
 
-      description << describe_characters(characters)
+      things_present = []
 
-      description << describe_doors(doors)
+      things_present = things_present | describe_characters(characters)
 
-      description << describe_props(props)
+      things_present = things_present | describe_doors(doors)
+
+      things_present = things_present | describe_props(props)
+
+      description += describe_game_components(things_present)
 
     end
 
@@ -68,9 +72,11 @@ class Locations
       end
     end
 
-    output << describe_game_components(characters_seen)
+    characters_seen
 
-    output
+    #output << describe_game_components(characters_seen)
+
+    #output
 
   end
 
@@ -87,9 +93,11 @@ class Locations
       end
     end
 
-    output << describe_game_components(doors_seen)
+    doors_seen
 
-    output
+    #output << describe_game_components(doors_seen)
+
+    #output
 
   end
 
@@ -106,9 +114,11 @@ class Locations
       end
     end
 
-    output << describe_game_components(props_seen)
+    props_seen
 
-    output
+    #output << describe_game_components(props_seen)
+
+    #output
 
   end
 
