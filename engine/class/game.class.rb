@@ -108,39 +108,20 @@ class Game
 
   def initialize_characters(locations, player, props)
 
-    require 'find'
+    recursive_find_of_yaml_file_data("#{@path}characters").each do |character_data|
 
-    character_config_path = "#{@path}characters"
+      # create objects from hash of object hashes
+      character_data.each do |id, character_definition|
 
-    # load all commands, recursively, contained in command directory
-    Find.find(character_config_path) do |character_file|
+        character = Character.new :locations => locations, :player => player, :props => props
+        @characters[id] = map_hash_to_object_attributes(character, character_definition)
 
-      if !FileTest.directory?(character_file) and (character_file.index('.yaml') or character_file.index('.yml'))
+        # set object id, so it can be read
+        @characters[id].id = id
 
-        # character data is stored in YAML as a hash
-        character_data = load_yaml_file(character_file)
-
-        if character_data
-
-          # create objects from hash of object hashes
-          character_data.each do |id, character_definition|
-
-            character = Character.new :locations => locations, :player => player, :props => props
-            @characters[id] = map_hash_to_object_attributes(character, character_definition)
-
-            # set object id, so it can be read
-            @characters[id].id = id
-
-          end
-        end
       end
-    end
 
-    if characters.length < 1
-      error('No character config files found at ' + character_config_path)
     end
-
-    characters
 
   end
 
