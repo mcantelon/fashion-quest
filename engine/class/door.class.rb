@@ -1,6 +1,5 @@
 class Door < GameComponent
 
-  include May_Have_Name
   include Has_Events
   include Has_Traits
 

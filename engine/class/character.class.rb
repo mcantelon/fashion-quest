@@ -2,7 +2,6 @@ class Character < GameComponent
 
   include Uses_Weapons
   include Handles_YAML_Files
-  include May_Have_Name
   include Has_Events
   include Has_Traits
 
