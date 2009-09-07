@@ -45,11 +45,11 @@ class Locations
 
       things_present = []
 
-      things_present = things_present | describe_characters(characters)
+      things_present = things_present | characters_seen(characters)
 
-      things_present = things_present | describe_doors(doors)
+      things_present = things_present | doors_seen(doors)
 
-      things_present = things_present | describe_props(props)
+      things_present = things_present | props_seen(props)
 
       description += describe_game_components(things_present)
 
@@ -59,7 +59,7 @@ class Locations
 
   end
 
-  def describe_characters(characters)
+  def characters_seen(characters)
 
     output = ''
 
@@ -74,13 +74,9 @@ class Locations
 
     characters_seen
 
-    #output << describe_game_components(characters_seen)
-
-    #output
-
   end
 
-  def describe_doors(doors)
+  def doors_seen(doors)
 
     output = ''
 
@@ -95,13 +91,9 @@ class Locations
 
     doors_seen
 
-    #output << describe_game_components(doors_seen)
-
-    #output
-
   end
 
-  def describe_props(props)
+  def props_seen(props)
 
     output = ''
 
@@ -115,10 +107,6 @@ class Locations
     end
 
     props_seen
-
-    #output << describe_game_components(props_seen)
-
-    #output
 
   end
 
