@@ -1,47 +1,53 @@
 Fashion Quest
 
-Notes:
+make image_file a function or something
+do we need the destination/prop paradigm in exits? what is it used for?
+you opened it <- ???
+set_exit actually should be in location class like it used to be... gahhhh
+drop wording is weird: i.e. "drop a rum", "drop some shoes" direct_specific ?
 
 [High priority]
-
--add GPL
--make sure command code is civilized
--make old demo game make some sense
--maybe have "talk <character>" command to get some hints as to what can be talked about
--should include init logic in config yaml (for includes, etc.)
--instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
--further refactoring of location describe logic
--de-weirdify location class
--have location exit visibility option
--is there a description property for exits?
+-rick problem (lower case in room description... should be upper case if proper... hrm)
+Location re-jiggering:
+ -further refactoring of location describe logic
+ -make it so props and characters are shown on the same line
 
 [Medium priority]
-
--what is player name for?
+-clean up game selector layout
+-maybe have it so game and pirate adv share get command
+-make sure command code is civilized
+-instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
+-add GPL notices to source files
+-maybe have "talk <character>" command to get some hints as to what can be talked about
+-what is player name for? maybe if set make things third-person
 -in lagoon all exits but north go back to beach
 -work out what things are too big to go through crack and set their sizes
 -bottle/water thing is inelegant... water should get contained in bottle
 -what do plans say when read?
--finish migrating propertis to traits
--add "prop_anywhere" argument support for commands that work on props that don't have a location yet (i.e. building or conjuring)
+-finish migrating properties to traits
+*-add "prop_anywhere" argument support for commands that work on props that don't have a location yet (i.e. building or conjuring)
 -on_exchange event... what if different events for different types of exchanges?
 
 -Naming
+  -countable nouns?
   -id, name, description
   -props: singular (pronoun: it), plural (pronoun: they), proper (no pronoun) / gender (default none)
   -character: singluar (he/she/it), plural (the <noun>s), proper (no pronoun) / gender (default none)
   -doors too?
   -maybe noun/noun_cap paradigm will work? try it
-  -naming scheme for props: id for inventory, name for listing in locations (describe method), description for looking
+  -naming scheme for props: id for inventory, noun for listing in locations (describe method), description for looking
   -to test naming could create function that lists all objects and possible names for them
 
 -RDOC documentation
 
--<any> works, but maybe something other than any ... anything? component? object? thing? noun?
+*-<any> works, but maybe something other than any ... anything? component? object? thing? noun?
 -should get prop and door traits by default if not set by yaml to lessen errors in
  commands (we do this for characters)... test this by looping through everything and trying to access traits
 
 [Low priority]
+
+  -make a way to create a ruby script for issueing commands, for advanced testing
+   ...maybe the command will be "run script" or "load script"
 
   Feature enhancements:
 
@@ -83,7 +89,6 @@ Notes:
 
 Maybe:
 
-  -change the necklace to shoes, have it so the shoes can be given to another character
   -move appropriate synonyms to command_abbreviations
   -change 'prop_404' to 'not_found_message'
   -if character is dead and has stuff on him, hint at that during look
@@ -102,4 +107,6 @@ low priority - make sure the map only falls out when you look at the opened ches
 
 Documentation:
 -document how prop setting work (opened, etc.)
+
+Fashion Quest: create cross-platform interactive fiction using Ruby and Shoes
 

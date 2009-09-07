@@ -142,3 +142,12 @@ Testing:
 
 -no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn't exist or isn't located near player
 
+Naming:
+
+          noun      noun_cap
+proper    Noun      Noun
+plural    the nouns The nouns
+general   a noun    A noun
+countable water     Water
+
+
