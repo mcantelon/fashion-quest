@@ -51,19 +51,16 @@ class Locations
       }
 
       # figure out which game components are visible in this location
-      things_present = []
+      visible_components = []
 
       components_to_describe.each do |components, visibility_condition|
 
-        things_present = things_present | components_seen(
-          components,
-          visibility_condition
-        )
+        visible_components |= components_seen(components, visibility_condition)
 
       end
 
       # add a listing of the visible components to the location description
-      description += describe_game_components(things_present)
+      description += describe_game_components(visible_components)
 
     end
 
@@ -90,17 +87,25 @@ class Locations
     output = ''
 
     if components.size > 0
+
       output << "You see: "
+
       component_output = ''
-      components.each do |prop|
+
+      components.each do |component|
+
         if component_output != ''
            component_output << ', '
         end
-        component_output << prop
+
+        component_output << component
+
       end
+
       component_output << ".\n"
 
       output << component_output
+
     end
 
     output
