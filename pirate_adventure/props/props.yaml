@@ -109,11 +109,10 @@ book:
         set_exit('alcove', 'passage', 'passageway')
         "There's a strange sound.\n";
       end
-    on_open: |
-      alert('you opened it')
   traits:
     visible: false
     size: 2
+    opened: false
     contains:
       - prop: flyer
     text: props/text/book.txt
