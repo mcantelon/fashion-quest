@@ -20,7 +20,9 @@ startup_logic: |
         @output_stack.em(@message_text, :stroke => '#f00'),
         input_text,
         :font => 'Verdana 14px',
-        :stroke => '#120E03'
+        :stroke => '#120E03',
+        :margin_left => 10,
+        :margin_right => 10
     }
     @output_stack.scroll_top = @output_stack.scroll_max
 
