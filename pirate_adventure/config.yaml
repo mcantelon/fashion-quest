@@ -5,3 +5,26 @@ height: 600
 image_height: 200
 resizable: true
 startup_message: "Welcome to Pirate Adventure Clone.\n\n"
+startup_logic: |
+
+  # set background color
+  background '#e3e09f'..'#f6ffd0'
+
+  # monkey patch the CLI output method to change the font style
+  def @cli.output(output_text, input_text = '')
+
+    # display output text, emphasize any messages, and show prompt
+    @output_stack.clear {
+      @output_stack.para \
+        output_text,
+        @output_stack.em(@message_text, :stroke => '#f00'),
+        input_text,
+        :font => 'Verdana 14px',
+        :stroke => '#120E03'
+    }
+    @output_stack.scroll_top = @output_stack.scroll_max
+
+  end
+
+  # start game by issueing "look" command
+  @cli.issue_command('look', false)

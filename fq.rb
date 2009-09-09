@@ -17,10 +17,6 @@ Shoes.app(
       :resizable => config['resizable']
     ) {
 
-      if config['startup_logic']
-        eval(config['startup_logic'])
-      end
-
       # Close game selector
       game_selector_window.close
 
@@ -43,8 +39,12 @@ Shoes.app(
         :game => @game,
         :initial_text => config['startup_message']
 
-      # Issue 'look' command to begin game (perhaps this should be a config option?)
-      @cli.issue_command('look', false)
+      if config['startup_logic']
+        instance_eval(config['startup_logic'])
+      else
+        # Issue 'look' command to begin game (perhaps this should be a config option?)
+        @cli.issue_command('look', false)
+      end
 
       # Display CLI prompt
       @cli.display_prompt
