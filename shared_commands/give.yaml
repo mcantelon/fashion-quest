@@ -1,0 +1,36 @@
+---
+syntax:
+- "give <prop> <character>"
+- "give <character> <prop>"
+
+logic: |
+
+  output = ''
+
+  if game.prop_located_at(prop.id, 'player')
+
+    if !character.dead
+
+      exchange_output = (character.attempt_exchange prop.id)
+
+      if exchange_output != ''
+
+        output << exchange_output
+
+      else
+
+        output << "#{character.noun_cap} isn't interested.\n"
+      end
+
+    else
+
+      output << "#{character.noun_cap} is dead and not feeling particularly receptive.\n"
+
+    end
+  else
+
+    output << (game.prop_404 prop.noun)
+
+  end
+
+  output
