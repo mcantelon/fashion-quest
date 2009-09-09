@@ -5,9 +5,14 @@ class Cli
   include Parses_Commands
   include Handles_YAML_Files
 
+  attr_accessor :prompt, :cursor
+
   def initialize(params)
 
     require 'find'
+
+    @prompt = '>'
+    @cursor = '#'
 
     @output_stack = params[:output_stack]
     @image_stack  = params[:image_stack]
@@ -168,7 +173,7 @@ class Cli
 
       else
 
-        output_add('>' + input_text) if show_input
+        output_add(@prompt + input_text) if show_input
 
         result = parse(input_text)
 
@@ -254,7 +259,7 @@ class Cli
 
   def display_prompt(input_text = '')
 
-    output(@output_text, '>' + input_text + '#')
+    output(@output_text, @prompt + input_text + @cursor)
 
     # add message to output text and clear
     @output_text += @message_text
