@@ -1,9 +1,1 @@
----
-syntax:
-- ":q"
-- "quit"
-- "exit"
-
-logic: |
-
-  exit()
+# Look in shared_commands for this.
