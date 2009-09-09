@@ -17,6 +17,7 @@ class Door < GameComponent
 
     largest_prop_size = player.largest_carried_item_size
 
+    # explain this in a comment, eh
     if @size
 
       if @size >= largest_prop_size

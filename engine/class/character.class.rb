@@ -66,10 +66,8 @@ class Character < GameComponent
     output = ''
 
     # if the character is mobile, allow wandering
-    if mobility
-      if decision(mobility)
-        output << wander
-      end
+    if mobility && decision(mobility)
+      output << wander
     end
 
     output
@@ -107,12 +105,10 @@ class Character < GameComponent
     output = ''
 
     # if character can be aggressive, allow decision to attack
-    if aggression
-      if decision(aggression)
-        @hostile = true
-        output << event('on_attack')
-        output << "#{noun_cap} attacks!\n"
-      end
+    if aggression && decision(aggression)
+      @hostile = true
+      output << event('on_attack')
+      output << "#{noun_cap} attacks!\n"
     end
 
     output
@@ -182,26 +178,21 @@ class Character < GameComponent
     output = ''
 
     # if character is willing to trade for prop, drop items of exchange
-    if @exchanges
-      if @exchanges[prop]
-        if @events
-          if @events['on_exchange']
-            output << event('on_exchange')
-          end
-        end
-        if output == ''
-          output << "#{noun_cap} takes the #{prop}.\n"
-        end
-        if @exchanges[prop].class == Array
-          @exchanges[prop].each do |drop_prop|
-            output << "#{noun_cap} drops a #{drop_prop}.\n"
-            @props[drop_prop].location = @player.location
-            @hostile = false
-          end
-        end
-        @props[prop].location = @id
+    if @exchanges && @exchanges[prop]
+      if @events && @events['on_exchange']
+        output << event('on_exchange')
       end
-    #output << "#{noun_cap} doesn't seem interested.\n"
+      if output == ''
+        output << "#{noun_cap} takes the #{prop}.\n"
+      end
+      if @exchanges[prop].class == Array
+        @exchanges[prop].each do |drop_prop|
+          output << "#{noun_cap} drops a #{drop_prop}.\n"
+          @props[drop_prop].location = @player.location
+          @hostile = false
+        end
+      end
+      @props[prop].location = @id
     end
 
     output

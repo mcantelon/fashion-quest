@@ -226,14 +226,12 @@ class Game
 
     @props.each do |name, prop|
 
-      if prop.traits['lit']
-        if prop.traits['lit'] == true
-          if prop.traits['burn_turns'] > 0
-            @props[name].traits['burn_turns'] -= 1
-          else
-            output << "The #{name} has gone out.\n"
-            @props[name].traits['lit'] = false
-          end
+      if prop.traits['lit'] && prop.traits['lit'] == true
+        if prop.traits['burn_turns'] > 0
+          @props[name].traits['burn_turns'] -= 1
+        else
+          output << "The #{name} has gone out.\n"
+          @props[name].traits['lit'] = false
         end
       end
 
@@ -448,25 +446,22 @@ class Game
 
   def event(object, type)
 
-    if object.events
+    if object.events && object.events[type]
 
-      if object.events[type]
+      event_response = object.events[type]
 
-        event_response = object.events[type]
+      begin
 
-        begin
+        result = instance_eval(event_response)
 
-          result = instance_eval(event_response)
+        return result
 
-          return result
+      # if evaluation of event response fails, return the response as text
+      rescue SyntaxError, NameError
 
-        # if evaluation of event response fails, return the response as text
-        rescue SyntaxError, NameError
+        alert('Error evaluating event response ' + type + ' for ' + object.name)
+        return event_response
 
-          alert('Error evaluating event response ' + type + ' for ' + object.name)
-          return event_response
-
-        end
       end
     end
 

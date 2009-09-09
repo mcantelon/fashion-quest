@@ -113,13 +113,13 @@ class Cli
 
   def reset
 
-      @output_text = ''
-      @output_stack.clear { }
+    @output_text = ''
+    @output_stack.clear { }
 
-      @command_history = []
+    @command_history = []
 
-      issue_command('look')
-      display_prompt
+    issue_command('look')
+    display_prompt
 
   end
 

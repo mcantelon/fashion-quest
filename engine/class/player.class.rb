@@ -136,6 +136,7 @@ class Player
 
     carried.each do |prop|
 
+      # comment this, eh
       if prop.traits[trait]
         if value != nil
           if prop.traits[trait] == value
