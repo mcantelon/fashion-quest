@@ -3,6 +3,7 @@ crackers:
   location: apartment
 
 sneakers:
+  name: safety sneakers
   location: apartment
 
 rum:
