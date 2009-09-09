@@ -18,7 +18,7 @@ startup_logic: |
       @output_stack.para \
         output_text,
         @output_stack.em(@message_text, :stroke => '#f00'),
-        input_text,
+        @output_stack.em(input_text, :fill => '#e3e09f'),
         :font => 'Verdana 14px',
         :stroke => '#120E03',
         :margin_left => 10,
