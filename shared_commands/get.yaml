@@ -1,0 +1,70 @@
+---
+syntax:
+- "get <prop>"
+- "take <prop>"
+- "get <character>"
+- "take <character>"
+
+logic: |
+
+  if character
+    prop = character
+  end
+
+  output = ''
+
+  if prop.location == locations[location].id
+
+    if prop.traits['portable']
+
+      can_get = true
+
+      if prop.traits['get_with']
+
+        prop.traits['get_with'].each do |needed_prop|
+          if props[needed_prop].location != 'player'
+            can_get = false
+          end
+        end
+      end
+
+      if can_get == true
+
+        # player is only allowed to carry 6 items
+        if !player.can_carry_number_of_items \
+          || player.carrying.size <= (player.can_carry_number_of_items - 1)
+
+          prop.location = 'player'
+          output << "You take #{prop.noun}.\n"
+
+          on_get_output = game.event(prop, 'on_get')
+
+          if on_get_output
+
+            output << on_get_output
+
+          end
+        else
+
+          output << "You are carrying too much.\n"
+        end
+
+      else
+
+        output << "You can't do that yet.\n"
+
+      end
+
+    else
+
+      output << "It won't budge.\n"
+
+    end
+
+  else
+
+    output << (game.prop_404 prop.noun)
+
+  end
+
+  output
