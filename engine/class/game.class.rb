@@ -134,7 +134,7 @@ class Game
 
         @locations[id].path = location_config_path
 
-        @locations[id].image_file  = "#{location_config_path}/images/#{id}.jpg" # this should be changed to a function not a variable
+        @locations[id].image_file  = "#{location_config_path}/images/#{id}.jpg"
 
         # set object id, so it can be read
         @locations[id].id = id
@@ -237,10 +237,6 @@ class Game
     output
 
   end
-
-  #def set_exit(location, exit, destination)
-  #  @locations[location].exits[exit] = {'destination' => destination}
-  #end
 
   def save(filename = "#{path}player/saved_game.yaml")
 
