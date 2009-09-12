@@ -73,10 +73,8 @@ class Player
     can_dig = false
 
     carrying.each do |prop|
-      if prop.traits
-        if prop.traits['can_dig']
-          can_dig = true
-        end
+      if prop.traits && prop.traits['can_dig']
+        can_dig = true
       end
     end
 
@@ -120,12 +118,8 @@ class Player
 
     carrying.each do |prop|
 
-      if prop.traits['size']
-
-        if prop.traits['size'] > largest_size
-
-          largest_size = prop.traits['size']
-        end
+      if prop.traits['size'] && (prop.traits['size'] > largest_size)
+        largest_size = prop.traits['size']
       end
     end
 
