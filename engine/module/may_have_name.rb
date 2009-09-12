@@ -7,11 +7,7 @@ module May_Have_Name
     if @name
       name = @name
     else
-      if @proper == true
-        name = id.capitalize
-      else
-        name = id
-      end
+      name = @proper == true ? id.capitalize : id
     end
 
     name
@@ -25,11 +21,7 @@ module May_Have_Name
     if specific
       prefix = 'the'
     else
-      if @plural == true
-        prefix = 'some'
-      else
-        prefix = 'a'
-      end
+      prefix = @plural == true ? 'some' : 'a'
     end
 
     name = noun_base
