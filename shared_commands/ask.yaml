@@ -1,0 +1,31 @@
+---
+syntax:
+- "ask <character> about <topic>"
+- "say <topic> to <character>"
+- "talk <character> about <topic>"
+
+logic: |
+
+  topic = arg['topic']
+
+  output = ''
+
+  response = character.discuss topic
+
+  if response
+
+    if response != ''
+
+      output << response
+
+    else
+
+      output << "#{noun_cap} doesn't know anything about that.\n"
+
+    end
+
+  else
+    output << "#{noun_cap} doesn't look oriented towards conversation.\n"
+  end
+
+  output
