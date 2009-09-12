@@ -1,53 +1,55 @@
 Fashion Quest
 
-make image_file a function or something
-do we need the destination/prop paradigm in exits? what is it used for?
-you opened it <- ???
-set_exit actually should be in location class like it used to be... gahhhh
-drop wording is weird: i.e. "drop a rum", "drop some shoes" direct_specific ?
+-add close command to standard commands
+-add generic version of dig to standard commands
 
-[High priority]
--rick problem (lower case in room description... should be upper case if proper... hrm)
-Location re-jiggering:
- -further refactoring of location describe logic
- -make it so props and characters are shown on the same line
+-is agression/mobility documented?
+*-seems to be bug with scrolling in Ubuntu when an image size is specified or something
+-try drawing something not in animate and see if it gets wiped out
 
-[Medium priority]
--clean up game selector layout
--maybe have it so game and pirate adv share get command
--make sure command code is civilized
--instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
--add GPL notices to source files
--maybe have "talk <character>" command to get some hints as to what can be talked about
--what is player name for? maybe if set make things third-person
--in lagoon all exits but north go back to beach
--work out what things are too big to go through crack and set their sizes
--bottle/water thing is inelegant... water should get contained in bottle
--what do plans say when read?
+-try out Shoes packager again
+
+Fix next:
+*-any way to use instance vars instead of local vars in command logic? add these as params/instance vars to command class
+EZ-make sure command code is civilized
+-add "prop_anywhere" argument support for commands that work on props that don't have a location yet (i.e. building or conjuring)
+  -<any> works, but maybe something other than any ... anything? component? object? thing? noun?
+-see if my noun naming scheme paradigm meshes with grammar terms
 -finish migrating properties to traits
-*-add "prop_anywhere" argument support for commands that work on props that don't have a location yet (i.e. building or conjuring)
--on_exchange event... what if different events for different types of exchanges?
 
--Naming
-  -countable nouns?
-  -id, name, description
-  -props: singular (pronoun: it), plural (pronoun: they), proper (no pronoun) / gender (default none)
-  -character: singluar (he/she/it), plural (the <noun>s), proper (no pronoun) / gender (default none)
-  -doors too?
-  -maybe noun/noun_cap paradigm will work? try it
-  -naming scheme for props: id for inventory, noun for listing in locations (describe method), description for looking
-  -to test naming could create function that lists all objects and possible names for them
+-make a way to create a ruby script for issueing commands, for testing old game
+ ...maybe the command will be "run script" or "load script"
+
+do we need the destination/prop paradigm in exits? what is it used for?
+
+[Pirate adventure authenticity]
+P-you opened it <- ??? this alert pops up when you open book... fix this
+P-instead of neverneverland buggering out in a set amount of turns, make it random (1 in 4 chance?)
+P-in lagoon all exits but north go back to beach
+P-work out what things are too big to go through crack and set their sizes
+P-bottle/water thing is inelegant... water should get contained in bottle
+P-what do plans say when read?
+-"pirate takes rum", "pirate grabs rum and scuttles..." is redundant
+-after dropping bottle you still have water... kind of fuck-oed
+-add note to readme that there is scrolling issue with Ubuntu Linux
+-get rug "Sorry I can't. It's nailed to the floor!"
+-are sneakers described as safety sneakers?
+-maybe have on_get overrule normal output of prop opening so opening book can make "Something falls out." 
+
+-on_exchange event... what if different events for different types of exchanges?
+-add GPL notices to source files
+-maybe have "talk <character>" command to get some hints as to what can be talked aboutt
+-what is player name for? maybe if set make things third-person
+-clean up game selector layout
+-maybe have it so game and pirate adv share get command... seems like pirate adventure implements a player carrying capacity
 
 -RDOC documentation
 
-*-<any> works, but maybe something other than any ... anything? component? object? thing? noun?
 -should get prop and door traits by default if not set by yaml to lessen errors in
  commands (we do this for characters)... test this by looping through everything and trying to access traits
 
 [Low priority]
 
-  -make a way to create a ruby script for issueing commands, for advanced testing
-   ...maybe the command will be "run script" or "load script"
 
   Feature enhancements:
 
@@ -108,5 +110,18 @@ low priority - make sure the map only falls out when you look at the opened ches
 Documentation:
 -document how prop setting work (opened, etc.)
 
-Fashion Quest: create cross-platform interactive fiction using Ruby and Shoes
+Fashion Quest: cross-platform interactive fiction using Ruby and Shoes
+
+Subproject: portable CLI to use as Shoes REPL
+
+should have game startup logic and logic triggered by pressing enter (currently "parse(input_text)") and hardwired command be args to cli or something
+should have checks for whether game is nil
+should set @output_text to '' if not set by param
+
+cool puzzle
+-room contains fire hydrant and open window too high to reach
+-if you open it it floods the room and rushes out the door
+-if you have door closed room will fill to the open window
+-if you are wearing lifejacket you will float and can go through the open window
+-
 
