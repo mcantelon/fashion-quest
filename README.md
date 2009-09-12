@@ -18,7 +18,7 @@ It lives in the "game" directory. The game "Pirate Adventure Knockoff" is a
 port of the 1978 text adventure "Pirate Adventure" by Scott Adams and lives in
 the "pirate_adventure" directory.
 
-To play either of these use Shoes to run fq.rb and select which you'd like
+To play either of these use Shoes to open run.rb and select which you'd like
 to play.
 
 Some super rough documentation is present as DOC_OUTLINE.

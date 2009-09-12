@@ -7,7 +7,7 @@ Design Aims:
 -imposes some structure, but aims to be as extensible as possible
 
 Playing:
--to start you game run fq.run using Shoes
+-to start you game run run.rb using Shoes
 -if there is more than one game specification directory in the same directory as fq.rb you'll be prompted with a game selector
 
 Game:
