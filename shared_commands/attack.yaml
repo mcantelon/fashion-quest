@@ -1,0 +1,55 @@
+---
+syntax:
+- "attack <character>"
+- "attack <character> with <prop>"
+- "kill <character>"
+- "kill <character> with <prop>"
+
+logic: |
+
+  weapon = prop ? prop.name : ''
+
+  output = ''
+
+  if !character.dead
+
+    attack_strength = player.strength
+
+    # target character is now hostile
+    character.hostile = true
+
+    # if a weapon hasn't been selected, pick best one
+    if weapon.empty?
+      weapon = player.determine_best_weapon
+    end
+
+    # if applicable, add weapon strength to attack strength
+    if not weapon.empty?
+      attack_strength += props[weapon].attack_strength
+    else
+      weapon = 'your fists'
+    end
+
+    if props[weapon]
+      weapon = props[weapon].noun
+    end
+
+    damage = rand attack_strength
+
+    character.hp = character.hp - damage
+
+    output << "You attack #{noun} with #{weapon} for #{damage.to_s} HP damage.\n"
+
+    if character.hp < 1
+      output << character.kill
+      output << "You have killed #{noun}.\n"
+    else
+      output << "#{noun_cap} has #{(character.hp).to_s} HP.\n"
+    end
+
+  else
+
+    output << "#{noun_cap} is already dead.\n"
+  end
+
+  output
