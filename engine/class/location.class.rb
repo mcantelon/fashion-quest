@@ -16,11 +16,7 @@ class Location
 
   def has_exit(direction)
 
-    if @exits[direction]
-      true
-    else
-      false
-    end
+    @exits[direction] ? true : false
 
   end
 
