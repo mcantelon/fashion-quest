@@ -281,11 +281,11 @@ class Cli
   end
 
   def output_add(text, add_newline = true)
-    if add_newline
-      @output_text << text + "\n"
-    else
-      @output_text << text
-    end
+
+    optional_newline = add_newline ? "\n" : ''
+
+    @output_text << text + optional_newline
+
   end
 
   def output_error
