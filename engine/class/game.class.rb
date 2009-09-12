@@ -238,9 +238,9 @@ class Game
 
   end
 
-  def set_exit(location, exit, destination)
-    @locations[location].exits[exit] = {'destination' => destination}
-  end
+  #def set_exit(location, exit, destination)
+  #  @locations[location].exits[exit] = {'destination' => destination}
+  #end
 
   def save(filename = "#{path}player/saved_game.yaml")
 

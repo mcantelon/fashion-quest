@@ -41,7 +41,7 @@ ship:
     - anchor
   events:
     on_build: |
-      set_exit('beach', 'ship', 'ship')
+      @locations['beach'].set_exit('ship', 'ship')
       @locations['beach'].add_to_description("There is a ship near shore.\n")
       @locations['shore'].add_to_description("There is a ship near shore.\n")
       "CONGRATULATIONS !!! But your Adventure is not over yet...\n"
@@ -107,7 +107,7 @@ book:
       if not (@locations['alcove'].has_exit('passage'))
         @props['book'].traits['visible'] = true
         @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
-        set_exit('alcove', 'passage', 'passageway')
+        @locations['alcove'].set_exit('passage', 'passageway')
         "There's a strange sound.\n";
       end
   traits:

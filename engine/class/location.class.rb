@@ -14,6 +14,10 @@ class Location
 
   end
 
+  def set_exit(exit, destination)
+    @exits[exit] = {'destination' => destination}
+  end
+
   def has_exit(direction)
 
     @exits[direction] ? true : false
