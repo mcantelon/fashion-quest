@@ -19,14 +19,10 @@ class Game
 
   def restart(require_confirmation = true, prompt = "Are you sure you want to restart your game?")
 
-    if (require_confirmation == true)
+    # if confirmation is required, get user input a pop up dialogue
+    restart_confirmed = (require_confirmation == true) ? confirm(prompt) : true
 
-      #zzzz
-
-      restart_confirmed = confirm(prompt)
-    else
-      restart_confirmed = true
-    end
+    # zzzz
 
     if restart_confirmed
 
@@ -50,12 +46,7 @@ class Game
 
   def restart_or_exit
 
-    if restart(true, "Would you like to play again?")
-      true
-    else
-      # should add way to not exit for debugging, etc.
-      exit()
-    end
+    restart(true, "Would you like to play again?") ? true : exit()
 
   end
 
@@ -68,6 +59,8 @@ class Game
     #  alert(@locations[name])
     #  return @locations[name]
     #end
+
+    # use class to compare class
 
     if @doors.has_key?(name)
       return @doors[name]
@@ -208,7 +201,7 @@ class Game
   def map_hash_to_object_attributes(object, hash)
 
     # use hash key => value to set property object attributes
-    hash.each do |attribute,value|
+    hash.each do |attribute, value|
       eval('object.' + attribute.gsub(' ', '_') + ' = value')
     end
 
@@ -283,33 +276,14 @@ class Game
 
   end
 
-  def save_history(filename = "#{path}player/saved_history.yaml")
-
-    game_data = {
-      'turn'       => @turns,
-      'state'      => @state,
-      'over'       => @over,
-
-      'player'     => @player,
-      'locations'  => @locations,
-      'doors'      => @doors,
-      'characters' => @characters,
-      'props'      => @props
-    }
-
-    save_data_as_yaml_file(game_data, filename)
-
-  end
-
   def prop_404(prop)
     "I don't see a #{prop}.\r"
   end
 
   def prop_located_at(prop, location)
 
-    if @props[prop]
-      @props[prop].location == location
-    end
+    @props[prop] && @props[prop].location == location
+
   end
 
   def transitions
@@ -356,11 +330,7 @@ class Game
 
     output = ''
 
-    if @props[item]
-      item_object = @props[item]
-    elsif
-      item_object = @doors[item]
-    end
+    item_object = (@props[item]) ? @props[item] : @doors[item]
 
     if item_object.traits.has_key?('opened')
       if item_object.traits['opened']
