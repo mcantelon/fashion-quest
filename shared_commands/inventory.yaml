@@ -1,0 +1,29 @@
+---
+syntax:
+- "i"
+- "inv"
+- "inventory"
+
+logic: |
+
+  output = ''
+
+  output << 'You are carrying: '
+
+  prop_counter = 0
+
+  player.carrying.each do |prop|
+
+    if prop_counter > 0
+      output << ', '
+    end
+    output << prop.noun
+
+    prop_counter += 1
+  end
+
+  if prop_counter == 0
+    output << 'nothing'
+  end
+
+  output + "\n"
