@@ -79,7 +79,7 @@ Creating Commands:
     -"props" spec
   -example commands
 -commands can be shared between games
-  -if you want to share a command between games, put the command in the shared_commands dirctory
+  -if you want to share a command between games, put the command in the standard_commands dirctory
   -to include a shared command in a game, put an empty file in your game's command directory with the same filename
    as the shared command
   -alternately, if you're not using Windows you can use symlinks

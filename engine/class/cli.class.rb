@@ -36,10 +36,10 @@ class Cli
         # each command is stored in YAML as a hash
         command_data = load_yaml_file(command_path)
 
-        # if no command data has loaded, try to load from shared commands directory
+        # if no command data has loaded, try to load from standard commands directory
         if not command_data
           command_filename = Pathname.new(command_path).basename
-          command_data = load_yaml_file(@game.app_base_path + '/shared_commands/' + command_filename)
+          command_data = load_yaml_file(@game.app_base_path + '/standard_commands/' + command_filename)
         end
 
         if command_data
@@ -55,7 +55,7 @@ class Cli
 
           commands_loaded += 1
         else
-          alert('Error: No command data found in ' + command_path + ' (and no command of same name found in shared_commands directory)')
+          alert('Error: No command data found in ' + command_path + ' (and no command of same name found in standard_commands directory)')
         end
 
       end
