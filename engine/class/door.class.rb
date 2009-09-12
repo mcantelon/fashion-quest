@@ -19,12 +19,7 @@ class Door < GameComponent
 
     # explain this in a comment, eh
     if @size
-
-      if @size >= largest_prop_size
-
-        new_player_location = destination_from(player.location)
-
-      end
+      new_player_location = (@size >= largest_prop_size) ? destination_from(player.location) : false
     else
       new_player_location = destination_from(player.location)
     end
