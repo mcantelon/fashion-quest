@@ -31,7 +31,8 @@ logic: |
       if can_get == true
 
         # player is only allowed to carry 6 items
-        if player.carrying.size <= 5
+        if !player.can_carry_number_of_items \
+          || player.carrying.size <= (player.can_carry_number_of_items - 1)
 
           prop.location = 'player'
           output << "You take #{prop.noun}.\n"

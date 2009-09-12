@@ -2,7 +2,7 @@ class Player
 
   include Uses_Weapons
 
-  attr_accessor :name, :location
+  attr_accessor :name, :location, :can_carry_number_of_items
 
   def initialize(params)
 
