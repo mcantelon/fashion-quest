@@ -1,0 +1,31 @@
+---
+syntax:
+- "light <prop>"
+
+logic: |
+
+  output = ""
+
+  if prop.traits['lit'] == true
+
+      output << "It's already lit!\n"
+
+  elsif prop.traits['lit'] == false
+
+    if player.has_prop_with_trait('firestarter')
+
+      output << "You light it on fire.\n"
+      prop.traits['lit'] = true
+
+    else
+
+      output << "You have nothing to light it with.\n"
+
+    end
+
+  else
+
+    output << "It doesn't appear to be flammable.\n"
+  end
+
+  output

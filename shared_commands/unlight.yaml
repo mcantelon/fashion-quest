@@ -1,0 +1,20 @@
+---
+syntax:
+- "unlight <prop>"
+
+logic: |
+
+  output = ""
+
+  if prop.traits['lit'] == false
+
+      output << "It's not lit.\n"
+
+  elsif prop.traits['lit'] == true
+
+    output << "You unlight #{prop.noun}.\n"
+    prop.traits['lit'] = false
+
+  end
+
+  output
