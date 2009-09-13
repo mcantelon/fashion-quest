@@ -9,23 +9,23 @@ logic: |
 
   if location == 'ship'
 
-    if props['book'].location == 'player' or props['book'].location == 'ship'
+    if @props['book'].location == 'player' or @props['book'].location == 'ship'
 
       output << "The pirate says 'First Yee be getting that ACCURSED thing off me ship!\n"
 
     else
 
-      if characters['pirate'].location == 'ship'
+      if @characters['pirate'].location == 'ship'
 
         if game.state['tide'] == 'in'
 
-          if props['map'].location == 'player'
+          if @props['map'].location == 'player'
 
             # shuttle ship between two locations
             game.state['ship_location'] = game.state['ship_location'] == 'beach' ? 'shore' : 'beach';
 
-            locations['ship'].set_exit('beach', game.state['ship_location'])
-            locations['ship'].set_exit('shore', game.state['ship_location'])
+            @locations['ship'].set_exit('beach', game.state['ship_location'])
+            @locations['ship'].set_exit('shore', game.state['ship_location'])
 
             output << "After a day at sea we set anchor off of a sandy beach. All Ashore who's going Ashore...\n"
 
