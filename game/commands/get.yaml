@@ -7,7 +7,7 @@ logic: |
 
   output = ''
 
-  if prop.location == locations[location].id
+  if prop.location == @locations[location].id
     if prop.traits['portable']
       prop.location = 'player'
       output << "You take #{prop.noun}.\n"
@@ -19,7 +19,7 @@ logic: |
       output << "It won't budge.\n"
     end
   else
-    output << (game.prop_404 prop.noun)
+    output << (@game.prop_404 prop.noun)
   end
 
   output

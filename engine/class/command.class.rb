@@ -64,11 +64,11 @@ class Command
           if valid
 
             # create these variables to make it less confusing for command writers
-            game       = @game
-            player     = @game.player
-            characters = @game.characters
-            locations  = @game.locations
-            doors      = @game.doors
+            #game       = @game
+            #player     = @game.player
+            #characters = @game.characters
+            #locations  = @game.locations
+            #doors      = @game.doors
 
             if @game.player
               location   = @game.player.location
@@ -76,7 +76,7 @@ class Command
               error('No player location is set.')
             end
 
-            props      = @game.props
+            #props      = @game.props
 
             return instance_eval(@logic)
           end

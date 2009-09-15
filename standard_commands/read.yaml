@@ -6,7 +6,7 @@ logic: |
   output = ''
 
   if prop.traits['text']
-    File.open("#{game.path}#{prop.traits['text']}", 'r') { |f|
+    File.open("#{@game.path}#{prop.traits['text']}", 'r') { |f|
       output << f.read
     }
   else

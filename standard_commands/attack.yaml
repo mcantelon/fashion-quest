@@ -13,7 +13,7 @@ logic: |
 
   if !character.dead
 
-    attack_strength = player.strength
+    attack_strength = @player.strength
 
     # target character is now hostile
     character.hostile = true

@@ -28,7 +28,7 @@ logic: |
     end
 
   # Otherwise check for a door
-  elsif doors[direction]
+  elsif @doors[direction]
 
     door = direction
 
