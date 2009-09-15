@@ -7,7 +7,7 @@ syntax:
 
 logic: |
 
-  weapon = prop ? prop.name : ''
+  weapon = prop ? prop.id : ''
 
   output = ''
 
