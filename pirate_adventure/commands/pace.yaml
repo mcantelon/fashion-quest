@@ -8,7 +8,7 @@ logic: |
 
   if arg['distance'].to_i > 0
 
-    game.state['paces'] = game.state['paces'] + arg['distance'].to_i
+    @game.state['paces'] = @game.state['paces'] + arg['distance'].to_i
 
     output << "You move " + arg['distance'] + " paces.\n"
 

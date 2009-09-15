@@ -7,7 +7,7 @@ logic: |
 
   output = ''
 
-  if game.prop_located_at(prop.id, 'player')
+  if @game.prop_located_at(prop.id, 'player')
 
     if !character.dead
 
@@ -29,7 +29,7 @@ logic: |
     end
   else
 
-    output << (game.prop_404 prop.noun)
+    output << (@game.prop_404 prop.noun)
 
   end
 

@@ -10,10 +10,10 @@ logic: |
 
     output << "You search the #{character.noun}.\n"
 
-    props.each do |prop_key, prop_data|
-      if props[prop_key].location == character.id
-        output << "You find #{props[prop_key].noun_direct}.\n"
-        props[prop_key].location = locations[location].id
+    @props.each do |prop_key, prop_data|
+      if @props[prop_key].location == character.id
+        output << "You find #{@props[prop_key].noun_direct}.\n"
+        @props[prop_key].location = location
       end
     end
   else

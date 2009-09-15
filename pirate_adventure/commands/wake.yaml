@@ -13,10 +13,4 @@ logic: |
     output << "You can't wake up what is not asleep.\n"
   end
 
-  #if characters['pirate'].location == 'attic' || characters['pirate'].location == 'graveyard'
-  #  output << "Pirate awakens and says `Aye matey we be casting off soon` He then VANISHES\n"
-  #  characters['pirate'].traits['asleep'] = false
-  #  characters['pirate'].location = 'ship'
-  #end
-
   output

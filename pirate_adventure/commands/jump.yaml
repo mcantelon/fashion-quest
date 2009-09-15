@@ -6,19 +6,19 @@ logic: |
 
   output = ''
 
-  if player.location == 'ledge'
+  if @player.location == 'ledge'
 
     # teleport player to neverneverland
-    player.location = 'neverneverland'
+    @player.location = 'neverneverland'
 
     # chastise player and show description of new location
     output << "That's not very smart.\n"
-    output << locations['neverneverland'].describe(doors, props, characters)
+    output << @locations['neverneverland'].describe(@doors, @props, @characters)
 
     # take note of when player entered neverneverland
     # (this will trigger a transition that will end the player's
     # game after a few turns)
-    game.state['entered_neverneverland'] = game.turns
+    @game.state['entered_neverneverland'] = @game.turns
 
   else
 

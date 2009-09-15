@@ -17,15 +17,15 @@ logic: |
 
       if @characters['pirate'].location == 'ship'
 
-        if game.state['tide'] == 'in'
+        if @game.state['tide'] == 'in'
 
           if @props['map'].location == 'player'
 
             # shuttle ship between two locations
-            game.state['ship_location'] = game.state['ship_location'] == 'beach' ? 'shore' : 'beach';
+            @game.state['ship_location'] = @game.state['ship_location'] == 'beach' ? 'shore' : 'beach';
 
-            @locations['ship'].set_exit('beach', game.state['ship_location'])
-            @locations['ship'].set_exit('shore', game.state['ship_location'])
+            @locations['ship'].set_exit('beach', @game.state['ship_location'])
+            @locations['ship'].set_exit('shore', @game.state['ship_location'])
 
             output << "After a day at sea we set anchor off of a sandy beach. All Ashore who's going Ashore...\n"
 

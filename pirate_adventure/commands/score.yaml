@@ -11,12 +11,12 @@ logic: |
     score  = 0
     stored = 0
 
-    if props['dubloons'].location == 'apartment' || props['dubloons'].location == 'player'
+    if @props['dubloons'].location == 'apartment' || @props['dubloons'].location == 'player'
       score = score + 50
       stored = stored + 1
     end
 
-    if props['stamps'].location == 'apartment' || props['stamps'].location == 'player'
+    if @props['stamps'].location == 'apartment' || @props['stamps'].location == 'player'
       score = score + 50
       stored = stored + 1
     end
@@ -29,7 +29,7 @@ logic: |
 
       output << "YOU WON!\n"
       output << "Adventure over!\n"
-      game.over = true
+      @game.over = true
     end
 
   else

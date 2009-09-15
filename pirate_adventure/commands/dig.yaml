@@ -12,9 +12,9 @@ logic: |
 
     if prop.id == 'anchor' && prop.traits['visible'] == true
 
-      if props['shovel'].location == 'player'
+      if @props['shovel'].location == 'player'
 
-        props['anchor'].traits['portable'] = true
+        @props['anchor'].traits['portable'] = true
 
         output << "You dig it up!\n"
 
@@ -32,13 +32,13 @@ logic: |
 
   else
 
-    if (player.can_dig)
+    if (@player.can_dig)
 
       if location == 'field'
 
-        if game.state['paces'].to_i == 30
+        if @game.state['paces'].to_i == 30
 
-          output << player.dig
+          output << @player.dig
 
         else
 
@@ -48,7 +48,7 @@ logic: |
 
       else
 
-        output << player.dig
+        output << @player.dig
 
       end
 

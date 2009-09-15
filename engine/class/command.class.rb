@@ -11,6 +11,7 @@ class Command
     # if game specified, as it should be, set instance variables used for
     # access from commands
     if @game
+      @player     = @game.player
       @locations  = @game.locations
       @props      = @game.props
       @characters = @game.characters

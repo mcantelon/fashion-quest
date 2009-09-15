@@ -12,7 +12,7 @@ logic: |
 
   prop_counter = 0
 
-  player.carrying.each do |prop|
+  @player.carrying.each do |prop|
 
     if prop_counter > 0
       output << ', '

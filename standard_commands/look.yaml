@@ -24,17 +24,17 @@ logic: |
       description << "You see nothing special.\n"
     end
 
-    description << game.event(noun, 'on_look')
+    description << @game.event(noun, 'on_look')
 
     output = description
 
   else
 
     # Show location image, if any
-    show_image(locations[location].image_file)
+    show_image(@locations[location].image_file)
 
     # Show location description
-    output = locations[location].describe(doors, props, characters, player.has_lit_item)
+    output = @locations[location].describe(@doors, @props, @characters, @player.has_lit_item)
 
   end
 
