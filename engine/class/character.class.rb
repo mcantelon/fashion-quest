@@ -118,7 +118,7 @@ class Character < GameComponent
   def attack
 
     output = ''
-    attack_strength = 0
+    attack_strength = 2
 
     # if character has strength, add to attack strength
     if strength

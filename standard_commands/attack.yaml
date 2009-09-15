@@ -34,7 +34,9 @@ logic: |
       weapon = @props[weapon].noun
     end
 
-    damage = rand attack_strength
+    attack_strength = attack_strength < 2 ? 2 : attack_strength
+
+    damage = rand(attack_strength)
 
     character.hp = character.hp - damage
 
