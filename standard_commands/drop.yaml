@@ -12,7 +12,7 @@ logic: |
   output = ''
 
   if prop.location == 'player'
-    prop.location = @locations[location].id
+    prop.location = @locations[@location].id
     output << "You drop #{prop.noun_direct_specific}.\n"
   else
     output << (@game.prop_404 prop.noun)

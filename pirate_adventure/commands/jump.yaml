@@ -6,10 +6,10 @@ logic: |
 
   output = ''
 
-  if @player.location == 'ledge'
+  if @location == 'ledge'
 
     # teleport player to neverneverland
-    @player.location = 'neverneverland'
+    @location = 'neverneverland'
 
     # chastise player and show description of new location
     output << "That's not very smart.\n"

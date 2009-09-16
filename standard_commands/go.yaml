@@ -9,19 +9,19 @@ logic: |
   @game.state['paces'] = 0
 
   # If an exit exists, load destination location and issue look command
-  if (@locations[location].exits && @locations[location].exits[direction])
+  if (@locations[@location].exits && @locations[@location].exits[direction])
 
     # If player is trying to move around in the dark, kill player
-    if @locations[location].dark and !@player.has_lit_item
+    if @locations[@location].dark and !@player.has_lit_item
 
       @game.over = true
       return "You trip in the dark and break your neck.\n"
 
     else
 
-      @game.state['last_location'] = location
+      @game.state['last_location'] = @location
 
-      @player.location = @locations[location].exits[direction]['destination']
+      @player.location = @locations[@location].exits[direction]['destination']
 
       return '>look'
 

@@ -2,7 +2,7 @@ class Command
 
   include Handles_YAML_Files
 
-  attr_accessor :syntax, :triggers, :logic
+  attr_accessor :syntax, :triggers, :logic, :location
 
   def initialize(params)
 
@@ -71,14 +71,18 @@ class Command
             #doors      = @game.doors
 
             if @game.player
-              location   = @game.player.location
+              @location   = @game.player.location
             else
               error('No player location is set.')
             end
 
             #props      = @game.props
 
-            return instance_eval(@logic)
+            command_result = instance_eval(@logic)
+
+            @player.location = @location
+
+            return command_result
           end
 
         end

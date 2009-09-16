@@ -34,7 +34,7 @@ logic: |
 
     if (@player.can_dig)
 
-      if location == 'field'
+      if @location == 'field'
 
         if @game.state['paces'].to_i == 30
 

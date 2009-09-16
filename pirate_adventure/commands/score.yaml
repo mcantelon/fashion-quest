@@ -6,7 +6,7 @@ logic: |
 
   output = ''
 
-  if location == 'apartment'
+  if @location == 'apartment'
 
     score  = 0
     stored = 0

@@ -7,7 +7,7 @@ logic: |
 
   output = ''
 
-  if location == 'ship'
+  if @location == 'ship'
 
     if @props['book'].location == 'player' or @props['book'].location == 'ship'
 
