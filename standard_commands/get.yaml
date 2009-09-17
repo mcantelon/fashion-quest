@@ -13,7 +13,7 @@ logic: |
 
   output = ''
 
-  if prop.location == @locations[@location].id
+  if prop.location == @player.location
 
     if prop.traits['portable']
 

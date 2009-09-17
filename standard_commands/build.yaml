@@ -18,7 +18,7 @@ logic: |
 
         output << @game.event(@props[prop], 'on_build')
 
-        @props[prop].location = @location
+        @props[prop].location = @player.location
 
       else
 

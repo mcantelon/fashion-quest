@@ -8,17 +8,17 @@ logic: |
 
   output = ''
 
-  if @location == 'ledge' and something == 'yoho' and @props['book'].location == 'player'
+  if @player.location == 'ledge' and something == 'yoho' and @props['book'].location == 'player'
 
     output << "Everything spins around and suddenly I'm elsewhere...\n";
-    @location = 'beach'
+    @player.location = 'beach'
 
   else
 
-    if @location == 'beach' and something == 'yoho' and @props['book'].location == 'player'
+    if @player.location == 'beach' and something == 'yoho' and @props['book'].location == 'player'
 
       output << "Everything spins around and suddenly I'm elsewhere...\n";
-      @location = 'ledge'
+      @player.location = 'ledge'
 
     else
 

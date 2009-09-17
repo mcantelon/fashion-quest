@@ -10,6 +10,8 @@ logic: |
 
   noun = arg['noun']
 
+  location = @player.location
+
   output = ''
 
   if noun
@@ -31,10 +33,10 @@ logic: |
   else
 
     # Show location image, if any
-    show_image(@locations[@location].image_file)
+    show_image(@locations[location].image_file)
 
     # Show location description
-    output = @locations[@location].describe(@doors, @props, @characters, @player.has_lit_item)
+    output = @locations[location].describe(@doors, @props, @characters, @player.has_lit_item)
 
   end
 
