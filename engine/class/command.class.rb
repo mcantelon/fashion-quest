@@ -8,16 +8,6 @@ class Command
 
     @game         = params[:game]
 
-    # if game specified, as it should be, set instance variables used for
-    # access from commands
-    if @game
-      @player     = @game.player
-      @locations  = @game.locations
-      @props      = @game.props
-      @characters = @game.characters
-      @doors      = @game.doors
-    end
-
     @image_stack  = params[:image_stack]
     @output_stack = params[:output_stack]
 
@@ -40,6 +30,18 @@ class Command
 
           # if keywords match, test references
           if valid
+
+            # if game specified, as it should be, set instance variables used for
+            # access from commands
+            if @game
+
+              @player     = @game.player
+              @locations  = @game.locations
+              @props      = @game.props
+              @characters = @game.characters
+              @doors      = @game.doors
+
+            end
 
             result = determine_command_arguments(syntax_lexemes, lexemes)
 
