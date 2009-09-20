@@ -3,11 +3,11 @@ Fashion Quest
 
 Fashion Quest is an interactive fiction framework being created so we can make
 a text adventure game about fashion because we love fashion and we love text
-advenutre games.
+adventure games.
 
 You need Shoes to use this so download Shoes now to your computer:
 
- http://code.google.com/p/twidiot/downloads/list
+ http://shoes.heroku.com/downloads
 
 Games created with the framework define the game using YAML files and bits of
 Ruby.
@@ -21,7 +21,9 @@ the "pirate_adventure" directory.
 To play either of these use Shoes to open run.rb and select which you'd like
 to play.
 
-Some super rough documentation is present as DOC_OUTLINE.
+Documentation is slowly evolving and can be found in:
+
+  docs/build/html/index.html
 
 The yard photo at game/locations/images/yard.jpg is by Patrick Q, (c)
 Creative Commons Attribution-Noncommercial 2.0 Generic. It was cropped.
