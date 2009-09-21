@@ -4,12 +4,16 @@ deadbeat:
   strength: 3
   discusses: 
     ? 
-      - weather
-      - hoes
+      - rick
     : 
-      - Looks like it could rain sometime.
-      - Yup.
-      - I feel alive.
+      - That guy used to be a buddy but then he ripped me off.
+      - I hate that guy. Got a smoke?
+      - That guy's a goof.
+
+    ?
+      - child
+    :
+      - Children are like animals we're not allowed to eat. Got a smoke?
 
   exchanges: 
     smokes: 

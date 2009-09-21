@@ -1,0 +1,8 @@
+---
+syntax:
+- "hobo"
+
+logic: |
+
+  alert(@characters['deadbeat'].location)
+  "Moof!\n"

@@ -12,6 +12,7 @@ child:
       - Oh how I wish I had some shoes.
       - If clothes make the man, then shoes make the child. It's not fair I was born without shoes.
       - How I long for some shoes.
+
   events:
     on_discuss:
     - "The child shuffles his bare feet and looks shyly at you.\n"

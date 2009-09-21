@@ -13,6 +13,16 @@ rick:
     : 
       - Parties are a real gas.
 
+    ?
+      - deadbeat
+    :
+      - I don't trust that guy.
+
+    ?
+      - child
+    :
+      - There's something missing in that child's life.
+
   description: Rick looks kind of sad. He's wearing a shirt that says 'Party Times'.
   hp: 10
   aggression: 1
