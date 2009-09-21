@@ -11,6 +11,12 @@ conditions:
     - death
 
   ?
+    - @characters['child'].dead == true
+
+  :
+    - child_killed
+
+  ?
     - @props['shoes'].location == 'child'
   :
     - win
@@ -23,6 +29,10 @@ outcomes:
   death: |
     @over = true
     output = "You have died.\n"
+
+  child_killed: |
+    @over = true
+    "You have touched the life of a child.\nYou have won, but the victory feels hollow.\n"
 
   win: |
     @over = true
