@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Creating Game Components &mdash; Fashion Quest vPreview 2 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'Preview 2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
+    <link rel="next" title="Fine-Tuning" href="fine_tuning.html" />
+    <link rel="prev" title="Game Creation Overview" href="overview.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="fine_tuning.html" title="Fine-Tuning"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Game Creation Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Creating Game Components</a><ul>
+<li><a class="reference external" href="#creating-locations">Creating Locations</a></li>
+<li><a class="reference external" href="#creating-doors">Creating Doors</a></li>
+<li><a class="reference external" href="#creating-props">Creating Props</a></li>
+<li><a class="reference external" href="#creating-characters">Creating Characters</a></li>
+<li><a class="reference external" href="#creating-commands">Creating Commands</a></li>
+<li><a class="reference external" href="#events">Events</a></li>
+<li><a class="reference external" href="#transitions">Transitions</a></li>
+<li><a class="reference external" href="#state">State</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="overview.html"
+                                  title="previous chapter">Game Creation Overview</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="fine_tuning.html"
+                                  title="next chapter">Fine-Tuning</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/components.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="creating-game-components">
+<h1>Creating Game Components<a class="headerlink" href="#creating-game-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="creating-locations">
+<h2>Creating Locations<a class="headerlink" href="#creating-locations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>locations are put in the &#8216;rooms&#8217; subdirectory</li>
+<li>exits can be directions &#8220;north&#8221; or arbitrary names &#8220;stairs&#8221;</li>
+</ul>
+</div>
+<div class="section" id="creating-doors">
+<h2>Creating Doors<a class="headerlink" href="#creating-doors" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>doors are put in the &#8216;doors&#8217; subdirectory</li>
+<li>doors connect two or more locations</li>
+<li>if a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations</li>
+</ul>
+</div>
+<div class="section" id="creating-props">
+<h2>Creating Props<a class="headerlink" href="#creating-props" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>props are put in the &#8216;props&#8217; subdirectory</li>
+</ul>
+</div>
+<div class="section" id="creating-characters">
+<h2>Creating Characters<a class="headerlink" href="#creating-characters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>characters are put in the &#8216;characters&#8217; subdirectory</li>
+<li>characters are defined in YAML</li>
+<li>any props a character will accept being given are indicated by the &#8220;exchanges&#8221; property</li>
+</ul>
+</div>
+<div class="section" id="creating-commands">
+<h2>Creating Commands<a class="headerlink" href="#creating-commands" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">commands are defined in YAML</p>
+</li>
+<li><p class="first">command files are put in the commands directory of the game&#8217;s base directory</p>
+</li>
+<li><p class="first">within the commands directory, commands can be placed in subdirectories if desired</p>
+</li>
+<li><p class="first">commands are made up of syntax and logic</p>
+</li>
+<li><p class="first">command syntax can have multiple forms
+- each syntax form is composed of keywords and references
+- keywords are static words: verbs
+- references refer to &#8220;things&#8221;: nouns</p>
+<blockquote>
+<ul class="simple">
+<li>types of references: prop, character, door, ad-hoc</li>
+<li>prop, character, and door references can refer to any prop, character, or door in the same location as the player</li>
+<li>if a prop, character, or door doesn&#8217;t have the same location as the player, an error will be returned</li>
+<li>ad-hoc references can refer to anything... there is no checking before passing an ad-hoc reference to command logic</li>
+<li>in syntax form, references enclosed in less-than and greater-than symbols</li>
+<li>examples:
+- &#8220;&lt;prop&gt;&#8221; for unnamed prop reference
+- &#8220;&lt;character&gt;&#8221; for unnamed prop reference
+- &#8220;&lt;prop:some name&gt;&#8221; for a named prop reference
+- &#8220;&lt;character:some other name&gt;&#8221; for a named character reference
+- &#8220;&lt;anything&gt;&#8221; for an ad-hoc reference</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first">command logic is written in Ruby
+- variables are passed to the command logic
+- references are passed as variables</p>
+<blockquote>
+<ul class="simple">
+<li>&#8220;&lt;prop&gt;&#8221; unnamed prop reference passed as &#8220;prop&#8221; variable</li>
+<li>&#8220;&lt;character&gt;&#8221; unnamed character reference passed as &#8220;character&#8221; variable</li>
+<li>&#8220;&lt;prop:some name&gt;&#8221; named prop reference passed as &#8220;arg[&#8216;some name&#8217;]&#8221; variable</li>
+<li>&#8220;&lt;character:some other name&gt;&#8221; named character reference passed as &#8220;arg[&#8216;some other name&#8217;]&#8221; variable</li>
+<li>&#8220;&lt;anything&gt;&#8221; ad-hoc refrence passed as &#8220;arg[anything]&#8221;</li>
+</ul>
+</blockquote>
+<ul class="simple">
+<li>&#8220;game&#8221;, &#8220;player&#8221;, &#8220;characters&#8221;, &#8220;props&#8221; variables allow interaction with game engine and game data
+- &#8220;game&#8221; spec
+- &#8220;player&#8221; spec
+- &#8220;characters&#8221; spec
+- &#8220;props&#8221; spec</li>
+<li>example commands</li>
+</ul>
+</li>
+<li><p class="first">commands can be shared between games
+- if you want to share a command between games, put the command in the standard_commands dirctory
+- to include a shared command in a game, put an empty file in your game&#8217;s command directory with the same filename</p>
+<blockquote>
+<p>as the shared command</p>
+</blockquote>
+<ul class="simple">
+<li>alternately, if you&#8217;re not using Windows you can use symlinks</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">characters and props can have events associated with them</p>
+</li>
+<li><p class="first">built-in character events are: on_death, etc.</p>
+</li>
+<li><p class="first">props can also have events</p>
+</li>
+<li><p class="first">events can contain text and/or logic</p>
+</li>
+<li><p class="first">to trgger events, simply add the logic into a command</p>
+</li>
+<li><dl class="first docutils">
+<dt>for example, the get command could trigger an &#8220;on_get&#8221; event in a prop:</dt>
+<dd><p class="first last">output &lt;&lt; game.event(props[prop], &#8216;on_get&#8217;)</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">the above example would have the game check a certain prop for an on_get response</p>
+</li>
+<li><dl class="first docutils">
+<dt>an example response could be:</dt>
+<dd><p class="first last">&#64;locations[&#8216;alcove&#8217;].add_to_description(&#8220;There is a bookcase with a secret passage beyond.n&#8221;); &#8220;There&#8217;s a strange sound.n&#8221;;</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">the above example would add to a rooms description and give the player a hint that something in the game has changed</p>
+</li>
+</ul>
+</div>
+<div class="section" id="transitions">
+<h2>Transitions<a class="headerlink" href="#transitions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>transitions allow manipulation of components to be triggered by game conditions, rather than user commands</li>
+<li>this allows you to avoid having to add the same logic in multiple commands</li>
+<li>transitions return output</li>
+<li>if you want a transition to be silent, end it with the line &#8220;&#8221;</li>
+</ul>
+</div>
+<div class="section" id="state">
+<h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>state can be used to keep track of global game conditions</li>
+<li>state can be referred to or manipulated in transitions or commands</li>
+<li>within transtions, use &#64;state</li>
+<li>example: &#64;state[&#8216;tide&#8217;] = &#8216;in&#8217;</li>
+<li>within commands, use game.state</li>
+<li>example: game.state[&#8216;tide&#8217;] = &#8216;out&#8217;</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="fine_tuning.html" title="Fine-Tuning"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Game Creation Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Mike Cantelon.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

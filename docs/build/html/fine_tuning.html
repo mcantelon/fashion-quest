@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Fine-Tuning &mdash; Fashion Quest vPreview 2 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'Preview 2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Fine-Tuning</a><ul>
+<li><a class="reference external" href="#style">Style</a></li>
+<li><a class="reference external" href="#abbreviations-synonyms-and-garbage-words">Abbreviations, Synonyms, and Garbage Words</a></li>
+<li><a class="reference external" href="#testing">Testing</a></li>
+<li><a class="reference external" href="#naming">Naming</a></li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/fine_tuning.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fine-tuning">
+<h1>Fine-Tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="style">
+<h2>Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>whenever possible, keep game-specific &#8220;rules&#8221; in transitions instead of commands</li>
+<li>keeping game-specific logic out of commands allows them to be reused in different games</li>
+</ul>
+</div>
+<div class="section" id="abbreviations-synonyms-and-garbage-words">
+<h2>Abbreviations, Synonyms, and Garbage Words<a class="headerlink" href="#abbreviations-synonyms-and-garbage-words" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>the command_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined</li>
+<li>for example: &#8220;n&#8221; for &#8220;go north&#8221;</li>
+<li>in the above example, &#8220;north&#8221; was a parameter to the &#8220;go&#8221; command</li>
+<li>in the case of abbreviations that don&#8217;t need to specify a parameter, like &#8220;i&#8221; for &#8220;inventory&#8221;, those should be included as a syntax of the command itself</li>
+<li>the global_synonyms.yaml file, in the game parsing path, allow a list of words that should be replaced with other words</li>
+<li>for example: &#8220;using&#8221; for &#8220;with&#8221;</li>
+<li>in the above example, this synonym would elimiate the need to make the syntax &#8220;attack &lt;character&gt; with &lt;prop&gt;&#8221; also work when the player issues the command like &#8220;attack bear using hat&#8221;</li>
+<li>the garbage_words.yaml file, found in the game&#8217;s parsing path, allows certain words to be discarded from player input</li>
+<li>these words should be words like &#8220;the&#8221; and &#8220;a&#8221; which have little semantic meaning</li>
+<li>this makes specifying command syntax easier</li>
+</ul>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>when saving and loading games be mindful that prop, etc., definitions get saved as well so your game changes may not be
+reflected</li>
+<li>use &#8220;save walkthrough&#8221; command to save your previous commands</li>
+<li>use &#8220;load walkthrough&#8221; command to run through commands you&#8217;ve previously saved</li>
+<li>these commands can be used for testing</li>
+<li>walkthrough files are YAML, so easy to edit</li>
+<li>COMPARE, TRANSCRIPT?</li>
+<li>use the Shoes debugger... press alt-/ to see error messages</li>
+<li>alert(&#8216;some message&#8217;) is also handy to deduce the flow of logic</li>
+<li>no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn&#8217;t exist or isn&#8217;t located near player</li>
+</ul>
+</div>
+<div class="section" id="naming">
+<h2>Naming<a class="headerlink" href="#naming" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+noun      noun_cap</blockquote>
+<p>proper    Noun      Noun
+plural    the nouns The nouns
+general   a noun    A noun
+countable water     Water</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Mike Cantelon.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

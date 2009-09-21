@@ -1,0 +1,22 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [1][-]{section.1.1}{Interactive Fiction Frameworks}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Design Goals of Fashion Quest}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Game Creation Overview}{}
+\BOOKMARK [1][-]{section.2.1}{Directory Structure}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Game Configuration}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Game Elements}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Creating Game Components}{}
+\BOOKMARK [1][-]{section.3.1}{Creating Locations}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Creating Doors}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Creating Props}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{Creating Characters}{chapter.3}
+\BOOKMARK [1][-]{section.3.5}{Creating Commands}{chapter.3}
+\BOOKMARK [1][-]{section.3.6}{Events}{chapter.3}
+\BOOKMARK [1][-]{section.3.7}{Transitions}{chapter.3}
+\BOOKMARK [1][-]{section.3.8}{State}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{Fine-Tuning}{}
+\BOOKMARK [1][-]{section.4.1}{Style}{chapter.4}
+\BOOKMARK [1][-]{section.4.2}{Abbreviations, Synonyms, and Garbage Words}{chapter.4}
+\BOOKMARK [1][-]{section.4.3}{Testing}{chapter.4}
+\BOOKMARK [1][-]{section.4.4}{Naming}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{Indices and tables}{}

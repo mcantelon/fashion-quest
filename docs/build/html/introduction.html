@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; Fashion Quest vPreview 2 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'Preview 2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
+    <link rel="next" title="Game Creation Overview" href="overview.html" />
+    <link rel="prev" title="Indices and tables" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="Game Creation Overview"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Indices and tables"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Introduction</a><ul>
+<li><a class="reference external" href="#id1">Introduction</a></li>
+<li><a class="reference external" href="#interactive-fiction-frameworks">Interactive Fiction Frameworks</a></li>
+<li><a class="reference external" href="#design-goals-of-fashion-quest">Design Goals of Fashion Quest</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Indices and tables</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="overview.html"
+                                  title="next chapter">Game Creation Overview</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/introduction.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Fashion Quest is an interactive fiction framework created to make <a class="reference external" href="http://en.wikipedia.org/wiki/Interactive_fiction">text adventure games</a> about fashion because we love fashion and we love text adventure games. Fashion Quest requires <a class="reference external" href="http://shoes.heroku.com/">Shoes</a>, a cross-platform GUI framework created by <a class="reference external" href="http://en.wikipedia.org/wiki/Why_the_lucky_stiff/">Why the Lucky Stiff</a>.</p>
+<p>Text adventure games involve issuing tiny action plans, like <cite>go north</cite> or <cite>fight the police</cite>.</p>
+<p>Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes two demonstration games. The game &#8220;Fashion Quest: Daydream&#8221; is very small and designed to demonstrate non-player character features. It lives in the <cite>game</cite> directory. The game &#8220;Pirate Adventure Knockoff&#8221; is a port of the 1978 text adventure <a class="reference external" href="http://en.wikipedia.org/wiki/Pirate_Adventure">&#8220;Pirate Adventure&#8221;</a> by Scott and Alexis Adams and lives in the <cite>pirate_adventure</cite> directory.</p>
+<p>To play either of these use Shoes to run <cite>run.rb</cite> and select which you’d like to play.</p>
+<p>Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative use of computers!</p>
+</div>
+<div class="section" id="interactive-fiction-frameworks">
+<h2>Interactive Fiction Frameworks<a class="headerlink" href="#interactive-fiction-frameworks" title="Permalink to this headline">¶</a></h2>
+<p>Text adventure games are also known as interactive fiction (IF). Development of IF involves dealing with problems not inherent in many other realms of development, including parsing and simulation. Because of this a number of frameworks have been developed to deal with the IF domain. Major frameworks include Inform, Adrift, and TADS.</p>
+<p>ADRIFT is one of the most user friendly of the frameworks. It allows games to be created using a GUI. It is not extensible, cross-platform, or open source, however.</p>
+<p>Inform is one of the most elegant and established of the frameworks. It allows games to be developed either in natural language (Inform 7) or a specialize programming langague (Inform 6). It is extensible, cross-platform, open source, and supports automated game testing.</p>
+<p>TADS.</p>
+</div>
+<div class="section" id="design-goals-of-fashion-quest">
+<h2>Design Goals of Fashion Quest<a class="headerlink" href="#design-goals-of-fashion-quest" title="Permalink to this headline">¶</a></h2>
+<p>Fashion Quest was created with the goal of being somewhere between ADRIFT and Inform in ease of use.</p>
+<p>The design goals are as follows:</p>
+<ul>
+<li><p class="first"><strong>Minimalist</strong></p>
+<p>Fashion Quest was designed to be lightweight and easy to learn. The simulated world is as simple as possible. Game command syntax is defined using patterns rather than natural language rules.</p>
+</li>
+<li><p class="first"><strong>Cross-platform</strong></p>
+<p>By leveraging Shoes, Fashion Quest is able to provide a consistant user experience across whether being used in Windows, Mac OS, or Linux.</p>
+</li>
+<li><p class="first"><strong>Programmer-Friendly</strong></p>
+<p>Fashion Quest development is done using the Ruby programming language rather than a domain-specific programming language. This lessen the framework learning curve for those who already known Ruby.</p>
+</li>
+<li><p class="first"><strong>Extensible</strong></p>
+<p>Because Fashion Quest is open source, it is fully extensible. Default game engine behaviour can be overriden using monkey patching.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="Game Creation Overview"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Indices and tables"
+             >previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Mike Cantelon.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>

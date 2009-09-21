@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Game Creation Overview &mdash; Fashion Quest vPreview 2 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'Preview 2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
+    <link rel="next" title="Creating Game Components" href="components.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="components.html" title="Creating Game Components"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Game Creation Overview</a><ul>
+<li><a class="reference external" href="#directory-structure">Directory Structure</a></li>
+<li><a class="reference external" href="#game-configuration">Game Configuration</a></li>
+<li><a class="reference external" href="#game-elements">Game Elements</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="introduction.html"
+                                  title="previous chapter">Introduction</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="components.html"
+                                  title="next chapter">Creating Game Components</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/overview.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="game-creation-overview">
+<h1>Game Creation Overview<a class="headerlink" href="#game-creation-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="directory-structure">
+<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>docs</cite> directory contains Fashion Quest developer documentation.</p>
+<p>The <cite>engine</cite> directory contains Fashion Quest application logic. Unless you want to play around with Fashion Quest&#8217;s internals, you can ignore this directory.</p>
+<p>The <cite>standard_commands</cite> directory contains standard game command definitions that can be shared between games.</p>
+<p>Files pertaining used by specific games are put in <em>game directories</em>. These directories can be put into the same parent directory as the above directories and can be named anything. When Fashion quest starts, it will look through all directories at this level to see which ones contain config.yaml files (in which game name, etc., are stored). If only one game directory is found, Fashion Quest will automatically select it. Otherwise, a game selector will be presented to the user.</p>
+</div>
+<div class="section" id="game-configuration">
+<h2>Game Configuration<a class="headerlink" href="#game-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Basic game coniguration is done via a <cite>config.yaml</cite> file. Each game directory must have one.</p>
+<p>Game configuration options include game title, window width/height, whether the window should be resizable, startup message, and startup logic.</p>
+<p>The basic look of a game can be tweaked using the startup logic. See the &#8220;Pirate Adventure Knockoff&#8221; demonstation game for an example.</p>
+</div>
+<div class="section" id="game-elements">
+<h2>Game Elements<a class="headerlink" href="#game-elements" title="Permalink to this headline">¶</a></h2>
+<p>GAME STATE?</p>
+<p>The elements that make up a game include the player, locations, props, non-player characters, doors, commands, and transitions. All are defined using YAML with embedded Ruby.</p>
+<p>Elements that the player may be able to carry are called <em>game components</em>. These include props, characters, and doors. Usually only props can be carried, but some games might require a character or door be carryable.</p>
+<p>Commands and transitions rely on Ruby logic to manipulate the other game elements. Commands are triggered by the user whereas transitions are triggered by sspecific game states.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="components.html" title="Creating Game Components"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Mike Cantelon.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
