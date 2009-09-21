@@ -1,3 +1,6 @@
+Fashion Quest
+=============
+
 .. toctree::
    :maxdepth: 2
 

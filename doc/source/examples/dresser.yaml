@@ -1,0 +1,8 @@
+dresser:
+  description: The dresser looks like it has seen better days.
+  location: bedroom
+  traits:
+    opened: false
+    portable: false
+    contains:
+      - prop: smokes

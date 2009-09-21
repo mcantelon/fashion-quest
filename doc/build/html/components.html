@@ -21,7 +21,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
     <link rel="next" title="Fine-Tuning" href="fine_tuning.html" />
-    <link rel="prev" title="Game Creation Overview" href="overview.html" /> 
+    <link rel="prev" title="Framework Overview" href="overview.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,7 +34,7 @@
           <a href="fine_tuning.html" title="Fine-Tuning"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="overview.html" title="Game Creation Overview"
+          <a href="overview.html" title="Framework Overview"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
       </ul>
@@ -48,7 +48,11 @@
 <li><a class="reference external" href="#creating-doors">Creating Doors</a></li>
 <li><a class="reference external" href="#creating-props">Creating Props</a></li>
 <li><a class="reference external" href="#creating-characters">Creating Characters</a></li>
-<li><a class="reference external" href="#creating-commands">Creating Commands</a></li>
+<li><a class="reference external" href="#creating-commands">Creating Commands</a><ul>
+<li><a class="reference external" href="#syntax">Syntax</a></li>
+<li><a class="reference external" href="#logic">Logic</a></li>
+</ul>
+</li>
 <li><a class="reference external" href="#events">Events</a></li>
 <li><a class="reference external" href="#transitions">Transitions</a></li>
 <li><a class="reference external" href="#state">State</a></li>
@@ -58,7 +62,7 @@
 
             <h4>Previous topic</h4>
             <p class="topless"><a href="overview.html"
-                                  title="previous chapter">Game Creation Overview</a></p>
+                                  title="previous chapter">Framework Overview</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="fine_tuning.html"
                                   title="next chapter">Fine-Tuning</a></p>
@@ -90,66 +94,118 @@
             
   <div class="section" id="creating-game-components">
 <h1>Creating Game Components<a class="headerlink" href="#creating-game-components" title="Permalink to this headline">¶</a></h1>
+<p>Game components are defined using <a class="reference external" href="http://www.yaml.org/">YAML</a>, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.</p>
 <div class="section" id="creating-locations">
 <h2>Creating Locations<a class="headerlink" href="#creating-locations" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>locations are put in the &#8216;rooms&#8217; subdirectory</li>
-<li>exits can be directions &#8220;north&#8221; or arbitrary names &#8220;stairs&#8221;</li>
-</ul>
+<p>Locations are...</p>
+<p>Each location is defined in its own YAML file within the &#8216;locations&#8217; subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a location with two exits: an exit to the north and an open window. The unique indentifier of the location is <cite>alcove</cite>.</p>
+<div class="highlight-python"><pre>alcove:
+  exits:
+    down:
+      destination: apartment
+    window:
+      destination: ledge
+
+  description: |
+    I'm in an alcove. There is an open window. There is a bookcase full of books.
+</pre>
+</div>
 </div>
 <div class="section" id="creating-doors">
 <h2>Creating Doors<a class="headerlink" href="#creating-doors" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>doors are put in the &#8216;doors&#8217; subdirectory</li>
-<li>doors connect two or more locations</li>
-<li>if a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations</li>
-</ul>
+<p>Doors allow two or more locations to be connected. If a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations.</p>
+<p>Doors are defined in a file called <cite>doors.yaml</cite> within the <cite>doors</cite> subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Fashion Quest: Daydream&#8221; demonstration game, defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the <cite>brass key</cite> prop. The unique indentifier of the door is <cite>door</cite>.</p>
+<div class="highlight-python"><pre>---
+door:
+  name: door
+  description: The door is made of dark-brown wood.
+  locations:
+  - hallway
+  - bedroom
+  traits:
+    opened: false
+    opens_with:
+    - brass key
+</pre>
+</div>
 </div>
 <div class="section" id="creating-props">
 <h2>Creating Props<a class="headerlink" href="#creating-props" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>props are put in the &#8216;props&#8217; subdirectory</li>
-</ul>
+<p>Props are items that players can interact with in the game. They may be portable items, such as a pack of cigarettes, or items that can&#8217;t be carried, such as a dresser.</p>
+<p>Props are defined in a file called <cite>props.yaml</cite> within the <cite>props</cite> subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Fashion Quest: Daydream&#8221; demonstration game, defines a dresser located in a location with the unique identifier <cite>bedroom</cite>. The dresser can be opened by the player and contains another prop, a pack of <cite>smokes</cite>.</p>
+<div class="highlight-python"><pre>dresser:
+  description: The dresser looks like it has seen better days.
+  location: bedroom
+  traits:
+    opened: false
+    portable: false
+    contains:
+      - prop: smokes
+</pre>
+</div>
 </div>
 <div class="section" id="creating-characters">
 <h2>Creating Characters<a class="headerlink" href="#creating-characters" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>characters are put in the &#8216;characters&#8217; subdirectory</li>
-<li>characters are defined in YAML</li>
-<li>any props a character will accept being given are indicated by the &#8220;exchanges&#8221; property</li>
-</ul>
+<p>Characters are beings that players can interact with in the game.</p>
+<p>Each character is defined in its own YAML file within the &#8216;characters&#8217; subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a character located in a location with the unique identifier <cite>shack</cite>. The pirate will accept the <cite>rum</cite> prop if the player gives it to him.</p>
+<div class="highlight-python"><pre>--- 
+pirate: 
+  description: The pirate has a wicked look.
+  location: shack
+  exchanges:
+    rum: true
+</pre>
+</div>
 </div>
 <div class="section" id="creating-commands">
 <h2>Creating Commands<a class="headerlink" href="#creating-commands" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">commands are defined in YAML</p>
-</li>
-<li><p class="first">command files are put in the commands directory of the game&#8217;s base directory</p>
-</li>
-<li><p class="first">within the commands directory, commands can be placed in subdirectories if desired</p>
-</li>
-<li><p class="first">commands are made up of syntax and logic</p>
-</li>
-<li><p class="first">command syntax can have multiple forms
-- each syntax form is composed of keywords and references
-- keywords are static words: verbs
-- references refer to &#8220;things&#8221;: nouns</p>
-<blockquote>
+<p>Each command is defined in its own YAML file within the &#8216;commands&#8217; subdirectory of the game directory. If a command file within this directory exists, but is empty, the game engine will look for a command with the same filename in the <cite>standard_commands</cite> directory.</p>
 <ul class="simple">
-<li>types of references: prop, character, door, ad-hoc</li>
-<li>prop, character, and door references can refer to any prop, character, or door in the same location as the player</li>
-<li>if a prop, character, or door doesn&#8217;t have the same location as the player, an error will be returned</li>
-<li>ad-hoc references can refer to anything... there is no checking before passing an ad-hoc reference to command logic</li>
-<li>in syntax form, references enclosed in less-than and greater-than symbols</li>
-<li>examples:
+<li>within the commands directory, commands can be placed in subdirectories if desired???</li>
+</ul>
+<p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a command that enables the player to wake up the pirate character. If the character&#8217;s <cite>asleep</cite> trait is <cite>true</cite> the <cite>asleep</cite> trait will be changed to <cite>false</cite> if the player enters the command <cite>wake pirate</cite>.</p>
+<div class="highlight-python"><pre>---
+syntax:
+- "wake &lt;character&gt;"
+- "wake up &lt;character&gt;"
+
+logic: |
+
+  output = ''
+
+  if character.traits['asleep'] == true
+    character.traits['asleep'] = false
+  else
+    output &lt;&lt; "You can't wake up what is not asleep.\n"
+  end
+
+  output
+</pre>
+</div>
+<p>Commands are made up of syntax and logic.</p>
+<div class="section" id="syntax">
+<h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<p>Command syntax can have multiple forms. For example, a command that allows the player to pick up a prop could have the form <cite>get &lt;prop&gt;</cite> or <cite>take &lt;prop&gt;</cite>.</p>
+<p>Each syntax form is composed of keywords and references. With the case of the above example <cite>get</cite> and <cite>take</cite> are the keywords and <cite>&lt;prop&gt;</cite> is the reference.</p>
+<p>Keywords are static words identifying an action: verbs. References refer to &#8220;things&#8221;: nouns.</p>
+<p>Three types of references can be used: prop, character, door, ad-hoc.</p>
+<p>Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn&#8217;t have the same location as the player, an error will be returned.</p>
+<p>Ad-hoc references can refer to anything... the game engine doesn&#8217;t checking before passing an ad-hoc reference to command logic.</p>
+<p>When defining syntax forms, references are enclosed in less-than and greater-than symbols. NAMED?</p>
+<p>Examples:
 - &#8220;&lt;prop&gt;&#8221; for unnamed prop reference
 - &#8220;&lt;character&gt;&#8221; for unnamed prop reference
 - &#8220;&lt;prop:some name&gt;&#8221; for a named prop reference
 - &#8220;&lt;character:some other name&gt;&#8221; for a named character reference
-- &#8220;&lt;anything&gt;&#8221; for an ad-hoc reference</li>
-</ul>
-</blockquote>
-</li>
+- &#8220;&lt;anything&gt;&#8221; for an ad-hoc reference</p>
+</div>
+<div class="section" id="logic">
+<h3>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h3>
+<ul>
 <li><p class="first">command logic is written in Ruby
 - variables are passed to the command logic
 - references are passed as variables</p>
@@ -182,6 +238,7 @@
 </ul>
 </li>
 </ul>
+</div>
 </div>
 <div class="section" id="events">
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
@@ -252,7 +309,7 @@
           <a href="fine_tuning.html" title="Fine-Tuning"
              >next</a> |</li>
         <li class="right" >
-          <a href="overview.html" title="Game Creation Overview"
+          <a href="overview.html" title="Framework Overview"
              >previous</a> |</li>
         <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
       </ul>

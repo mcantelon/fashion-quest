@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Game Creation Overview &mdash; Fashion Quest vPreview 2 documentation</title>
+    <title>Framework Overview &mdash; Fashion Quest vPreview 2 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -43,10 +43,10 @@
         <div class="sphinxsidebarwrapper">
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
-<li><a class="reference external" href="">Game Creation Overview</a><ul>
+<li><a class="reference external" href="">Framework Overview</a><ul>
 <li><a class="reference external" href="#directory-structure">Directory Structure</a></li>
-<li><a class="reference external" href="#game-configuration">Game Configuration</a></li>
 <li><a class="reference external" href="#game-elements">Game Elements</a></li>
+<li><a class="reference external" href="#game-directory-structure">Game Directory Structure</a></li>
 </ul>
 </li>
 </ul>
@@ -83,27 +83,55 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="game-creation-overview">
-<h1>Game Creation Overview<a class="headerlink" href="#game-creation-overview" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="framework-overview">
+<h1>Framework Overview<a class="headerlink" href="#framework-overview" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="directory-structure">
 <h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
-<p>The <cite>docs</cite> directory contains Fashion Quest developer documentation.</p>
+<p>The <cite>doc</cite> directory contains Fashion Quest developer documentation.</p>
 <p>The <cite>engine</cite> directory contains Fashion Quest application logic. Unless you want to play around with Fashion Quest&#8217;s internals, you can ignore this directory.</p>
 <p>The <cite>standard_commands</cite> directory contains standard game command definitions that can be shared between games.</p>
 <p>Files pertaining used by specific games are put in <em>game directories</em>. These directories can be put into the same parent directory as the above directories and can be named anything. When Fashion quest starts, it will look through all directories at this level to see which ones contain config.yaml files (in which game name, etc., are stored). If only one game directory is found, Fashion Quest will automatically select it. Otherwise, a game selector will be presented to the user.</p>
 </div>
-<div class="section" id="game-configuration">
-<h2>Game Configuration<a class="headerlink" href="#game-configuration" title="Permalink to this headline">¶</a></h2>
-<p>Basic game coniguration is done via a <cite>config.yaml</cite> file. Each game directory must have one.</p>
-<p>Game configuration options include game title, window width/height, whether the window should be resizable, startup message, and startup logic.</p>
-<p>The basic look of a game can be tweaked using the startup logic. See the &#8220;Pirate Adventure Knockoff&#8221; demonstation game for an example.</p>
-</div>
 <div class="section" id="game-elements">
 <h2>Game Elements<a class="headerlink" href="#game-elements" title="Permalink to this headline">¶</a></h2>
-<p>GAME STATE?</p>
-<p>The elements that make up a game include the player, locations, props, non-player characters, doors, commands, and transitions. All are defined using YAML with embedded Ruby.</p>
+<p>The elements that make up a game include the player, locations, props, non-player characters, doors, game state, commands, and transitions. All are defined using YAML with embedded Ruby.</p>
 <p>Elements that the player may be able to carry are called <em>game components</em>. These include props, characters, and doors. Usually only props can be carried, but some games might require a character or door be carryable.</p>
-<p>Commands and transitions rely on Ruby logic to manipulate the other game elements. Commands are triggered by the user whereas transitions are triggered by sspecific game states.</p>
+<p>Game state allows ad-hoc game world conditions to be stored. In the demonstration game &#8220;Pirate Adventure Knockoff&#8221;, for example, game state is used to record whether or not the tide is in.</p>
+<p>Commands and transitions rely on Ruby logic to manipulate the other game elements. Commands are triggered by the user whereas transitions are triggered by the conditions of other game elements.</p>
+</div>
+<div class="section" id="game-directory-structure">
+<h2>Game Directory Structure<a class="headerlink" href="#game-directory-structure" title="Permalink to this headline">¶</a></h2>
+<p>The game directory contains a number of folders and files in which game configuration live.</p>
+<ul>
+<li><p class="first"><strong>Basic Configuration</strong></p>
+<p>Each game directory must contain a <cite>config.yaml</cite> file. This file contains high-level configuration parameters such as game title, window width/height, whether the game window should be resizable, startup message, and startup logic.</p>
+<p>The basic look of a game can be tweaked using the startup logic. See the &#8220;Pirate Adventure Knockoff&#8221; demonstation game for an example.</p>
+</li>
+<li><p class="first"><strong>Transitions</strong></p>
+<p>A game directory may contain a <cite>transitions.yaml</cite> file. This file defines any transitions.</p>
+</li>
+<li><p class="first"><strong>Characters</strong></p>
+<p>A game directory may contain a <cite>characters</cite> directory in which files that define non-player characters are kept.</p>
+</li>
+<li><p class="first"><strong>Commands</strong></p>
+<p>A game directory requires a <cite>commands</cite> directory in which files that define commands, or reference standard commands, are kept.</p>
+</li>
+<li><p class="first"><strong>Doors</strong></p>
+<p>A game directory may contain a <cite>doors</cite> directory in which a file that defines doors is kept.</p>
+</li>
+<li><p class="first"><strong>Locations</strong></p>
+<p>A game directory requires a <cite>locations</cite> directory in which files that define locations are kept.</p>
+</li>
+<li><p class="first"><strong>Parsing</strong></p>
+<p>A game directory may contain a <cite>parsing</cite> directorry in which files related to the fine-tuning of command parsing are kept.</p>
+</li>
+<li><p class="first"><strong>Player</strong></p>
+<p>A game directory requires a <cite>player</cite> directory in which a file that defines the player&#8217;s attributes is kept.</p>
+</li>
+<li><p class="first"><strong>Props</strong></p>
+<p>A game directory requires a <cite>props</cite> directory in which a file that defines game props is kept.</p>
+</li>
+</ul>
 </div>
 </div>
 

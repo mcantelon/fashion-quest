@@ -1,10 +1,10 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}
 \BOOKMARK [1][-]{section.1.1}{Interactive Fiction Frameworks}{chapter.1}
 \BOOKMARK [1][-]{section.1.2}{Design Goals of Fashion Quest}{chapter.1}
-\BOOKMARK [0][-]{chapter.2}{Game Creation Overview}{}
+\BOOKMARK [0][-]{chapter.2}{Framework Overview}{}
 \BOOKMARK [1][-]{section.2.1}{Directory Structure}{chapter.2}
-\BOOKMARK [1][-]{section.2.2}{Game Configuration}{chapter.2}
-\BOOKMARK [1][-]{section.2.3}{Game Elements}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Game Elements}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Game Directory Structure}{chapter.2}
 \BOOKMARK [0][-]{chapter.3}{Creating Game Components}{}
 \BOOKMARK [1][-]{section.3.1}{Creating Locations}{chapter.3}
 \BOOKMARK [1][-]{section.3.2}{Creating Doors}{chapter.3}

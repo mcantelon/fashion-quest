@@ -148,12 +148,12 @@ Because Fashion Quest is open source, it is fully extensible. Default game engin
 \resetcurrentobjects
 \hypertarget{--doc-overview}{}
 
-\chapter{Game Creation Overview}
+\chapter{Framework Overview}
 
 
 \section{Directory Structure}
 
-The \emph{docs} directory contains Fashion Quest developer documentation.
+The \emph{doc} directory contains Fashion Quest developer documentation.
 
 The \emph{engine} directory contains Fashion Quest application logic. Unless you want to play around with Fashion Quest's internals, you can ignore this directory.
 
@@ -162,62 +162,138 @@ The \emph{standard\_commands} directory contains standard game command definitio
 Files pertaining used by specific games are put in \emph{game directories}. These directories can be put into the same parent directory as the above directories and can be named anything. When Fashion quest starts, it will look through all directories at this level to see which ones contain config.yaml files (in which game name, etc., are stored). If only one game directory is found, Fashion Quest will automatically select it. Otherwise, a game selector will be presented to the user.
 
 
-\section{Game Configuration}
-
-Basic game coniguration is done via a \emph{config.yaml} file. Each game directory must have one.
-
-Game configuration options include game title, window width/height, whether the window should be resizable, startup message, and startup logic.
-
-The basic look of a game can be tweaked using the startup logic. See the ``Pirate Adventure Knockoff'' demonstation game for an example.
-
-
 \section{Game Elements}
 
-GAME STATE?
-
-The elements that make up a game include the player, locations, props, non-player characters, doors, commands, and transitions. All are defined using YAML with embedded Ruby.
+The elements that make up a game include the player, locations, props, non-player characters, doors, game state, commands, and transitions. All are defined using YAML with embedded Ruby.
 
 Elements that the player may be able to carry are called \emph{game components}. These include props, characters, and doors. Usually only props can be carried, but some games might require a character or door be carryable.
 
-Commands and transitions rely on Ruby logic to manipulate the other game elements. Commands are triggered by the user whereas transitions are triggered by sspecific game states.
+Game state allows ad-hoc game world conditions to be stored. In the demonstration game ``Pirate Adventure Knockoff'', for example, game state is used to record whether or not the tide is in.
+
+Commands and transitions rely on Ruby logic to manipulate the other game elements. Commands are triggered by the user whereas transitions are triggered by the conditions of other game elements.
+
+
+\section{Game Directory Structure}
+
+The game directory contains a number of folders and files in which game configuration live.
+\begin{itemize}
+\item {} 
+\textbf{Basic Configuration}
+
+Each game directory must contain a \emph{config.yaml} file. This file contains high-level configuration parameters such as game title, window width/height, whether the game window should be resizable, startup message, and startup logic.
+
+The basic look of a game can be tweaked using the startup logic. See the ``Pirate Adventure Knockoff'' demonstation game for an example.
+
+\item {} 
+\textbf{Transitions}
+
+A game directory may contain a \emph{transitions.yaml} file. This file defines any transitions.
+
+\item {} 
+\textbf{Characters}
+
+A game directory may contain a \emph{characters} directory in which files that define non-player characters are kept.
+
+\item {} 
+\textbf{Commands}
+
+A game directory requires a \emph{commands} directory in which files that define commands, or reference standard commands, are kept.
+
+\item {} 
+\textbf{Doors}
+
+A game directory may contain a \emph{doors} directory in which a file that defines doors is kept.
+
+\item {} 
+\textbf{Locations}
+
+A game directory requires a \emph{locations} directory in which files that define locations are kept.
+
+\item {} 
+\textbf{Parsing}
+
+A game directory may contain a \emph{parsing} directorry in which files related to the fine-tuning of command parsing are kept.
+
+\item {} 
+\textbf{Player}
+
+A game directory requires a \emph{player} directory in which a file that defines the player's attributes is kept.
+
+\item {} 
+\textbf{Props}
+
+A game directory requires a \emph{props} directory in which a file that defines game props is kept.
+
+\end{itemize}
 
 \resetcurrentobjects
 \hypertarget{--doc-components}{}
 
 \chapter{Creating Game Components}
 
+Game components are defined using \href{http://www.yaml.org/}{YAML}, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.
+
 
 \section{Creating Locations}
-\begin{itemize}
-\item {} 
-locations are put in the `rooms' subdirectory
 
-\item {} 
-exits can be directions ``north'' or arbitrary names ``stairs''
+Each location is defined in its own YAML file within the `locations' subdirectory of the game directory.
 
-\end{itemize}
+The example below, from the ``Pirate Adventure Knockoff'' demonstration game, defines a location with two exits: an exit to the north and an open window. The unique indentifier of the location is \emph{alcove}.
+
+\begin{Verbatim}[commandchars=@\[\]]
+alcove:
+  exits:
+    down:
+      destination: apartment
+    window:
+      destination: ledge
+
+  description: @textbar[]
+    I'm in an alcove. There is an open window. There is a bookcase full of books.
+\end{Verbatim}
 
 
 \section{Creating Doors}
-\begin{itemize}
-\item {} 
-doors are put in the `doors' subdirectory
 
-\item {} 
-doors connect two or more locations
+Doors allow two or more locations to be connected. If a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations.
 
-\item {} 
-if a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations
+Doors are defined in a file called \emph{doors.yaml} within the \emph{doors} subdirectory of the game directory.
 
-\end{itemize}
+The example below, from the ``Fashion Quest: Daydream'' demonstration game, defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the \emph{brass key} prop. The unique indentifier of the door is \emph{door}.
+
+\begin{Verbatim}[commandchars=@\[\]]
+---
+door:
+  name: door
+  description: The door is made of dark-brown wood.
+  locations:
+  - hallway
+  - bedroom
+  traits:
+    opened: false
+    opens@_with:
+    - brass key
+\end{Verbatim}
 
 
 \section{Creating Props}
-\begin{itemize}
-\item {} 
-props are put in the `props' subdirectory
 
-\end{itemize}
+Props are items that players can interact with in the game. They may be portable items, such as a pack of cigarettes, or items that can't be carried, such as a dresser.
+
+Props are defined in a file called \emph{props.yaml} within the \emph{props} subdirectory of the game directory.
+
+The example below, from the ``Fashion Quest: Daydream'' demonstration game, defines a dresser located in a location with the unique identifier \emph{bedroom}. The dresser can be opened by the player and contains another prop, a pack of \emph{smokes}.
+
+\begin{Verbatim}[commandchars=@\[\]]
+dresser:
+  description: The dresser looks like it has seen better days.
+  location: bedroom
+  traits:
+    opened: false
+    portable: false
+    contains:
+      - prop: smokes
+\end{Verbatim}
 
 
 \section{Creating Characters}

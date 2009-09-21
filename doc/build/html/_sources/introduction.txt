@@ -1,9 +1,6 @@
 Introduction
 ============
 
-Introduction
-------------
-
 Fashion Quest is an interactive fiction framework created to make `text adventure games`_ about fashion because we love fashion and we love text adventure games. Fashion Quest requires Shoes_, a cross-platform GUI framework created by `Why the Lucky Stiff`_.
 
 Text adventure games involve issuing tiny action plans, like `go north` or `fight the police`.

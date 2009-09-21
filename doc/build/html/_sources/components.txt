@@ -1,53 +1,94 @@
 Creating Game Components
 ========================
 
+Game components are defined using YAML_, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.
+
+.. _YAML: http://www.yaml.org/
+
 Creating Locations
 ------------------
 
-- locations are put in the 'rooms' subdirectory
-- exits can be directions "north" or arbitrary names "stairs"
+Locations are...
+
+Each location is defined in its own YAML file within the 'locations' subdirectory of the game directory.
+
+The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a location with two exits: an exit to the north and an open window. The unique indentifier of the location is `alcove`.
+
+.. literalinclude:: ../../pirate_adventure/locations/alcove.yaml
 
 Creating Doors
 --------------
 
-- doors are put in the 'doors' subdirectory
-- doors connect two or more locations
-- if a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations
+Doors allow two or more locations to be connected. If a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations.
+
+Doors are defined in a file called `doors.yaml` within the `doors` subdirectory of the game directory.
+
+The example below, from the "Fashion Quest: Daydream" demonstration game, defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the `brass key` prop. The unique indentifier of the door is `door`. 
+
+.. literalinclude:: ../../game/doors/doors.yaml
 
 Creating Props
 --------------
 
-- props are put in the 'props' subdirectory
+Props are items that players can interact with in the game. They may be portable items, such as a pack of cigarettes, or items that can't be carried, such as a dresser.
+
+Props are defined in a file called `props.yaml` within the `props` subdirectory of the game directory.
+
+The example below, from the "Fashion Quest: Daydream" demonstration game, defines a dresser located in a location with the unique identifier `bedroom`. The dresser can be opened by the player and contains another prop, a pack of `smokes`.
+
+.. literalinclude:: examples/dresser.yaml
 
 Creating Characters
 -------------------
 
-- characters are put in the 'characters' subdirectory
-- characters are defined in YAML
-- any props a character will accept being given are indicated by the "exchanges" property
+Characters are beings that players can interact with in the game.
+
+Each character is defined in its own YAML file within the 'characters' subdirectory of the game directory.
+
+The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a character located in a location with the unique identifier `shack`. The pirate will accept the `rum` prop if the player gives it to him.
+
+.. literalinclude:: ../../pirate_adventure/characters/pirate.yaml
 
 Creating Commands
 -----------------
 
-- commands are defined in YAML
-- command files are put in the commands directory of the game's base directory
-- within the commands directory, commands can be placed in subdirectories if desired
-- commands are made up of syntax and logic
-- command syntax can have multiple forms
-  - each syntax form is composed of keywords and references
-  - keywords are static words: verbs
-  - references refer to "things": nouns
-    - types of references: prop, character, door, ad-hoc
-    - prop, character, and door references can refer to any prop, character, or door in the same location as the player
-    - if a prop, character, or door doesn't have the same location as the player, an error will be returned
-    - ad-hoc references can refer to anything... there is no checking before passing an ad-hoc reference to command logic
-    - in syntax form, references enclosed in less-than and greater-than symbols
-    - examples:
-      - "<prop>" for unnamed prop reference
-      - "<character>" for unnamed prop reference
-      - "<prop:some name>" for a named prop reference
-      - "<character:some other name>" for a named character reference
-      - "<anything>" for an ad-hoc reference
+Each command is defined in its own YAML file within the 'commands' subdirectory of the game directory. If a command file within this directory exists, but is empty, the game engine will look for a command with the same filename in the `standard_commands` directory.
+
+- within the commands directory, commands can be placed in subdirectories if desired???
+
+The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a command that enables the player to wake up the pirate character. If the character's `asleep` trait is `true` the `asleep` trait will be changed to `false` if the player enters the command `wake pirate`.
+
+.. literalinclude:: ../../pirate_adventure/commands/wake.yaml
+
+Commands are made up of syntax and logic.
+
+Syntax
+~~~~~~
+
+Command syntax can have multiple forms. For example, a command that allows the player to pick up a prop could have the form `get <prop>` or `take <prop>`.
+
+Each syntax form is composed of keywords and references. With the case of the above example `get` and `take` are the keywords and `<prop>` is the reference.
+
+Keywords are static words identifying an action: verbs. References refer to "things": nouns.
+
+Three types of references can be used: prop, character, door, ad-hoc.
+
+Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn't have the same location as the player, an error will be returned.
+
+Ad-hoc references can refer to anything... the game engine doesn't checking before passing an ad-hoc reference to command logic.
+
+When defining syntax forms, references are enclosed in less-than and greater-than symbols. NAMED?
+
+Examples:
+- "<prop>" for unnamed prop reference
+- "<character>" for unnamed prop reference
+- "<prop:some name>" for a named prop reference
+- "<character:some other name>" for a named character reference
+- "<anything>" for an ad-hoc reference
+
+Logic
+~~~~~
+
 - command logic is written in Ruby
   - variables are passed to the command logic
   - references are passed as variables
