@@ -1,6 +1,6 @@
 module Uses_Weapons
 
-  attr_accessor :name, :hp, :strength, :dead
+  attr_accessor :id, :hp, :strength, :dead
 
   def determine_best_weapon
 
@@ -8,7 +8,7 @@ module Uses_Weapons
     best_weapon_strength = 0
 
     @props.each do |prop_key, prop_data|
-      if @props[prop_key].location == name
+      if @props[prop_key].location == id
         if @props[prop_key].attack_strength
           if @props[prop_key].attack_strength > best_weapon_strength
             best_weapon = prop_key

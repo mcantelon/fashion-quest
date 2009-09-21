@@ -6,6 +6,7 @@ class Player
 
   def initialize(params)
 
+    @id       = 'player' # needed by the Uses_Weapons module
     @hp       = params[:hp]
     @strength = params[:strength]
     @dead     = params[:dead]
