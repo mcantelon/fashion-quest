@@ -1,0 +1,17 @@
+---
+conditions:
+
+  ?
+    - @player.location == @characters['parrot'].location
+        && @characters['parrot'].location != @characters['pirate'].location
+        && @characters['parrot'].location != @props['crackers'].location
+  :
+    - parrot_flies_off
+
+outcomes:
+
+  parrot_flies_off: |
+    if @props['crackers'].location != 'player'
+      @characters['parrot'].location = @props['crackers'].location
+      "The parrot flies off looking very unhappy...\n"
+    end

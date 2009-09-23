@@ -164,6 +164,7 @@ pirate:
 <div class="section" id="creating-commands">
 <h2>Creating Commands<a class="headerlink" href="#creating-commands" title="Permalink to this headline">¶</a></h2>
 <p>Each command is defined in its own YAML file within the &#8216;commands&#8217; subdirectory of the game directory. If a command file within this directory exists, but is empty, the game engine will look for a command with the same filename in the <cite>standard_commands</cite> directory.</p>
+<p>#NOTE ABOUT SYMLINKS</p>
 <ul class="simple">
 <li>within the commands directory, commands can be placed in subdirectories if desired???</li>
 </ul>
@@ -194,8 +195,8 @@ logic: |
 <p>Keywords are static words identifying an action: verbs. References refer to &#8220;things&#8221;: nouns.</p>
 <p>Three types of references can be used: prop, character, door, ad-hoc.</p>
 <p>Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn&#8217;t have the same location as the player, an error will be returned.</p>
-<p>Ad-hoc references can refer to anything... the game engine doesn&#8217;t checking before passing an ad-hoc reference to command logic.</p>
-<p>When defining syntax forms, references are enclosed in less-than and greater-than symbols. NAMED?</p>
+<p>When defining syntax forms, references are enclosed in less-than and greater-than symbols. The reference can be given the same name as its type or can be given a name. A syntax form containing the prop reference <cite>&lt;prop&gt;</cite> would pass to the command a reference named <cite>prop</cite>. A syntax form <cite>&lt;prop:thing&gt;</cite> would pass to the command a reference named <cite>arg[&#8216;thing&#8217;]</cite>.</p>
+<p>Ad-hoc references can be used to pass in arbitrary text. A syntax form containing the ad-hoc reference <cite>&lt;colour&gt;</cite> would pass to the commnd a reference named <cite>arg[&#8216;color&#8217;]</cite>.</p>
 <p>Examples:
 - &#8220;&lt;prop&gt;&#8221; for unnamed prop reference
 - &#8220;&lt;character&gt;&#8221; for unnamed prop reference
@@ -205,80 +206,85 @@ logic: |
 </div>
 <div class="section" id="logic">
 <h3>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">command logic is written in Ruby
-- variables are passed to the command logic
-- references are passed as variables</p>
-<blockquote>
-<ul class="simple">
-<li>&#8220;&lt;prop&gt;&#8221; unnamed prop reference passed as &#8220;prop&#8221; variable</li>
-<li>&#8220;&lt;character&gt;&#8221; unnamed character reference passed as &#8220;character&#8221; variable</li>
-<li>&#8220;&lt;prop:some name&gt;&#8221; named prop reference passed as &#8220;arg[&#8216;some name&#8217;]&#8221; variable</li>
-<li>&#8220;&lt;character:some other name&gt;&#8221; named character reference passed as &#8220;arg[&#8216;some other name&#8217;]&#8221; variable</li>
-<li>&#8220;&lt;anything&gt;&#8221; ad-hoc refrence passed as &#8220;arg[anything]&#8221;</li>
-</ul>
-</blockquote>
-<ul class="simple">
-<li>&#8220;game&#8221;, &#8220;player&#8221;, &#8220;characters&#8221;, &#8220;props&#8221; variables allow interaction with game engine and game data
-- &#8220;game&#8221; spec
-- &#8220;player&#8221; spec
-- &#8220;characters&#8221; spec
-- &#8220;props&#8221; spec</li>
-<li>example commands</li>
-</ul>
-</li>
-<li><p class="first">commands can be shared between games
-- if you want to share a command between games, put the command in the standard_commands dirctory
-- to include a shared command in a game, put an empty file in your game&#8217;s command directory with the same filename</p>
-<blockquote>
-<p>as the shared command</p>
-</blockquote>
-<ul class="simple">
-<li>alternately, if you&#8217;re not using Windows you can use symlinks</li>
-</ul>
-</li>
-</ul>
+<p>Command logic is written in Ruby. References to props, characters, or doors can be passed in as specified by syntax forms.</p>
+<p>In addition to data passed in via syntax forms, game elements can also be arbitrarily accessed.</p>
+<p><cite>&#64;game</cite> provides access to game properties and methods.</p>
+<p><cite>&#64;player</cite> provides access to player properties and methods.</p>
+<p><cite>&#64;props</cite> provides access to the properties and methods of individual props.</p>
+<p><cite>&#64;characters</cite> provides access to the properties and methods of individual characters.</p>
+<p>The best way to understand how commands work is to check out the commands in the <cite>standard_commands</cite> directory.</p>
 </div>
 </div>
 <div class="section" id="events">
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">characters and props can have events associated with them</p>
-</li>
-<li><p class="first">built-in character events are: on_death, etc.</p>
-</li>
-<li><p class="first">props can also have events</p>
-</li>
-<li><p class="first">events can contain text and/or logic</p>
-</li>
-<li><p class="first">to trgger events, simply add the logic into a command</p>
-</li>
-<li><dl class="first docutils">
-<dt>for example, the get command could trigger an &#8220;on_get&#8221; event in a prop:</dt>
-<dd><p class="first last">output &lt;&lt; game.event(props[prop], &#8216;on_get&#8217;)</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">the above example would have the game check a certain prop for an on_get response</p>
-</li>
-<li><dl class="first docutils">
-<dt>an example response could be:</dt>
-<dd><p class="first last">&#64;locations[&#8216;alcove&#8217;].add_to_description(&#8220;There is a bookcase with a secret passage beyond.n&#8221;); &#8220;There&#8217;s a strange sound.n&#8221;;</p>
-</dd>
-</dl>
-</li>
-<li><p class="first">the above example would add to a rooms description and give the player a hint that something in the game has changed</p>
-</li>
-</ul>
+<p>Events enable Ruby logic to be triggered by happenings in the game world. Characters, props, and doors can all have event outcome associated with them.</p>
+<p>For example, the <cite>cat</cite> character in the &#8220;Fashion Quest: Daydream&#8221; demonstration game responds to two events: <cite>on_attack</cite> (when the cat is attacked) and <cite>on_death</cite> (when the cat is killed).</p>
+<div class="highlight-python"><pre>--- 
+cat: 
+  mobility: 100
+  strength: 1
+  description: The cat is small and agile.
+  hp: 2
+  aggression: 5
+  location: bedroom
+  events:
+    on_attack:
+    - "The cat yowls as he leaps at you.\n"
+    on_death:
+    - "The cat shrieks as it crumples to the ground.\n"
+
+</pre>
+</div>
+<p>Commands can be used to trigger events. For example, the standard get command triggers the <cite>on_get</cite> event on a prop (and collects event output into the variable <cite>on_get_output</cite> by including the following line:</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">on_get_output</span> <span class="o">=</span> <span class="vi">@game</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="s1">&#39;on_get&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The &#8220;Pirate Adventure Knockoff&#8221; demonstration game uses the <cite>on_get</cite> event of the <cite>book</cite> prop to change the description of a room, revealing a secret passage, and return a hint to the player that something has changed.</p>
+<div class="highlight-python"><pre>book:
+  description: The book is large and blood-soaked.
+  location: alcove
+  events:
+    on_get: |
+      if not (@locations['alcove'].has_exit('passage'))
+        @props['book'].traits['visible'] = true
+        @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
+        @locations['alcove'].set_exit('passage', 'passageway')
+        "There's a strange sound.\n";
+      end
+</pre>
+</div>
+<p>If event YAML is set to be a list of event outcomes then an outcome will be randomly selected from the list when the event is triggered, as an example shows below.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">on_discuss</span><span class="p">:</span>
+<span class="o">-</span> <span class="s2">&quot;The deadbeat squints at you and shuffles his feet before answering.</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span> <span class="s2">&quot;The deadbeat tilts his head sceptically before answering.</span><span class="se">\n</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="transitions">
 <h2>Transitions<a class="headerlink" href="#transitions" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>transitions allow manipulation of components to be triggered by game conditions, rather than user commands</li>
-<li>this allows you to avoid having to add the same logic in multiple commands</li>
-<li>transitions return output</li>
-<li>if you want a transition to be silent, end it with the line &#8220;&#8221;</li>
-</ul>
+<p>Transitions enable Ruby logic to be triggered by happenings in the game world. Transitions are more versitile than events: any game condition(s) can be used to trigger the manipulation of any game element(s).</p>
+<p>To add transitions to a game, create the file <cite>transitions.yaml</cite> in the appropriate game directory. Transitions are made up of one or more triggering conditions and one or more outcomes.</p>
+<p>The example transition below, containing conditions and outcomes extracted from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, shows a transition that makes a pet leave if neither his master nor food are present.</p>
+<div class="highlight-python"><pre>---
+conditions:
+
+  ?
+    - @player.location == @characters['parrot'].location
+        &amp;&amp; @characters['parrot'].location != @characters['pirate'].location
+        &amp;&amp; @characters['parrot'].location != @props['crackers'].location
+  :
+    - parrot_flies_off
+
+outcomes:
+
+  parrot_flies_off: |
+    if @props['crackers'].location != 'player'
+      @characters['parrot'].location = @props['crackers'].location
+      "The parrot flies off looking very unhappy...\n"
+    end
+</pre>
+</div>
+<p>If you want a transition output to not return output, end it with a line containing only <cite>&#8220;&#8221;</cite>.</p>
 </div>
 <div class="section" id="state">
 <h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
