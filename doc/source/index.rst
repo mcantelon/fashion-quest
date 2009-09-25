@@ -6,7 +6,8 @@ Fashion Quest
 
    introduction
    overview
-   components
+   elements
+   manipulation
    fine_tuning
 
 Indices and tables

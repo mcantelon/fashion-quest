@@ -19,7 +19,8 @@
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" /> 
+    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
+    <link rel="prev" title="Game World Manipulation" href="manipulation.html" /> 
   </head>
   <body>
     <div class="related">
@@ -28,6 +29,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="manipulation.html" title="Game World Manipulation"
+             accesskey="P">previous</a> |</li>
         <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
@@ -37,13 +41,21 @@
             <ul>
 <li><a class="reference external" href="">Fine-Tuning</a><ul>
 <li><a class="reference external" href="#style">Style</a></li>
-<li><a class="reference external" href="#abbreviations-synonyms-and-garbage-words">Abbreviations, Synonyms, and Garbage Words</a></li>
+<li><a class="reference external" href="#parsing">Parsing</a><ul>
+<li><a class="reference external" href="#abbreviations">Abbreviations</a></li>
+<li><a class="reference external" href="#synonyms">Synonyms</a></li>
+<li><a class="reference external" href="#garbage-words">Garbage Words</a></li>
+</ul>
+</li>
 <li><a class="reference external" href="#testing">Testing</a></li>
 <li><a class="reference external" href="#naming">Naming</a></li>
 </ul>
 </li>
 </ul>
 
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="manipulation.html"
+                                  title="previous chapter">Game World Manipulation</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/fine_tuning.txt"
@@ -79,20 +91,40 @@
 <li>keeping game-specific logic out of commands allows them to be reused in different games</li>
 </ul>
 </div>
-<div class="section" id="abbreviations-synonyms-and-garbage-words">
-<h2>Abbreviations, Synonyms, and Garbage Words<a class="headerlink" href="#abbreviations-synonyms-and-garbage-words" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="parsing">
+<h2>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h2>
+<p>Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into &#8220;lexemes&#8221;,text elements (single words or game element identifiers such as &#8220;hat&#8221; or &#8220;blue hat&#8221;) that can be compared to syntax forms.</p>
+<p>ARE ONLY PROPS CAPABLE OF LEXEMES?</p>
+<p>Here&#8217;s the basic flow of parsing:
+1. Abbreviated commands are expanded (<cite>i</cite> to <cite>inventory</cite>, for example)
+2. Input is broken into lexemes (single words or game element indentiers)
+3. Any lexemes that match synonyms are replaced (<cite>examine</cite> to <cite>look</cite>, for example)
+4. Any lexemes that match garbage words are deleted (<cite>the</cite>, <cite>this</cite>, etc.)</p>
+<div class="section" id="abbreviations">
+<h3>Abbreviations<a class="headerlink" href="#abbreviations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>the command_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined</li>
 <li>for example: &#8220;n&#8221; for &#8220;go north&#8221;</li>
 <li>in the above example, &#8220;north&#8221; was a parameter to the &#8220;go&#8221; command</li>
 <li>in the case of abbreviations that don&#8217;t need to specify a parameter, like &#8220;i&#8221; for &#8220;inventory&#8221;, those should be included as a syntax of the command itself</li>
+</ul>
+</div>
+<div class="section" id="synonyms">
+<h3>Synonyms<a class="headerlink" href="#synonyms" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li>the global_synonyms.yaml file, in the game parsing path, allow a list of words that should be replaced with other words</li>
 <li>for example: &#8220;using&#8221; for &#8220;with&#8221;</li>
 <li>in the above example, this synonym would elimiate the need to make the syntax &#8220;attack &lt;character&gt; with &lt;prop&gt;&#8221; also work when the player issues the command like &#8220;attack bear using hat&#8221;</li>
+</ul>
+</div>
+<div class="section" id="garbage-words">
+<h3>Garbage Words<a class="headerlink" href="#garbage-words" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
 <li>the garbage_words.yaml file, found in the game&#8217;s parsing path, allows certain words to be discarded from player input</li>
 <li>these words should be words like &#8220;the&#8221; and &#8220;a&#8221; which have little semantic meaning</li>
 <li>this makes specifying command syntax easier</li>
 </ul>
+</div>
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
@@ -132,6 +164,9 @@ countable water     Water</p>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="manipulation.html" title="Game World Manipulation"
+             >previous</a> |</li>
         <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
       </ul>
     </div>

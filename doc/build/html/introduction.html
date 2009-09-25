@@ -20,7 +20,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
-    <link rel="next" title="Framework Overview" href="overview.html" />
+    <link rel="next" title="Overview" href="overview.html" />
     <link rel="prev" title="Fashion Quest" href="index.html" /> 
   </head>
   <body>
@@ -31,7 +31,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="overview.html" title="Framework Overview"
+          <a href="overview.html" title="Overview"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Fashion Quest"
@@ -44,7 +44,7 @@
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
 <li><a class="reference external" href="">Introduction</a><ul>
-<li><a class="reference external" href="#interactive-fiction-frameworks">Interactive Fiction Frameworks</a></li>
+<li><a class="reference external" href="#why-use-a-framework">Why Use a Framework?</a></li>
 <li><a class="reference external" href="#design-goals-of-fashion-quest">Design Goals of Fashion Quest</a></li>
 </ul>
 </li>
@@ -55,7 +55,7 @@
                                   title="previous chapter">Fashion Quest</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="overview.html"
-                                  title="next chapter">Framework Overview</a></p>
+                                  title="next chapter">Overview</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
               <li><a href="_sources/introduction.txt"
@@ -84,17 +84,18 @@
             
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>Fashion Quest is an interactive fiction framework created to make <a class="reference external" href="http://en.wikipedia.org/wiki/Interactive_fiction">text adventure games</a> about fashion because we love fashion and we love text adventure games. Fashion Quest requires <a class="reference external" href="http://shoes.heroku.com/">Shoes</a>, a cross-platform GUI framework created by <a class="reference external" href="http://en.wikipedia.org/wiki/Why_the_lucky_stiff/">Why the Lucky Stiff</a>.</p>
-<p>Text adventure games involve issuing tiny action plans, like <cite>go north</cite> or <cite>fight the police</cite>.</p>
+<p>Fashion Quest is an interactive fiction framework created to make <a class="reference external" href="http://en.wikipedia.org/wiki/Interactive_fiction">text adventure games</a> about fashion because we love fashion and we love text adventure games. Fashion Quest is written in the Ruby programming language and requires <a class="reference external" href="http://shoes.heroku.com/">Shoes</a>, a cross-platform GUI framework created by <a class="reference external" href="http://en.wikipedia.org/wiki/Why_the_lucky_stiff/">Why the Lucky Stiff</a>.</p>
 <p>Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes two demonstration games. The game &#8220;Fashion Quest: Daydream&#8221; is very small and designed to demonstrate non-player character features. It lives in the <cite>game</cite> directory. The game &#8220;Pirate Adventure Knockoff&#8221; is a port of the 1978 text adventure <a class="reference external" href="http://en.wikipedia.org/wiki/Pirate_Adventure">&#8220;Pirate Adventure&#8221;</a> by Scott and Alexis Adams and lives in the <cite>pirate_adventure</cite> directory.</p>
 <p>To play either of these use Shoes to run <cite>run.rb</cite> and select which you’d like to play.</p>
 <p>Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative use of computers!</p>
-<div class="section" id="interactive-fiction-frameworks">
-<h2>Interactive Fiction Frameworks<a class="headerlink" href="#interactive-fiction-frameworks" title="Permalink to this headline">¶</a></h2>
-<p>Text adventure games are also known as interactive fiction (IF). Development of IF involves dealing with problems not inherent in many other realms of development, including parsing and simulation. Because of this a number of frameworks have been developed to deal with the IF domain. Major frameworks include Inform, Adrift, and TADS.</p>
-<p>ADRIFT is one of the most user friendly of the frameworks. It allows games to be created using a GUI. It is not extensible, cross-platform, or open source, however.</p>
-<p>Inform is one of the most elegant and established of the frameworks. It allows games to be developed either in natural language (Inform 7) or a specialize programming langague (Inform 6). It is extensible, cross-platform, open source, and supports automated game testing.</p>
-<p>TADS.</p>
+<div class="section" id="why-use-a-framework">
+<h2>Why Use a Framework?<a class="headerlink" href="#why-use-a-framework" title="Permalink to this headline">¶</a></h2>
+<p>Development of interactive fiction (IF) involves dealing with problems not inherent in many other realms of development, including parsing and game world simulation. Because of this a number of frameworks have been developed to deal with the IF domain.</p>
+<p>Fashion Quest is a relative newcomer. Established frameworks include <em>Inform</em>, <em>Adrift</em>, and <em>TADS</em>.</p>
+<p><a class="reference external" href="http://www.adrift.org.uk/">ADRIFT</a> is one of the most user friendly of the frameworks. It allows games to be created using a GUI. It is not, however, extensible, cross-platform, or open source.</p>
+<p><a class="reference external" href="http://www.inform-fiction.org/I7/Welcome.html">Inform</a> is one of the most elegant and established of the frameworks. It allows games to be developed either in natural language (Inform 7) or a specialize programming langague (Inform 6). It is extensible, cross-platform, open source, and supports automated game testing.</p>
+<p><a class="reference external" href="http://www.tads.org/">TADS</a> is reputedly more powerful than Inform, but has a fairly steep learning curve.</p>
+<p>When evaluating IF frameworks, an interesting site is <a class="reference external" href="http://www.firthworks.com/roger/cloak/index.html">Cloak of Darkness</a>. This site links to implementations of the same simple interactive fiction game created using twenty different IF frameworks.</p>
 </div>
 <div class="section" id="design-goals-of-fashion-quest">
 <h2>Design Goals of Fashion Quest<a class="headerlink" href="#design-goals-of-fashion-quest" title="Permalink to this headline">¶</a></h2>
@@ -108,7 +109,7 @@
 <p>By leveraging Shoes, Fashion Quest is able to provide a consistant user experience across whether being used in Windows, Mac OS, or Linux.</p>
 </li>
 <li><p class="first"><strong>Programmer-Friendly</strong></p>
-<p>Fashion Quest development is done using the Ruby programming language rather than a domain-specific programming language. This lessen the framework learning curve for those who already known Ruby.</p>
+<p>Fashion Quest development is done using the Ruby programming language rather than a domain-specific programming language. This lessens the framework learning curve as there are many resources for those wishing to learn Ruby (and those who already know Ruby get a head start).</p>
 </li>
 <li><p class="first"><strong>Extensible</strong></p>
 <p>Because Fashion Quest is open source, it is fully extensible. Default game engine behaviour can be overriden using monkey patching.</p>
@@ -130,7 +131,7 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="overview.html" title="Framework Overview"
+          <a href="overview.html" title="Overview"
              >next</a> |</li>
         <li class="right" >
           <a href="index.html" title="Fashion Quest"

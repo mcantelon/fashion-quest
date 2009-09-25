@@ -1,5 +1,5 @@
-Framework Overview
-==================
+Overview
+========
 
 Directory Structure
 -------------------

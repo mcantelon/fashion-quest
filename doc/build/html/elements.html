@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Game World Elements &mdash; Fashion Quest vPreview 2 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     'Preview 2',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
+    <link rel="next" title="Game World Manipulation" href="manipulation.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="manipulation.html" title="Game World Manipulation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Game World Elements</a><ul>
+<li><a class="reference external" href="#locations">Locations</a></li>
+<li><a class="reference external" href="#doors">Doors</a></li>
+<li><a class="reference external" href="#props">Props</a></li>
+<li><a class="reference external" href="#characters">Characters</a></li>
+<li><a class="reference external" href="#state">State</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="overview.html"
+                                  title="previous chapter">Overview</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="manipulation.html"
+                                  title="next chapter">Game World Manipulation</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/elements.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="game-world-elements">
+<h1>Game World Elements<a class="headerlink" href="#game-world-elements" title="Permalink to this headline">¶</a></h1>
+<p>Game world elements are defined using <a class="reference external" href="http://www.yaml.org/">YAML</a>, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.</p>
+<div class="section" id="locations">
+<h2>Locations<a class="headerlink" href="#locations" title="Permalink to this headline">¶</a></h2>
+<p>Locations are...</p>
+<p>Each location is defined in its own YAML file within the &#8216;locations&#8217; subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a location with two exits: an exit to the north and an open window. The unique indentifier of the location is <cite>alcove</cite>.</p>
+<div class="highlight-python"><pre>alcove:
+  exits:
+    down:
+      destination: apartment
+    window:
+      destination: ledge
+
+  description: |
+    I'm in an alcove. There is an open window. There is a bookcase full of books.
+</pre>
+</div>
+</div>
+<div class="section" id="doors">
+<h2>Doors<a class="headerlink" href="#doors" title="Permalink to this headline">¶</a></h2>
+<p>Doors allow two or more locations to be connected. If a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations.</p>
+<p>Doors are defined in a file called <cite>doors.yaml</cite> within the <cite>doors</cite> subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Fashion Quest: Daydream&#8221; demonstration game, defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the <cite>brass key</cite> prop. The unique indentifier of the door is <cite>door</cite>.</p>
+<div class="highlight-python"><pre>---
+door:
+  name: door
+  description: The door is made of dark-brown wood.
+  locations:
+  - hallway
+  - bedroom
+  traits:
+    opened: false
+    opens_with:
+    - brass key
+</pre>
+</div>
+</div>
+<div class="section" id="props">
+<h2>Props<a class="headerlink" href="#props" title="Permalink to this headline">¶</a></h2>
+<p>Props are items that players can interact with in the game. They may be portable items, such as a pack of cigarettes, or items that can&#8217;t be carried, such as a dresser.</p>
+<p>Props are defined in a file called <cite>props.yaml</cite> within the <cite>props</cite> subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Fashion Quest: Daydream&#8221; demonstration game, defines a dresser located in a location with the unique identifier <cite>bedroom</cite>. The dresser can be opened by the player and contains another prop, a pack of <cite>smokes</cite>.</p>
+<div class="highlight-python"><pre>dresser:
+  description: The dresser looks like it has seen better days.
+  location: bedroom
+  traits:
+    opened: false
+    portable: false
+    contains:
+      - prop: smokes
+</pre>
+</div>
+</div>
+<div class="section" id="characters">
+<h2>Characters<a class="headerlink" href="#characters" title="Permalink to this headline">¶</a></h2>
+<p>Characters are beings that players can interact with in the game.</p>
+<p>Each character is defined in its own YAML file within the &#8216;characters&#8217; subdirectory of the game directory.</p>
+<p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a character located in a location with the unique identifier <cite>shack</cite>. The pirate will accept the <cite>rum</cite> prop if the player gives it to him.</p>
+<div class="highlight-python"><pre>--- 
+pirate: 
+  description: The pirate has a wicked look.
+  location: shack
+  exchanges:
+    rum: true
+</pre>
+</div>
+</div>
+<div class="section" id="state">
+<h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
+<p>Game state is used to keep track of game conditions other than the state of other game elements. State can be referenced, or set, from logic within commands, transitions, and events.</p>
+<p>One example from the <cite>Pirate Adventure Knockoff</cite> demonstration is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.</p>
+<blockquote>
+&#64;state[&#8216;tide&#8217;] = &#8216;in&#8217;</blockquote>
+<ul class="simple">
+<li>state can be used to keep track of global game conditions</li>
+<li>state can be referred to or manipulated in transitions or commands</li>
+<li>within transtions, use &#64;state</li>
+<li>example: &#64;state[&#8216;tide&#8217;] = &#8216;in&#8217;</li>
+<li>within commands, use game.state</li>
+<li>example: game.state[&#8216;tide&#8217;] = &#8216;out&#8217;</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="manipulation.html" title="Game World Manipulation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Mike Cantelon.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
