@@ -158,16 +158,9 @@ pirate:
 <h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
 <p>Game state is used to keep track of game conditions other than the state of other game elements. State can be referenced, or set, from logic within commands, transitions, and events.</p>
 <p>One example from the <cite>Pirate Adventure Knockoff</cite> demonstration is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.</p>
-<blockquote>
-&#64;state[&#8216;tide&#8217;] = &#8216;in&#8217;</blockquote>
-<ul class="simple">
-<li>state can be used to keep track of global game conditions</li>
-<li>state can be referred to or manipulated in transitions or commands</li>
-<li>within transtions, use &#64;state</li>
-<li>example: &#64;state[&#8216;tide&#8217;] = &#8216;in&#8217;</li>
-<li>within commands, use game.state</li>
-<li>example: game.state[&#8216;tide&#8217;] = &#8216;out&#8217;</li>
-</ul>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="vi">@state</span><span class="o">[</span><span class="s1">&#39;tide&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span>
+</pre></div>
+</div>
 </div>
 </div>
 

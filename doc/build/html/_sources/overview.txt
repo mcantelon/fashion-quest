@@ -66,3 +66,11 @@ The game directory contains a number of folders and files in which game configur
 
   A game directory requires a `props` directory in which a file that defines game props is kept.
 
+Built-in Commands
+-----------------
+
+There are a number of built-in commands that don't appear in the command directories. These are: `restart`, `clear`, `load`, `save`, `load walkthrough`, `save walkthrough`, save `transcript`, and `compare to transcript`.
+
+`restart` restarts the game. `clear` clears the command output. `load` and `save` allow the user to load or save their game progress to a file.
+
+The other built-in commands are developer-oriented and discussed in the testing section.

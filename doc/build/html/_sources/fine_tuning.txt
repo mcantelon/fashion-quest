@@ -1,11 +1,6 @@
 Fine-Tuning
 ===========
 
-Style
------
-- whenever possible, keep game-specific "rules" in transitions instead of commands
-- keeping game-specific logic out of commands allows them to be reused in different games
-
 Parsing
 -------
 
@@ -44,17 +39,29 @@ Garbage Words
 Testing
 -------
 
-- when saving and loading games be mindful that prop, etc., definitions get saved as well so your game changes may not be
-  reflected
-- use "save walkthrough" command to save your previous commands
-- use "load walkthrough" command to run through commands you've previously saved
-- these commands can be used for testing
-- walkthrough files are YAML, so easy to edit
-- COMPARE, TRANSCRIPT?
-- use the Shoes debugger... press alt-/ to see error messages
-- alert('some message') is also handy to deduce the flow of logic
+Testing interactive fiction games can be tedious. To make testing easier Fashion Quest provides a couple of simple tools in the form of built-in commands.
 
-- no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn't exist or isn't located near player
+In addition to the built-in commands, the Shoes `alert` function is handy for confirming logic is being executed. `alert('Hello`)` will, for example, pop up a dialog box with the word "hello".
+
+When there are syntax errors in game logic, or other errors that stop game execution, you can often get useful clues by pressing Alt-/ to view the Shoes debugging console.
+
+Walkthroughs
+~~~~~~~~~~~~
+
+When a player loads or saves a game, via the built-in `load` and `save` commands, all game element definitions are included in the game save. Because of this, these commands aren't very useful for testing.
+
+Walkthroughs, on the other hand, can save a sequence of commands needed to arrive at a certain point in a game. This makes them useful for functional testing. Walkthrough files are simply a YAML list of commands.
+
+To create a walkthrough, simply start you game and play it until the point at which you'd like your walkthrough to end. Entering the command `save walkthrough` will then allow you to save the walkthrough. When you wish to use a walkthrough, start or restart Fashion Quest and enter the command `load walkthrough`.
+
+An example walkthrough is provides for the "Pirate Adventure Knockoff" demonstration game. It lives in the `pirate_adventure` directory and is named `complete_walkthrough`. It cycles through all the commands needed to win the game. Once the walkthrough has loaded, enter the command `score` and the win will be confirmed.
+
+Transcripts
+~~~~~~~~~~~
+
+While walkthroughs are good for confirming nothing is broken, transcripts provide a way to confirm no output in a game has changed.
+
+The built-in command `save transcript` will save the game output to a file. You can then make changes to your game, enter the commands needed to arrive at the point in the game where you originally saved the transcript, and use the built-in command `compare transcript` to compare the game output to the original transcript.
 
 Naming
 ------

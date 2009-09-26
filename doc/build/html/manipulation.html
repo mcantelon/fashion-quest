@@ -93,10 +93,10 @@
 <div class="section" id="commands">
 <h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
 <p>Each command is defined in its own YAML file within the &#8216;commands&#8217; subdirectory of the game directory. If a command file within this directory exists, but is empty, the game engine will look for a command with the same filename in the <cite>standard_commands</cite> directory.</p>
-<p>#NOTE ABOUT SYMLINKS</p>
-<ul class="simple">
-<li>within the commands directory, commands can be placed in subdirectories if desired???</li>
-</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Symbolic links can also be used, instead of empty command files, to point to standard commands but Windows doesn&#8217;t support symbolic links so the game won&#8217;t be cross platform.</p>
+</div>
 <p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a command that enables the player to wake up the pirate character. If the character&#8217;s <cite>asleep</cite> trait is <cite>true</cite> the <cite>asleep</cite> trait will be changed to <cite>false</cite> if the player enters the command <cite>wake pirate</cite>.</p>
 <div class="highlight-python"><pre>---
 syntax:
@@ -117,6 +117,7 @@ logic: |
 </pre>
 </div>
 <p>Commands are made up of syntax and logic.</p>
+<p>TIP: Keep the idea of reusing commands between games in mind when creating commands. If logic is game-specific, try to use transitions instead of commands to implement the logic.</p>
 <div class="section" id="syntax">
 <h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
 <p>Command syntax can have multiple forms. For example, a command that allows the player to pick up a prop could have the form <cite>get &lt;prop&gt;</cite> or <cite>take &lt;prop&gt;</cite>.</p>

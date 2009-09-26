@@ -40,14 +40,17 @@
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
 <li><a class="reference external" href="">Fine-Tuning</a><ul>
-<li><a class="reference external" href="#style">Style</a></li>
 <li><a class="reference external" href="#parsing">Parsing</a><ul>
 <li><a class="reference external" href="#abbreviations">Abbreviations</a></li>
 <li><a class="reference external" href="#synonyms">Synonyms</a></li>
 <li><a class="reference external" href="#garbage-words">Garbage Words</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#testing">Testing</a></li>
+<li><a class="reference external" href="#testing">Testing</a><ul>
+<li><a class="reference external" href="#walkthroughs">Walkthroughs</a></li>
+<li><a class="reference external" href="#transcripts">Transcripts</a></li>
+</ul>
+</li>
 <li><a class="reference external" href="#naming">Naming</a></li>
 </ul>
 </li>
@@ -84,13 +87,6 @@
             
   <div class="section" id="fine-tuning">
 <h1>Fine-Tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="style">
-<h2>Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>whenever possible, keep game-specific &#8220;rules&#8221; in transitions instead of commands</li>
-<li>keeping game-specific logic out of commands allows them to be reused in different games</li>
-</ul>
-</div>
 <div class="section" id="parsing">
 <h2>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h2>
 <p>Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into &#8220;lexemes&#8221;,text elements (single words or game element identifiers such as &#8220;hat&#8221; or &#8220;blue hat&#8221;) that can be compared to syntax forms.</p>
@@ -128,18 +124,21 @@
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>when saving and loading games be mindful that prop, etc., definitions get saved as well so your game changes may not be
-reflected</li>
-<li>use &#8220;save walkthrough&#8221; command to save your previous commands</li>
-<li>use &#8220;load walkthrough&#8221; command to run through commands you&#8217;ve previously saved</li>
-<li>these commands can be used for testing</li>
-<li>walkthrough files are YAML, so easy to edit</li>
-<li>COMPARE, TRANSCRIPT?</li>
-<li>use the Shoes debugger... press alt-/ to see error messages</li>
-<li>alert(&#8216;some message&#8217;) is also handy to deduce the flow of logic</li>
-<li>no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn&#8217;t exist or isn&#8217;t located near player</li>
-</ul>
+<p>Testing interactive fiction games can be tedious. To make testing easier Fashion Quest provides a couple of simple tools in the form of built-in commands.</p>
+<p>In addition to the built-in commands, the Shoes <cite>alert</cite> function is handy for confirming logic is being executed. <cite>alert(&#8216;Hello</cite>)` will, for example, pop up a dialog box with the word &#8220;hello&#8221;.</p>
+<p>When there are syntax errors in game logic, or other errors that stop game execution, you can often get useful clues by pressing Alt-/ to view the Shoes debugging console.</p>
+<div class="section" id="walkthroughs">
+<h3>Walkthroughs<a class="headerlink" href="#walkthroughs" title="Permalink to this headline">¶</a></h3>
+<p>When a player loads or saves a game, via the built-in <cite>load</cite> and <cite>save</cite> commands, all game element definitions are included in the game save. Because of this, these commands aren&#8217;t very useful for testing.</p>
+<p>Walkthroughs, on the other hand, can save a sequence of commands needed to arrive at a certain point in a game. This makes them useful for functional testing. Walkthrough files are simply a YAML list of commands.</p>
+<p>To create a walkthrough, simply start you game and play it until the point at which you&#8217;d like your walkthrough to end. Entering the command <cite>save walkthrough</cite> will then allow you to save the walkthrough. When you wish to use a walkthrough, start or restart Fashion Quest and enter the command <cite>load walkthrough</cite>.</p>
+<p>An example walkthrough is provides for the &#8220;Pirate Adventure Knockoff&#8221; demonstration game. It lives in the <cite>pirate_adventure</cite> directory and is named <cite>complete_walkthrough</cite>. It cycles through all the commands needed to win the game. Once the walkthrough has loaded, enter the command <cite>score</cite> and the win will be confirmed.</p>
+</div>
+<div class="section" id="transcripts">
+<h3>Transcripts<a class="headerlink" href="#transcripts" title="Permalink to this headline">¶</a></h3>
+<p>While walkthroughs are good for confirming nothing is broken, transcripts provide a way to confirm no output in a game has changed.</p>
+<p>The built-in command <cite>save transcript</cite> will save the game output to a file. You can then make changes to your game, enter the commands needed to arrive at the point in the game where you originally saved the transcript, and use the built-in command <cite>compare transcript</cite> to compare the game output to the original transcript.</p>
+</div>
 </div>
 <div class="section" id="naming">
 <h2>Naming<a class="headerlink" href="#naming" title="Permalink to this headline">¶</a></h2>

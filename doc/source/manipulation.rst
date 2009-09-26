@@ -10,15 +10,17 @@ Commands
 
 Each command is defined in its own YAML file within the 'commands' subdirectory of the game directory. If a command file within this directory exists, but is empty, the game engine will look for a command with the same filename in the `standard_commands` directory.
 
-#NOTE ABOUT SYMLINKS
+.. note::
 
-- within the commands directory, commands can be placed in subdirectories if desired???
+   Symbolic links can also be used, instead of empty command files, to point to standard commands but Windows doesn't support symbolic links so the game won't be cross platform.
 
 The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a command that enables the player to wake up the pirate character. If the character's `asleep` trait is `true` the `asleep` trait will be changed to `false` if the player enters the command `wake pirate`.
 
 .. literalinclude:: ../../pirate_adventure/commands/wake.yaml
 
 Commands are made up of syntax and logic.
+
+TIP: Keep the idea of reusing commands between games in mind when creating commands. If logic is game-specific, try to use transitions instead of commands to implement the logic.
 
 Syntax
 ~~~~~~

@@ -56,11 +56,6 @@ Game state is used to keep track of game conditions other than the state of othe
 
 One example from the `Pirate Adventure Knockoff` demonstration is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.
 
-    @state['tide'] = 'in'
+.. code-block:: ruby
 
-- state can be used to keep track of global game conditions
-- state can be referred to or manipulated in transitions or commands
-- within transtions, use @state
-- example: @state['tide'] = 'in'
-- within commands, use game.state
-- example: game.state['tide'] = 'out'
+    @state['tide'] = 'in'
