@@ -105,7 +105,7 @@ module Parses_Commands
 
             # if the sequence is an prop reference, replace
             # the component words with the reference as a string
-            if @game.props[remaining_words] != nil
+            if @game.elements(remaining_words) != nil
 
               reference_end_word = current_word + remaining_words.scan(/\ /).length 
               words_after_prop_reference =

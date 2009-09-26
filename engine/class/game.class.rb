@@ -53,16 +53,7 @@ class Game
   end
 
   # maybe this should be called component or something more descriptive
-  def [](name)
-
-    # Need to figure out how to deal with this...
-    #if @locations[name]
-    #  alert('furnd')
-    #  alert(@locations[name])
-    #  return @locations[name]
-    #end
-
-    # use class to compare class
+  def elements(name)
 
     if @doors.has_key?(name)
       return @doors[name]
@@ -74,6 +65,10 @@ class Game
 
     if @characters.has_key?(name)
       return @characters[name]
+    end
+
+    if @locations.has_key?(name)
+      return @locations[name]
     end
 
   end
