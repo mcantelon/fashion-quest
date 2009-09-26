@@ -6,7 +6,7 @@ logic: |
 
   direction = arg['direction']
 
-  @game.state['paces'] = 0
+  @state['paces'] = 0
 
   location = @player.location
 
@@ -21,7 +21,7 @@ logic: |
 
     else
 
-      @game.state['last_location'] = location
+      @state['last_location'] = location
 
       @player.location = @locations[location].exits[direction]['destination']
 

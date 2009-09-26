@@ -18,7 +18,7 @@ logic: |
     # take note of when player entered neverneverland
     # (this will trigger a transition that will end the player's
     # game after a few turns)
-    @game.state['entered_neverneverland'] = @game.turns
+    @state['entered_neverneverland'] = @game.turns
 
   else
 

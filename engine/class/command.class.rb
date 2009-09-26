@@ -40,6 +40,7 @@ class Command
               @props      = @game.props
               @characters = @game.characters
               @doors      = @game.doors
+              @state      = @game.state
 
             end
 
