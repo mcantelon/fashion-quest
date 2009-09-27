@@ -91,11 +91,13 @@
 <h2>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h2>
 <p>Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into &#8220;lexemes&#8221;,text elements (single words or game element identifiers such as &#8220;hat&#8221; or &#8220;blue hat&#8221;) that can be compared to syntax forms.</p>
 <p>ARE ONLY PROPS CAPABLE OF LEXEMES?</p>
-<p>Here&#8217;s the basic flow of parsing:
-1. Abbreviated commands are expanded (<cite>i</cite> to <cite>inventory</cite>, for example)
-2. Input is broken into lexemes (single words or game element indentiers)
-3. Any lexemes that match synonyms are replaced (<cite>examine</cite> to <cite>look</cite>, for example)
-4. Any lexemes that match garbage words are deleted (<cite>the</cite>, <cite>this</cite>, etc.)</p>
+<p>Here&#8217;s the basic flow of parsing:</p>
+<ol class="arabic simple">
+<li>Abbreviated commands are expanded (<cite>i</cite> to <cite>inventory</cite>, for example)</li>
+<li>Input is broken into lexemes (single words or game element indentiers)</li>
+<li>Any lexemes that match synonyms are replaced (<cite>examine</cite> to <cite>look</cite>, for example)</li>
+<li>Any lexemes that match garbage words are deleted (<cite>the</cite>, <cite>this</cite>, etc.)</li>
+</ol>
 <div class="section" id="abbreviations">
 <h3>Abbreviations<a class="headerlink" href="#abbreviations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">

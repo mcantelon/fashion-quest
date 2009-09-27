@@ -6,9 +6,8 @@ Parsing
 
 Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into "lexemes",text elements (single words or game element identifiers such as "hat" or "blue hat") that can be compared to syntax forms.
 
-ARE ONLY PROPS CAPABLE OF LEXEMES?
-
 Here's the basic flow of parsing:
+
 1. Abbreviated commands are expanded (`i` to `inventory`, for example)
 2. Input is broken into lexemes (single words or game element indentiers)
 3. Any lexemes that match synonyms are replaced (`examine` to `look`, for example)

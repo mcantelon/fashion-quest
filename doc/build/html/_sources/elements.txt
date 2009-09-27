@@ -8,7 +8,7 @@ Game world elements are defined using YAML_, a human-readable standard used to d
 Locations
 ---------
 
-Locations are...
+Locations are places a player can visit during a game.
 
 Each location is defined in its own YAML file within the 'locations' subdirectory of the game directory.
 
