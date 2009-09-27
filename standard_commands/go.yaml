@@ -13,6 +13,13 @@ logic: |
   # If an exit exists, load destination location and issue look command
   if (@locations[location].exits && @locations[location].exits[direction])
 
+    # If an exit has a condition, evaluate it to see if a denial message is returned
+    if condition = @locations[location].exits[direction]['condition']
+      if denial_message = instance_eval(condition)
+        return denial_message
+      end
+    end
+
     # If player is trying to move around in the dark, kill player
     if @locations[location].dark and !@player.has_lit_item
 
