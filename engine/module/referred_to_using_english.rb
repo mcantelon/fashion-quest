@@ -1,4 +1,4 @@
-module May_Have_Name
+module Referred_To_Using_English
 
   attr_accessor :name, :proper, :plural
 
