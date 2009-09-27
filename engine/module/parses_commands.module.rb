@@ -20,8 +20,10 @@ module Parses_Commands
       index = 0
       lexemes.each do |lexeme|
 
-        if element_alias = @game.find_alias(lexeme)
-            lexemes[index] = element_alias
+        # if lexeme doesn't refer to a game element and it's an alias then
+        # replace lexeme with what alias refers to
+        if (element_alias = @game.find_alias(lexeme)) && !@game.elements(lexeme)
+          lexemes[index] = element_alias
         end
 
         index += 1
@@ -115,13 +117,9 @@ module Parses_Commands
           # only check for references for compound words
           if processing_word > 1
 
-            # if the sequence is an prop reference, replace
+            # if the sequence is a game element reference or alias, replace
             # the component words with the reference as a string
-            element_alias = @game.find_alias(remaining_words)
-
-            if @game.elements(remaining_words) != nil || element_alias
-
-              alert(element_alias)
+            if @game.elements(remaining_words) != nil || @game.find_alias(remaining_words)
 
               reference_end_word = current_word + remaining_words.scan(/\ /).length 
               words_after_prop_reference =
