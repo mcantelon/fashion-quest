@@ -22,22 +22,22 @@ Commands are made up of syntax and logic.
 
 TIP: Keep the idea of reusing commands between games in mind when creating commands. If logic is game-specific, try to use transitions instead of commands to implement the logic.
 
-Syntax
-~~~~~~
+Syntax Forms
+~~~~~~~~~~~~
 
 Command syntax can have multiple forms. For example, a command that allows the player to pick up a prop could have the form `get <prop>` or `take <prop>`.
 
-Each syntax form is composed of keywords and references. With the case of the above example `get` and `take` are the keywords and `<prop>` is the reference.
+Each syntax form is composed of keywords and parameters. Parameters are usually references to game elements. With the case of the above example `get` and `take` are the keywords and `<prop>` is the reference parameter.
 
 Keywords are static words identifying an action: verbs. References refer to "things": nouns.
 
-Three types of references can be used: prop, character, door, ad-hoc.
+Four types of parameters can be used: prop references, character references, door references, and text.
 
-Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn't have the same location as the player, an error will be returned.
+Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn't have the same location as the player, an error will be output.
 
-When defining syntax forms, references are enclosed in less-than and greater-than symbols. The reference can be given the same name as its type or can be given a name. A syntax form containing the prop reference `<prop>` would pass to the command a reference named `prop`. A syntax form `<prop:thing>` would pass to the command a reference named `arg['thing']`.
+When defining syntax forms, parameters are enclosed in less-than and greater-than symbols. A reference paramter can be given the same name as its type or can be given a name. A syntax form containing the prop reference parameter `<prop>` would pass to the command a reference named `prop`. A syntax form `<prop:thing>` would pass to the command a reference named `arg['thing']`.
 
-Ad-hoc references can be used to pass in arbitrary text. A syntax form containing the ad-hoc reference `<colour>` would pass to the commnd a reference named `arg['color']`.
+Text parameters are always named. A syntax form containing the ad-hoc reference `<colour>` would pass to the command the variable `arg['color']`.
 
 Examples:
 - "<prop>" for unnamed prop reference

@@ -41,7 +41,7 @@
             <ul>
 <li><a class="reference external" href="">Fine-Tuning</a><ul>
 <li><a class="reference external" href="#parsing">Parsing</a><ul>
-<li><a class="reference external" href="#abbreviations">Abbreviations</a></li>
+<li><a class="reference external" href="#abbreviated-commands">Abbreviated Commands</a></li>
 <li><a class="reference external" href="#synonyms">Synonyms</a></li>
 <li><a class="reference external" href="#garbage-words">Garbage Words</a></li>
 </ul>
@@ -89,39 +89,56 @@
 <h1>Fine-Tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="parsing">
 <h2>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h2>
-<p>Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into &#8220;lexemes&#8221;,text elements (single words or game element identifiers such as &#8220;hat&#8221; or &#8220;blue hat&#8221;) that can be compared to syntax forms.</p>
-<p>ARE ONLY PROPS CAPABLE OF LEXEMES?</p>
+<p>Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into &#8220;lexemes&#8221;: text elements (single words or game element identifiers such as &#8220;hat&#8221; or &#8220;blue hat&#8221;) that can be compared to command syntax forms.</p>
 <p>Here&#8217;s the basic flow of parsing:</p>
 <ol class="arabic simple">
-<li>Abbreviated commands are expanded (<cite>i</cite> to <cite>inventory</cite>, for example)</li>
+<li>Abbreviated commands are expanded</li>
 <li>Input is broken into lexemes (single words or game element indentiers)</li>
-<li>Any lexemes that match synonyms are replaced (<cite>examine</cite> to <cite>look</cite>, for example)</li>
-<li>Any lexemes that match garbage words are deleted (<cite>the</cite>, <cite>this</cite>, etc.)</li>
+<li>Lexemes that match synonyms are replaced</li>
+<li>Lexemes that match garbage words are deleted</li>
+<li>Lexemes that are aliases to game element IDs are resolved</li>
 </ol>
-<div class="section" id="abbreviations">
-<h3>Abbreviations<a class="headerlink" href="#abbreviations" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>the command_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined</li>
-<li>for example: &#8220;n&#8221; for &#8220;go north&#8221;</li>
-<li>in the above example, &#8220;north&#8221; was a parameter to the &#8220;go&#8221; command</li>
-<li>in the case of abbreviations that don&#8217;t need to specify a parameter, like &#8220;i&#8221; for &#8220;inventory&#8221;, those should be included as a syntax of the command itself</li>
-</ul>
+<div class="section" id="abbreviated-commands">
+<h3>Abbreviated Commands<a class="headerlink" href="#abbreviated-commands" title="Permalink to this headline">¶</a></h3>
+<p>Abbreviated commands reduce the amount of typing the user must do. One popular convention in interactive fiction is allowing a user simply to enter the first letter of the direction (s)he&#8217;d like to go in: <cite>n</cite> for <cite>go north</cite>, for example.</p>
+<p>The <cite>command_abbreviations.yaml</cite> file, in the <cite>parsing</cite> subdirectory of each game&#8217;s directory, allows a list of abbreviations for specific command instances to be defined using YAML. An example is shown below.</p>
+<div class="highlight-python"><pre>---
+n: "go north"
+s: "go south"
+e: "go east"
+w: "go west"
+u: "go up"
+d: "go down"
+</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <cite>command_abbreviations.yaml</cite> file isn&#8217;t the only place command abbreviation can be specified. Command syntax forms that don&#8217;t contain parameters, like those of the <cite>inventory</cite> command, allow abbreviations to be stored in the command&#8217;s syntax forms (<cite>i</cite> for inventory, for example).</p>
+</div>
 </div>
 <div class="section" id="synonyms">
 <h3>Synonyms<a class="headerlink" href="#synonyms" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>the global_synonyms.yaml file, in the game parsing path, allow a list of words that should be replaced with other words</li>
-<li>for example: &#8220;using&#8221; for &#8220;with&#8221;</li>
-<li>in the above example, this synonym would elimiate the need to make the syntax &#8220;attack &lt;character&gt; with &lt;prop&gt;&#8221; also work when the player issues the command like &#8220;attack bear using hat&#8221;</li>
-</ul>
+<p>Synonyms help reduce the number of command syntax forms needed to support command syntax variations. The <cite>global_synonyms.yaml</cite> file, in the game <cite>parsing</cite> subdirectory of each game&#8217;s directory, can contain a list of word substitutions defined using YAML. These substitutions get applied to a user&#8217;s command input.</p>
+<p>For example, the word &#8220;using&#8221; can be replaced with the word &#8220;with&#8221;. This synonym would make the command syntax form &#8220;attack &lt;character&gt; with &lt;prop&gt;&#8221; work when the player enters the command &#8220;attack bear using hat&#8221;.</p>
+<p>Example YAML is shown below.</p>
+<div class="highlight-python"><pre>---
+using: "with"
+examine: "look"
+</pre>
+</div>
 </div>
 <div class="section" id="garbage-words">
 <h3>Garbage Words<a class="headerlink" href="#garbage-words" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>the garbage_words.yaml file, found in the game&#8217;s parsing path, allows certain words to be discarded from player input</li>
-<li>these words should be words like &#8220;the&#8221; and &#8220;a&#8221; which have little semantic meaning</li>
-<li>this makes specifying command syntax easier</li>
-</ul>
+<p>Garbage words are words with little or no semantic meaning (like &#8220;the&#8221; and &#8220;a). By removing them from the user&#8217;s command input we recude the number of command syntax forms needed to support command syntax variations. The <cite>garbage_words.yaml</cite> file, found in the <cite>parsing</cite> subdirectory of each game&#8217;s directory, can contain a list of words that should be discarded from player input.</p>
+<p>Example YAML is shown below.</p>
+<div class="highlight-python"><pre>---
+- "the"
+- "that"
+- "this"
+- "at"
+- "to"
+</pre>
+</div>
 </div>
 </div>
 <div class="section" id="testing">

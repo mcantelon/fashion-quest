@@ -10,7 +10,7 @@
 
 
 \title{Fashion Quest Documentation}
-\date{September 20, 2009}
+\date{September 26, 2009}
 \release{Preview 2}
 \author{Mike Cantelon}
 \newcommand{\sphinxlogo}{}
@@ -95,9 +95,7 @@
 
 \chapter{Introduction}
 
-Fashion Quest is an interactive fiction framework created to make \href{http://en.wikipedia.org/wiki/Interactive\_fiction}{text adventure games} about fashion because we love fashion and we love text adventure games. Fashion Quest requires \href{http://shoes.heroku.com/}{Shoes}, a cross-platform GUI framework created by \href{http://en.wikipedia.org/wiki/Why\_the\_lucky\_stiff/}{Why the Lucky Stiff}.
-
-Text adventure games involve issuing tiny action plans, like \emph{go north} or \emph{fight the police}.
+Fashion Quest is an interactive fiction framework created to make \href{http://en.wikipedia.org/wiki/Interactive\_fiction}{text adventure games} about fashion because we love fashion and we love text adventure games. Fashion Quest is written in the Ruby programming language and requires \href{http://shoes.heroku.com/}{Shoes}, a cross-platform GUI framework created by \href{http://en.wikipedia.org/wiki/Why\_the\_lucky\_stiff/}{Why the Lucky Stiff}.
 
 Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes two demonstration games. The game ``Fashion Quest: Daydream'' is very small and designed to demonstrate non-player character features. It lives in the \emph{game} directory. The game ``Pirate Adventure Knockoff'' is a port of the 1978 text adventure \href{http://en.wikipedia.org/wiki/Pirate\_Adventure}{``Pirate Adventure''} by Scott and Alexis Adams and lives in the \emph{pirate\_adventure} directory.
 
@@ -106,15 +104,19 @@ To play either of these use Shoes to run \emph{run.rb} and select which you’d 
 Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative use of computers!
 
 
-\section{Interactive Fiction Frameworks}
+\section{Why Use a Framework?}
 
-Text adventure games are also known as interactive fiction (IF). Development of IF involves dealing with problems not inherent in many other realms of development, including parsing and simulation. Because of this a number of frameworks have been developed to deal with the IF domain. Major frameworks include Inform, Adrift, and TADS.
+Development of interactive fiction (IF) involves dealing with problems not inherent in many other realms of development, including parsing and game world simulation. Because of this a number of frameworks have been developed to deal with the IF domain.
 
-ADRIFT is one of the most user friendly of the frameworks. It allows games to be created using a GUI. It is not extensible, cross-platform, or open source, however.
+Fashion Quest is a relative newcomer. Established frameworks include \emph{Inform}, \emph{Adrift}, and \emph{TADS}.
 
-Inform is one of the most elegant and established of the frameworks. It allows games to be developed either in natural language (Inform 7) or a specialize programming langague (Inform 6). It is extensible, cross-platform, open source, and supports automated game testing.
+\href{http://www.adrift.org.uk/}{ADRIFT} is one of the most user friendly of the frameworks. It allows games to be created using a GUI. It is not, however, extensible, cross-platform, or open source.
 
-TADS.
+\href{http://www.inform-fiction.org/I7/Welcome.html}{Inform} is one of the most elegant and established of the frameworks. It allows games to be developed either in natural language (Inform 7) or a specialize programming langague (Inform 6). It is extensible, cross-platform, open source, and supports automated game testing.
+
+\href{http://www.tads.org/}{TADS} is reputedly more powerful than Inform, but has a fairly steep learning curve.
+
+When evaluating IF frameworks, an interesting site is \href{http://www.firthworks.com/roger/cloak/index.html}{Cloak of Darkness}. This site links to implementations of the same simple interactive fiction game created using twenty different IF frameworks.
 
 
 \section{Design Goals of Fashion Quest}
@@ -136,7 +138,7 @@ By leveraging Shoes, Fashion Quest is able to provide a consistant user experien
 \item {} 
 \textbf{Programmer-Friendly}
 
-Fashion Quest development is done using the Ruby programming language rather than a domain-specific programming language. This lessen the framework learning curve for those who already known Ruby.
+Fashion Quest development is done using the Ruby programming language rather than a domain-specific programming language. This lessens the framework learning curve as there are many resources for those wishing to learn Ruby (and those who already know Ruby get a head start).
 
 \item {} 
 \textbf{Extensible}
@@ -148,7 +150,7 @@ Because Fashion Quest is open source, it is fully extensible. Default game engin
 \resetcurrentobjects
 \hypertarget{--doc-overview}{}
 
-\chapter{Framework Overview}
+\chapter{Overview}
 
 
 \section{Directory Structure}
@@ -226,15 +228,26 @@ A game directory requires a \emph{props} directory in which a file that defines 
 
 \end{itemize}
 
+
+\section{Built-in Commands}
+
+There are a number of built-in commands that don't appear in the command directories. These are: \emph{restart}, \emph{clear}, \emph{load}, \emph{save}, \emph{load walkthrough}, \emph{save walkthrough}, save \emph{transcript}, and \emph{compare to transcript}.
+
+\emph{restart} restarts the game. \emph{clear} clears the command output. \emph{load} and \emph{save} allow the user to load or save their game progress to a file.
+
+The other built-in commands are developer-oriented and discussed in the testing section.
+
 \resetcurrentobjects
-\hypertarget{--doc-components}{}
+\hypertarget{--doc-elements}{}
 
-\chapter{Creating Game Components}
+\chapter{Game World Elements}
 
-Game components are defined using \href{http://www.yaml.org/}{YAML}, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.
+Game world elements are defined using \href{http://www.yaml.org/}{YAML}, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.
 
 
-\section{Creating Locations}
+\section{Locations}
+
+Locations are places a player can visit during a game.
 
 Each location is defined in its own YAML file within the `locations' subdirectory of the game directory.
 
@@ -253,7 +266,7 @@ alcove:
 \end{Verbatim}
 
 
-\section{Creating Doors}
+\section{Doors}
 
 Doors allow two or more locations to be connected. If a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations.
 
@@ -276,7 +289,7 @@ door:
 \end{Verbatim}
 
 
-\section{Creating Props}
+\section{Props}
 
 Props are items that players can interact with in the game. They may be portable items, such as a pack of cigarettes, or items that can't be carried, such as a dresser.
 
@@ -296,192 +309,199 @@ dresser:
 \end{Verbatim}
 
 
-\section{Creating Characters}
-\begin{itemize}
-\item {} 
-characters are put in the `characters' subdirectory
+\section{Characters}
 
-\item {} 
-characters are defined in YAML
+Characters are beings that players can interact with in the game.
 
-\item {} 
-any props a character will accept being given are indicated by the ``exchanges'' property
+Each character is defined in its own YAML file within the `characters' subdirectory of the game directory.
 
-\end{itemize}
+The example below, from the ``Pirate Adventure Knockoff'' demonstration game, defines a character located in a location with the unique identifier \emph{shack}. The pirate will accept the \emph{rum} prop if the player gives it to him.
+
+\begin{Verbatim}[commandchars=@\[\]]
+--- 
+pirate: 
+  description: The pirate has a wicked look.
+  location: shack
+  exchanges:
+    rum: true
+\end{Verbatim}
 
 
-\section{Creating Commands}
-\begin{itemize}
-\item {} 
-commands are defined in YAML
+\section{State}
 
-\item {} 
-command files are put in the commands directory of the game's base directory
+Game state is used to keep track of game conditions other than the state of other game elements. State can be referenced, or set, from logic within commands, transitions, and events.
 
-\item {} 
-within the commands directory, commands can be placed in subdirectories if desired
+One example from the \emph{Pirate Adventure Knockoff} demonstration is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.
 
-\item {} 
-commands are made up of syntax and logic
+\begin{Verbatim}[commandchars=@\[\]]
+@PYGaS[@at[]state]@PYGbd[@lb[]]@PYGbc['tide']@PYGbd[@rb[]] @PYGbd[=] @PYGbc['in']
+\end{Verbatim}
 
-\item {} 
-command syntax can have multiple forms
-- each syntax form is composed of keywords and references
-- keywords are static words: verbs
-- references refer to ``things'': nouns
-\begin{itemize}
-\item {} 
-types of references: prop, character, door, ad-hoc
+\resetcurrentobjects
+\hypertarget{--doc-manipulation}{}
 
-\item {} 
-prop, character, and door references can refer to any prop, character, or door in the same location as the player
+\chapter{Game World Manipulation}
 
-\item {} 
-if a prop, character, or door doesn't have the same location as the player, an error will be returned
+Game components are defined using \href{http://www.yaml.org/}{YAML}, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.
 
-\item {} 
-ad-hoc references can refer to anything... there is no checking before passing an ad-hoc reference to command logic
 
-\item {} 
-in syntax form, references enclosed in less-than and greater-than symbols
+\section{Commands}
 
-\item {} 
-examples:
+Each command is defined in its own YAML file within the `commands' subdirectory of the game directory. If a command file within this directory exists, but is empty, the game engine will look for a command with the same filename in the \emph{standard\_commands} directory.
+
+\begin{notice}{note}{Note:}
+Symbolic links can also be used, instead of empty command files, to point to standard commands but Windows doesn't support symbolic links so the game won't be cross platform.
+\end{notice}
+
+The example below, from the ``Pirate Adventure Knockoff'' demonstration game, defines a command that enables the player to wake up the pirate character. If the character's \emph{asleep} trait is \emph{true} the \emph{asleep} trait will be changed to \emph{false} if the player enters the command \emph{wake pirate}.
+
+\begin{Verbatim}[commandchars=@\[\]]
+---
+syntax:
+- "wake @textless[]character@textgreater[]"
+- "wake up @textless[]character@textgreater[]"
+
+logic: @textbar[]
+
+  output = ''
+
+  if character.traits@PYGZlb[]'asleep'@PYGZrb[] == true
+    character.traits@PYGZlb[]'asleep'@PYGZrb[] = false
+  else
+    output @textless[]@textless[] "You can't wake up what is not asleep.\n"
+  end
+
+  output
+\end{Verbatim}
+
+Commands are made up of syntax and logic.
+
+TIP: Keep the idea of reusing commands between games in mind when creating commands. If logic is game-specific, try to use transitions instead of commands to implement the logic.
+
+
+\subsection{Syntax Forms}
+
+Command syntax can have multiple forms. For example, a command that allows the player to pick up a prop could have the form \emph{get \textless{}prop\textgreater{}} or \emph{take \textless{}prop\textgreater{}}.
+
+Each syntax form is composed of keywords and parameters. Parameters are usually references to game elements. With the case of the above example \emph{get} and \emph{take} are the keywords and \emph{\textless{}prop\textgreater{}} is the reference parameter.
+
+Keywords are static words identifying an action: verbs. References refer to ``things'': nouns.
+
+Four types of parameters can be used: prop references, character references, door references, and text.
+
+Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn't have the same location as the player, an error will be output.
+
+When defining syntax forms, parameters are enclosed in less-than and greater-than symbols. A reference paramter can be given the same name as its type or can be given a name. A syntax form containing the prop reference parameter \emph{\textless{}prop\textgreater{}} would pass to the command a reference named \emph{prop}. A syntax form \emph{\textless{}prop:thing\textgreater{}} would pass to the command a reference named \emph{arg{[}'thing'{]}}.
+
+Text parameters are always named. A syntax form containing the ad-hoc reference \emph{\textless{}colour\textgreater{}} would pass to the command the variable \emph{arg{[}'color'{]}}.
+
+Examples:
 - ``\textless{}prop\textgreater{}'' for unnamed prop reference
 - ``\textless{}character\textgreater{}'' for unnamed prop reference
 - ``\textless{}prop:some name\textgreater{}'' for a named prop reference
 - ``\textless{}character:some other name\textgreater{}'' for a named character reference
 - ``\textless{}anything\textgreater{}'' for an ad-hoc reference
 
-\end{itemize}
 
-\item {} 
-command logic is written in Ruby
-- variables are passed to the command logic
-- references are passed as variables
-\begin{itemize}
-\item {} 
-``\textless{}prop\textgreater{}'' unnamed prop reference passed as ``prop'' variable
+\subsection{Logic}
 
-\item {} 
-``\textless{}character\textgreater{}'' unnamed character reference passed as ``character'' variable
+Command logic is written in Ruby. References to props, characters, or doors can be passed in as specified by syntax forms.
 
-\item {} 
-``\textless{}prop:some name\textgreater{}'' named prop reference passed as ``arg{[}'some name'{]}'' variable
+In addition to data passed in via syntax forms, game elements can also be arbitrarily accessed.
 
-\item {} 
-``\textless{}character:some other name\textgreater{}'' named character reference passed as ``arg{[}'some other name'{]}'' variable
+\emph{@game} provides access to game properties and methods.
 
-\item {} 
-``\textless{}anything\textgreater{}'' ad-hoc refrence passed as ``arg{[}anything{]}''
+\emph{@player} provides access to player properties and methods.
 
-\end{itemize}
-\begin{itemize}
-\item {} 
-``game'', ``player'', ``characters'', ``props'' variables allow interaction with game engine and game data
-- ``game'' spec
-- ``player'' spec
-- ``characters'' spec
-- ``props'' spec
+\emph{@props} provides access to the properties and methods of individual props.
 
-\item {} 
-example commands
+\emph{@characters} provides access to the properties and methods of individual characters.
 
-\end{itemize}
-
-\item {} 
-commands can be shared between games
-- if you want to share a command between games, put the command in the standard\_commands dirctory
-- to include a shared command in a game, put an empty file in your game's command directory with the same filename
-\begin{quote}
-
-as the shared command
-\end{quote}
-\begin{itemize}
-\item {} 
-alternately, if you're not using Windows you can use symlinks
-
-\end{itemize}
-
-\end{itemize}
+The best way to understand how commands work is to check out the commands in the \emph{standard\_commands} directory.
 
 
 \section{Events}
-\begin{itemize}
-\item {} 
-characters and props can have events associated with them
 
-\item {} 
-built-in character events are: on\_death, etc.
+Events enable Ruby logic to be triggered by happenings in the game world. Characters, props, and doors can all have event outcome associated with them.
 
-\item {} 
-props can also have events
+For example, the \emph{cat} character in the ``Fashion Quest: Daydream'' demonstration game responds to two events: \emph{on\_attack} (when the cat is attacked) and \emph{on\_death} (when the cat is killed).
 
-\item {} 
-events can contain text and/or logic
+\begin{Verbatim}[commandchars=@\[\]]
+--- 
+cat: 
+  mobility: 100
+  strength: 1
+  description: The cat is small and agile.
+  hp: 2
+  aggression: 5
+  location: bedroom
+  events:
+    on@_attack:
+    - "The cat yowls as he leaps at you.\n"
+    on@_death:
+    - "The cat shrieks as it crumples to the ground.\n"
+\end{Verbatim}
 
-\item {} 
-to trgger events, simply add the logic into a command
+Commands can be used to trigger events. For example, the standard get command triggers the \emph{on\_get} event on a prop (and collects event output into the variable \emph{on\_get\_output} by including the following line:
 
-\item {} \begin{description}
-\item[for example, the get command could trigger an ``on\_get'' event in a prop:] \leavevmode
-output \textless{}\textless{} game.event(props{[}prop{]}, `on\_get')
+\begin{Verbatim}[commandchars=@\[\]]
+on@_get@_output @PYGbd[=] @PYGaS[@at[]game]@PYGbd[.]event(prop, @PYGbc['on@_get'])
+\end{Verbatim}
 
-\end{description}
+The ``Pirate Adventure Knockoff'' demonstration game uses the \emph{on\_get} event of the \emph{book} prop to change the description of a room, revealing a secret passage, and return a hint to the player that something has changed.
 
-\item {} 
-the above example would have the game check a certain prop for an on\_get response
+\begin{Verbatim}[commandchars=@\[\]]
+book:
+  description: The book is large and blood-soaked.
+  location: alcove
+  events:
+    on@_get: @textbar[]
+      if not (@PYGZat[]locations@PYGZlb[]'alcove'@PYGZrb[].has@_exit('passage'))
+        @PYGZat[]props@PYGZlb[]'book'@PYGZrb[].traits@PYGZlb[]'visible'@PYGZrb[] = true
+        @PYGZat[]locations@PYGZlb[]'alcove'@PYGZrb[].add@_to@_description("The bookcase is open to reveal a secret passage beyond.\n")
+        @PYGZat[]locations@PYGZlb[]'alcove'@PYGZrb[].set@_exit('passage', 'passageway')
+        "There's a strange sound.\n";
+      end
+\end{Verbatim}
 
-\item {} \begin{description}
-\item[an example response could be:] \leavevmode
-@locations{[}'alcove'{]}.add\_to\_description(``There is a bookcase with a secret passage beyond.n''); ``There's a strange sound.n'';
+If event YAML is set to be a list of event outcomes then an outcome will be randomly selected from the list when the event is triggered, as an example shows below.
 
-\end{description}
-
-\item {} 
-the above example would add to a rooms description and give the player a hint that something in the game has changed
-
-\end{itemize}
+\begin{Verbatim}[commandchars=@\[\]]
+on@_discuss:
+@PYGbd[-] @PYGaW["]@PYGaW[The deadbeat squints at you and shuffles his feet before answering.]@PYGao[\n]@PYGaW["]
+@PYGbd[-] @PYGaW["]@PYGaW[The deadbeat tilts his head sceptically before answering.]@PYGao[\n]@PYGaW["]
+\end{Verbatim}
 
 
 \section{Transitions}
-\begin{itemize}
-\item {} 
-transitions allow manipulation of components to be triggered by game conditions, rather than user commands
 
-\item {} 
-this allows you to avoid having to add the same logic in multiple commands
+Transitions enable Ruby logic to be triggered by happenings in the game world. Transitions are more versitile than events: any game condition(s) can be used to trigger the manipulation of any game element(s).
 
-\item {} 
-transitions return output
+To add transitions to a game, create the file \emph{transitions.yaml} in the appropriate game directory. Transitions are made up of one or more triggering conditions and one or more outcomes.
 
-\item {} 
-if you want a transition to be silent, end it with the line ``''
+The example transition below, containing conditions and outcomes extracted from the ``Pirate Adventure Knockoff'' demonstration game, shows a transition that makes a pet leave if neither his master nor food are present.
 
-\end{itemize}
+\begin{Verbatim}[commandchars=@\[\]]
+---
+conditions:
 
+  ?
+    - @PYGZat[]player.location == @PYGZat[]characters@PYGZlb[]'parrot'@PYGZrb[].location
+        @&@& @PYGZat[]characters@PYGZlb[]'parrot'@PYGZrb[].location != @PYGZat[]characters@PYGZlb[]'pirate'@PYGZrb[].location
+        @&@& @PYGZat[]characters@PYGZlb[]'parrot'@PYGZrb[].location != @PYGZat[]props@PYGZlb[]'crackers'@PYGZrb[].location
+  :
+    - parrot@_flies@_off
 
-\section{State}
-\begin{itemize}
-\item {} 
-state can be used to keep track of global game conditions
+outcomes:
 
-\item {} 
-state can be referred to or manipulated in transitions or commands
+  parrot@_flies@_off: @textbar[]
+    if @PYGZat[]props@PYGZlb[]'crackers'@PYGZrb[].location != 'player'
+      @PYGZat[]characters@PYGZlb[]'parrot'@PYGZrb[].location = @PYGZat[]props@PYGZlb[]'crackers'@PYGZrb[].location
+      "The parrot flies off looking very unhappy...\n"
+    end
+\end{Verbatim}
 
-\item {} 
-within transtions, use @state
-
-\item {} 
-example: @state{[}'tide'{]} = `in'
-
-\item {} 
-within commands, use game.state
-
-\item {} 
-example: game.state{[}'tide'{]} = `out'
-
-\end{itemize}
+If you want a transition output to not return output, end it with a line containing only \emph{``''}.
 
 \resetcurrentobjects
 \hypertarget{--doc-fine_tuning}{}
@@ -489,31 +509,53 @@ example: game.state{[}'tide'{]} = `out'
 \chapter{Fine-Tuning}
 
 
-\section{Style}
+\section{Parsing}
+
+Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into ``lexemes'': text elements (single words or game element identifiers such as ``hat'' or ``blue hat'') that can be compared to command syntax forms.
+
+Here's the basic flow of parsing:
+\begin{enumerate}
+\item {} 
+Abbreviated commands are expanded
+
+\item {} 
+Input is broken into lexemes (single words or game element indentiers)
+
+\item {} 
+Lexemes that match synonyms are replaced
+
+\item {} 
+Lexemes that match garbage words are deleted
+
+\item {} 
+Lexemes that are aliases to game element IDs are resolved
+
+\end{enumerate}
+
+
+\subsection{Abbreviated Commands}
+
+Abbreviated commands reduce the amount of typing the user must do. One popular convention in interactive fiction is allowing a user simply to enter the first letter of the direction (s)he'd like to go in: \emph{n} for \emph{go north}, for example.
+
+The \emph{command\_abbreviations.yaml} file, in the \emph{parsing} subdirectory of the game directory, allows a list of abbreviations for specific command instances to be defined using YAML. The file from the ``Pirate Adventure Knockoff'' demonstration game is shown below.
+
+\begin{Verbatim}[commandchars=@\[\]]
+---
+n: "go north"
+s: "go south"
+e: "go east"
+w: "go west"
+u: "go up"
+d: "go down"
+\end{Verbatim}
+
+\begin{notice}{note}{Note:}
+The \emph{command\_abbreviations.yaml} file isn't the only place command abbreviation can be specified. Command syntax forms that don't contain parameters, like those of the \emph{inventory} command, allow abbreviations to be stored in the command's syntax forms (\emph{i} for inventory, for example).
+\end{notice}
+
+
+\subsection{Synonyms}
 \begin{itemize}
-\item {} 
-whenever possible, keep game-specific ``rules'' in transitions instead of commands
-
-\item {} 
-keeping game-specific logic out of commands allows them to be reused in different games
-
-\end{itemize}
-
-
-\section{Abbreviations, Synonyms, and Garbage Words}
-\begin{itemize}
-\item {} 
-the command\_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined
-
-\item {} 
-for example: ``n'' for ``go north''
-
-\item {} 
-in the above example, ``north'' was a parameter to the ``go'' command
-
-\item {} 
-in the case of abbreviations that don't need to specify a parameter, like ``i'' for ``inventory'', those should be included as a syntax of the command itself
-
 \item {} 
 the global\_synonyms.yaml file, in the game parsing path, allow a list of words that should be replaced with other words
 
@@ -523,6 +565,11 @@ for example: ``using'' for ``with''
 \item {} 
 in the above example, this synonym would elimiate the need to make the syntax ``attack \textless{}character\textgreater{} with \textless{}prop\textgreater{}'' also work when the player issues the command like ``attack bear using hat''
 
+\end{itemize}
+
+
+\subsection{Garbage Words}
+\begin{itemize}
 \item {} 
 the garbage\_words.yaml file, found in the game's parsing path, allows certain words to be discarded from player input
 
@@ -535,37 +582,36 @@ this makes specifying command syntax easier
 \end{itemize}
 
 
+\subsection{Aliases}
+
+Explain about aliases.
+
+
 \section{Testing}
-\begin{itemize}
-\item {} 
-when saving and loading games be mindful that prop, etc., definitions get saved as well so your game changes may not be
-reflected
 
-\item {} 
-use ``save walkthrough'' command to save your previous commands
+Testing interactive fiction games can be tedious. To make testing easier Fashion Quest provides a couple of simple tools in the form of built-in commands.
 
-\item {} 
-use ``load walkthrough'' command to run through commands you've previously saved
+In addition to the built-in commands, the Shoes \emph{alert} function is handy for confirming logic is being executed. \emph{alert(`Hello}){}` will, for example, pop up a dialog box with the word ``hello''.
 
-\item {} 
-these commands can be used for testing
+When there are syntax errors in game logic, or other errors that stop game execution, you can often get useful clues by pressing Alt-/ to view the Shoes debugging console.
 
-\item {} 
-walkthrough files are YAML, so easy to edit
 
-\item {} 
-COMPARE, TRANSCRIPT?
+\subsection{Walkthroughs}
 
-\item {} 
-use the Shoes debugger... press alt-/ to see error messages
+When a player loads or saves a game, via the built-in \emph{load} and \emph{save} commands, all game element definitions are included in the game save. Because of this, these commands aren't very useful for testing.
 
-\item {} 
-alert(`some message') is also handy to deduce the flow of logic
+Walkthroughs, on the other hand, can save a sequence of commands needed to arrive at a certain point in a game. This makes them useful for functional testing. Walkthrough files are simply a YAML list of commands.
 
-\item {} 
-no need to check for prop or character locations in commands because command parser will return error if prop or character referenced doesn't exist or isn't located near player
+To create a walkthrough, simply start you game and play it until the point at which you'd like your walkthrough to end. Entering the command \emph{save walkthrough} will then allow you to save the walkthrough. When you wish to use a walkthrough, start or restart Fashion Quest and enter the command \emph{load walkthrough}.
 
-\end{itemize}
+An example walkthrough is provides for the ``Pirate Adventure Knockoff'' demonstration game. It lives in the \emph{pirate\_adventure} directory and is named \emph{complete\_walkthrough}. It cycles through all the commands needed to win the game. Once the walkthrough has loaded, enter the command \emph{score} and the win will be confirmed.
+
+
+\subsection{Transcripts}
+
+While walkthroughs are good for confirming nothing is broken, transcripts provide a way to confirm no output in a game has changed.
+
+The built-in command \emph{save transcript} will save the game output to a file. You can then make changes to your game, enter the commands needed to arrive at the point in the game where you originally saved the transcript, and use the built-in command \emph{compare transcript} to compare the game output to the original transcript.
 
 
 \section{Naming}

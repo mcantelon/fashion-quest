@@ -44,8 +44,8 @@
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
 <li><a class="reference external" href="">Overview</a><ul>
-<li><a class="reference external" href="#directory-structure">Directory Structure</a></li>
 <li><a class="reference external" href="#game-elements">Game Elements</a></li>
+<li><a class="reference external" href="#framework-directory-structure">Framework Directory Structure</a></li>
 <li><a class="reference external" href="#game-directory-structure">Game Directory Structure</a></li>
 <li><a class="reference external" href="#built-in-commands">Built-in Commands</a></li>
 </ul>
@@ -86,57 +86,85 @@
             
   <div class="section" id="overview">
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="directory-structure">
-<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
-<p>The <cite>doc</cite> directory contains Fashion Quest developer documentation.</p>
-<p>The <cite>engine</cite> directory contains Fashion Quest application logic. Unless you want to play around with Fashion Quest&#8217;s internals, you can ignore this directory.</p>
-<p>The <cite>standard_commands</cite> directory contains standard game command definitions that can be shared between games.</p>
-<p>Files pertaining used by specific games are put in <em>game directories</em>. These directories can be put into the same parent directory as the above directories and can be named anything. When Fashion quest starts, it will look through all directories at this level to see which ones contain config.yaml files (in which game name, etc., are stored). If only one game directory is found, Fashion Quest will automatically select it. Otherwise, a game selector will be presented to the user.</p>
-</div>
 <div class="section" id="game-elements">
 <h2>Game Elements<a class="headerlink" href="#game-elements" title="Permalink to this headline">¶</a></h2>
 <p>The elements that make up a game include the player, locations, props, non-player characters, doors, game state, commands, and transitions. All are defined using YAML with embedded Ruby.</p>
-<p>Elements that the player may be able to carry are called <em>game components</em>. These include props, characters, and doors. Usually only props can be carried, but some games might require a character or door be carryable.</p>
+<p>Elements that the player may be able to carry are called <cite>game components</cite>. These include props, characters, and doors. Usually only props can be carried, but some games might require a character (a parrot, for example) or door (a teleportation device, for example) be carryable.</p>
 <p>Game state allows ad-hoc game world conditions to be stored. In the demonstration game &#8220;Pirate Adventure Knockoff&#8221;, for example, game state is used to record whether or not the tide is in.</p>
 <p>Commands and transitions rely on Ruby logic to manipulate the other game elements. Commands are triggered by the user whereas transitions are triggered by the conditions of other game elements.</p>
 </div>
+<div class="section" id="framework-directory-structure">
+<h2>Framework Directory Structure<a class="headerlink" href="#framework-directory-structure" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>framework directory</cite> is the directory containing <cite>run.rb</cite>. Its file structure is explained below.</p>
+<table border="1" class="docutils">
+<caption>Framework directory file structure</caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>Directory/File</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr><td>doc</td>
+<td>Directory containing developer documentation</td>
+</tr>
+<tr><td>engine</td>
+<td>Directory containing framework engine logic</td>
+</tr>
+<tr><td>standard_commands</td>
+<td>Directory containing standard game command definitions that can be shared between games</td>
+</tr>
+</tbody>
+</table>
+<p>Files used to define games are put in <cite>game directories</cite>. These directories can be put inside the <cite>framework directory</cite>. Every <cite>game directory</cite> must contain a <cite>config.yaml</cite> file (in which basic game configuration is stored). When Fashion quest starts, it will look through all directories in the <cite>framework directory</cite> to see which ones contain a <cite>config.yaml</cite> file. If only one game directory is found, Fashion Quest will automatically start this game. Otherwise, a game selector will be presented to the user.</p>
+</div>
 <div class="section" id="game-directory-structure">
 <h2>Game Directory Structure<a class="headerlink" href="#game-directory-structure" title="Permalink to this headline">¶</a></h2>
-<p>The game directory contains a number of folders and files in which game configuration live.</p>
-<ul>
-<li><p class="first"><strong>Basic Configuration</strong></p>
-<p>Each game directory must contain a <cite>config.yaml</cite> file. This file contains high-level configuration parameters such as game title, window width/height, whether the game window should be resizable, startup message, and startup logic.</p>
-<p>The basic look of a game can be tweaked using the startup logic. See the &#8220;Pirate Adventure Knockoff&#8221; demonstation game for an example.</p>
-</li>
-<li><p class="first"><strong>Transitions</strong></p>
-<p>A game directory may contain a <cite>transitions.yaml</cite> file. This file defines any transitions.</p>
-</li>
-<li><p class="first"><strong>Characters</strong></p>
-<p>A game directory may contain a <cite>characters</cite> directory in which files that define non-player characters are kept.</p>
-</li>
-<li><p class="first"><strong>Commands</strong></p>
-<p>A game directory requires a <cite>commands</cite> directory in which files that define commands, or reference standard commands, are kept.</p>
-</li>
-<li><p class="first"><strong>Doors</strong></p>
-<p>A game directory may contain a <cite>doors</cite> directory in which a file that defines doors is kept.</p>
-</li>
-<li><p class="first"><strong>Locations</strong></p>
-<p>A game directory requires a <cite>locations</cite> directory in which files that define locations are kept.</p>
-</li>
-<li><p class="first"><strong>Parsing</strong></p>
-<p>A game directory may contain a <cite>parsing</cite> directorry in which files related to the fine-tuning of command parsing are kept.</p>
-</li>
-<li><p class="first"><strong>Player</strong></p>
-<p>A game directory requires a <cite>player</cite> directory in which a file that defines the player&#8217;s attributes is kept.</p>
-</li>
-<li><p class="first"><strong>Props</strong></p>
-<p>A game directory requires a <cite>props</cite> directory in which a file that defines game props is kept.</p>
-</li>
-</ul>
+<p>The <cite>game directory</cite> file structure is explained below.</p>
+<table border="1" class="docutils">
+<caption>Game directory file structure</caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>Directory/File</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr><td>config.yaml</td>
+<td>File containing YAML basic game configuration</td>
+</tr>
+<tr><td>transitions.yaml</td>
+<td>File containing YAML transition definitions</td>
+</tr>
+<tr><td>characters</td>
+<td>Directory containing YAML character definition files</td>
+</tr>
+<tr><td>commands</td>
+<td>Directory containing YAML command definition files</td>
+</tr>
+<tr><td>doors</td>
+<td>Directory containing the YAML door definitions file</td>
+</tr>
+<tr><td>locations</td>
+<td>Directory containing YAML location definition files</td>
+</tr>
+<tr><td>parsing</td>
+<td>Directory containing parsing-related YAML configuration files</td>
+</tr>
+<tr><td>player</td>
+<td>Directory containing the YAML player definition file</td>
+</tr>
+<tr><td>props</td>
+<td>Directory containing the YAML props definition file</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="built-in-commands">
 <h2>Built-in Commands<a class="headerlink" href="#built-in-commands" title="Permalink to this headline">¶</a></h2>
-<p>There are a number of built-in commands that don&#8217;t appear in the command directories. These are: <cite>restart</cite>, <cite>clear</cite>, <cite>load</cite>, <cite>save</cite>, <cite>load walkthrough</cite>, <cite>save walkthrough</cite>, save <cite>transcript</cite>, and <cite>compare to transcript</cite>.</p>
+<p>There are a number of built-in game commands that don&#8217;t appear in the <cite>standard_commands</cite> directory. These are: <cite>restart</cite>, <cite>clear</cite>, <cite>load</cite>, <cite>save</cite>, <cite>load walkthrough</cite>, <cite>save walkthrough</cite>, save <cite>transcript</cite>, and <cite>compare to transcript</cite>.</p>
 <p><cite>restart</cite> restarts the game. <cite>clear</cite> clears the command output. <cite>load</cite> and <cite>save</cite> allow the user to load or save their game progress to a file.</p>
 <p>The other built-in commands are developer-oriented and discussed in the testing section.</p>
 </div>

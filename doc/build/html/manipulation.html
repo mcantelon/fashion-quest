@@ -45,7 +45,7 @@
             <ul>
 <li><a class="reference external" href="">Game World Manipulation</a><ul>
 <li><a class="reference external" href="#commands">Commands</a><ul>
-<li><a class="reference external" href="#syntax">Syntax</a></li>
+<li><a class="reference external" href="#syntax-forms">Syntax Forms</a></li>
 <li><a class="reference external" href="#logic">Logic</a></li>
 </ul>
 </li>
@@ -118,15 +118,15 @@ logic: |
 </div>
 <p>Commands are made up of syntax and logic.</p>
 <p>TIP: Keep the idea of reusing commands between games in mind when creating commands. If logic is game-specific, try to use transitions instead of commands to implement the logic.</p>
-<div class="section" id="syntax">
-<h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="syntax-forms">
+<h3>Syntax Forms<a class="headerlink" href="#syntax-forms" title="Permalink to this headline">¶</a></h3>
 <p>Command syntax can have multiple forms. For example, a command that allows the player to pick up a prop could have the form <cite>get &lt;prop&gt;</cite> or <cite>take &lt;prop&gt;</cite>.</p>
-<p>Each syntax form is composed of keywords and references. With the case of the above example <cite>get</cite> and <cite>take</cite> are the keywords and <cite>&lt;prop&gt;</cite> is the reference.</p>
+<p>Each syntax form is composed of keywords and parameters. Parameters are usually references to game elements. With the case of the above example <cite>get</cite> and <cite>take</cite> are the keywords and <cite>&lt;prop&gt;</cite> is the reference parameter.</p>
 <p>Keywords are static words identifying an action: verbs. References refer to &#8220;things&#8221;: nouns.</p>
-<p>Three types of references can be used: prop, character, door, ad-hoc.</p>
-<p>Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn&#8217;t have the same location as the player, an error will be returned.</p>
-<p>When defining syntax forms, references are enclosed in less-than and greater-than symbols. The reference can be given the same name as its type or can be given a name. A syntax form containing the prop reference <cite>&lt;prop&gt;</cite> would pass to the command a reference named <cite>prop</cite>. A syntax form <cite>&lt;prop:thing&gt;</cite> would pass to the command a reference named <cite>arg[&#8216;thing&#8217;]</cite>.</p>
-<p>Ad-hoc references can be used to pass in arbitrary text. A syntax form containing the ad-hoc reference <cite>&lt;colour&gt;</cite> would pass to the commnd a reference named <cite>arg[&#8216;color&#8217;]</cite>.</p>
+<p>Four types of parameters can be used: prop references, character references, door references, and text.</p>
+<p>Prop, character, and door references can refer to any prop, character, or door in the same location as the player. If a prop, character, or door is referenced, but doesn&#8217;t have the same location as the player, an error will be output.</p>
+<p>When defining syntax forms, parameters are enclosed in less-than and greater-than symbols. A reference paramter can be given the same name as its type or can be given a name. A syntax form containing the prop reference parameter <cite>&lt;prop&gt;</cite> would pass to the command a reference named <cite>prop</cite>. A syntax form <cite>&lt;prop:thing&gt;</cite> would pass to the command a reference named <cite>arg[&#8216;thing&#8217;]</cite>.</p>
+<p>Text parameters are always named. A syntax form containing the ad-hoc reference <cite>&lt;colour&gt;</cite> would pass to the command the variable <cite>arg[&#8216;color&#8217;]</cite>.</p>
 <p>Examples:
 - &#8220;&lt;prop&gt;&#8221; for unnamed prop reference
 - &#8220;&lt;character&gt;&#8221; for unnamed prop reference

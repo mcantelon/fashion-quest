@@ -1,75 +1,69 @@
 Overview
 ========
 
-Directory Structure
--------------------
-
-The `doc` directory contains Fashion Quest developer documentation. 
-
-The `engine` directory contains Fashion Quest application logic. Unless you want to play around with Fashion Quest's internals, you can ignore this directory.
-
-The `standard_commands` directory contains standard game command definitions that can be shared between games.
-
-Files pertaining used by specific games are put in *game directories*. These directories can be put into the same parent directory as the above directories and can be named anything. When Fashion quest starts, it will look through all directories at this level to see which ones contain config.yaml files (in which game name, etc., are stored). If only one game directory is found, Fashion Quest will automatically select it. Otherwise, a game selector will be presented to the user.
-
 Game Elements
 -------------
 
 The elements that make up a game include the player, locations, props, non-player characters, doors, game state, commands, and transitions. All are defined using YAML with embedded Ruby.
 
-Elements that the player may be able to carry are called *game components*. These include props, characters, and doors. Usually only props can be carried, but some games might require a character or door be carryable.
+Elements that the player may be able to carry are called `game components`. These include props, characters, and doors. Usually only props can be carried, but some games might require a character (a parrot, for example) or door (a teleportation device, for example) be carryable.
 
 Game state allows ad-hoc game world conditions to be stored. In the demonstration game "Pirate Adventure Knockoff", for example, game state is used to record whether or not the tide is in.
 
 Commands and transitions rely on Ruby logic to manipulate the other game elements. Commands are triggered by the user whereas transitions are triggered by the conditions of other game elements.
 
+Framework Directory Structure
+-----------------------------
+
+The `framework directory` is the directory containing `run.rb`. Its file structure is explained below.
+
+.. list-table:: Framework directory file structure
+   :widths: 20 80
+
+   * - **Directory/File**
+     - **Description**
+   * - doc
+     - Directory containing developer documentation
+   * - engine
+     - Directory containing framework engine logic
+   * - standard_commands
+     - Directory containing standard game command definitions that can be shared between games
+
+Files used to define games are put in `game directories`. These directories can be put inside the `framework directory`. Every `game directory` must contain a `config.yaml` file (in which basic game configuration is stored). When Fashion quest starts, it will look through all directories in the `framework directory` to see which ones contain a `config.yaml` file. If only one game directory is found, Fashion Quest will automatically start this game. Otherwise, a game selector will be presented to the user.
+
 Game Directory Structure
 ------------------------
 
-The game directory contains a number of folders and files in which game configuration live.
+The `game directory` file structure is explained below.
 
-- **Basic Configuration**
+.. list-table:: Game directory file structure
+   :widths: 20 80
 
-  Each game directory must contain a `config.yaml` file. This file contains high-level configuration parameters such as game title, window width/height, whether the game window should be resizable, startup message, and startup logic.
-
-  The basic look of a game can be tweaked using the startup logic. See the "Pirate Adventure Knockoff" demonstation game for an example.
-
-- **Transitions**
-
-  A game directory may contain a `transitions.yaml` file. This file defines any transitions.
-
-- **Characters**
-
-  A game directory may contain a `characters` directory in which files that define non-player characters are kept.
-
-- **Commands**
-
-  A game directory requires a `commands` directory in which files that define commands, or reference standard commands, are kept.
-
-- **Doors**
-
-  A game directory may contain a `doors` directory in which a file that defines doors is kept.
-
-- **Locations**
-
-  A game directory requires a `locations` directory in which files that define locations are kept.
-
-- **Parsing**
-
-  A game directory may contain a `parsing` directorry in which files related to the fine-tuning of command parsing are kept.
-
-- **Player**
-
-  A game directory requires a `player` directory in which a file that defines the player's attributes is kept.
-
-- **Props**
-
-  A game directory requires a `props` directory in which a file that defines game props is kept.
+   * - **Directory/File**
+     - **Description**
+   * - config.yaml
+     - File containing YAML basic game configuration
+   * - transitions.yaml
+     - File containing YAML transition definitions
+   * - characters
+     - Directory containing YAML character definition files
+   * - commands
+     - Directory containing YAML command definition files
+   * - doors
+     - Directory containing the YAML door definitions file
+   * - locations
+     - Directory containing YAML location definition files
+   * - parsing
+     - Directory containing parsing-related YAML configuration files
+   * - player
+     - Directory containing the YAML player definition file
+   * - props
+     - Directory containing the YAML props definition file
 
 Built-in Commands
 -----------------
 
-There are a number of built-in commands that don't appear in the command directories. These are: `restart`, `clear`, `load`, `save`, `load walkthrough`, `save walkthrough`, save `transcript`, and `compare to transcript`.
+There are a number of built-in game commands that don't appear in the `standard_commands` directory. These are: `restart`, `clear`, `load`, `save`, `load walkthrough`, `save walkthrough`, save `transcript`, and `compare to transcript`.
 
 `restart` restarts the game. `clear` clears the command output. `load` and `save` allow the user to load or save their game progress to a file.
 

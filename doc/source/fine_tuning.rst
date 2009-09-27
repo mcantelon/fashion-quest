@@ -4,36 +4,48 @@ Fine-Tuning
 Parsing
 -------
 
-Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into "lexemes",text elements (single words or game element identifiers such as "hat" or "blue hat") that can be compared to syntax forms.
+Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into "lexemes": text elements (single words or game element identifiers such as "hat" or "blue hat") that can be compared to command syntax forms.
 
 Here's the basic flow of parsing:
 
-1. Abbreviated commands are expanded (`i` to `inventory`, for example)
+1. Abbreviated commands are expanded
 2. Input is broken into lexemes (single words or game element indentiers)
-3. Any lexemes that match synonyms are replaced (`examine` to `look`, for example)
-4. Any lexemes that match garbage words are deleted (`the`, `this`, etc.)
+3. Lexemes that match synonyms are replaced
+4. Lexemes that match garbage words are deleted
+5. Lexemes that are aliases to game element IDs are resolved
 
-Abbreviations
-~~~~~~~~~~~~~
+Abbreviated Commands
+~~~~~~~~~~~~~~~~~~~~
 
-- the command_abbreviations.yaml file, in the game parsing path, allows a list of abbreviations for specific command instances to be defined
-- for example: "n" for "go north"
-- in the above example, "north" was a parameter to the "go" command
-- in the case of abbreviations that don't need to specify a parameter, like "i" for "inventory", those should be included as a syntax of the command itself
+Abbreviated commands reduce the amount of typing the user must do. One popular convention in interactive fiction is allowing a user simply to enter the first letter of the direction (s)he'd like to go in: `n` for `go north`, for example.
+
+The `command_abbreviations.yaml` file, in the `parsing` subdirectory of each game's directory, allows a list of abbreviations for specific command instances to be defined using YAML. An example is shown below.
+
+.. literalinclude:: ../../pirate_adventure/parsing/command_abbreviations.yaml
+
+.. note::
+
+   The `command_abbreviations.yaml` file isn't the only place command abbreviation can be specified. Command syntax forms that don't contain parameters, like those of the `inventory` command, allow abbreviations to be stored in the command's syntax forms (`i` for inventory, for example).
 
 Synonyms
 ~~~~~~~~
 
-- the global_synonyms.yaml file, in the game parsing path, allow a list of words that should be replaced with other words
-- for example: "using" for "with"
-- in the above example, this synonym would elimiate the need to make the syntax "attack <character> with <prop>" also work when the player issues the command like "attack bear using hat"
+Synonyms help reduce the number of command syntax forms needed to support command syntax variations. The `global_synonyms.yaml` file, in the game `parsing` subdirectory of each game's directory, can contain a list of word substitutions defined using YAML. These substitutions get applied to a user's command input.
+
+For example, the word "using" can be replaced with the word "with". This synonym would make the command syntax form "attack <character> with <prop>" work when the player enters the command "attack bear using hat".
+
+Example YAML is shown below.
+
+.. literalinclude:: ../../pirate_adventure/parsing/global_synonyms.yaml
 
 Garbage Words
 ~~~~~~~~~~~~~
 
-- the garbage_words.yaml file, found in the game's parsing path, allows certain words to be discarded from player input
-- these words should be words like "the" and "a" which have little semantic meaning
-- this makes specifying command syntax easier
+Garbage words are words with little or no semantic meaning (like "the" and "a). By removing them from the user's command input we recude the number of command syntax forms needed to support command syntax variations. The `garbage_words.yaml` file, found in the `parsing` subdirectory of each game's directory, can contain a list of words that should be discarded from player input.
+
+Example YAML is shown below.
+
+.. literalinclude:: ../../pirate_adventure/parsing/garbage_words.yaml
 
 Testing
 -------

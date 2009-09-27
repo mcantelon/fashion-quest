@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=latex 2009.9.19)  20 SEP 2009 22:51
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=latex 2009.9.19)  26 SEP 2009 22:57
 entering extended mode
  %&-line parsing enabled.
 **FashionQuest.tex
@@ -806,7 +806,7 @@ l.89 \tableofcontents
 Chapter 1.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 96.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 126.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 128.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
@@ -819,44 +819,61 @@ Chapter 2.
 
 ] [4]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 243.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 256.
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [5
 
 ] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 427--429
-[]\T1/ptm/m/n/10 output <<
- []
-
-[7] [8]
 Chapter 4.
-[9
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 382.
+[7
 
-] [10]
+] [8]
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 471.
+ [9] [10]
 Chapter 5.
-No file modFashionQuest.ind.
-No file FashionQuest.ind.
 [11
 
-] (./FashionQuest.aux) ) 
+] [12] [13] [14
+
+]
+Chapter 6.
+No file modFashionQuest.ind.
+No file FashionQuest.ind.
+[15] (./FashionQuest.aux) ) 
 Here is how much of TeX's memory you used:
- 6712 strings out of 94075
- 87056 string characters out of 1165176
+ 6747 strings out of 94075
+ 87460 string characters out of 1165176
  152558 words of memory out of 1500000
- 9818 multiletter control sequences out of 10000+50000
- 47694 words of font info for 48 fonts, out of 1200000 for 2000
+ 9827 multiletter control sequences out of 10000+50000
+ 52781 words of font info for 53 fonts, out of 1200000 for 2000
  646 hyphenation exceptions out of 8191
- 34i,11n,45p,558b,449s stack positions out of 5000i,500n,6000p,200000b,5000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}<
-/usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-t
-exlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type
-1/urw/helvetic/uhvbo8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb
-8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
-exmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on FashionQuest.pdf (15 pages, 115954 bytes).
+ 34i,12n,45p,558b,449s stack positions out of 5000i,500n,6000p,200000b,5000s
+pdfTeX warning (dest): name{section.4.4} has been re
+ferenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.8} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.7} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.3.6} has been referenced but does not exist
+, replaced by a fixed one
+
+{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive
+/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/c
+ourier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb
+></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/tex
+mf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/typ
+e1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a
+.pfb>
+Output written on FashionQuest.pdf (19 pages, 140127 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 42 named destinations out of 1000 (max. 131072)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 131072)
  193 words of extra memory for PDF output out of 10000 (max. 10000000)
 
