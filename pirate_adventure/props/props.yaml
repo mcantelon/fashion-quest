@@ -2,8 +2,10 @@
 crackers:
   location: apartment
 
-sneakers:
+safety sneakers:
   name: safety sneakers
+  aliases:
+  - sneakers
   location: apartment
 
 rum:
