@@ -32,7 +32,7 @@ conditions:
     - warn_that_torch_will_go_out
 
   ?
-    - @player.location == 'ledge' && @props['sneakers'].location != 'player'
+    - @player.location == 'ledge' && @props['safety sneakers'].location != 'player'
   :
     - risk_of_falling
 
