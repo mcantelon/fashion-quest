@@ -52,7 +52,6 @@ class Game
 
   end
 
-  # maybe this should be called component or something more descriptive
   def elements(name)
 
     if @doors.has_key?(name)
@@ -70,6 +69,40 @@ class Game
     if @locations.has_key?(name)
       return @locations[name]
     end
+
+  end
+
+  def find_alias(alias_to_find)
+
+    [@doors, @props, @characters].each do |elements|
+
+      if element_alias = find_alias_among(elements, alias_to_find)
+
+        return element_alias
+      end
+    end
+
+    false
+
+  end
+
+  def find_alias_among(elements, alias_to_find)
+
+    elements.each do |id, element|
+
+      if element.aliases
+
+        element.aliases.each do |element_alias|
+
+          if element_alias == alias_to_find
+
+            return element.id
+          end
+        end
+      end
+    end
+
+    false
 
   end
 

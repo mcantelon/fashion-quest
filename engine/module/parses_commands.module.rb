@@ -16,6 +16,18 @@ module Parses_Commands
         )
       )
 
+      # replace aliases with IDs
+      index = 0
+      lexemes.each do |lexeme|
+
+        if element_alias = @game.find_alias(lexeme)
+            lexemes[index] = element_alias
+        end
+
+        index += 1
+
+      end
+
       # return result of first valid command
       if @commands
         @commands.each do |command|
@@ -80,7 +92,7 @@ module Parses_Commands
     number_of_words = words.length
 
     # if a multi-word command, look for multi-word prop references
-    if number_of_words > 1 then
+    if number_of_words > 1
 
       # try using each word as the start word
       while current_word < number_of_words do
@@ -105,7 +117,11 @@ module Parses_Commands
 
             # if the sequence is an prop reference, replace
             # the component words with the reference as a string
-            if @game.elements(remaining_words) != nil
+            element_alias = @game.find_alias(remaining_words)
+
+            if @game.elements(remaining_words) != nil || element_alias
+
+              alert(element_alias)
 
               reference_end_word = current_word + remaining_words.scan(/\ /).length 
               words_after_prop_reference =
@@ -116,7 +132,9 @@ module Parses_Commands
                 words[0, start_word - 1] + [remaining_words] + words_after_prop_reference
 
               level += 1
-            return parse_reference_words(new_word_array, 1, level)
+
+              return parse_reference_words(new_word_array, 1, level)
+
             end
           end
 
