@@ -2,7 +2,7 @@ class Command
 
   include Handles_YAML_Files
 
-  attr_accessor :syntax, :logic
+  attr_accessor :syntax, :logic, :condition
 
   def initialize(params)
 
@@ -65,6 +65,11 @@ class Command
           end
 
           if valid
+
+            # If command has a condition, evaluate it to see if a denial message is returned
+            if @condition && denial_message = instance_eval(@condition)
+              return denial_message
+            end
 
             command_result = instance_eval(@logic)
 

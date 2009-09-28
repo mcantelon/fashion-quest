@@ -48,8 +48,9 @@ class Cli
           command = Command.new :game => @game, :image_stack => @image_stack, :output_stack => @output_stack
 
           # commands have syntax and logic
-          command.syntax = command_data['syntax']
-          command.logic  = command_data['logic']
+          command.condition = command_data['condition']
+          command.syntax    = command_data['syntax']
+          command.logic     = command_data['logic']
 
           @commands << command
 
