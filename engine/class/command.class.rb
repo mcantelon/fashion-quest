@@ -2,7 +2,7 @@ class Command
 
   include Handles_YAML_Files
 
-  attr_accessor :syntax, :triggers, :logic, :location
+  attr_accessor :syntax, :logic
 
   def initialize(params)
 
