@@ -1,0 +1,20 @@
+---
+conditions:
+  ?
+    - @turns == 0
+  :
+    - begin
+
+  ?
+    - @player.hp && @player.hp < 1
+  :
+    - death
+
+outcomes:
+
+  begin: |
+    # beginning logic can be put here
+
+  death: |
+    @over = true
+    output = "You have died.\n"
