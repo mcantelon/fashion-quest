@@ -7,7 +7,7 @@ conditions:
     - begin
 
   ?
-    - @player.hp < 1
+    - @player.hp && @player.hp < 1
   :
     - death
 
