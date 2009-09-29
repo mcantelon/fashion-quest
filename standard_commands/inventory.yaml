@@ -17,9 +17,15 @@ logic: |
     if prop_counter > 0
       output << ', '
     end
+
     output << prop.noun
 
+    if @player.wearing.index(prop.id)
+      output << ' (worn)'
+    end
+
     prop_counter += 1
+
   end
 
   if prop_counter == 0
