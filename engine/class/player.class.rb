@@ -2,7 +2,7 @@ class Player
 
   include Uses_Weapons
 
-  attr_accessor :location, :can_carry_number_of_items
+  attr_accessor :location, :can_carry_number_of_items, :wearing
 
   def initialize(params)
 
@@ -11,6 +11,7 @@ class Player
     @strength = params[:strength]
     @dead     = params[:dead]
     @location = params[:location]
+    @wearing  = []
 
     @props      = params[:props]
     @characters = params[:characters]
