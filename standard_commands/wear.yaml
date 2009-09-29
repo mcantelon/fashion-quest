@@ -1,0 +1,22 @@
+---
+syntax:
+- "wear <prop>"
+- "put on <prop>"
+
+logic: |
+
+  output = ''
+
+  if not @player.wearing.index(prop.id)
+
+    @player.wearing << prop.id
+
+    output << "You wear #{prop.noun_direct_specific}.\n "
+
+  else
+
+    output << "You're already wearing #{prop.noun_direct_specific}.\n"
+
+  end
+
+  output

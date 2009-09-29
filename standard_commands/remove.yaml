@@ -1,0 +1,22 @@
+---
+syntax:
+- "remove <prop>"
+- "take off <prop>"
+
+logic: |
+
+  output = ''
+
+  if not @player.wearing.index(prop.id)
+
+    output << "You're not wearing #{prop.noun_direct_specific}.\n"
+
+  else
+
+    @player.wearing.delete(prop.id)
+
+    output << "You take off #{prop.noun_direct_specific}.\n"
+
+  end
+
+  output
