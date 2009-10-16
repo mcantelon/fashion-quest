@@ -1,0 +1,15 @@
+--- 
+cloak:
+  description: The cloak is alright.
+  location: player
+  traits:
+    wearable: true
+
+hook:
+  description: Coat hook!
+  location: cloakroom
+  traits:
+    portable: false
+    supports: true
+    supports_only:
+    - cloak

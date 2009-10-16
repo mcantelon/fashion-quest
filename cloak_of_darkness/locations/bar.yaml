@@ -1,0 +1,7 @@
+bar: 
+  exits:
+    north:
+      destination: foyer
+
+  description: |
+    I'm in a bar. Yay.

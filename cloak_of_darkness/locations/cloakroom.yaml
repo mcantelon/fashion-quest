@@ -1,0 +1,7 @@
+cloakroom: 
+  exits:
+    east:
+      destination: foyer
+
+  description: |
+    I'm in a cloakroom.

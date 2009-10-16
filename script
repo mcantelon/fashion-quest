@@ -1,0 +1,26 @@
+def fight_deadbeat
+
+  while !@output_text.index('You have killed the deadbeat.') do
+    result = parse('attack deadbeat')
+    if result.index('You have died')
+      alert('aa')
+      restart
+      main
+    end
+  end
+
+  true
+
+end
+
+def main
+  issue_command('n')
+  issue_command('get brass key')
+  if @message_text.index('The deadbeat attacks!')
+    if not fight_deadbeat
+      return 'restart'
+    end
+  end
+end
+
+main

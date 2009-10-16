@@ -1,24 +1,69 @@
+Needed for next release:
+-document naming
+-document aliases
+-document new_game template
+-document command conditions
+-document exit conditions
+-need a definitive term for non-location game elements (game component)
+
+Needed for Cloak port:
+-put/hang (for putting cloak on hook)
+-need to set supported_by on prop so when we get it we can removed it from the supports entry of the prop supporting it when it is taken
+-might be way to put cloak-specific command condition logic into function in startup logic
+  -implement command_conditions.yaml as some point
+  -global command condition? ... denial_logic
+-maybe add formal scoring support
+
+Characters, props, and doors are, within the context of English grammar, nouns that can be referred to in the output of commands, events, transitions, and framework engine logic. Fashion Quest includes functions that can be used to refer to nouns in different types of English language use.
+
+-explain about how to set properties (proper, etc.)
+
+-use list table to explain functions
+
+noun
+noun_cap
+noun_direct
+noun_direct_cap
+noun_direct_specific
+noun_direct_specific_cap
+
+-show a few examples from the demo games
+
+
+-add dynamic_element to cut out locatons from elements?
+
 Fashion Quest
 
+Change readme from markdown to rst for consistancy.
+Finish barebones documentation.
+
+I think below is fixed...
+#*-after winning old game then restarting it's all fucked up
+#    -are object ids changing?
+
+Needed for alpha:
+*-seems to be bug with scrolling in Ubuntu when an image size is specified or something
 -add close command to standard commands
 -add generic version of dig to standard commands
-
--is agression/mobility documented?
-*-seems to be bug with scrolling in Ubuntu when an image size is specified or something
--try drawing something not in animate and see if it gets wiped out
-
--try out Shoes packager again
-
-Fix next:
-*-any way to use instance vars instead of local vars in command logic? add these as params/instance vars to command class
 EZ-make sure command code is civilized
 -add "prop_anywhere" argument support for commands that work on props that don't have a location yet (i.e. building or conjuring)
   -<any> works, but maybe something other than any ... anything? component? object? thing? noun?
 -see if my noun naming scheme paradigm meshes with grammar terms
 -finish migrating properties to traits
 
+Nice to do:
+-wear
+-put (i.e. put x in y)
+-is agression/mobility documented?
+-do some kind of background animation for pirate adventure
+-try out video
+-fashion quest site
+-implement Cloak of Darkness
+-try out Shoes packager again
 -make a way to create a ruby script for issueing commands, for testing old game
  ...maybe the command will be "run script" or "load script"
+-maybe have a way of opening a directory to run an adventure in it with a "Browse..." button on the selector
+-selector is weird if you resize it
 
 do we need the destination/prop paradigm in exits? what is it used for?
 
@@ -33,15 +78,14 @@ P-what do plans say when read?
 -after dropping bottle you still have water... kind of fuck-oed
 -add note to readme that there is scrolling issue with Ubuntu Linux
 -get rug "Sorry I can't. It's nailed to the floor!"
--are sneakers described as safety sneakers?
 -maybe have on_get overrule normal output of prop opening so opening book can make "Something falls out." 
+-low priority - make sure the map only falls out when you look at the opened chest
 
 -on_exchange event... what if different events for different types of exchanges?
 -add GPL notices to source files
 -maybe have "talk <character>" command to get some hints as to what can be talked aboutt
 -what is player name for? maybe if set make things third-person
 -clean up game selector layout
--maybe have it so game and pirate adv share get command... seems like pirate adventure implements a player carrying capacity
 
 -RDOC documentation
 
@@ -105,7 +149,6 @@ Remember:
 
   -using is equivelant to others... i.e. use knife to open door = open door with knife
 
-low priority - make sure the map only falls out when you look at the opened chest
 
 Documentation:
 -document how prop setting work (opened, etc.)
@@ -113,15 +156,26 @@ Documentation:
 Fashion Quest: cross-platform interactive fiction using Ruby and Shoes
 
 Subproject: portable CLI to use as Shoes REPL
-
-should have game startup logic and logic triggered by pressing enter (currently "parse(input_text)") and hardwired command be args to cli or something
-should have checks for whether game is nil
-should set @output_text to '' if not set by param
+-should have game startup logic and logic triggered by pressing enter (currently "parse(input_text)") and hardwired command be args to cli or something
+-should have checks for whether game is nil
+-should set @output_text to '' if not set by param
 
 cool puzzle
 -room contains fire hydrant and open window too high to reach
+-need wrench to open
 -if you open it it floods the room and rushes out the door
 -if you have door closed room will fill to the open window
 -if you are wearing lifejacket you will float and can go through the open window
 -
 
+Criteria for Comparison to other frameworks:
+
+                                              ADRIFT INFORM 6 INFORM 7  TADS 3 HUGO
+-uses general purpose programming language?   N      N        N
+-extensible?                                  N      Y        Y
+-fully cross-platform?                        N      Y        Y
+-supports automated testing?                  N?     Y        Y
+-graphics suport?                             Y      Y        Y
+-open source?                                 N      Y        Y
+
+Idea... save everything to YAML and binhex graphics? use that like ZCODE

@@ -1,0 +1,10 @@
+---
+title: Cloak of Darkness
+width: 600
+height: 600
+image_height: 200
+resizable: true
+startup_message: "Welcome to Cloak of Darkness.\n\n"
+startup_logic: |
+  # start game by issueing "look" command
+  @cli.issue_command('look', false)

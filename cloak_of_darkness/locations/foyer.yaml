@@ -1,0 +1,12 @@
+foyer: 
+  exits:
+    north:
+      condition: |
+        "You could go that way, but it would likely end in tears.\n"
+    south:
+      destination: bar
+    west:
+      destination: cloakroom
+
+  description: |
+    I'm in a foyer. There is an exit to the north, but it's no good.
