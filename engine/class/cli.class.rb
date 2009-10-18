@@ -1,3 +1,5 @@
+error('loaded cli')
+
 class Cli
 
   require 'pathname'
@@ -5,7 +7,7 @@ class Cli
   include Parses_Commands
   include Handles_YAML_Files
 
-  attr_accessor :prompt, :cursor
+  attr_accessor :prompt, :cursor, :commands
 
   def initialize(params)
 
@@ -44,8 +46,11 @@ class Cli
 
         if command_data
 
+          # create command identifier based on filename
+          command_id = command_path.split('/').last.sub('.yaml', '')
+
           # commands can access the game and image stack
-          command = Command.new :game => @game, :image_stack => @image_stack, :output_stack => @output_stack
+          command = Command.new :id => command_id, :game => @game, :image_stack => @image_stack, :output_stack => @output_stack
 
           # commands have syntax and logic
           command.condition = command_data['condition']
