@@ -6,5 +6,27 @@ image_height: 200
 resizable: true
 startup_message: "Welcome to Cloak of Darkness.\n\n"
 startup_logic: |
+
+  # add helper function to game to check for darkness and
+  # return warning if it's dark
+  def @game.darkness_check(player, location)
+
+    if (locations[player.location].dark)
+      return "Noooo!\n"
+    end
+
+    false
+  end
+
+  # we'll allow some commands to function normally in the dark
+  commands_allowed_in_dark = ['go', 'look', 'quit']
+
+  # set command conditions for remaining commands to make sure it's not dark
+  @cli.commands.each do |command|
+    if !commands_allowed_in_dark.index(command.id)
+      command.condition = '@game.darkness_check(@player, @locations)'
+   end
+  end
+
   # start game by issueing "look" command
   @cli.issue_command('look', false)
