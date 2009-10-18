@@ -20,8 +20,11 @@ logic: |
       end
     end
 
-    # If player is trying to move around in the dark, kill player
-    if @locations[location].dark and !@player.has_lit_item
+    # If player is trying to move around in the dark,
+    # and darkness is lethal in the game,  kill player
+    if @locations[location].dark \
+      and @locations[location].dark != 'safe' \
+      and !@player.has_lit_item
 
       @game.over = true
       return "You trip in the dark and break your neck.\n"
