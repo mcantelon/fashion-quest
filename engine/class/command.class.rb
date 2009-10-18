@@ -2,9 +2,11 @@ class Command
 
   include Handles_YAML_Files
 
-  attr_accessor :syntax, :logic, :condition
+  attr_accessor :id, :syntax, :logic, :condition
 
   def initialize(params)
+
+    @id           = params[:id]
 
     @game         = params[:game]
 
