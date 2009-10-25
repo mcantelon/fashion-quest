@@ -8,21 +8,19 @@ logic: |
 
   output = ''
 
-  output << 'You are carrying: '
+  output << "You are carrying:\n"
 
   prop_counter = 0
 
   @player.carrying.each do |prop|
 
-    if prop_counter > 0
-      output << ', '
-    end
-
-    output << prop.noun
+    output << ' ' + prop.noun(false)
 
     if @player.wearing.index(prop.id)
-      output << ' (worn)'
+      output << ' (being worn)'
     end
+
+    output << "\n"
 
     prop_counter += 1
 

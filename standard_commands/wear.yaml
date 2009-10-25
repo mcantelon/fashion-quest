@@ -11,7 +11,7 @@ logic: |
 
     @player.wearing << prop.id
 
-    output << "You wear #{prop.noun_direct_specific}.\n "
+    output << "You put on #{prop.noun_direct_specific}.\n "
 
   else
 
