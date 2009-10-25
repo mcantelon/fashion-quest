@@ -1,15 +1,24 @@
 --- 
 cloak:
+  name: velvet cloak
   description: The cloak is alright.
   location: player
   traits:
     wearable: true
 
 hook:
+  name: small brass hook
   description: Coat hook!
   location: cloakroom
   traits:
+    visible: false
     portable: false
     supports: true
     supports_only:
     - cloak
+
+message:
+  location: bar
+  traits:
+    portable: false
+    text: props/text/message.txt

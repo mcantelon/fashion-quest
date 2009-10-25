@@ -2,11 +2,11 @@ foyer:
   exits:
     north:
       condition: |
-        "You could go that way, but it would likely end in tears.\n"
+        "You've only just arrived, and besides, the weather outside seems to be getting worse.\n"
     south:
       destination: bar
     west:
       destination: cloakroom
 
   description: |
-    I'm in a foyer. There is an exit to the north, but it's no good.
+    You are standing in a spacious hall, splendidly decorated in red and gold, with glittering chandeliers overhead. The entrance from the street is to the north, and there are doorways south and west.

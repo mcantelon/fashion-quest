@@ -1,20 +1,21 @@
 ---
 conditions:
   ?
-    - @turns == 0
+    - @props['cloak'].location != 'player' && @props['cloak'].location != 'bar'
   :
-    - begin
+    - bar_light
 
   ?
-    - @player.hp && @player.hp < 1
+    - @props['cloak'].location == 'player' || @props['cloak'].location == 'bar'
   :
-    - death
+    - bar_dark
 
 outcomes:
 
-  begin: |
-    # beginning logic can be put here
+  bar_light: |
+    @locations['bar'].dark = false
+    ""
 
-  death: |
-    @over = true
-    output = "You have died.\n"
+  bar_dark: |
+    @locations['bar'].dark = 'safe'
+    ""
