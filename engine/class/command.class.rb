@@ -68,12 +68,20 @@ class Command
 
           if valid
 
+            command_result = ''
+
             # If command has a condition, evaluate it to see if a denial message is returned
-            if @condition && denial_message = instance_eval(@condition)
-              return denial_message
+            if @condition && result = instance_eval(@condition)
+
+              if !result['success']
+                return result['message']
+              elsif result['message']
+                command_result << result['message']
+              end
+
             end
 
-            command_result = instance_eval(@logic)
+            command_result << instance_eval(@logic)
 
             return command_result
           end
