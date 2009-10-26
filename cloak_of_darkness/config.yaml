@@ -16,22 +16,36 @@ startup_logic: |
 
   # add helper function to game to check for darkness and
   # return warning if it's dark
-  def @game.darkness_check(player, location)
+  def @game.command_check(command, prop, player, location, denial_message)
 
-    if (locations[player.location].dark)
-      return "Noooo!\n"
+    message = false
+    success = true
+
+    if command == 'drop' && prop.id == 'cloak' && player.location != 'cloakroom'
+
+      message = "This isn't the best place to leave a smart cloak lying around.\n"
+      success = false
+
+    else
+
+      if (locations[player.location].dark)
+        message = denial_message + "\n"
+        success = false
+      end
     end
 
-    false
+    {'message' => message, 'success' => success}
+
   end
 
   # we'll allow some commands to function normally in the dark
-  commands_allowed_in_dark = ['go', 'look', 'quit']
+  unchecked_commands = ['go', 'look', 'quit']
 
   # set command conditions for remaining commands to make sure it's not dark
   @cli.commands.each do |command|
-    if !commands_allowed_in_dark.index(command.id)
-      command.condition = '@game.darkness_check(@player, @locations)'
+    if !unchecked_commands.index(command.id)
+      denial_message = "In the dark? You could easily disturb something!"
+      command.condition = "@game.command_check('" + command.id + "', prop, @player, @locations, \"" + denial_message + "\")"
    end
   end
 
