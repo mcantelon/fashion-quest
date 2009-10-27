@@ -9,6 +9,7 @@ require 'engine/module/uses_weapons.module.rb'
 require 'engine/module/referred_to_using_english.rb'
 require 'engine/module/has_events.rb'
 require 'engine/module/has_traits.rb'
+require 'engine/module/handles_scoring.rb'
 
 require 'engine/class/game.class.rb'
 require 'engine/class/game_component.class.rb'

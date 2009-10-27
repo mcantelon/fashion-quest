@@ -3,6 +3,7 @@ class Game
   attr_accessor :state, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over
 
   include Handles_YAML_Files
+  include Handles_Scoring
 
   def initialize(config, app_base_path, path = 'game/')
 
@@ -31,6 +32,8 @@ class Game
       @over  = false
 
       @output_text = ''
+
+      initialize_scoring(path)
 
       initialize_locations
       @doors      = initialize_doors
