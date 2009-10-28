@@ -53,6 +53,11 @@ Shoes.app(
       keypress do |k|
         @cli.keystroke(k)
         if @game.over
+          if @game.score
+            @cli.output_add(@game.score_total(@game.turns))
+            @cli.display_prompt
+           end
+
           @game.restart_or_exit
           @cli.reset
         end
