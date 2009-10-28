@@ -23,6 +23,10 @@ hook:
 
 message:
   location: bar
+  events:
+    on_read: |
+      @game.set_score('message_read')
+      @game.over = true
   traits:
     portable: false
     text: props/text/message.txt
