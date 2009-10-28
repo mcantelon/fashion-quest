@@ -3,10 +3,6 @@ cloak:
   name: velvet cloak
   description: The cloak is alright.
   location: player
-  events:
-    on_drop: |
-      if @player.location == 'foyer'
-      end
   traits:
     wearable: true
 
