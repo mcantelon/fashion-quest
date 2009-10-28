@@ -11,6 +11,8 @@ class Game
     @app_base_path = app_base_path
     @path          = path
 
+    @game = self
+
     # transitions are sets of triggering conditions and resulting outcomes
     @transitions = load_yaml_file("#{path}transitions.yaml")
 
