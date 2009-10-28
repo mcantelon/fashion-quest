@@ -10,7 +10,9 @@ logic: |
       output << f.read
     }
 
-    if (on_read_output = @game.event(prop, 'on_read'))
+    on_read_output = @game.event(prop, 'on_read')
+
+    if on_read_output.class == String
 
       output << on_read_output
 
