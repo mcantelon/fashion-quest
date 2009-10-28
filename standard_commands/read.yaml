@@ -9,8 +9,17 @@ logic: |
     File.open("#{@game.path}#{prop.traits['text']}", 'r') { |f|
       output << f.read
     }
+
+    if (on_read_output = @game.event(prop, 'on_read'))
+
+      output << on_read_output
+
+    end
+
   else
+
     output << "You look for words, but find none.\n"
+
   end
 
   output
