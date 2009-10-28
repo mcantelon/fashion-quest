@@ -26,7 +26,26 @@ module Handles_Scoring
 
       @score = @score + @scoring[id]['points']
 
+      scored[id] = true
+
     end
+
+  end
+
+  def score_total(turns = false)
+
+    output = ''
+
+    output << "You have scored " + @score.to_s + " "
+    output << "out of a possible " + @max_score.to_s
+
+    if turns
+      output << ", in " + turns.to_s + " turns"
+    end
+
+    output << ".\n"
+
+    output
 
   end
 
