@@ -2,5 +2,4 @@
 location: 'apartment'
 hp: 20
 strength: 5
-dead: false
 can_carry_number_of_items: 6
