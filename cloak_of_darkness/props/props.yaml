@@ -1,7 +1,7 @@
 --- 
 cloak:
   name: velvet cloak
-  description: The cloak is alright.
+  description: A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room.
   location: player
   traits:
     wearable: true
@@ -24,5 +24,6 @@ message:
       @game.set_score('message_read')
       @game.over = true
   traits:
+    visible: false
     portable: false
     text: props/text/message.txt
