@@ -10,6 +10,11 @@ conditions:
   :
     - bar_dark
 
+  ?
+    - @props['hook'].traits['supporting'] && @props['hook'].traits['supporting'].index('cloak')
+  :
+    - coat_hung
+
 outcomes:
 
   bar_light: |
@@ -19,3 +24,6 @@ outcomes:
   bar_dark: |
     @locations['bar'].dark = 'safe'
     ""
+
+  coat_hung: |
+    @game.set_score('cloak_on_hook')
