@@ -1,6 +1,12 @@
 --- 
 cloak:
   name: velvet cloak
+  aliases:
+  - handsome
+  - dark
+  - black
+  - velvet
+  - satin
   description: A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room.
   location: player
   traits:
@@ -8,6 +14,10 @@ cloak:
 
 hook:
   name: small brass hook
+  aliases:
+  - small
+  - brass
+  - peg
   description: Coat hook!
   location: cloakroom
   traits:
