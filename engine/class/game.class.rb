@@ -25,6 +25,16 @@ class Game
 
     case object_class.name
 
+      when 'Player'
+        # add warnings if @props or @characters not defined
+        player = Player.new \
+          :props => @props,
+          :characters => @characters
+
+        player.dead = false
+
+        player
+
       when 'Prop'
         Prop.new
 
@@ -51,15 +61,22 @@ class Game
 
       initialize_scoring(path)
 
-      initialize_locations
-      @doors      = initialize_doors
-      @props      = initialize_props
-      @characters = {}
-      @player     = initialize_player
-      initialize_characters(@locations, @player, @props)
+      setup
+
     end
 
     restart_confirmed
+
+  end
+
+  def setup
+
+    initialize_locations
+    @doors      = initialize_doors
+    @props      = initialize_props
+    @characters = {}
+    @player     = initialize_player
+    initialize_characters(@locations, @player, @props)
 
   end
 
