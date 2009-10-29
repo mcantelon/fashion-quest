@@ -137,6 +137,8 @@ class Game
         :props => @props,
         :characters => @characters
 
+      player.dead = false
+
       map_hash_to_object_attributes(player, player_data)
 
     else
