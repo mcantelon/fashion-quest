@@ -24,9 +24,12 @@ module Handles_Scoring
 
     if !scored[id]
 
-      @score = @score + @scoring[id]['points']
+      points = @scoring[id]['points']
+
+      @score = @score + points
 
       scored[id] = true
+      "[Your score has just gone up by " + points.to_s + " points.]\n"
 
     end
 
