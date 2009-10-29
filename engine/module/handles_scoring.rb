@@ -6,16 +6,23 @@ module Handles_Scoring
 
   def initialize_scoring(game_path)
 
-    @score     = 0
-    @max_score = 0
-    @scored    = {}
+    #@score     = 0
+    #@max_score = 0
+    #@scored    = {}
 
     # load scoring specification
     @scoring = load_yaml_file("#{game_path}scoring.yaml")
 
-    # compute maximum score
-    scoring.each do |id, score|
-      @max_score = @max_score + score['points'].to_i
+    if @scoring
+
+      @score     = 0
+      @max_score = 0
+      @scored    = {}
+
+      # compute maximum score
+      @scoring.each do |id, score|
+        @max_score = @max_score + score['points'].to_i
+      end
     end
 
   end
