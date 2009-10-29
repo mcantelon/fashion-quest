@@ -20,6 +20,20 @@ class Game
 
   end
 
+  # helper function to interface game object creation
+  def create(object_class)
+
+    case object_class.name
+
+      when 'Prop'
+        Prop.new
+
+      when 'Location'
+        Location.new("#{@game.path}locations")
+
+    end
+  end
+
   def restart(require_confirmation = true, prompt = "Are you sure you want to restart your game?")
 
     # if confirmation is required, get user input a pop up dialogue
