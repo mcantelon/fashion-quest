@@ -30,7 +30,6 @@ startup_logic: |
   # Define game props
 
   prop = @game.create(Prop, 'cloak')
-  #prop.id = 'cloak'
   prop.name = 'velvet cloak'
   prop.aliases = ['handsome', 'dark', 'black', 'velvet', 'satin']
   prop.description = "A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room."
@@ -39,7 +38,6 @@ startup_logic: |
   @game.props['cloak'] = prop
 
   hook = @game.create(Prop, 'hook')
-  #hook.id = 'hook'
   hook.name = 'small brass hook'
   hook.aliases = ['small', 'brass', 'peg']
   hook.description = 'Da coate hook!'
@@ -53,7 +51,6 @@ startup_logic: |
   @game.props['hook'] = hook
 
   message = @game.create(Prop, 'message')
-  #message.id = 'message'
   message.location = 'bar'
   message.events = {
     'on_read' => "@game.set_score('message_read')\n\
@@ -69,20 +66,17 @@ startup_logic: |
   # Define game locations
 
   cloakroom = @game.create(Location, 'cloakroom')
-  #cloakroom.id = 'cloakroom'
   cloakroom.exits = {'east' => {'destination' => 'foyer'}}
   cloakroom.description = "The walls of this small room were clearly once lined with hooks, though now only one remains. The exit is a door to the east.\n"
   @game.locations['cloakroom'] = cloakroom
 
   bar = @game.create(Location, 'bar')
-  #bar.id = 'bar'
   bar.exits = {'north' => {'destination' => 'foyer'}}
   bar.description = "The bar, much rougher than you'd have guessed after the opulence of the foyer to the north, is completely empty. There seems to be some sort of message scrawled in the sawdust on the floor.\n"
   bar.dark = 'safe'
   @game.locations['bar'] = bar
 
   foyer = @game.create(Location, 'foyer')
-  #foyer.id = 'foyer'
   foyer.exits = {
     'north' => {'condition' =>
       "You've only just arrived, and besides, the weather outside seems to be getting worse.\n"
