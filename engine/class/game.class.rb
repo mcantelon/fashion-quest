@@ -1,6 +1,6 @@
 class Game
 
-  attr_accessor :state, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over
+  attr_accessor :state, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over, :transitions
 
   include Handles_YAML_Files
   include Handles_Scoring
@@ -21,7 +21,7 @@ class Game
   end
 
   # helper function to interface game object creation
-  def create(object_class)
+  def create(object_class, id = false)
 
     case object_class.name
 
@@ -36,10 +36,24 @@ class Game
         player
 
       when 'Prop'
-        Prop.new
+        prop = Prop.new
+        prop.id = id
+
+        prop
 
       when 'Location'
-        Location.new("#{@game.path}locations")
+
+        location_config_path = "#{@path}locations"
+
+        location = Location.new(location_config_path)
+
+        location.id = id
+
+        location.path = location_config_path
+
+        location.image_file  = "#{location_config_path}/images/#{id}.jpg"
+
+        location
 
     end
   end
@@ -196,16 +210,8 @@ class Game
       # create objects from hash of object hashes
       location_data.each do |id, location_definition|
 
-        location = Location.new(location_config_path)
-
+        location = create(Location, id)
         @locations[id] = map_hash_to_object_attributes(location, location_definition)
-
-        @locations[id].path = location_config_path
-
-        @locations[id].image_file  = "#{location_config_path}/images/#{id}.jpg"
-
-        # set object id, so it can be read
-        @locations[id].id = id
 
       end
     end
