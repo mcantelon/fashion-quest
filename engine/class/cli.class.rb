@@ -16,13 +16,21 @@ class Cli
     @prompt = '>'
     @cursor = '#'
 
-    @output_stack = params[:output_stack]
-    @image_stack  = params[:image_stack]
-    @game         = params[:game]
-    @output_text  = params[:initial_text]
+    @output_stack      = params[:output_stack]
+    @image_stack       = params[:image_stack]
+    @game              = params[:game]
+    @output_text       = params[:initial_text]
+
+    @standard_commands = params[:standard_commands]
 
     @message_text = ''
     @input_text   = ''
+
+    initialize_commands
+
+  end
+
+  def initialize_commands
 
     @command_history = []
     @command_index   = 0
@@ -30,8 +38,21 @@ class Cli
     @commands = []
     commands_loaded = 0
 
+    command_paths = []
+
+    standard_command_path = @game.app_base_path + '/standard_commands'
+
+    @standard_commands.each do |command|
+      command_paths << (standard_command_path + '/' + command + '.yaml')
+    end
+
     # load all commands, recursively, contained in command directory
     Find.find("#{@game.path}commands") do |command_path|
+      command_paths << command_path
+    end
+
+    # load all commands, recursively, contained in command directory
+    command_paths.each do |command_path|
 
       if !FileTest.directory?(command_path) and (command_path.index('.yaml') or command_path.index('.yml'))
 
@@ -41,7 +62,7 @@ class Cli
         # if no command data has loaded, try to load from standard commands directory
         if not command_data
           command_filename = Pathname.new(command_path).basename
-          command_data = load_yaml_file(@game.app_base_path + '/standard_commands/' + command_filename)
+          command_data = load_yaml_file(standard_command_path + '/' + command_filename)
         end
 
         if command_data

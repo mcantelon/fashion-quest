@@ -37,7 +37,8 @@ Shoes.app(
       @cli = Cli.new :output_stack => @output_stack,
         :image_stack => @image_stack,
         :game => @game,
-        :initial_text => config['startup_message']
+        :initial_text => config['startup_message'],
+        :standard_commands => config['standard_commands']
 
       if config['startup_logic']
         instance_eval(config['startup_logic'])
