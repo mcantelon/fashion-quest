@@ -5,6 +5,19 @@ height: 600
 image_height: 200
 resizable: true
 
+standard_commands:
+- drop
+- get
+- go
+- inventory
+- look
+- put
+- quit
+- read
+- remove
+- score
+- wear
+
 startup_message: "Hurrying through the rainswept November night, you're glad to see the bright lights of the Opera House. It's surprising that there aren't more people about but, hey, what do you expect in a cheap demo game...?\n
   \n
   Cloak of Darkness\n
@@ -14,9 +27,102 @@ startup_message: "Hurrying through the rainswept November night, you're glad to 
 
 startup_logic: |
 
+  # Define game props
+
+  prop = @game.create(Prop, 'cloak')
+  #prop.id = 'cloak'
+  prop.name = 'velvet cloak'
+  prop.aliases = ['handsome', 'dark', 'black', 'velvet', 'satin']
+  prop.description = "A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room."
+  prop.location = 'player'
+  prop.traits['wearable'] = true
+  @game.props['cloak'] = prop
+
+  hook = @game.create(Prop, 'hook')
+  #hook.id = 'hook'
+  hook.name = 'small brass hook'
+  hook.aliases = ['small', 'brass', 'peg']
+  hook.description = 'Da coate hook!'
+  hook.location = 'cloakroom'
+  hook.traits = {
+    'visible' => false,
+    'portable' => false,
+    'supports' => true,
+    'supports_only' => ['cloak']
+  }
+  @game.props['hook'] = hook
+
+  message = @game.create(Prop, 'message')
+  #message.id = 'message'
+  message.location = 'bar'
+  message.events = {
+    'on_read' => "@game.set_score('message_read')\n\
+      @game.over = true"
+  }
+  message.traits = {
+    'visible' => false,
+    'portable' => false,
+    'text' => 'props/text/message.txt'
+  }
+  @game.props['message'] = message
+
+  # Define game locations
+
+  cloakroom = @game.create(Location, 'cloakroom')
+  #cloakroom.id = 'cloakroom'
+  cloakroom.exits = {'east' => {'destination' => 'foyer'}}
+  cloakroom.description = "The walls of this small room were clearly once lined with hooks, though now only one remains. The exit is a door to the east.\n"
+  @game.locations['cloakroom'] = cloakroom
+
+  bar = @game.create(Location, 'bar')
+  #bar.id = 'bar'
+  bar.exits = {'north' => {'destination' => 'foyer'}}
+  bar.description = "The bar, much rougher than you'd have guessed after the opulence of the foyer to the north, is completely empty. There seems to be some sort of message scrawled in the sawdust on the floor.\n"
+  bar.dark = 'safe'
+  @game.locations['bar'] = bar
+
+  foyer = @game.create(Location, 'foyer')
+  #foyer.id = 'foyer'
+  foyer.exits = {
+    'north' => {'condition' =>
+      "You've only just arrived, and besides, the weather outside seems to be getting worse.\n"
+    },
+    'south' => {'destination' => 'bar'},
+    'west' => {'destination' => 'cloakroom'}
+  }
+  foyer.description = "You are standing in a spacious hall, splendidly decorated in red and gold, with glittering chandeliers overhead. The entrance from the street is to the north, and there are doorways south and west.\n"
+  @game.locations['foyer'] = foyer
+
+  # Define player
+
+  player = @game.create(Player)
+  player.location = 'foyer'
+  @game.player = player
+
+  # Define transitions
+
+  @game.transitions = {
+    "outcomes"=> {
+      "bar_dark"  => "@locations['bar'].dark = 'safe'\n\
+        ''\n",
+      "coat_hung" => "@game.set_score('cloak_on_hook')\n",
+      "bar_light" => "@locations['bar'].dark = false\n\
+        ''\n"
+    },
+    "conditions"=> {
+      ["@props['cloak'].location == 'player' || @props['cloak'].location == 'bar'"] \
+        => ["bar_dark"],
+      ["@props['cloak'].location != 'player' && @props['cloak'].location != 'bar'"] \
+        => ["bar_light"],
+      ["@props['hook'].traits['supporting'] && \
+        @props['hook'].traits['supporting'].index('cloak')"] \
+        => ["coat_hung"]
+    }
+  }
+
   # add helper function to game to check for darkness and
   # return warning if it's dark
-  def @game.command_check(command, prop, player, location, denial_message)
+  def @game.command_check(command, prop, player, locations, denial_message)
 
     message = false
     success = true
