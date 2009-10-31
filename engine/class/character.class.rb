@@ -88,11 +88,15 @@ class Character < GameComponent
       # pick one of the exits and make it the character's new location
       exit_choice = rand(possible_exits.length)
       chosen_direction = possible_exits.keys[exit_choice]
-      @location = possible_exits[chosen_direction]['destination']
 
-      # if character was originally in the same place as the player, report movement
-      if character_initial_location == @player.location
-        output << "#{noun_cap} goes #{chosen_direction}.\n"
+      if possible_exits[chosen_direction]['destination']
+
+        @location = possible_exits[chosen_direction]['destination']
+
+        # if character was originally in the same place as the player, report movement
+        if character_initial_location == @player.location
+          output << "#{noun_cap} goes #{chosen_direction}.\n"
+        end
       end
     end
 
@@ -144,8 +148,10 @@ class Character < GameComponent
     end
 
     # damage player accordingly and report
-    @player.hp = @player.hp - damage
-    output << "You now have #{@player.hp.to_s} HP.\n"
+    if @player.hp
+      @player.hp = @player.hp - damage
+      output << "You now have #{@player.hp.to_s} HP.\n"
+    end
 
     output
 
