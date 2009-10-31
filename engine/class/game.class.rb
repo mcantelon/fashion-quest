@@ -73,7 +73,8 @@ class Game
 
       @output_text = ''
 
-      initialize_scoring(path)
+      @scoring = @config['scoring']
+      initialize_scoring(@path)
 
       setup
 
@@ -85,12 +86,25 @@ class Game
 
   def setup
 
-    initialize_locations
-    @doors      = initialize_doors
-    @props      = initialize_props
+    @locations  = {}
+    @props      = {}
+    @doors      = {}
     @characters = {}
-    @player     = initialize_player
-    initialize_characters(@locations, @player, @props)
+
+    if @config['setup_logic']
+
+      instance_eval(@config['setup_logic'])
+
+    else
+
+      initialize_locations
+      @doors      = initialize_doors
+      @props      = initialize_props
+      @characters = {}
+      @player     = initialize_player
+      initialize_characters(@locations, @player, @props)
+
+    end
 
   end
 
@@ -245,8 +259,6 @@ class Game
   end
 
   def initialize_props
-
-    props = {}
 
     # prop data is stored in YAML as a hash
     prop_config_path = "#{path}props/props.yaml" 
