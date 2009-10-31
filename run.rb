@@ -38,7 +38,8 @@ Shoes.app(
         :image_stack => @image_stack,
         :game => @game,
         :initial_text => config['startup_message'],
-        :standard_commands => config['standard_commands']
+        :standard_commands => config['standard_commands'],
+        :command_abbreviations => config['command_abbreviations']
 
       if config['startup_logic']
         instance_eval(config['startup_logic'])

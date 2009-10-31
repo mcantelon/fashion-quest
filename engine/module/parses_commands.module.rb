@@ -2,12 +2,15 @@ module Parses_Commands
 
   include Handles_YAML_Files
 
-  def parse(input_text)
+  def parse(input_text, command_abbreviations)
 
     if not input_text.empty?
 
       # convert to lower case and allow for command abbreviations
-      input_text = expand_abbreviated_commands(input_text.downcase)
+      input_text = expand_abbreviated_commands(
+        input_text.downcase,
+        command_abbreviations
+      )
 
       # prepare lexemes for interpretation as command
       lexemes = parse_out_garbage_lexemes(
@@ -46,10 +49,7 @@ module Parses_Commands
     end
   end
 
-  def expand_abbreviated_commands(input_text)
-
-    abbreviations_file = "#{@game.path}parsing/command_abbreviations.yaml"
-    abbreviations = load_yaml_file(abbreviations_file)
+  def expand_abbreviated_commands(input_text, abbreviations)
 
     if abbreviations
 

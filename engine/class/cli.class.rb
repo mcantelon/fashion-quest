@@ -23,10 +23,23 @@ class Cli
 
     @standard_commands = params[:standard_commands]
 
+    @command_abbreviations = params[:command_abbreviations]
+
+    if !@command_abbreviations
+      load_abbreviations
+    end
+
     @message_text = ''
     @input_text   = ''
 
     initialize_commands
+
+  end
+
+  def load_abbreviations
+
+    abbreviations_file = "#{@game.path}parsing/command_abbreviations.yaml"
+    @command_abbreviations = load_yaml_file(abbreviations_file)
 
   end
 
@@ -209,7 +222,7 @@ class Cli
 
         output_add(@prompt + input_text) if show_input
 
-        result = parse(input_text)
+        result = parse(input_text, @command_abbreviations)
 
         # if the result of a command is prefixed with ">", redirect to another command
         if result[0] == ?>
