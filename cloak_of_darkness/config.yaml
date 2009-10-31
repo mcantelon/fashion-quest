@@ -34,6 +34,12 @@ startup_message: "Hurrying through the rainswept November night, you're glad to 
 
 setup_logic: |
 
+  # Define player
+
+  player = @game.create(Player)
+  player.location = 'foyer'
+  @game.player = player
+
   # Define game props
 
   prop = @game.create(Prop, 'cloak')
@@ -93,12 +99,6 @@ setup_logic: |
   }
   foyer.description = "You are standing in a spacious hall, splendidly decorated in red and gold, with glittering chandeliers overhead. The entrance from the street is to the north, and there are doorways south and west.\n"
   @game.locations['foyer'] = foyer
-
-  # Define player
-
-  player = @game.create(Player)
-  player.location = 'foyer'
-  @game.player = player
 
 startup_logic: |
 
