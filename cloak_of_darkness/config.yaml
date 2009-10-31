@@ -151,12 +151,14 @@ startup_logic: |
         ''\n",
       "bar_light" => "@locations['bar'].dark = false\n\
         ''\n",
-      "coat_hung" =>
-        "@props['hook'].description = \"It's just a small brass hook, with a cloak on it, screwed to the wall.\"\n
-         @game.set_score('cloak_on_hook')\n",
-      "coat_not_hung" => 
-        "@props['hook'].description = \"It's just a small brass hook, screwed to the wall.\"\n
-         ''"
+      "coat_hung" => %!
+        @props['hook'].description = "It's just a small brass hook, with a cloak on it, screwed to the wall."\n
+        @game.set_score('cloak_on_hook')\n
+      !,
+      "coat_not_hung" => %!
+        @props['hook'].description = "It's just a small brass hook, screwed to the wall."\n
+        ''
+      !
    }
   }
 
