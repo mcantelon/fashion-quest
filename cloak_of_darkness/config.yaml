@@ -18,6 +18,13 @@ standard_commands:
 - score
 - wear
 
+scoring:
+  cloak_on_hook:
+    points: 1
+
+  message_read:
+    points: 1
+
 startup_message: "Hurrying through the rainswept November night, you're glad to see the bright lights of the Opera House. It's surprising that there aren't more people about but, hey, what do you expect in a cheap demo game...?\n
   \n
   Cloak of Darkness\n
@@ -25,7 +32,10 @@ startup_message: "Hurrying through the rainswept November night, you're glad to 
   Written using Fashion Quest by Mike Cantelon (c) 2009\n
   \n"
 
-startup_logic: |
+setup_logic: |
+
+  @doors = initialize_doors
+  @characters = {}
 
   # Define game props
 
@@ -92,6 +102,8 @@ startup_logic: |
   player = @game.create(Player)
   player.location = 'foyer'
   @game.player = player
+
+startup_logic: |
 
   # Define transitions
 
