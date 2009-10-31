@@ -26,7 +26,11 @@ class Game
     case object_class.name
 
       when 'Player'
-        # add warnings if @props or @characters not defined
+
+        if !@props || !@locations
+          alert('Characters must be defined after player, props, and location.')
+        end
+
         player = Player.new \
           :props => @props,
           :characters => @characters
@@ -34,6 +38,27 @@ class Game
         player.dead = false
 
         player
+
+      when 'Door'
+        door = Door.new
+        door.id = id
+
+        door
+
+      when 'Character'
+
+        if !@locations || !@player || !@props
+          alert('Characters must be defined after player, props, and location.')
+        end
+
+        character = Character.new \
+          :locations => @locations, \
+          :player => @player, \
+          :props => @props
+
+        character.id = id
+
+        character
 
       when 'Prop'
         prop = Prop.new
