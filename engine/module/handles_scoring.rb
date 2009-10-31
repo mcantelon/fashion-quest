@@ -6,12 +6,10 @@ module Handles_Scoring
 
   def initialize_scoring(game_path)
 
-    #@score     = 0
-    #@max_score = 0
-    #@scored    = {}
-
-    # load scoring specification
-    @scoring = load_yaml_file("#{game_path}scoring.yaml")
+    if (!@scoring)
+      # load scoring specification
+      @scoring = load_yaml_file("#{game_path}scoring.yaml")
+    end
 
     if @scoring
 
