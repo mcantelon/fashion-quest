@@ -118,12 +118,12 @@ book:
     opened: false
     contains:
       - prop: flyer
-    text: props/text/book.txt
+    text: "The book is in bad condtion but I can make out the title: \"Treasure Island\". There's a word written in blood in the flyleaf: \"YOHO\" and a message: \"Long John Silver left 2 treasures on Treasure Island\".\n"
 
 flyer:
   description: It's a small advertising flyer.
   traits:
-    text: props/text/flyer.txt
+    text: "Ask for Adventure number 3: `MISSION IMPOSSIBLE` at your favorite computer dealer. If they DON'T carry `ADVENTURE` have them call: 1-305-862-6917  TODAY! `ADVENTURE` also supports lower case!\n"
 
 bag:
   description: It's a pirate's duffel bag.
@@ -214,7 +214,7 @@ map:
   traits:
     portable: false
     visible: false
-    text: props/text/map.txt
+    text: "It's a map to Treasure Island. At the bottom it says: `30 paces then dig!`\n"
 
 keel and mast:
   description: The keel and mast look like they belonged to a small ship.

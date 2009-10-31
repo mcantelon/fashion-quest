@@ -7,7 +7,7 @@ leaflet:
   description: The leaflet is faded yellow and seems to warn against something.
   location: ""
   traits:
-    text: props/text/leaflet.txt
+    text: "The leafet is about men's rights. It thinks the child support is wrong.\n"
 shiv: 
   attack strength: 7
   description: The shiv looks sharp... useful.
@@ -41,5 +41,5 @@ book:
     opened: false
     contains:
       - prop: leaflet
-    text: props/text/book.txt
+    text: "The book is about the history of trainspotting.\n"
 

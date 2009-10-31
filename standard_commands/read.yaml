@@ -6,9 +6,11 @@ logic: |
   output = ''
 
   if prop.traits['text']
-    File.open("#{@game.path}#{prop.traits['text']}", 'r') { |f|
-      output << f.read
-    }
+
+    output << prop.traits['text']
+    #File.open("#{@game.path}#{prop.traits['text']}", 'r') { |f|
+    #  output << f.read
+    #}
 
     on_read_output = @game.event(prop, 'on_read')
 
