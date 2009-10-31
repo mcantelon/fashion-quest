@@ -134,13 +134,6 @@ startup_logic: |
   # Define transitions
 
   @game.transitions = {
-    "outcomes"=> {
-      "bar_dark"  => "@locations['bar'].dark = 'safe'\n\
-        ''\n",
-      "coat_hung" => "@game.set_score('cloak_on_hook')\n",
-      "bar_light" => "@locations['bar'].dark = false\n\
-        ''\n"
-    },
     "conditions"=> {
       ["@props['cloak'].location == 'player' || @props['cloak'].location == 'bar'"] \
         => ["bar_dark"],
@@ -148,8 +141,23 @@ startup_logic: |
         => ["bar_light"],
       ["@props['hook'].traits['supporting'] && \
         @props['hook'].traits['supporting'].index('cloak')"] \
-        => ["coat_hung"]
-    }
+        => ["coat_hung"],
+      ["!@props['hook'].traits['supporting'] || \
+        !@props['hook'].traits['supporting'].index('cloak')"] \
+        => ["coat_not_hung"]
+    },
+    "outcomes"=> {
+      "bar_dark"  => "@locations['bar'].dark = 'safe'\n\
+        ''\n",
+      "bar_light" => "@locations['bar'].dark = false\n\
+        ''\n",
+      "coat_hung" =>
+        "@props['hook'].description = \"It's just a small brass hook, with a cloak on it, screwed to the wall.\"\n
+         @game.set_score('cloak_on_hook')\n",
+      "coat_not_hung" => 
+        "@props['hook'].description = \"It's just a small brass hook, screwed to the wall.\"\n
+         ''"
+   }
   }
 
   # Add helper function to game to check for command validity in
