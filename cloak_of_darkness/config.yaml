@@ -18,6 +18,14 @@ standard_commands:
 - score
 - wear
 
+command_abbreviations:
+  n: "go north"
+  s: "go south"
+  e: "go east"
+  w: "go west"
+  u: "go up"
+  d: "go down"
+
 scoring:
   cloak_on_hook:
     points: 1
@@ -72,7 +80,7 @@ setup_logic: |
   message.traits = {
     'visible' => false,
     'portable' => false,
-    'text' => 'props/text/message.txt'
+    'text' => 'message.txt'
   }
   @game.props['message'] = message
 
