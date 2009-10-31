@@ -42,16 +42,20 @@ class Cli
 
     standard_command_path = @game.app_base_path + '/standard_commands'
 
-    @standard_commands.each do |command|
-      command_paths << (standard_command_path + '/' + command + '.yaml')
+    # any standard commands listed in a game's config.yaml should be loaded
+    if @standard_commands
+      @standard_commands.each do |command|
+        command_paths << (standard_command_path + '/' + command + '.yaml')
+      end
     end
 
-    # load all commands, recursively, contained in command directory
+    # any commands contained in command directory (including subdirectories)
+    # should be loaded
     Find.find("#{@game.path}commands") do |command_path|
       command_paths << command_path
     end
 
-    # load all commands, recursively, contained in command directory
+    # load commands
     command_paths.each do |command_path|
 
       if !FileTest.directory?(command_path) and (command_path.index('.yaml') or command_path.index('.yml'))
