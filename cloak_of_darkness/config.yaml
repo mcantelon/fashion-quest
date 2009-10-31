@@ -34,9 +34,6 @@ startup_message: "Hurrying through the rainswept November night, you're glad to 
 
 setup_logic: |
 
-  @doors = initialize_doors
-  @characters = {}
-
   # Define game props
 
   prop = @game.create(Prop, 'cloak')
