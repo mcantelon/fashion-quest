@@ -37,6 +37,23 @@ command_abbreviations:
   u: "go up"
   d: "go down"
 
+# Words that should be ignored during parsing
+#
+
+garbage_words:
+- "the"
+- "that"
+- "this"
+- "at"
+- "to"
+
+# Global synonyms
+#
+
+global_synonyms:
+  using: "with"
+  examine: "look"
+
 # Scoring components
 #
 
@@ -61,6 +78,8 @@ startup_message: "Hurrying through the rainswept November night, you're glad to 
 #
 
 setup_logic: |
+
+  @game.state['trampling'] = 0
 
   # Define player
 
@@ -165,19 +184,27 @@ startup_logic: |
   # Add helper function to game to check for command validity in
   # special conditions
 
-  def @game.command_check(command, prop, player, locations, denial_message)
+  def @game.command_check(command, arg, prop, game, denial_message)
 
     message = false
     success = true
 
-    if command == 'drop' && prop.id == 'cloak' && player.location != 'cloakroom'
+    if command == 'drop' && prop.id == 'cloak' && game.player.location != 'cloakroom'
 
       message = "This isn't the best place to leave a smart cloak lying around.\n"
       success = false
 
+    elsif command == 'go'
+
+      if game.locations[game.player.location].dark and arg['direction'] != 'north'
+        game.state['trampling'] = game.state['trampling'] + 2
+        message = "Moof!"
+        success = false
+      end
+
     else
 
-      if (locations[player.location].dark)
+      if game.locations[game.player.location].dark
         message = denial_message + "\n"
         success = false
       end
@@ -188,13 +215,13 @@ startup_logic: |
   end
 
   # We'll allow some commands to function without the validity check
-  unchecked_commands = ['go', 'look', 'quit']
+  unchecked_commands = ['look', 'quit']
 
   # Set validity for remaining commands
   @cli.commands.each do |command|
     if !unchecked_commands.index(command.id)
       denial_message = "In the dark? You could easily disturb something!"
-      command.condition = "@game.command_check('" + command.id + "', prop, @player, @locations, \"" + denial_message + "\")"
+      command.condition = "@game.command_check('" + command.id + "', arg, prop, @game, \"" + denial_message + "\")"
    end
   end
 
