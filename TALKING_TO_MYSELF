@@ -1,18 +1,26 @@
+-add support for message trampling (use transition and game state var)
+
+-redo prop events
+  -on_ = after_
+
+-revise pirate adventure to use new scoring? then need to add condition based scoring and have score total be dynamically calculated
+
 Needed for next release:
+-mention "error" function in docs
 -document naming
 -document aliases
 -document new_game template
 -document command conditions
 -document exit conditions
 -need a definitive term for non-location game elements (game component)
+-implement before and after command hash for props (i.e. before['get'] = 'some logic')
+  -before evaluating, trigger prop before logic check for denial
+    events before..
+  -after evaluation, trigger prop after logic check for denial
+-denial is a shitty paradigm... should just return success and output as hash
 
 Needed for Cloak port:
--put/hang (for putting cloak on hook)
--need to set supported_by on prop so when we get it we can removed it from the supports entry of the prop supporting it when it is taken
--might be way to put cloak-specific command condition logic into function in startup logic
-  -implement command_conditions.yaml as some point
-  -global command condition? ... denial_logic
--maybe add formal scoring support
+-maybe conditon should be fail_condition
 
 Characters, props, and doors are, within the context of English grammar, nouns that can be referred to in the output of commands, events, transitions, and framework engine logic. Fashion Quest includes functions that can be used to refer to nouns in different types of English language use.
 
