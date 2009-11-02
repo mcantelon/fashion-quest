@@ -40,7 +40,8 @@ Shoes.app(
         :initial_text => config['startup_message'],
         :standard_commands => config['standard_commands'],
         :command_abbreviations => config['command_abbreviations'],
-        :garbage_words => config['garbage_words']
+        :garbage_words => config['garbage_words'],
+        :global_synonyms => config['global_synonyms']
 
       if config['startup_logic']
         instance_eval(config['startup_logic'])

@@ -2,7 +2,7 @@ module Parses_Commands
 
   include Handles_YAML_Files
 
-  def parse(input_text, command_abbreviations, garbage_words)
+  def parse(input_text, command_abbreviations, garbage_words, global_synonyms)
 
     if not input_text.empty?
 
@@ -15,7 +15,8 @@ module Parses_Commands
       # prepare lexemes for interpretation as command
       lexemes = parse_out_garbage_lexemes(
         parse_normalize_global_synonyms(
-          parse_reference_words(input_text.split(' '))
+          parse_reference_words(input_text.split(' ')),
+          global_synonyms
         ),
         garbage_words
       )
@@ -146,10 +147,7 @@ module Parses_Commands
     words
   end
  
-  def parse_normalize_global_synonyms(lexemes)
-
-    synonyms_file = "#{@game.path}parsing/global_synonyms.yaml"
-    synonyms = load_yaml_file(synonyms_file)
+  def parse_normalize_global_synonyms(lexemes, synonyms)
 
     if synonyms
 
@@ -164,7 +162,7 @@ module Parses_Commands
       end
     else
 
-      error('Synonyms not found at ' + synonyms_file)
+      error('Synonyms not defined.')
     end
 
     lexemes

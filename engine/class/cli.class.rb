@@ -25,6 +25,7 @@ class Cli
 
     @command_abbreviations = params[:command_abbreviations]
     @garbage_words         = params[:garbage_words]
+    @global_synonyms       = params[:global_synonyms]
 
     if !@command_abbreviations
       load_abbreviations
@@ -33,6 +34,13 @@ class Cli
     if !@garbage_words
       load_garbage_words
     end
+
+    if !@global_synonyms
+      synonyms_file = "#{@game.path}parsing/global_synonyms.yaml"
+      @global_synonyms = load_yaml_file(synonyms_file)
+    end
+
+    # add loading
 
     @message_text = ''
     @input_text   = ''
@@ -233,7 +241,7 @@ class Cli
 
         output_add(@prompt + input_text) if show_input
 
-        result = parse(input_text, @command_abbreviations, @garbage_words)
+        result = parse(input_text, @command_abbreviations, @garbage_words, @global_synonyms)
 
         # if the result of a command is prefixed with ">", redirect to another command
         if result[0] == ?>
