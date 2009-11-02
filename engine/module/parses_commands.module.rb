@@ -2,7 +2,7 @@ module Parses_Commands
 
   include Handles_YAML_Files
 
-  def parse(input_text, command_abbreviations)
+  def parse(input_text, command_abbreviations, garbage_words)
 
     if not input_text.empty?
 
@@ -16,7 +16,8 @@ module Parses_Commands
       lexemes = parse_out_garbage_lexemes(
         parse_normalize_global_synonyms(
           parse_reference_words(input_text.split(' '))
-        )
+        ),
+        garbage_words
       )
 
       # replace aliases with IDs
@@ -62,17 +63,14 @@ module Parses_Commands
       end
 
     else
-      error('No abbreviations found at ' + abbreviations_file)
+      error('No abbreviations defined.')
     end
 
     input_text
 
   end
 
-  def parse_out_garbage_lexemes(lexemes)
-
-    garbage_words_file = "#{@game.path}parsing/garbage_words.yaml"
-    garbage_words = load_yaml_file(garbage_words_file)
+  def parse_out_garbage_lexemes(lexemes, garbage_words)
 
     if garbage_words
 
@@ -82,7 +80,7 @@ module Parses_Commands
 
     else
 
-      error('Garbage words not found at ' + garbage_words_file)
+      error('No garbage words defined.')
     end
 
     lexemes

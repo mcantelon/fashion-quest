@@ -24,9 +24,14 @@ class Cli
     @standard_commands = params[:standard_commands]
 
     @command_abbreviations = params[:command_abbreviations]
+    @garbage_words         = params[:garbage_words]
 
     if !@command_abbreviations
       load_abbreviations
+    end
+
+    if !@garbage_words
+      load_garbage_words
     end
 
     @message_text = ''
@@ -40,6 +45,12 @@ class Cli
 
     abbreviations_file = "#{@game.path}parsing/command_abbreviations.yaml"
     @command_abbreviations = load_yaml_file(abbreviations_file)
+
+  end
+
+  def load_garbage_words
+
+    @garbage_words = load_yaml_file("#{@game.path}parsing/garbage_words.yaml")
 
   end
 
@@ -222,7 +233,7 @@ class Cli
 
         output_add(@prompt + input_text) if show_input
 
-        result = parse(input_text, @command_abbreviations)
+        result = parse(input_text, @command_abbreviations, @garbage_words)
 
         # if the result of a command is prefixed with ">", redirect to another command
         if result[0] == ?>
