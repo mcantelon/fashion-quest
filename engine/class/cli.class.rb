@@ -67,7 +67,7 @@ class Cli
     @command_history = []
     @command_index   = 0
 
-    @commands = []
+    @commands = {}
     commands_loaded = 0
 
     command_paths = []
@@ -114,7 +114,7 @@ class Cli
           command.syntax    = command_data['syntax']
           command.logic     = command_data['logic']
 
-          @commands << command
+          @commands[command.id] = command
 
           commands_loaded += 1
         else

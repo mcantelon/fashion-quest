@@ -37,7 +37,7 @@ module Parses_Commands
 
       # return result of first valid command
       if @commands
-        @commands.each do |command|
+        @commands.each do |id, command|
           result = command.try(lexemes)
           if result
             return result
