@@ -15,7 +15,7 @@ class Command
 
   end
 
-  def try(lexemes)
+  def try(lexemes, test_mode = false)
 
     error = ''
 
@@ -79,6 +79,11 @@ class Command
                 command_result << result['message']
               end
 
+            end
+
+            # If in test mode, we don't want to actually change game state
+            if test_mode
+              return true
             end
 
             command_result << instance_eval(@logic)

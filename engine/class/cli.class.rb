@@ -7,7 +7,7 @@ class Cli
   include Parses_Commands
   include Handles_YAML_Files
 
-  attr_accessor :prompt, :cursor, :commands
+  attr_accessor :prompt, :cursor, :command_condition, :commands
 
   def initialize(params)
 
@@ -20,6 +20,8 @@ class Cli
     @image_stack       = params[:image_stack]
     @game              = params[:game]
     @output_text       = params[:initial_text]
+
+    @command_condition = params[:command_condition]
 
     @standard_commands = params[:standard_commands]
 

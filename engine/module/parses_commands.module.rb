@@ -38,9 +38,31 @@ module Parses_Commands
       # return result of first valid command
       if @commands
         @commands.each do |id, command|
-          result = command.try(lexemes)
-          if result
-            return result
+
+          # we need logic to test for a valid commands first
+          # because we want to, before executing command logic,
+          # check the global command condition
+          if (command.try(lexemes, true))
+
+            output = ''
+
+            # put global command condition check here
+            if @command_condition
+              command_condition_result = instance_eval(@command_condition)
+              if command_condition_result['message']
+                output += command_condition_result['message']
+              end
+            end
+
+            if !@command_condition || command_condition_result['success'] != false
+              result = command.try(lexemes)
+              if result
+                return output + result
+              end
+            elsif output != ''
+              return output
+            end
+
           end
         end
       end
