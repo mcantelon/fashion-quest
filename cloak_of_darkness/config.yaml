@@ -94,7 +94,10 @@ setup_logic: |
   prop.aliases = ['handsome', 'dark', 'black', 'velvet', 'satin']
   prop.description = "A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room."
   prop.location = 'player'
-  prop.traits['wearable'] = true
+  prop.traits = {
+    'wearable' => true,
+    'portable' => true
+  }
   @game.props['cloak'] = prop
 
   hook = @game.create(Prop, 'hook')
@@ -181,49 +184,52 @@ startup_logic: |
    }
   }
 
-  # Add helper function to game to check for command validity in
-  # special conditions
+  # Command conditions
 
-  def @game.command_check(command, arg, prop, game, denial_message)
+  def @game.drop_condition(game, prop)
 
-    message = false
-    success = true
-
-    if command == 'drop' && prop.id == 'cloak' && game.player.location != 'cloakroom'
-
-      message = "This isn't the best place to leave a smart cloak lying around.\n"
-      success = false
-
-    elsif command == 'go'
-
-      if game.locations[game.player.location].dark and arg['direction'] != 'north'
-        game.state['trampling'] = game.state['trampling'] + 2
-        message = "Moof!"
-        success = false
-      end
-
+    if prop.id == 'cloak' && game.player.location != 'cloakroom'
+      {
+        'message' => "This isn't the best place to leave a smart cloak lying around.\n",
+        'success' => false
+      }
     else
-
-      if game.locations[game.player.location].dark
-        message = denial_message + "\n"
-        success = false
-      end
+      {'success' => true}
     end
-
-    {'message' => message, 'success' => success}
-
   end
 
-  # We'll allow some commands to function without the validity check
-  unchecked_commands = ['look', 'quit']
+  @cli.commands['drop'].condition = "@game.drop_condition(@game, prop)"
 
-  # Set validity for remaining commands
-  @cli.commands.each do |command|
-    if !unchecked_commands.index(command.id)
-      denial_message = "In the dark? You could easily disturb something!"
-      command.condition = "@game.command_check('" + command.id + "', arg, prop, @game, \"" + denial_message + "\")"
-   end
+  def @game.go_condition(game, arg)
+
+    if game.locations[game.player.location].dark and arg['direction'] != 'north'
+      game.state['trampling'] = game.state['trampling'] + 2
+      {
+        'message' => "In the dark? You could easily disturb something!\n",
+        'success' => false
+      }
+    else
+      {'success' => true}
+    end
   end
+
+  @cli.commands['go'].condition = "@game.go_condition(@game, arg)"
+
+  def @game.command_condition(game, command)
+
+    allowed_commands = ['look', 'quit', 'go']
+
+    if !allowed_commands.index(command.id) && game.locations[game.player.location].dark
+      {
+        'message' => "In the dark? You could easily disturb something!\n",
+        'success' => false
+      }
+    else
+      {'success' => true}
+    end
+  end
+
+  @cli.command_condition = "@game.command_condition(@game, command)"
 
   # Start game by issueing "look" command
   @cli.issue_command('look', false)
