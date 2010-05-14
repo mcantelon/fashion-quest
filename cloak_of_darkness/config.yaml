@@ -114,6 +114,7 @@ setup_logic: |
   @game.props['hook'] = hook
 
   message = @game.create(Prop, 'message')
+  message.aliases = ['sawdust']
   message.location = 'bar'
   message.events = {
     'on_read' => "@game.set_score('message_read')\n\
