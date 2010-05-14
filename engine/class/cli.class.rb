@@ -355,7 +355,11 @@ class Cli
       @output_stack.para \
         output_text,
         @output_stack.em(@message_text),
-        input_text
+        input_text,
+        :font => 'Verdana 11px',
+        :stroke => '#120E03',
+        :margin_left => 10,
+        :margin_right => 10
     }
     @output_stack.scroll_top = @output_stack.scroll_max
 
