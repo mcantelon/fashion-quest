@@ -206,7 +206,7 @@ startup_logic: |
     if game.locations[game.player.location].dark and arg['direction'] != 'north'
       game.state['trampling'] = game.state['trampling'] + 2
       {
-        'message' => "In the dark? You could easily disturb something!\n",
+        'message' => "Blundering around in the dark isn't a good idea!\n",
         'success' => false
       }
     else
@@ -221,6 +221,7 @@ startup_logic: |
     allowed_commands = ['look', 'quit', 'go']
 
     if !allowed_commands.index(command.id) && game.locations[game.player.location].dark
+      game.state['trampling'] = game.state['trampling'] + 1
       {
         'message' => "In the dark? You could easily disturb something!\n",
         'success' => false
@@ -231,6 +232,21 @@ startup_logic: |
   end
 
   @cli.command_condition = "@game.command_condition(@game, command)"
+
+  def @game.read_condition(game, prop)
+
+    if prop.id == 'message' && game.player.location == 'bar' && game.state['trampling'] > 2
+      @game.over = true
+      {
+        'message' => "The message has been carelessly trampled, making it difficult to read. You can just distinguish the words...\n\nYou have lost.\n\n",
+        'success' => false
+      }
+    else
+      {'success' => true}
+    end
+  end
+
+  @cli.commands['read'].condition = "@game.read_condition(@game, prop)"
 
   # Start game by issueing "look" command
   @cli.issue_command('look', false)
