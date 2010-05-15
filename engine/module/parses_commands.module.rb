@@ -54,7 +54,10 @@ module Parses_Commands
               end
             end
 
-            if !@command_condition || command_condition_result['success'] != false
+            if !@command_condition ||
+              command_condition_result.class != Hash ||
+              command_condition_result['success'] != false
+
               result = command.try(lexemes)
               if result
                 return output + result
