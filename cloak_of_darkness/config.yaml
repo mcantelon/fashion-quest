@@ -10,22 +10,6 @@ height: 600
 image_height: 200
 resizable: true
 
-# Standard commands that should be included in the game
-#
-
-standard_commands:
-- drop
-- get
-- go
-- inventory
-- look
-- put
-- quit
-- read
-- remove
-- score
-- wear
-
 # Command abbreviations
 #
 
@@ -81,24 +65,22 @@ setup_logic: |
 
   @game.state['trampling'] = 0
 
-  # Define player
-
   player = @game.create(Player)
   player.location = 'foyer'
   @game.player = player
 
-  # Define game props
+  # Define props
 
-  prop = @game.create(Prop, 'cloak')
-  prop.name = 'velvet cloak'
-  prop.aliases = ['handsome', 'dark', 'black', 'velvet', 'satin']
-  prop.description = "A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room."
-  prop.location = 'player'
-  prop.traits = {
+  cloak = @game.create(Prop, 'cloak')
+  cloak.name = 'velvet cloak'
+  cloak.aliases = ['handsome', 'dark', 'black', 'velvet', 'satin']
+  cloak.description = "A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room."
+  cloak.location = 'player'
+  cloak.traits = {
     'wearable' => true,
     'portable' => true
   }
-  @game.props['cloak'] = prop
+  @game.props['cloak'] = cloak
 
   hook = @game.create(Prop, 'hook')
   hook.name = 'small brass hook'
@@ -128,7 +110,7 @@ setup_logic: |
   }
   @game.props['message'] = message
 
-  # Define game locations
+  # Define locations
 
   cloakroom = @game.create(Location, 'cloakroom')
   cloakroom.exits = {'east' => {'destination' => 'foyer'}}
@@ -153,6 +135,11 @@ setup_logic: |
   @game.locations['foyer'] = foyer
 
 startup_logic: |
+
+  # Load standard commands that should be allowed in the game
+
+  @cli.standard_commands = ['drop', 'get', 'go', 'inventory', 'look', 'put', 'quit', 'read', 'remove', 'score', 'wear']
+  @cli.initialize_commands()
 
   # Define transitions
 

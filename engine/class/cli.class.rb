@@ -7,7 +7,7 @@ class Cli
   include Parses_Commands
   include Handles_YAML_Files
 
-  attr_accessor :prompt, :cursor, :command_condition, :commands
+  attr_accessor :prompt, :cursor, :standard_commands, :command_condition, :commands
 
   def initialize(params)
 
