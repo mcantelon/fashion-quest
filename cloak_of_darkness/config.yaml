@@ -174,7 +174,7 @@ startup_logic: |
 
   # Command conditions
 
-  def @game.drop_condition(game, prop)
+  def (@game.helpers).drop_condition(game, prop)
 
     if prop.id == 'cloak' && game.player.location != 'cloakroom'
       {
@@ -184,9 +184,9 @@ startup_logic: |
     end
   end
 
-  @cli.commands['drop'].condition = "@game.drop_condition(@game, prop)"
+  @cli.commands['drop'].condition = "@game.helpers.drop_condition(@game, prop)"
 
-  def @game.go_condition(game, arg)
+  def (@game.helpers).go_condition(game, arg)
 
     if game.locations[game.player.location].dark and arg['direction'] != 'north'
       game.state['trampling'] = game.state['trampling'] + 2
@@ -197,9 +197,9 @@ startup_logic: |
     end
   end
 
-  @cli.commands['go'].condition = "@game.go_condition(@game, arg)"
+  @cli.commands['go'].condition = "@game.helpers.go_condition(@game, arg)"
 
-  def @game.read_condition(game, prop)
+  def (@game.helpers).read_condition(game, prop)
 
     if prop.id == 'message' && game.player.location == 'bar' && game.state['trampling'] > 2
       @game.over = true
@@ -210,9 +210,9 @@ startup_logic: |
     end
   end
 
-  @cli.commands['read'].condition = "@game.read_condition(@game, prop)"
+  @cli.commands['read'].condition = "@game.helpers.read_condition(@game, prop)"
 
-  def @game.command_condition(game, command)
+  def (@game.helpers).command_condition(game, command)
 
     allowed_commands = ['look', 'quit', 'go']
 
@@ -227,7 +227,7 @@ startup_logic: |
     end
   end
 
-  @cli.command_condition = "@game.command_condition(@game, command)"
+  @cli.command_condition = "@game.helpers.command_condition(@game, command)"
 
   # Start game by issueing "look" command
   @cli.issue_command('look', false)
