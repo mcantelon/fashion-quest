@@ -1,6 +1,6 @@
 class Game
 
-  attr_accessor :state, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over, :transitions
+  attr_accessor :state, :helpers, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over, :transitions
 
   include Handles_YAML_Files
   include Handles_Scoring
@@ -10,6 +10,9 @@ class Game
     @config        = config
     @app_base_path = app_base_path
     @path          = path
+
+    # helpers is just a generic object which we can extend to add helper functions
+    @helpers       = Object.new
 
     @game = self
 
