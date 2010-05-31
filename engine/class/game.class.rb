@@ -545,4 +545,12 @@ class Game
 
   end
 
+  def prop_located_near_player(prop)
+
+    in_same_room = @props[prop].location == @locations[@player.location].id
+    in_inventory = @props[prop].location == 'player'
+    return in_same_room || in_inventory
+
+  end
+
 end

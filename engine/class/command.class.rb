@@ -179,8 +179,7 @@ class Command
             # need to test that prop exists and near player
             if not @game.props[potential_prop]
               error = @game.prop_404(potential_prop)
-            elsif @game.props[potential_prop].location != @game.locations[@game.player.location].id and
-              @game.props[potential_prop].location != 'player'
+            elsif !@game.prop_located_near_player(potential_prop)
 
               error = @game.prop_404(potential_prop)
             end
