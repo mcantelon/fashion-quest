@@ -16,6 +16,14 @@ walking stick:
   attack strength: 5
   description: The walking stick is gnarled, but sturdy.
   location: player
+shirt:
+  aliases:
+    - "t-shirt"
+    - "tshirt"
+  description: "The t-shirt evokes the desire to party."
+  location: rick
+  traits:
+    wearable: true
 smokes: 
   plural: true
   description: The smokes look tempting.
