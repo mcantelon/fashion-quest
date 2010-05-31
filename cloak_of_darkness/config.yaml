@@ -125,9 +125,6 @@ setup_logic: |
 
   foyer = @game.create(Location, 'foyer')
   foyer.exits = {
-    'north' => {'condition' =>
-      "You've only just arrived, and besides, the weather outside seems to be getting worse.\n"
-    },
     'south' => {'destination' => 'bar'},
     'west' => {'destination' => 'cloakroom'}
   }
@@ -190,8 +187,15 @@ startup_logic: |
 
     if game.locations[game.player.location].dark and arg['direction'] != 'north'
       game.state['trampling'] = game.state['trampling'] + 2
-      {
+      return {
         'message' => "Blundering around in the dark isn't a good idea!\n",
+        'success' => false
+      }
+    end
+
+    if game.locations[game.player.location].id == 'foyer' and arg['direction'] == 'north'
+      return {
+        'message' => "You've only just arrived, and besides, the weather outside seems to be getting worse.\n",
         'success' => false
       }
     end
