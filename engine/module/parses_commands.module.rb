@@ -46,7 +46,7 @@ module Parses_Commands
 
             output = ''
 
-            # put global command condition check here
+            # global command condition check
             if @command_condition
               command_condition_result = instance_eval(@command_condition)
               if command_condition_result['message']
