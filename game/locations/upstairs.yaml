@@ -1,0 +1,8 @@
+upstairs:
+  name: upstairs
+  exits: 
+    down:
+      destination: entrance
+
+  description: |
+    You are in a small, cluttered room with a desk and chair.
