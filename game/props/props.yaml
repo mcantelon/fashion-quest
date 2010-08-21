@@ -39,11 +39,13 @@ dresser:
 brass key: 
   description: The key is small and made of brass.
   location: yard
+  aliases:
+    - key
   traits:
     size: 1
 book: 
   description: The book is light green and seems to be about the maths.
-  location: alcove
+  location: upstairs
   traits:
     size: 5
     opened: false
