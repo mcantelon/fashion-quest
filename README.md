@@ -35,6 +35,10 @@ Documentation is slowly evolving and can be found in:
 
   docs/build/html/index.html
 
+The background photo a game/background.jpg is by Kalimera, (c) Creative
+Commons Attribution-NonCommercial-ShareAlike 2.0 Generic. It was cropped.
+His other photos and be seen at http://www.flickr.com/photos/kalimera.
+
 The yard photo at game/locations/images/yard.jpg is by Patrick Q, (c)
 Creative Commons Attribution-Noncommercial 2.0 Generic. It was cropped.
 His other photos can be seen at http://www.flickr.com/photos/patrick_q.
