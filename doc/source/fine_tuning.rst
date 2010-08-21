@@ -20,6 +20,8 @@ Each game's `config.yaml` file allows fine-tuning of a number of elements.
      - text to display to the player upon startup
    * - setup_logic
      - Ruby code to set up game (see demo games for examples)
+   * - background
+     - Background image for game
 
 Other elements that can be set in `config.yaml` are explained later in this section.
 

@@ -51,7 +51,7 @@ Each character is defined in its own YAML file within the 'characters' subdirect
 
 The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a character located in a location with the unique identifier `shack`. The pirate will accept the `rum` prop if the player gives it to him.
 
-.. literalinclude:: ../../pirate_adventure/characters/pirate.yaml
+.. literalinclude:: examples/character.yaml
 
 Mobility
 ~~~~~~~~
@@ -77,6 +77,33 @@ Communication
 Characters can be asked questions about topics. Topics and responses are put into the `discusses` setting. The example below shows a character that, when asked about a "party", "parties", or "partying", responds with one of two opinions about the topic.
 
 .. literalinclude:: examples/character_communication.yaml
+
+Trade
+~~~~~
+
+Characters may be willing to accept props as gifts or for trade.
+
+In the example below the character will accept the gift of rum.
+
+.. literalinclude:: examples/character_gift.yaml
+
+In the example below the character will give a pair of shoes and a shiv in exchange for smokes.
+
+.. literalinclude:: examples/character_exchange.yaml
+
+Portability
+~~~~~~~~~~~
+
+Characters can be set to allow the player to carry them, as with the example below.
+
+.. literalinclude:: examples/character_portability.yaml
+
+Logic
+~~~~~
+
+Characters can execute custom Ruby logic each turn. In the example below the parrot character will, if in the same location as the player, occassionally eat a cracker if the player possesses crackers.
+
+.. literalinclude:: examples/character_logic.yaml
 
 State
 -----
