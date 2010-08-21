@@ -6,6 +6,8 @@ syntax:
 - "kill <character> with <prop>"
 - "stab <character>"
 - "stab <character> with <prop>"
+- "kick <character>"
+- "punch <character>"
 
 logic: |
 
