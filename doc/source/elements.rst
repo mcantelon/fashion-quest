@@ -38,6 +38,10 @@ The example below, from the "Fashion Quest: Daydream" demonstration game, define
 
 .. literalinclude:: examples/dresser.yaml
 
+Props, such as the example below from the "Pirate Adventure" demonstration game, can have one or more aliases. The aliases can be used by players to refer to the prop.
+
+.. literalinclude:: examples/alias.yaml
+
 Characters
 ----------
 
