@@ -47,5 +47,13 @@ The upstairs photo at game/locations/images/upstairs.jpg is by Apuch, (c)
 Creative Commons Attribution-ShareAlike 2.0 Generic. It was cropped.
 His other photos can be seen at http://www.flickr.com/photos/apuch.
 
+The door photo at game/locations/images/hallway.jpg is by vp_foz, (c)
+Creative Commons Attribution-NonCommercial-ShareAlike 2.0 Generic. It was
+cropped. His other photos can be seen at http://www.flickr.com/photos/vp_foz.
+
+The bedroom photo at game/locations/images/bedroom.jpg is by Stacy Michelle,
+(c) Creative Commons Attribution 2.0 Generic. It was cropped. Her other
+photos can be seen at http://www.flickr.com/photos/stacymbass.
+
 Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative
 use of computers! We miss you!
