@@ -3,6 +3,8 @@ shoes:
   plural: true 
   description: The shoes are small and pretty.
   location: deadbeat
+  traits:
+    wearable: true
 leaflet: 
   description: The leaflet is faded yellow and seems to warn against something.
   location: ""
