@@ -1,0 +1,8 @@
+--
+cat:
+  location: bedroom
+  mobility: 100
+  description: The cat is small and agile.
+  hp: 2
+  strength: 1
+  aggression: 5

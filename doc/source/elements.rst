@@ -53,6 +53,31 @@ The example below, from the "Pirate Adventure Knockoff" demonstration game, defi
 
 .. literalinclude:: ../../pirate_adventure/characters/pirate.yaml
 
+Mobility
+~~~~~~~~
+
+Characters will wander from location to location if their `mobility` is set. Mobility is the probability (in percentage) that the character will move each turn. The character example below will go to a new location each turn.
+
+.. literalinclude:: examples/character_mobility.yaml
+
+Aggression
+~~~~~~~~~~
+
+Characters will be prone to attack the player if their `aggression` is set. Aggression is the probability (in percentage) that the character will start to attack each turn. A character's `strength` determines how much damage it can do each attack. The character example below has a 5% chance of turning hostile and will do one or two hit points of damage each turn.
+
+.. literalinclude:: examples/character_aggression.yaml
+
+A prop can serve as a weapon if the prop's `attack strength` is set. If a character possesses a weapon, this weapon will be used if its `attack strength` is greater than the character's `strength`. The prop example below is possessed by the "deadbeat" character and gives the character a strength of 7.
+
+.. literalinclude:: examples/character_weapon.yaml
+
+Communication
+~~~~~~~~~~~~~
+
+Characters can be asked questions about topics. Topics and responses are put into the `discusses` setting. The example below shows a character that, when asked about a "party", "parties", or "partying", responds with one of two opinions about the topic.
+
+.. literalinclude:: examples/character_communication.yaml
+
 State
 -----
 
