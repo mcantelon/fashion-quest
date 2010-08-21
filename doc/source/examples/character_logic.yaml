@@ -1,0 +1,16 @@
+---
+parrot:
+  logic: |
+    output = ''
+
+    # Parrot interaction
+    if @location == @player.location
+
+      # The parrot occasionally eats a cracker if player has them
+      case rand(3) + 1
+        when 1:
+          if @props['crackers'].location == 'player'
+            output << "The parrot ate a cracker.\n"
+          end
+      end
+    end
