@@ -1,6 +1,39 @@
 Fine-Tuning
 ===========
 
+Each game's `config.yaml` file allows fine-tuning of a number of elements.
+
+.. list-table:: Game settings
+   :widths: 20 80
+
+   * - **Setting**
+     - **Description**
+   * - title
+     - title of the game (displayed in the window bar)
+   * - width
+     - width of game window
+   * - image_height
+     - maximum height of images
+   * - resizable
+     - whether or not the player should be able to resize the game window
+   * - startup_message
+     - text to display to the player upon startup
+   * - setup_logic
+     - Ruby code to set up game (see demo games for examples)
+
+Other elements that can be set in `config.yaml` are explained later in this section.
+
+Scoring
+-------
+
+If a game incorporates scoring, player actions can result in score increases that generally serve as a marker of game progress. The standard command `score` will let the player know of his or her current score.
+
+Scoring items are configured in `config.yaml`. An example is shown below.
+
+.. literalinclude:: examples/config_scoring.yaml
+
+Each scoring item has a name and point value. Scoring is triggered using Ruby logic. The Ruby logic `@game.set_score('<name of scoring item>')` will trigger a scoring item. 
+
 Parsing
 -------
 
@@ -23,6 +56,10 @@ The `command_abbreviations.yaml` file, in the `parsing` subdirectory of each gam
 
 .. literalinclude:: ../../pirate_adventure/parsing/command_abbreviations.yaml
 
+Command abbreviations can alternatively be specified in `config.yaml`. An example is shown below.
+
+.. literalinclude:: examples/config_abbreviations.yaml
+
 .. note::
 
    The `command_abbreviations.yaml` file isn't the only place command abbreviation can be specified. Command syntax forms that don't contain parameters, like those of the `inventory` command, allow abbreviations to be stored in the command's syntax forms (`i` for inventory, for example).
@@ -38,6 +75,10 @@ Example YAML is shown below.
 
 .. literalinclude:: ../../pirate_adventure/parsing/global_synonyms.yaml
 
+Synonyms can alternatively be specified in `config.yaml`. An example is shown below.
+
+.. literalinclude:: examples/config_synonyms.yaml
+
 Garbage Words
 ~~~~~~~~~~~~~
 
@@ -47,12 +88,16 @@ Example YAML is shown below.
 
 .. literalinclude:: ../../pirate_adventure/parsing/garbage_words.yaml
 
+Garbage words can alternatively be specified in `config.yaml`. An example is shown below.
+
+.. literalinclude:: examples/config_garbage.yaml
+
 Testing
 -------
 
-Testing interactive fiction games can be tedious. To make testing easier Fashion Quest provides a couple of simple tools in the form of built-in commands.
+Testing interactive fiction games can be tedious. To make testing easier Fashion Quest provides a couple of simple tools: walkthrough and transcripts (explained in detail later on).
 
-In addition to the built-in commands, the Shoes `alert` function is handy for confirming logic is being executed. `alert('Hello`)` will, for example, pop up a dialog box with the word "hello".
+In addition to these tools, the Shoes `alert` function is handy for confirming logic is being executed. `alert("Hello")` will, for example, pop up a dialog box with the word "Hello". The Shoes `error` function is also handy. `error("Hello")` will write the world "Hello" to the console.
 
 When there are syntax errors in game logic, or other errors that stop game execution, you can often get useful clues by pressing Alt-/ to view the Shoes debugging console.
 

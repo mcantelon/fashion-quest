@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,12 +14,13 @@
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
         VERSION:     'Preview 2',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
     <link rel="prev" title="Game World Manipulation" href="manipulation.html" /> 
@@ -37,46 +40,47 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">Fine-Tuning</a><ul>
-<li><a class="reference external" href="#parsing">Parsing</a><ul>
-<li><a class="reference external" href="#abbreviated-commands">Abbreviated Commands</a></li>
-<li><a class="reference external" href="#synonyms">Synonyms</a></li>
-<li><a class="reference external" href="#garbage-words">Garbage Words</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Fine-Tuning</a><ul>
+<li><a class="reference internal" href="#scoring">Scoring</a></li>
+<li><a class="reference internal" href="#parsing">Parsing</a><ul>
+<li><a class="reference internal" href="#abbreviated-commands">Abbreviated Commands</a></li>
+<li><a class="reference internal" href="#synonyms">Synonyms</a></li>
+<li><a class="reference internal" href="#garbage-words">Garbage Words</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#testing">Testing</a><ul>
-<li><a class="reference external" href="#walkthroughs">Walkthroughs</a></li>
-<li><a class="reference external" href="#transcripts">Transcripts</a></li>
+<li><a class="reference internal" href="#testing">Testing</a><ul>
+<li><a class="reference internal" href="#walkthroughs">Walkthroughs</a></li>
+<li><a class="reference internal" href="#transcripts">Transcripts</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#naming">Naming</a></li>
+<li><a class="reference internal" href="#naming">Naming</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="manipulation.html"
-                                  title="previous chapter">Game World Manipulation</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/fine_tuning.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="manipulation.html"
+                        title="previous chapter">Game World Manipulation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/fine_tuning.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -87,6 +91,52 @@
             
   <div class="section" id="fine-tuning">
 <h1>Fine-Tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this headline">¶</a></h1>
+<p>Each game&#8217;s <cite>config.yaml</cite> file allows fine-tuning of a number of elements.</p>
+<table border="1" class="docutils">
+<caption>Game settings</caption>
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>Setting</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr><td>title</td>
+<td>title of the game (displayed in the window bar)</td>
+</tr>
+<tr><td>width</td>
+<td>width of game window</td>
+</tr>
+<tr><td>image_height</td>
+<td>maximum height of images</td>
+</tr>
+<tr><td>resizable</td>
+<td>whether or not the player should be able to resize the game window</td>
+</tr>
+<tr><td>startup_message</td>
+<td>text to display to the player upon startup</td>
+</tr>
+<tr><td>setup_logic</td>
+<td>Ruby code to set up game (see demo games for examples)</td>
+</tr>
+</tbody>
+</table>
+<p>Other elements that can be set in <cite>config.yaml</cite> are explained later in this section.</p>
+<div class="section" id="scoring">
+<h2>Scoring<a class="headerlink" href="#scoring" title="Permalink to this headline">¶</a></h2>
+<p>If a game incorporates scoring, player actions can result in score increases that generally serve as a marker of game progress. The standard command <cite>score</cite> will let the player know of his or her current score.</p>
+<p>Scoring items are configured in <cite>config.yaml</cite>. An example is shown below.</p>
+<div class="highlight-python"><pre>scoring:
+  cloak_on_hook:
+    points: 1
+
+  message_read:
+    points: 1
+</pre>
+</div>
+<p>Each scoring item has a name and point value. Scoring is triggered using Ruby logic. The Ruby logic <cite>&#64;game.set_score(&#8216;&lt;name of scoring item&gt;&#8217;)</cite> will trigger a scoring item.</p>
+</div>
 <div class="section" id="parsing">
 <h2>Parsing<a class="headerlink" href="#parsing" title="Permalink to this headline">¶</a></h2>
 <p>Fashion Quest includes employs a crude, case-insensitive, parsing mechanism that converts player input into &#8220;lexemes&#8221;: text elements (single words or game element identifiers such as &#8220;hat&#8221; or &#8220;blue hat&#8221;) that can be compared to command syntax forms.</p>
@@ -111,6 +161,16 @@ u: "go up"
 d: "go down"
 </pre>
 </div>
+<p>Command abbreviations can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
+<div class="highlight-python"><pre>command_abbreviations:
+  n: "go north"
+  s: "go south"
+  e: "go east"
+  w: "go west"
+  u: "go up"
+  d: "go down"
+</pre>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <cite>command_abbreviations.yaml</cite> file isn&#8217;t the only place command abbreviation can be specified. Command syntax forms that don&#8217;t contain parameters, like those of the <cite>inventory</cite> command, allow abbreviations to be stored in the command&#8217;s syntax forms (<cite>i</cite> for inventory, for example).</p>
@@ -126,6 +186,12 @@ using: "with"
 examine: "look"
 </pre>
 </div>
+<p>Synonyms can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
+<div class="highlight-python"><pre>global_synonyms:
+  using: "with"
+  examine: "look"
+</pre>
+</div>
 </div>
 <div class="section" id="garbage-words">
 <h3>Garbage Words<a class="headerlink" href="#garbage-words" title="Permalink to this headline">¶</a></h3>
@@ -139,12 +205,21 @@ examine: "look"
 - "to"
 </pre>
 </div>
+<p>Garbage words can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
+<div class="highlight-python"><pre>garbage_words:
+- "the"
+- "that"
+- "this"
+- "at"
+- "to"
+</pre>
+</div>
 </div>
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
-<p>Testing interactive fiction games can be tedious. To make testing easier Fashion Quest provides a couple of simple tools in the form of built-in commands.</p>
-<p>In addition to the built-in commands, the Shoes <cite>alert</cite> function is handy for confirming logic is being executed. <cite>alert(&#8216;Hello</cite>)` will, for example, pop up a dialog box with the word &#8220;hello&#8221;.</p>
+<p>Testing interactive fiction games can be tedious. To make testing easier Fashion Quest provides a couple of simple tools: walkthrough and transcripts (explained in detail later on).</p>
+<p>In addition to these tools, the Shoes <cite>alert</cite> function is handy for confirming logic is being executed. <cite>alert(&#8220;Hello&#8221;)</cite> will, for example, pop up a dialog box with the word &#8220;Hello&#8221;. The Shoes <cite>error</cite> function is also handy. <cite>error(&#8220;Hello&#8221;)</cite> will write the world &#8220;Hello&#8221; to the console.</p>
 <p>When there are syntax errors in game logic, or other errors that stop game execution, you can often get useful clues by pressing Alt-/ to view the Shoes debugging console.</p>
 <div class="section" id="walkthroughs">
 <h3>Walkthroughs<a class="headerlink" href="#walkthroughs" title="Permalink to this headline">¶</a></h3>
@@ -189,8 +264,8 @@ countable water     Water</p>
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Mike Cantelon.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+        &copy; Copyright 2009, Mike Cantelon.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.2.
     </div>
   </body>
 </html>

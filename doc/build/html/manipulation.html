@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,12 +14,13 @@
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
         VERSION:     'Preview 2',
-        COLLAPSE_MODINDEX: false,
+        COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
     <link rel="next" title="Fine-Tuning" href="fine_tuning.html" />
@@ -41,44 +44,45 @@
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-            <h3><a href="index.html">Table Of Contents</a></h3>
-            <ul>
-<li><a class="reference external" href="">Game World Manipulation</a><ul>
-<li><a class="reference external" href="#commands">Commands</a><ul>
-<li><a class="reference external" href="#syntax-forms">Syntax Forms</a></li>
-<li><a class="reference external" href="#logic">Logic</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Game World Manipulation</a><ul>
+<li><a class="reference internal" href="#commands">Commands</a><ul>
+<li><a class="reference internal" href="#syntax-forms">Syntax Forms</a></li>
+<li><a class="reference internal" href="#logic">Logic</a></li>
+<li><a class="reference internal" href="#conditions">Conditions</a></li>
 </ul>
 </li>
-<li><a class="reference external" href="#events">Events</a></li>
-<li><a class="reference external" href="#transitions">Transitions</a></li>
+<li><a class="reference internal" href="#events">Events</a></li>
+<li><a class="reference internal" href="#transitions">Transitions</a></li>
 </ul>
 </li>
 </ul>
 
-            <h4>Previous topic</h4>
-            <p class="topless"><a href="elements.html"
-                                  title="previous chapter">Game World Elements</a></p>
-            <h4>Next topic</h4>
-            <p class="topless"><a href="fine_tuning.html"
-                                  title="next chapter">Fine-Tuning</a></p>
-            <h3>This Page</h3>
-            <ul class="this-page-menu">
-              <li><a href="_sources/manipulation.txt"
-                     rel="nofollow">Show Source</a></li>
-            </ul>
-          <div id="searchbox" style="display: none">
-            <h3>Quick search</h3>
-              <form class="search" action="search.html" method="get">
-                <input type="text" name="q" size="18" />
-                <input type="submit" value="Go" />
-                <input type="hidden" name="check_keywords" value="yes" />
-                <input type="hidden" name="area" value="default" />
-              </form>
-              <p class="searchtip" style="font-size: 90%">
-              Enter search terms or a module, class or function name.
-              </p>
-          </div>
-          <script type="text/javascript">$('#searchbox').show(0);</script>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="elements.html"
+                        title="previous chapter">Game World Elements</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fine_tuning.html"
+                        title="next chapter">Fine-Tuning</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/manipulation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
@@ -143,6 +147,21 @@ logic: |
 <p><cite>&#64;props</cite> provides access to the properties and methods of individual props.</p>
 <p><cite>&#64;characters</cite> provides access to the properties and methods of individual characters.</p>
 <p>The best way to understand how commands work is to check out the commands in the <cite>standard_commands</cite> directory.</p>
+</div>
+<div class="section" id="conditions">
+<h3>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h3>
+<p>Command conditions are logic that determines if a command can be carried out by the player. Conditions can be defined for individudal commands and/or globally for any command.</p>
+<p>Condition logic should return a hash with a &#8220;success&#8221; element (boolean to indicate whether or not the attempted command should be carried out) and, optionally, a &#8220;message&#8221; element that returns information to the player.</p>
+<p>Command conditions for individual commands may be defined in a command&#8217;s YAML file, as shown below.</p>
+<div class="highlight-python"><pre>condition: |
+  if @props['crackers'].location == 'player'
+    {'success' =&gt; true, 'message' =&gt; "Crackers give me power.\n"}
+  else
+    {'success' =&gt; false, 'message' =&gt; "I NEED CRACKERS.\n"}
+  end
+</pre>
+</div>
+<p>A global command condition is specified in a game&#8217;s config.yaml file (see XXXXX). Command conditions can also be defined in a game&#8217;s config.yaml file.</p>
 </div>
 </div>
 <div class="section" id="events">
@@ -240,8 +259,8 @@ outcomes:
       </ul>
     </div>
     <div class="footer">
-      &copy; Copyright 2009, Mike Cantelon.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+        &copy; Copyright 2009, Mike Cantelon.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.2.
     </div>
   </body>
 </html>

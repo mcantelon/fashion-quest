@@ -63,6 +63,19 @@ In addition to data passed in via syntax forms, game elements can also be arbitr
 
 The best way to understand how commands work is to check out the commands in the `standard_commands` directory.
 
+Conditions
+~~~~~~~~~~
+
+Command conditions are logic that determines if a command can be carried out by the player. Conditions can be defined for individudal commands and/or globally for any command.
+
+Condition logic should return a hash with a "success" element (boolean to indicate whether or not the attempted command should be carried out) and, optionally, a "message" element that returns information to the player.
+
+Command conditions for individual commands may be defined in a command's YAML file, as shown below.
+
+.. literalinclude:: examples/jump.yaml
+
+A global command condition is specified in a game's config.yaml file (see XXXXX). Command conditions can also be defined in a game's config.yaml file.
+
 Events
 ------
 
