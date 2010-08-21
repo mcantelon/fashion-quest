@@ -74,7 +74,7 @@ Command conditions for individual commands may be defined in a command's YAML fi
 
 .. literalinclude:: examples/jump.yaml
 
-A global command condition is specified in a game's config.yaml file (see XXXXX). Command conditions can also be defined in a game's config.yaml file.
+A global command condition can be specified in the `command_condition` element of a game's config.yaml file.
 
 Events
 ------

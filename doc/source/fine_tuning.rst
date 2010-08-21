@@ -18,11 +18,13 @@ Each game's `config.yaml` file allows fine-tuning of a number of elements.
      - whether or not the player should be able to resize the game window
    * - startup_message
      - text to display to the player upon startup
-   * - setup_logic
-     - Ruby code to set up game (see demo games for examples)
    * - background
      - Background image for game
-
+   * - command_condition
+     - Ruby logic that determines whether any command should execute
+   * - setup_logic
+     - Ruby logic to set up game (see demo games for examples)
+ 
 Other elements that can be set in `config.yaml` are explained later in this section.
 
 Scoring
