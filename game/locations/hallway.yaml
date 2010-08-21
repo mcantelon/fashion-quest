@@ -5,4 +5,4 @@ hallway:
       destination: entrance
 
   description: |
-    You are in a dimly-lit hallway.
+    You are in a dimly-lit hallway that ends in a door.

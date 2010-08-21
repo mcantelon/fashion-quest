@@ -3,6 +3,8 @@ upstairs:
   exits: 
     down:
       destination: entrance
+    stairs:
+      destination: entrance
 
   description: |
-    You are in a small, cluttered room with a desk and chair.
+    You are in a small, cluttered room with a desk and chair. Stairs lead down.
