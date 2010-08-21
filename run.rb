@@ -20,6 +20,10 @@ Shoes.app(
       # Close game selector
       game_selector_window.close
 
+      if (config['background'])
+        background config['background']
+      end
+
       # Initialize image display area
       @image_stack = stack :background => white,
         :width => config['width'],
