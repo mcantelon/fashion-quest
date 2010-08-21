@@ -43,6 +43,10 @@ Shoes.app(
         :garbage_words => config['garbage_words'],
         :global_synonyms => config['global_synonyms']
 
+      if config['command_condition']
+        @cli.command_condition = config['command_condition']
+      end
+
       if config['startup_logic']
         instance_eval(config['startup_logic'])
       else
