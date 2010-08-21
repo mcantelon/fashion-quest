@@ -1,0 +1,6 @@
+condition: |
+  if @props['crackers'].location == 'player'
+    {'success' => true, 'message' => "Crackers give me power.\n"}
+  else
+    {'success' => false, 'message' => "I NEED CRACKERS.\n"}
+  end

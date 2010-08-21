@@ -1,0 +1,6 @@
+scoring:
+  cloak_on_hook:
+    points: 1
+
+  message_read:
+    points: 1
