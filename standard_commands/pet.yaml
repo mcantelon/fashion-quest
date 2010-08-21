@@ -1,0 +1,19 @@
+---
+syntax:
+- "pet <character>"
+- "stroke <character>"
+
+logic: |
+
+  output = ''
+
+  if (!character.dead)
+
+    output << "You pet the #{character.noun}.\n"
+    output << character.event('on_pet')
+
+  else
+    output << "#{character.noun_cap} is dead and derives no pleasure from our actions.\n"
+  end
+
+  output

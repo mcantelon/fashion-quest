@@ -11,4 +11,7 @@ cat:
     - "The cat yowls as he leaps at you.\n"
     on_death:
     - "The cat shrieks as it crumples to the ground.\n"
-
+    on_pet:
+    - "The cat purrs and rolls around.\n"
+    - "The cat makes a strange cooing sound.\n"
+    - "The cat stretches and purrs.\n"

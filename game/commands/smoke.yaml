@@ -1,0 +1,8 @@
+---
+syntax:
+- "smoke <prop>"
+- "smoke"
+
+logic: |
+
+  "That would be bad for your health.\n"
