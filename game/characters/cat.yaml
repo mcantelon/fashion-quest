@@ -1,11 +1,11 @@
 --- 
 cat: 
+  location: bedroom
   mobility: 100
   strength: 1
   description: The cat is small and agile.
   hp: 2
   aggression: 5
-  location: bedroom
   events:
     on_attack:
     - "The cat yowls as he leaps at you.\n"
