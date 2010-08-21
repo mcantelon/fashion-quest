@@ -6,14 +6,15 @@
 -revise pirate adventure to use new scoring? then need to add condition based scoring and have score total be dynamically calculated
 
 Needed for next release:
--mention "error" function in docs
--document naming
--document aliases
--document new_game template
--document command conditions
+-add "mutters" support and "talkative" for probability of character muttering (parrot?)
+-for attacking, add agility to character, the higher it is the harder it is to hit the character
+(no agility or agility 1 will always hit, 2 = 50% of the time, 3 = 33.3% of the time, etc.)
+actually, what can be done is subtract the agility of the attacker from the agility of the attackee
+1-document naming
+1-document command conditions
 -document exit conditions
 -need a definitive term for non-location game elements (game component)
--implement before and after command hash for props (i.e. before['get'] = 'some logic')
+3-implement before and after command hash for props (i.e. before['get'] = 'some logic')
   -before evaluating, trigger prop before logic check for denial
     events before..
   -after evaluation, trigger prop after logic check for denial
@@ -60,7 +61,6 @@ EZ-make sure command code is civilized
 -finish migrating properties to traits
 
 Nice to do:
--wear
 -put (i.e. put x in y)
 -is agression/mobility documented?
 -do some kind of background animation for pirate adventure
