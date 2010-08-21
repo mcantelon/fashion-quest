@@ -39,5 +39,9 @@ The yard photo at game/locations/images/yard.jpg is by Patrick Q, (c)
 Creative Commons Attribution-Noncommercial 2.0 Generic. It was cropped.
 His other photos can be seen at http://www.flickr.com/photos/patrick_q.
 
+The entrance photo at game/locations/image/entrance.jpg is by Jack Hebert,
+(c) Creative Commons Attribution 2.0 Generic . It was cropped. His other
+photos can be seen at http://www.flickr.com/photos/jackhebert.
+
 Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative
 use of computers! We miss you!
