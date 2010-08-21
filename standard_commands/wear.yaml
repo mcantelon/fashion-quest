@@ -11,6 +11,12 @@ logic: |
 
     if prop.traits && prop.traits['wearable']
 
+      if prop.location != 'player'
+
+        prop.location = 'player'
+        output << "(You take #{prop.noun_direct_specific}.)\n"
+      end
+
       @player.wearing << prop.id
 
       output << "You put on #{prop.noun_direct_specific}.\n"

@@ -4,6 +4,8 @@ syntax:
 - "attack <character> with <prop>"
 - "kill <character>"
 - "kill <character> with <prop>"
+- "stab <character>"
+- "stab <character> with <prop>"
 
 logic: |
 
