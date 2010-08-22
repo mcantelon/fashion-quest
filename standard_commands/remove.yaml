@@ -9,13 +9,14 @@ logic: |
 
   if not @player.wearing.index(prop.id)
 
-    output << "You're not wearing #{prop.noun_direct_specific}.\n"
+    output << "You're not wearing #{prop.noun}.\n"
+    #output << "You're not wearing #{prop.noun_direct_specific}.\n"
 
   else
 
     @player.wearing.delete(prop.id)
 
-    output << "You take off #{prop.noun_direct_specific}.\n"
+    output << "You take off #{prop.noun}.\n"
 
   end
 

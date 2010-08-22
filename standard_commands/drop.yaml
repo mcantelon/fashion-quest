@@ -16,7 +16,7 @@ logic: |
     output << @game.if_worn_take_off(prop)
 
     prop.location = @player.location
-    output << "You drop #{prop.noun_direct_specific}.\n"
+    output << "You drop #{prop.noun}.\n"
 
   else
 
