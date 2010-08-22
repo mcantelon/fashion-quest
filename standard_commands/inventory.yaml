@@ -27,7 +27,7 @@ logic: |
   end
 
   if prop_counter == 0
-    output << 'nothing'
+    output << "nothing\n"
   end
 
-  output + "\n"
+  output
