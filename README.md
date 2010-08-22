@@ -35,6 +35,9 @@ Documentation is slowly evolving and can be found in:
 
   docs/build/html/index.html
 
+Acknowledgements
+==
+
 The background photo a game/background.jpg is by Kalimera, (c) Creative
 Commons Attribution-NonCommercial-ShareAlike 2.0 Generic. It was cropped.
 His other photos and be seen at http://www.flickr.com/photos/kalimera.
