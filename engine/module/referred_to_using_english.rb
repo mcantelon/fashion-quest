@@ -52,6 +52,7 @@ module Referred_To_Using_English
 
   end
 
+  # Unused so far
   def noun_direct_cap
 
     noun(false).capitalize
@@ -71,6 +72,7 @@ module Referred_To_Using_English
 
   end
 
+  # Unused so far
   def noun_direct_specific_cap
 
     noun_direct_specific.capitalize
