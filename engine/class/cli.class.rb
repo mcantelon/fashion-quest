@@ -164,7 +164,7 @@ class Cli
       display_prompt(@input_text)
 
       # execute command
-      if k == :enter or k == "\n"
+      if (k == :enter or k == "\n") && @input_text != ''
         if @input_text != 'load walkthrough'
           @command_history << @input_text
           @command_index = @command_history.size
