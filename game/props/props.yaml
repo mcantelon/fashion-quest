@@ -40,6 +40,18 @@ dresser:
     portable: false
     contains: 
       - prop: smokes
+desk:
+  description: The desk looks cheap.
+  location: upstairs
+  traits:
+    visible: false
+    portable: false
+chair:
+  description: The chair is stupid.
+  location: upstairs
+  traits:
+    visible: false
+    portable: false
 brass key: 
   description: The key is small and made of brass.
   location: yard
