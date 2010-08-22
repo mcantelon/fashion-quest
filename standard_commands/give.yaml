@@ -11,6 +11,8 @@ logic: |
 
     if !character.dead
 
+      output << @game.if_worn_take_off(prop)
+
       exchange_output = (character.attempt_exchange prop.id)
 
       if exchange_output != ''

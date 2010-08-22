@@ -553,4 +553,19 @@ class Game
 
   end
 
+  def if_worn_take_off(prop)
+
+    output = ''
+
+    if @player.wearing.index(prop.id)
+
+      @player.wearing.delete(prop.id)
+
+      output << "(taking off #{prop.noun_direct_specific})\n"
+
+    end
+
+    output
+  end
+
 end

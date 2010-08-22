@@ -13,13 +13,7 @@ logic: |
 
   if prop.location == 'player'
 
-    if @player.wearing.index(prop.id)
-
-      @player.wearing.delete(prop.id)
-
-      output << "(taking off #{prop.noun_direct_specific})\n"
-
-    end
+    output << @game.if_worn_take_off(prop)
 
     prop.location = @player.location
     output << "You drop #{prop.noun_direct_specific}.\n"
