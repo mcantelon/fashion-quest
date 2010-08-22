@@ -144,7 +144,7 @@ The four noun grammar context functions are explained below.
    * - noun_cap
      - `noun_cap` is generally used at the start of sentences. It works like `noun`, but capitalizes the first letter.
 
-       Example: "#{@prop.noun_cap} contains something."
+       Example: "#{prop.noun_cap} contains something."
    * - noun_direct
      - `noun_direct` works like `noun`, but prefixes with "a " (for singlular) or "some " for (plural) for non-proper nouns.
 
