@@ -144,7 +144,7 @@ class Character < GameComponent
     if damage > 0
       output << "#{noun_cap} attacked with #{best_weapon} for #{damage.to_s} HP.\n"
     else
-      output << "#{noun_cap} attacked, but missed.\n"
+      output << "#{noun_cap} attacked, but did no damage.\n"
     end
 
     # damage player accordingly and report
