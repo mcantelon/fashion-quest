@@ -44,7 +44,13 @@ logic: |
 
     character.hp = character.hp - damage
 
-    output << "You attack #{noun} with #{weapon} for #{damage.to_s} HP damage.\n"
+    output << "You attack #{noun} with #{weapon}"
+
+    if (damage == 0)
+      output << ", but do no damage.\n"
+    else
+      output << " for #{damage.to_s} HP damage.\n"
+    end
 
     if character.hp < 1
       output << character.kill
