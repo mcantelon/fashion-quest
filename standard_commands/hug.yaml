@@ -1,0 +1,12 @@
+---
+syntax:
+- "hug <character>"
+- "kiss <character>"
+- "touch <character>"
+- "feel <character>"
+- "caress <character>"
+- "fondle <character>"
+
+logic: |
+
+  "That would be inappropriate.\n"
