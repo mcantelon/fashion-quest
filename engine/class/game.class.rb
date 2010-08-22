@@ -561,7 +561,7 @@ class Game
 
       @player.wearing.delete(prop.id)
 
-      output << "(taking off #{prop.noun_direct_specific})\n"
+      output << "(taking off #{prop.noun})\n"
 
     end
 

@@ -52,31 +52,4 @@ module Referred_To_Using_English
 
   end
 
-  # Unused so far
-  def noun_direct_cap
-
-    noun(false).capitalize
-
-  end
-
-  def noun_direct_specific
-
-    name = ''
-
-    if not @proper
-
-      name << 'the '
-    end
-
-    name << noun_base
-
-  end
-
-  # Unused so far
-  def noun_direct_specific_cap
-
-    noun_direct_specific.capitalize
-
-  end
-
 end

@@ -10,7 +10,7 @@ logic: |
   if not @player.wearing.index(prop.id)
 
     output << "You're not wearing #{prop.noun}.\n"
-    #output << "You're not wearing #{prop.noun_direct_specific}.\n"
+    #output << "You're not wearing #{prop.noun}.\n"
 
   else
 
