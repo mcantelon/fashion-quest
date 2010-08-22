@@ -14,7 +14,7 @@ logic: |
 
   @player.carrying.each do |prop|
 
-    output << ' ' + prop.noun(false)
+    output << ' ' + prop.noun_direct
 
     if @player.wearing.index(prop.id)
       output << ' (being worn)'
