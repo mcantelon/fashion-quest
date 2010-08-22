@@ -208,6 +208,7 @@ mongoose:
 
 plans:
   description: These look like plans!
+  plural: true
 
 map:
   location: shack
