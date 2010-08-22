@@ -8,7 +8,7 @@ logic: |
 
   if (character.dead)
 
-    output << "You search the #{character.noun}.\n"
+    output << "You search #{character.noun}.\n"
 
     @props.each do |prop_key, prop_data|
       if @props[prop_key].location == character.id
