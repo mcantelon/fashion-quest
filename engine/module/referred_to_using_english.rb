@@ -2,11 +2,14 @@ module Referred_To_Using_English
 
   attr_accessor :name, :proper, :plural
 
+  # unprefixed noun
   def noun_base
 
+    # if a name is specified, use it
     if @name
       name = @name
     else
+    # ...otherwise, use unique ID (capitalizing it if noun is proper)
       name = @proper == true ? id.capitalize : id
     end
 
@@ -14,29 +17,9 @@ module Referred_To_Using_English
 
   end
 
-  def noun(specific = true)
+  def noun
 
-    output = ''
-
-    if specific
-      prefix = 'the'
-    else
-      prefix = @plural == true ? 'some' : 'a'
-    end
-
-    name = noun_base
-
-    if name != ''
-
-      if @proper != true
-        output << (prefix + ' ')
-      end
-
-      output << name
-
-    end
-
-    output
+    noun_with_prefix('the')
 
   end
 
@@ -48,7 +31,31 @@ module Referred_To_Using_English
 
   def noun_direct
 
-    noun(false)
+    prefix = @plural == true ? 'some' : 'a'
+
+    noun_with_prefix(prefix)
+
+  end
+
+  def noun_direct_cap
+
+    noun_direct.capitalize
+
+  end
+
+  def noun_with_prefix(prefix)
+
+    output = ''
+
+    if @proper != true
+      output << (prefix + ' ')
+    end
+
+    name = noun_base
+
+    output << ((name != '') ? name : '')
+
+    output
 
   end
 
