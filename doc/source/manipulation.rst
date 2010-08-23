@@ -63,6 +63,38 @@ In addition to data passed in via syntax forms, game elements can also be arbitr
 
 The best way to understand how commands work is to check out the commands in the `standard_commands` directory.
 
+Noun Grammar Contexts
+~~~~~~~~~~~~~~~~~~~~~
+
+Characters, doors, and props can be referred to, when outputting messages to the user from commands, using noun grammar context functions. Checking out how noun grammar context functions are used in the standard commands may help you understand them.
+
+Noun grammar context functions work with three basic noun types: singular ("hammer", "cat", etc.), plural ("bottles", "bullets"), and proper nouns ("Rick"). Proper nouns will always be capitalized.
+
+The four noun grammar context functions are explained below.
+
+.. list-table:: Noun grammar contexts
+   :widths: 20 80
+
+   * - **Context**
+     - **Description**
+   * - noun
+     - `noun` is the most used noun context. It prefixes with "the " for non-proper nouns. If a noun is proper, it is capitalized. If a specific `name` setting has been assigned to the object this will be used, otherwise the object's unique ID will be used as a name.
+
+       Example: "You take #{prop.noun}."
+   * - noun_cap
+     - `noun_cap` is generally used at the start of sentences. It works like `noun`, but capitalizes the first letter.
+
+       Example: "#{prop.noun_cap} contains something."
+   * - noun_direct
+     - `noun_direct` works like `noun`, but prefixes with "a " (for singlular) or "some " for (plural) for non-proper nouns.
+
+       Example: "You find #{prop.noun_direct}."
+
+   * - noun_direct_cap
+     - `noun_direct_cap` is gnerally used at the start of sentences. It would like `noun_direct`, but capitalizes the first letter.
+
+       Example: "#{prop.noun_direct_cap} falls from the sky."
+
 Conditions
 ~~~~~~~~~~
 
