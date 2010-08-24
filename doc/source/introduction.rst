@@ -3,7 +3,7 @@ Introduction
 
 Fashion Quest is an interactive fiction framework created to make `text adventure games`_ about fashion because we love fashion and we love text adventure games. Fashion Quest is written in the Ruby programming language and requires Shoes_, a cross-platform GUI framework created by `Why the Lucky Stiff`_.
 
-Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes three demonstration games. The game "Fashion Quest: Daydream" is very small and designed to demonstrate non-player character features. It lives in the `game` directory. The game "Pirate Adventure Knockoff" is a port of the 1978 text adventure `"Pirate Adventure"`_ by Scott and Alexis Adams and lives in the `pirate_adventure` directory. The game "Cloak of Darkness" is a port of a game that was created as a means of comparing different interaction fiction frameworks. It lives in the `cloak_of_darkness` directory. There is also a game skeleton exists primarily to serve as the basis of new games. It lives in the `new_game` directory. 
+Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes three demonstration games. The game "Fashion Quest: Daydream" is very small and designed to demonstrate non-player character features. It lives in the `game` directory. The game "Pirate Adventure Knockoff" is a port of the 1978 text adventure `"Pirate Adventure"`_ by Scott and Alexis Adams and lives in the `pirate_adventure` directory. The game `"Cloak of Darkness"`_ is a port of a game that was created as a means of comparing different interaction fiction frameworks. It lives in the `cloak_of_darkness` directory. There is also a game skeleton exists primarily to serve as the basis of new games. It lives in the `new_game` directory. 
 
 To play either of these use Shoes to run `run.rb` and select which you’d like to play.
 
@@ -13,6 +13,7 @@ Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative use 
 .. _Shoes: http://shoes.heroku.com/
 .. _Why the Lucky Stiff: http://en.wikipedia.org/wiki/Why_the_lucky_stiff/
 .. _"Pirate Adventure": http://en.wikipedia.org/wiki/Pirate_Adventure
+.. _"Cloak of Darkness": http://www.firthworks.com/roger/cloak/
 
 Why Use a Framework?
 --------------------
@@ -27,7 +28,7 @@ Fashion Quest is a relative newcomer. Established frameworks include *Inform*, *
 
 `TADS`_ is reputedly more powerful than Inform, but has a fairly steep learning curve.
 
-When evaluating IF frameworks, an interesting site is `Cloak of Darkness`_. This site links to implementations of the same simple interactive fiction game created using twenty different IF frameworks.
+The `Cloak of Darkness`_ site is useful for comparing interaction fiction frameworks as it contains implementations of the same simple interactive fiction game created using twenty different IF frameworks.
 
 .. _Inform: http://www.inform-fiction.org/I7/Welcome.html
 .. _ADRIFT: http://www.adrift.org.uk/

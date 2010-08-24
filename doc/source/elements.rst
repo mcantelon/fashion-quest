@@ -1,7 +1,7 @@
 Game World Elements
 ===================
 
-Game world elements are defined using YAML_, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.
+Each game component must have a globally unique identifier. There are two ways to define game components: either using YAML_, a human-readable standard used to describe data structures using text, or using Ruby. This documentation focuses on the use of YAML, but if you're interested in using Ruby check out the `Cloak of Darkness` implementation for an example.
 
 .. _YAML: http://www.yaml.org/
 
