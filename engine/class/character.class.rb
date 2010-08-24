@@ -95,12 +95,21 @@ class Character < GameComponent
 
         # if character was originally in the same place as the player, report movement
         if character_initial_location == @player.location
+
+          # use direction description, if available, to describe where character went
           if possible_exits[chosen_direction]['description']
             direction_description = possible_exits[chosen_direction]['description']
           else
             direction_description = chosen_direction
           end
+
           output << "#{noun_cap} goes #{direction_description}.\n"
+
+        elsif @location == @player.location
+
+          # if character is now in the same place as the player, report presence
+          output << "You see #{noun}.\n"
+
         end
       end
     end
