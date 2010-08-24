@@ -1,0 +1,20 @@
+---
+syntax:
+- "say <something>"
+
+logic: |
+
+  output = "You mutter to yourself.\n"
+
+  character_found = false
+
+  @game.characters.each do |id, character|
+
+    # suggest talking to the first character found in the current location
+    if @player.location == character.location && !character_found
+      output << "Perhaps you should try saying something to #{character.noun}.\n"
+      character_found = true
+    end
+  end
+
+  output
