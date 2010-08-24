@@ -1,4 +1,14 @@
 --- 
+stairs:
+  description: The stairs are fairly nondescript, but there's a small, difficult to notice door that leads underneath them.
+  location: entrance
+  traits:
+    portable: false
+    visible: false
+  events:
+    on_look: |
+      @doors['stairs_door'].traits['visible'] = true
+      ""
 shoes:
   plural: true 
   description: The shoes are small and pretty.
