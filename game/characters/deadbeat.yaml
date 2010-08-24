@@ -6,18 +6,18 @@ deadbeat:
     ? 
       - rick
     : 
-      - That guy used to be a buddy but then he ripped me off.
-      - I hate that guy. Got a smoke?
-      - That guy's a goof.
+      - >That guy used to be a buddy but then he ripped me off.
+      - The deadbeat narrows his eyes. "I hate that guy. Got a smoke?"
+      - >That guy's a goof.
 
     ?
       - child
     :
-      - Children are like animals we're not allowed to eat. Got a smoke?
+      - >Children are like animals we're not allowed to eat. Got a smoke?
     ?
       - cat
     :
-      - I hate those things.
+      - >I hate those things.
 
   exchanges: 
     smokes: 

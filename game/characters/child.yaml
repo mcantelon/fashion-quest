@@ -7,11 +7,17 @@ child:
     shoes: true
   discusses:
     ?
+      - hi
+      - hello
+      - hey
+    :
+      - \"Um, hello.\"
+    ?
       - shoes
     :
-      - Oh how I wish I had some shoes.
-      - If clothes make the man, then shoes make the child. It's not fair I was born without shoes.
-      - How I long for some shoes.
+      - >Oh how I wish I had some shoes.
+      - >If clothes make the man, then shoes make the child. It's not fair I was born without shoes.
+      - >How I long for some shoes.
 
   events:
     on_discuss:
