@@ -46,7 +46,7 @@ class Location
       # specify visibility conditions for different types of game components
       components_to_describe = {
         characters => "components[component_id].location == @id",
-        doors      => "components[component_id].locations.include?(@id)",
+        doors      => "components[component_id].locations.include?(@id) and components[component_id].traits['visible'] == true",
         props      => "components[component_id].location == @id and components[component_id].traits['visible'] == true"
       }
 
