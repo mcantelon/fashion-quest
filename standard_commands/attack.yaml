@@ -8,6 +8,8 @@ syntax:
 - "stab <character> with <prop>"
 - "kick <character>"
 - "punch <character>"
+- "hit <character>"
+- "beat <character>"
 
 logic: |
 
