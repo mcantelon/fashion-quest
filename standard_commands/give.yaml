@@ -1,6 +1,6 @@
 ---
 syntax:
-- "give <prop> <character>"
+- "give <prop> to <character>"
 - "give <character> <prop>"
 
 logic: |
