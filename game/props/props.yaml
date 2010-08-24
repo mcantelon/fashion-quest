@@ -56,6 +56,9 @@ chair:
   traits:
     visible: false
     portable: false
+  events:
+    on_move: |
+      "The chair scrapes against the floor.\n"
 brass key: 
   description: The key is small and made of brass.
   location: yard
