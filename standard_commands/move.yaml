@@ -1,0 +1,15 @@
+---
+syntax:
+- "move <prop>"
+
+logic: |
+
+  output = ''
+
+  output = @game.event(prop, 'on_move')
+
+  if (output == '')
+    output << "You move #{prop.noun} a bit, feeling a sense of accomplishmemnt.\n"
+  end
+
+  output
