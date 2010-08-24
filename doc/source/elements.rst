@@ -78,6 +78,8 @@ Characters can be asked questions about topics. Topics and responses are put int
 
 .. literalinclude:: examples/character_communication.yaml
 
+If the letter ">" is the first character of a response, double quotes will be put around the remaining characters of the response before outputting to the player.
+
 Trade
 ~~~~~
 
