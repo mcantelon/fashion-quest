@@ -218,7 +218,11 @@ class Character < GameComponent
         if topics.index(topic) != nil
           output << event('on_discuss')
           response = responses[rand(responses.length)]
-          output << "#{response}\n"
+          if response[0,1] == '>'
+            output << "\"#{response[1,5000]}\"\n"
+          else
+            output << "#{response}\n"
+          end
         end
       end
     end
