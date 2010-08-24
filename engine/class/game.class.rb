@@ -272,6 +272,9 @@ class Game
       door_data.each do |id, door_definition|
         doors[id] = map_hash_to_object_attributes(Door.new, door_definition)
         doors[id].id = id
+        if !doors[id].traits.has_key?('visible')
+          doors[id].traits['visible'] = true
+        end
       end
     else
       error('No door config files found at ' + door_config_path)
