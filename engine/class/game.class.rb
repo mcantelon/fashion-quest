@@ -478,6 +478,8 @@ class Game
 
       output << "You open the #{@doors[door].name}.\n"
 
+      output << event(@doors[door], 'on_open')
+
       @doors[door].traits['opened'] = true
 
     end
@@ -510,6 +512,8 @@ class Game
           end
         end
       end
+
+      output << event(@props[prop], 'on_open')
 
       @props[prop].traits['opened'] = true
 
