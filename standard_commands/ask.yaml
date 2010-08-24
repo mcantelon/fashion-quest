@@ -20,7 +20,11 @@ logic: |
 
     else
 
-      output << "#{noun_cap} doesn't know anything about that.\n"
+      if !character.hostile
+        output << "#{noun_cap} doesn't know anything about that.\n"
+      else
+        output << "#{noun_cap} ignores you.\n"
+      end
 
     end
 
