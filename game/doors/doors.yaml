@@ -1,6 +1,19 @@
 ---
-door:
+stairs_door:
   name: door
+  aliases:
+  - door
+  description: The door is small.
+  locations:
+  - entrance
+  - closet
+  traits:
+    visible: false
+    opened: false
+dark_door:
+  name: door
+  aliases:
+  - door
   description: The door is made of dark-brown wood.
   locations:
   - hallway
