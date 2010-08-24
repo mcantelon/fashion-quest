@@ -95,7 +95,12 @@ class Character < GameComponent
 
         # if character was originally in the same place as the player, report movement
         if character_initial_location == @player.location
-          output << "#{noun_cap} goes #{chosen_direction}.\n"
+          if possible_exits[chosen_direction]['description']
+            direction_description = possible_exits[chosen_direction]['description']
+          else
+            direction_description = chosen_direction
+          end
+          output << "#{noun_cap} goes #{direction_description}.\n"
         end
       end
     end
