@@ -6,6 +6,13 @@ rick:
   strength: 7
   discusses: 
     ?
+      - hi
+      - hello
+      - hey
+    :
+      - >'Sup?
+      - >Do you party?
+    ?
       - party
       - parties
       - partying
@@ -17,12 +24,19 @@ rick:
       - deadbeat
     :
       - >I don't trust that guy.
+      - >He used to party hard. Now he's just hard.
 
     ?
       - child
     :
       - >There's something missing in that child's life.
+      - >Somebody needs to help that little guy out.
 
+    ?
+      - cat
+      - cats
+    :
+      - >Cat is good.
   description: "Rick looks sad. He's wearing a shirt that says 'Party Times'."
   hp: 10
   aggression: 1
