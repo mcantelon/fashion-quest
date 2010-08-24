@@ -11,7 +11,7 @@ child:
       - hello
       - hey
     :
-      - \"Um, hello.\"
+      - >Um, hello.
 
     ?
       - shoes
