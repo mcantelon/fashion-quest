@@ -46,6 +46,10 @@ desk:
   traits:
     visible: false
     portable: false
+    opened: false
+  events:
+    on_open: |
+      "The desk drawers contain nothing of interest.\n"
 chair:
   description: The chair is stupid.
   location: upstairs
