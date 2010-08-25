@@ -239,6 +239,12 @@ class Cli
       when 'compare to transcript':
         compare_to_transcript
 
+      when 'vocab':
+        show_vocabulary
+
+      when 'vocabulary':
+        show_vocabulary
+
       else
 
         output_add(@prompt + input_text) if show_input
@@ -329,6 +335,22 @@ class Cli
       end
       @input_text = ''
     end
+  end
+
+  def show_vocabulary
+
+    vocab = []
+
+    @commands.each do |id, command|
+      vocab << id
+    end
+
+    vocab.sort.each do |command|
+      output_add(command)
+    end
+
+    @input_text = ''
+
   end
 
   def backspace
