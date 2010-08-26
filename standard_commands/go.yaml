@@ -1,6 +1,7 @@
 ---
 syntax:
 - "go <direction>"
+- "enter <direction>"
 
 logic: |
 

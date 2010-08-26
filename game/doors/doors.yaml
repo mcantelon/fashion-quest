@@ -1,5 +1,5 @@
 ---
-stairs_door:
+stairs door:
   name: door
   aliases:
   - door
@@ -10,7 +10,7 @@ stairs_door:
   traits:
     visible: false
     opened: false
-dark_door:
+dark door:
   name: door
   aliases:
   - door
