@@ -180,8 +180,6 @@ class Game
 
   def find_alias_among(elements, alias_to_find)
 
-    found_id = false
-
     elements.each do |id, element|
 
       if element.aliases
@@ -190,22 +188,18 @@ class Game
 
           if element_alias == alias_to_find
 
-            # if we found one in player location or inventory, return immediately
+            # if we found one in player location or inventory, return
             if (element.location == @player.location || element.location == 'player') ||
-              element.locations.include?(@player.location)
+              (element.respond_to?(:locations) && element.locations.include?(@player.location))
 
               return element.id
             end
-
-            # otherwise alias less likely relevant, but make a note that we found one
-            found_id = element.id
           end
         end
       end
     end
 
-    return found_id
-
+    # we didn't find anything
     false
 
   end
