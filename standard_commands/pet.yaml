@@ -9,7 +9,7 @@ logic: |
 
   if (!character.dead)
 
-    output << "You pet the #{character.noun}.\n"
+    output << "You pet #{character.noun}.\n"
     output << character.event('on_pet')
 
   else
