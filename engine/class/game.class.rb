@@ -442,26 +442,38 @@ class Game
 
   def attempt_open_item(item, with_prop)
 
+    attempt_open_or_close_item(item, with_prop, 'open')
+  end
+
+  def attempt_close_item(item, with_prop)
+
+    attempt_open_or_close_item(item, with_prop, 'close')
+  end
+
+  def attempt_open_or_close_item(item, with_prop, open_or_close)
+
     output = ''
 
     item_object = (@props[item]) ? @props[item] : @doors[item]
 
     if item_object.traits.has_key?('opened')
-      if item_object.traits['opened']
-        output << "It's already open.\n"
-      elsif item_object.traits['opens_with']
+      if (item_object.traits['opened'] && open_or_close == 'open') ||
+        (!item_object.traits['opened'] && open_or_close == 'close')
+        state = (open_or_close == 'open') ? 'open' : 'closed'
+        output << "It's already " + state + ".\n"
+      elsif item_object.traits[open_or_close + '_with']
         if with_prop
-          if prop_located_at(with_prop, 'player') and item_object.traits['opens_with'].index(with_prop)
+          if prop_located_at(with_prop, 'player') and item_object.traits[open_or_close + '_with'].index(with_prop)
             output << open(item)
           end
         else
-          output << "It won't open. Maybe you need something to open it with?\n"
+          output << "It won't open. Maybe you need something to " + open_or_close + " it with?\n"
         end
       else
-        return open(item)
+        return (open_or_close == 'open') ? open(item) : close(item)
       end
     else
-      output << "You can't open the #{item}.\n"
+      output << "You can't " + open_or_close + " the #{item}.\n"
     end
 
     output
@@ -479,17 +491,46 @@ class Game
     end
   end
 
+  def close(item)
+
+    if @props[item]
+      prop_close(item)
+    elsif @doors[item]
+      door_close(item)
+    else
+      error("game.close called on item that isn't a prop or door.")
+    end
+  end
+
   def door_open(door)
 
     output = ''
 
     if @doors[door]
 
-      output << "You open the #{@doors[door].name}.\n"
+      output << "You open #{@doors[door].noun}.\n"
 
       output << event(@doors[door], 'on_open')
 
       @doors[door].traits['opened'] = true
+
+    end
+
+    output
+
+  end
+
+  def door_close(door)
+
+    output = ''
+
+    if @doors[door]
+
+      output << "You close #{@doors[door].noun}.\n"
+
+      output << event(@doors[door], 'on_close')
+
+      @doors[door].traits['opened'] = false
 
     end
 
@@ -520,11 +561,31 @@ class Game
             @props[contained_prop].location = @player.location
           end
         end
+
+        @props[prop].traits['contains'] = false
       end
 
       output << event(@props[prop], 'on_open')
 
       @props[prop].traits['opened'] = true
+
+    end
+
+    output
+
+  end
+
+  def prop_close(prop)
+
+    output = ''
+
+    if @props[prop]
+
+      output << "You close #{@props[prop].noun}.\n"
+
+      output << event(@props[prop], 'on_close')
+
+      @props[prop].traits['opened'] = false
 
     end
 
