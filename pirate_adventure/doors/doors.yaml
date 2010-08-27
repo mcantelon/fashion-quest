@@ -14,7 +14,7 @@ door:
   description: The door looks solid.
   traits:
     opened: false
-    opens_with:
+    open_with:
     - keys
   locations:
   - hallway

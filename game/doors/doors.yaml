@@ -20,7 +20,7 @@ dark door:
   - bedroom
   traits:
     opened: false
-    opens_with:
+    open_with:
     - brass key
   events:
     on_open: |

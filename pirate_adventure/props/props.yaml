@@ -176,7 +176,7 @@ box:
     visible: false
     buried: true
     opened: false
-    opens_with: hammer
+    open_with: hammer
     contains:
       - prop: stamps
 
