@@ -25,6 +25,15 @@ logic: |
 
     else
 
+      if (@locations[location].exits[direction]['condition'])
+
+        result = instance_eval(@locations[location].exits[direction]['condition'])
+
+        if (!result['success'])
+          return result['message']
+        end
+      end
+
       @state['last_location'] = location
 
       @player.location = @locations[location].exits[direction]['destination']

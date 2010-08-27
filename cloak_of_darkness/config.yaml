@@ -113,7 +113,11 @@ setup_logic: |
   # Define locations
 
   cloakroom = @game.create(Location, 'cloakroom')
-  cloakroom.exits = {'east' => {'destination' => 'foyer'}}
+  cloakroom.exits = {
+    'east' => {
+      'destination' => 'foyer'
+    },
+  }
   cloakroom.description = "The walls of this small room were clearly once lined with hooks, though now only one remains. The exit is a door to the east.\n"
   @game.locations['cloakroom'] = cloakroom
 
@@ -126,7 +130,13 @@ setup_logic: |
   foyer = @game.create(Location, 'foyer')
   foyer.exits = {
     'south' => {'destination' => 'bar'},
-    'west' => {'destination' => 'cloakroom'}
+    'west' => {'destination' => 'cloakroom'},
+    'north' => {
+      'condition' => "{
+          'message' => \"You've only just arrived, and besides, the weather outside seems to be getting worse.\\n\",
+          'success' => false
+        }"
+    }
   }
   foyer.description = "You are standing in a spacious hall, splendidly decorated in red and gold, with glittering chandeliers overhead. The entrance from the street is to the north, and there are doorways south and west.\n"
   @game.locations['foyer'] = foyer
@@ -189,13 +199,6 @@ startup_logic: |
       game.state['trampling'] = game.state['trampling'] + 2
       return {
         'message' => "Blundering around in the dark isn't a good idea!\n",
-        'success' => false
-      }
-    end
-
-    if game.locations[game.player.location].id == 'foyer' and arg['direction'] == 'north'
-      return {
-        'message' => "You've only just arrived, and besides, the weather outside seems to be getting worse.\n",
         'success' => false
       }
     end
