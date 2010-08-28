@@ -5,6 +5,9 @@ child:
   hp: 1
   exchanges:
     shoes: true
+  mutter_probability: 10
+  mutters:
+  - The child looks at you sadly.
   discusses:
     ?
       - hi
