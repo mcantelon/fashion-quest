@@ -131,6 +131,9 @@ setup_logic: |
   foyer = @game.create(Location, 'foyer')
   foyer.exits = {
     'south' => {'destination' => 'bar'},
+    'west' => {
+      'destination' => 'cloakroom'
+     },
     'north' => {
       'condition' => "{
           'message' => \"You've only just arrived, and besides, the weather outside seems to be getting worse.\\n\",
