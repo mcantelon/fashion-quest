@@ -3,6 +3,7 @@ syntax:
 - "ask <character> about <topic>"
 - "say <topic> to <character>"
 - "talk <character> about <topic>"
+- "talk to <character> about <topic>"
 
 logic: |
 
