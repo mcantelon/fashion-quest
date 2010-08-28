@@ -390,8 +390,8 @@ class Game
 
   end
 
-  def prop_404(prop)
-    "I don't see a #{prop}.\r"
+  def not_found(thing)
+    "I don't see a #{thing}.\r"
   end
 
   def prop_located_at(prop, location)

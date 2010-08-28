@@ -160,9 +160,9 @@ class Command
 
             # need to test that door exists and near player
             if not @game.doors[potential_door]
-              error = @game.prop_404(potential_door)
+              error = @game.not_found(potential_door)
             elsif not @game.doors[potential_door].locations.include?(@game.locations[@game.player.location].id)
-              error = @game.prop_404(potential_door)
+              error = @game.not_found(potential_door)
             end
 
             if reference_name
@@ -178,10 +178,10 @@ class Command
 
             # need to test that prop exists and near player
             if not @game.props[potential_prop]
-              error = @game.prop_404(potential_prop)
+              error = @game.not_found(potential_prop)
             elsif !@game.prop_located_near_player(potential_prop)
 
-              error = @game.prop_404(potential_prop)
+              error = @game.not_found(potential_prop)
             end
 
             if reference_name
@@ -197,10 +197,10 @@ class Command
 
             # need to not only test that character exists, but that it's here
             if not @game.characters[potential_character]
-              error = @game.prop_404(potential_character)
+              error = @game.not_found(potential_character)
             elsif @game.characters[potential_character].location != @game.locations[@game.player.location].id and
               @game.characters[potential_character].location != 'player'
-              error = @game.prop_404(potential_character)
+              error = @game.not_found(potential_character)
             end
 
             if reference_name
