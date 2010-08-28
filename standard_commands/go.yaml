@@ -5,6 +5,8 @@ syntax:
 
 logic: |
 
+  output = ''
+
   direction = arg['direction']
 
   @state['paces'] = 0
@@ -32,13 +34,17 @@ logic: |
         if (!result['success'])
           return result['message']
         end
+
+        if (result['message'])
+          output << result['message']
+        end
       end
 
       @state['last_location'] = location
 
       @player.location = @locations[location].exits[direction]['destination']
 
-      return '>look'
+      return output + '>look'
 
     end
 
