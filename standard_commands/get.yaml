@@ -63,7 +63,15 @@ logic: |
 
   else
 
-    output << @game.not_found(prop.noun)
+    if prop.location == 'player'
+
+      output << "You already have it!\n"
+
+    else
+
+      output << @game.not_found(prop.noun_base)
+
+    end
 
   end
 
