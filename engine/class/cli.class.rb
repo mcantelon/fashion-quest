@@ -183,7 +183,7 @@ class Cli
 
     @command_history = []
 
-    issue_command('look')
+    initial_command('look')
     display_prompt
 
   end
@@ -249,20 +249,30 @@ class Cli
 
         output_add(@prompt + input_text) if show_input
 
+        output = ''
+
         result = parse(input_text, @command_abbreviations, @garbage_words, @global_synonyms)
 
-        # if the result of a command is prefixed with ">", redirect to another command
-        if result[0] == ?>
-          result = issue_command(result[1..-1], false)
+        # look for lines of output indicating subcommands should be called
+        result.each do |line|
+          # if the result of a command is prefixed with ">", redirect to another command
+          if line[0] == ?>
+            output << issue_command(line[1..-1], false)
+          else
+            output << line
+          end
         end
 
-        # execute turn logic if not executing a compound command
+        # execute turn logic if not executing a subcommand
         if show_input == true
           @message_text << @game.turn
-        end
 
-        @output_text << result
-        @input_text  = ''
+          @output_text << output
+          @input_text  = ''
+        else
+        # return subcommand output
+          return output
+        end
 
     end
   end
@@ -397,6 +407,11 @@ class Cli
 
   def output_error
     return "I don't understand what you want from me.\n"
+  end
+
+  def initial_command(command)
+    @output_text << issue_command('look', false)
+    @input_text = ''
   end
 
 end
