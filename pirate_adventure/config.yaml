@@ -29,4 +29,5 @@ startup_logic: |
   end
 
   # start game by issueing "look" command
-  @cli.issue_command('look', false)
+  @cli.initial_command('look')
+  #@cli.issue_command('look', false)
