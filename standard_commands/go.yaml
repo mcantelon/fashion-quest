@@ -9,8 +9,6 @@ logic: |
 
   direction = arg['direction']
 
-  @state['paces'] = 0
-
   location = @player.location
 
   # If an exit exists, load destination location and issue look command

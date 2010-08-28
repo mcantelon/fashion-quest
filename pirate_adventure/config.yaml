@@ -28,6 +28,19 @@ startup_logic: |
 
   end
 
+  # reset paces
+  @game.state['paces'] = 0
+
+  # command conditions execute before commands, so we can use one as a
+  # hack to reset paces when player changes location
+  def (@game.helpers).go_condition(game)
+
+    game.state['paces'] = 0
+
+    {'success' => true}
+  end
+
+  @cli.commands['go'].condition = "@game.helpers.go_condition(@game)"
+
   # start game by issueing "look" command
   @cli.initial_command('look')
-  #@cli.issue_command('look', false)
