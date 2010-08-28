@@ -6,7 +6,7 @@ class Character < GameComponent
   include Has_Traits
 
   attr_accessor :location, :gender, :aggression, \
-    :mobility, :exchanges, :discusses, :hostile, :events, :logic
+    :mobility, :exchanges, :discusses, :mutters, :mutter_probability, :hostile, :events, :logic
 
   def initialize(params)
 
@@ -47,6 +47,11 @@ class Character < GameComponent
 
     output = ''
 
+    # allow character to mutter
+    if mutter_probability && decision(mutter_probability)
+      output << mutter
+    end
+
     # inform if character has turned hostile
     if hostile != true
       output << turns_hostile
@@ -74,6 +79,11 @@ class Character < GameComponent
 
   end
 
+  def mutter
+
+    wrap_in_quotes_optionally(mutters[rand(mutters.length)])
+  end
+
   def wander
 
     output = ''
@@ -86,6 +96,7 @@ class Character < GameComponent
     if possible_exits && possible_exits.length > 0
 
       # pick one of the exits and make it the character's new location
+      #chosen_direction = pick_one(possible_exits)
       exit_choice = rand(possible_exits.length)
       chosen_direction = possible_exits.keys[exit_choice]
 
@@ -219,6 +230,16 @@ class Character < GameComponent
 
   end
 
+  def wrap_in_quotes_optionally(statement)
+
+    if statement[0,1] == '>'
+      "\"#{statement[1,5000]}\"\n"
+    else
+      "#{statement}\n"
+    end
+
+  end
+
   def discuss(topic)
 
     output = ''
@@ -232,11 +253,7 @@ class Character < GameComponent
         if topics.index(topic) != nil
           output << event('on_discuss')
           response = responses[rand(responses.length)]
-          if response[0,1] == '>'
-            output << "\"#{response[1,5000]}\"\n"
-          else
-            output << "#{response}\n"
-          end
+          output << wrap_in_quotes_optionally(response)
         end
       end
     end
