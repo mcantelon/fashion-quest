@@ -77,6 +77,7 @@ setup_logic: |
   cloak.description = "A handsome cloak, of velvet trimmed with satin, and slightly spattered with raindrops. Its blackness is so deep that it almost seems to suck light from the room."
   cloak.location = 'player'
   cloak.traits = {
+    'visible' => true,
     'wearable' => true,
     'portable' => true
   }
@@ -130,7 +131,13 @@ setup_logic: |
   foyer = @game.create(Location, 'foyer')
   foyer.exits = {
     'south' => {'destination' => 'bar'},
-    'west' => {'destination' => 'cloakroom'},
+    'west' => {
+      'condition' => "{ 
+          'message' => \"Hey now!\\n\", 
+          'success' => true 
+        }",
+      'destination' => 'cloakroom'
+     },
     'north' => {
       'condition' => "{
           'message' => \"You've only just arrived, and besides, the weather outside seems to be getting worse.\\n\",
@@ -237,4 +244,4 @@ startup_logic: |
   @cli.command_condition = "@game.helpers.command_condition(@game, command)"
 
   # Start game by issueing "look" command
-  @cli.issue_command('look', false)
+  @cli.initial_command('look')
