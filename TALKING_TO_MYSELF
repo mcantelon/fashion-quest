@@ -1,79 +1,28 @@
--add support for message trampling (use transition and game state var)
-
--redo prop events
-  -on_ = after_
-
--revise pirate adventure to use new scoring? then need to add condition based scoring and have score total be dynamically calculated
-
-Needed for next release:
--add "mutters" support and "talkative" for probability of character muttering (parrot?)
+To-do:
+-change 'prop_404' to 'not_found_message'
+*-finish documenting props
+-characters could have "patrols"
 -for attacking, add agility to character, the higher it is the harder it is to hit the character
-(no agility or agility 1 will always hit, 2 = 50% of the time, 3 = 33.3% of the time, etc.)
-actually, what can be done is subtract the agility of the attacker from the agility of the attackee
-1-document naming
-1-document command conditions
--document exit conditions
--need a definitive term for non-location game elements (game component)
-3-implement before and after command hash for props (i.e. before['get'] = 'some logic')
-  -before evaluating, trigger prop before logic check for denial
-    events before..
-  -after evaluation, trigger prop after logic check for denial
--denial is a shitty paradigm... should just return success and output as hash
-
-Needed for Cloak port:
--maybe conditon should be fail_condition
-
-Characters, props, and doors are, within the context of English grammar, nouns that can be referred to in the output of commands, events, transitions, and framework engine logic. Fashion Quest includes functions that can be used to refer to nouns in different types of English language use.
-
--explain about how to set properties (proper, etc.)
-
--use list table to explain functions
-
-noun
-noun_cap
-noun_direct
-noun_direct_cap
-noun_direct_specific
-noun_direct_specific_cap
-
--show a few examples from the demo games
-
-
--add dynamic_element to cut out locatons from elements?
-
-Fashion Quest
-
-Change readme from markdown to rst for consistancy.
-Finish barebones documentation.
-
-I think below is fixed...
-#*-after winning old game then restarting it's all fucked up
-#    -are object ids changing?
-
-Needed for alpha:
-*-seems to be bug with scrolling in Ubuntu when an image size is specified or something
--add close command to standard commands
+ (no agility or agility 1 will always hit, 2 = 50% of the time, 3 = 33.3% of the time, etc.)
+ actually, what can be done is subtract the agility of the attacker from the agility of the attackee
+*-add "mutters" support and "chatiness" for probability of character muttering (parrot?)
+-change readme from markdown to rst for consistancy.
 -add generic version of dig to standard commands
-EZ-make sure command code is civilized
--add "prop_anywhere" argument support for commands that work on props that don't have a location yet (i.e. building or conjuring)
-  -<any> works, but maybe something other than any ... anything? component? object? thing? noun?
--see if my noun naming scheme paradigm meshes with grammar terms
 -finish migrating properties to traits
 
-Nice to do:
+Maybe:
+-might be cool to be able to use | chars in syntax patterns
 -put (i.e. put x in y)
--is agression/mobility documented?
 -do some kind of background animation for pirate adventure
 -try out video
 -fashion quest site
--implement Cloak of Darkness
 -try out Shoes packager again
 -make a way to create a ruby script for issueing commands, for testing old game
  ...maybe the command will be "run script" or "load script"
 -maybe have a way of opening a directory to run an adventure in it with a "Browse..." button on the selector
 -selector is weird if you resize it
 
-do we need the destination/prop paradigm in exits? what is it used for?
+???do we need the destination/prop paradigm in exits? what is it used for?
 
 [Pirate adventure authenticity]
 P-you opened it <- ??? this alert pops up when you open book... fix this
@@ -89,16 +38,9 @@ P-what do plans say when read?
 -maybe have on_get overrule normal output of prop opening so opening book can make "Something falls out." 
 -low priority - make sure the map only falls out when you look at the opened chest
 
--on_exchange event... what if different events for different types of exchanges?
--add GPL notices to source files
--maybe have "talk <character>" command to get some hints as to what can be talked aboutt
 -what is player name for? maybe if set make things third-person
--clean up game selector layout
 
 -RDOC documentation
-
--should get prop and door traits by default if not set by yaml to lessen errors in
- commands (we do this for characters)... test this by looping through everything and trying to access traits
 
 [Low priority]
 
@@ -111,12 +53,6 @@ P-what do plans say when read?
       -put cake in oven
       -look in oven
       -get cake from oven
-
-    Naming:
-    -characters and props should have gender for pronoun support
-    -characters and props should have plural=true as well
-    -characters and props should have proper=true as well (look at search command to see why)
-    -in characters, make sure replacing of "name" with "id" doesn't cause problems
 
   Finishing:
 
@@ -144,7 +80,6 @@ P-what do plans say when read?
 Maybe:
 
   -move appropriate synonyms to command_abbreviations
-  -change 'prop_404' to 'not_found_message'
   -if character is dead and has stuff on him, hint at that during look
   -add alert if garbage word appears in command keywords and filter out
 
@@ -163,11 +98,6 @@ Documentation:
 
 Fashion Quest: cross-platform interactive fiction using Ruby and Shoes
 
-Subproject: portable CLI to use as Shoes REPL
--should have game startup logic and logic triggered by pressing enter (currently "parse(input_text)") and hardwired command be args to cli or something
--should have checks for whether game is nil
--should set @output_text to '' if not set by param
-
 cool puzzle
 -room contains fire hydrant and open window too high to reach
 -need wrench to open
@@ -178,12 +108,12 @@ cool puzzle
 
 Criteria for Comparison to other frameworks:
 
-                                              ADRIFT INFORM 6 INFORM 7  TADS 3 HUGO
--uses general purpose programming language?   N      N        N
--extensible?                                  N      Y        Y
--fully cross-platform?                        N      Y        Y
--supports automated testing?                  N?     Y        Y
--graphics suport?                             Y      Y        Y
--open source?                                 N      Y        Y
+                                              ADRIFT INFORM 6 INFORM 7  TADS 3 HUGO FASHION QUEST
+-uses general purpose programming language?   N      N        N         ?
+-extensible?                                  N      Y        Y         ?
+-fully cross-platform?                        N      Y        Y         ?
+-supports automated testing?                  N?     Y        Y         ?
+-graphics suport?                             Y      Y        Y         ?
+-open source?                                 N      Y        Y         ?
 
 Idea... save everything to YAML and binhex graphics? use that like ZCODE
