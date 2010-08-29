@@ -2,8 +2,6 @@ cavern:
   exits:
     west:
       destination: hallway
-    crack:
-      destination: top_of_hill
     shed:
       destination: shed
   dark: true
