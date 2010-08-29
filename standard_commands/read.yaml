@@ -7,10 +7,22 @@ logic: |
 
   if prop.traits['text']
 
-    output << prop.traits['text']
-    #File.open("#{@game.path}#{prop.traits['text']}", 'r') { |f|
-    #  output << f.read
-    #}
+    text = prop.traits['text']
+
+    # if text begins with ">" use text as filename
+    if text[0] == ?>
+
+      file = text[1..-1]
+
+      File.open("#{@game.path}#{file}", 'r') { |f|
+        output << f.read
+      }
+
+    else
+
+      output << prop.traits['text']
+
+    end
 
     on_read_output = @game.event(prop, 'on_read')
 
