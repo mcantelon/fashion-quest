@@ -9,6 +9,24 @@ stairs:
     on_look: |
       @doors['stairs door'].traits['visible'] = true
       ""
+clothing:
+  description: The clothing is pretty gross.
+  location: closet
+  traits:
+    visible: false
+  events:
+    on_get: |
+      @props['clothing'].location = 'closet'
+      "After grabbing it, you get immediately grossed out by the smell and drop it.\n"
+tools:
+  description: The tools are rusty and useless. They remind you of your lack of a future.
+  location: closet
+  traits:
+    visible: false
+  events:
+    on_get: |
+      @props['tools'].location = 'closet'
+      "After grabbing them, you quickly realize they are too rusty to be useful and drop them again.\n"
 shovel:
   description: Although it has a touch of rust on it, this shovel still has a distinguished air about it.
   location: closet
