@@ -7,7 +7,7 @@ stairs:
     visible: false
   events:
     on_look: |
-      @doors['stairs_door'].traits['visible'] = true
+      @doors['stairs door'].traits['visible'] = true
       ""
 shovel:
   description: Although it has a touch of rust on it, this shovel still has a distinguished air about it.
@@ -23,6 +23,7 @@ medallion:
   traits:
     visible: false
     buried: true
+    portable: false
     wearable: true
 shoes:
   plural: true 
