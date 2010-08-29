@@ -1,0 +1,25 @@
+---
+syntax:
+- "dig"
+
+logic: |
+
+  output = ''
+
+  if (@player.can_dig)
+
+    output << @player.dig
+
+  else
+
+    output << "You have nothing to dig with.\n"
+
+  end
+
+  if output == ''
+
+    output << "You find nothing.\n"
+
+  end
+
+  output
