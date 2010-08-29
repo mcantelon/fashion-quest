@@ -5,18 +5,18 @@ crack:
   locations:
   - top_of_hill
   - cavern
-  size: 1
   traits:
+    size: 1
     opened: true
 
 door:
   name: door
   description: The door looks solid.
   traits:
+    size: 2
     opened: false
     open_with:
     - keys
   locations:
   - hallway
   - pit
-  size: 2

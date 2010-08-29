@@ -3,7 +3,7 @@ class Door < GameComponent
   include Has_Events
   include Has_Traits
 
-  attr_accessor :locations, :size, :text, :events, :visible
+  attr_accessor :locations, :text, :events, :visible
 
   def initialize
 
@@ -17,9 +17,9 @@ class Door < GameComponent
 
     largest_prop_size = player.largest_carried_item_size
 
-    # explain this in a comment, eh
-    if @size
-      new_player_location = (@size >= largest_prop_size) ? destination_from(player.location) : false
+    # explain this in a
+    if @traits && @traits['size']
+      new_player_location = (@traits['size'] >= largest_prop_size) ? destination_from(player.location) : false
     else
       new_player_location = destination_from(player.location)
     end
