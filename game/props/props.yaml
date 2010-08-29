@@ -9,6 +9,21 @@ stairs:
     on_look: |
       @doors['stairs_door'].traits['visible'] = true
       ""
+shovel:
+  description: Although it has a touch of rust on it, this shovel still has a distinguished air about it.
+  location: closet
+  attack strength: 6
+  traits:
+    can_dig: true
+medallion:
+  description: The medallion would look classy to you if you were a teenage stoner in the 1970s.
+  location: yard
+  aliases:
+  - medal
+  traits:
+    visible: false
+    buried: true
+    wearable: true
 shoes:
   plural: true 
   description: The shoes are small and pretty.
@@ -21,7 +36,7 @@ leaflet:
   traits:
     text: "The leafet is about men's rights. It thinks the child support is wrong.\n"
 shiv: 
-  attack strength: 7
+  attack strength: 9
   description: The shiv looks sharp... useful.
   location: deadbeat
 walking stick: 

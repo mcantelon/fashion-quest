@@ -22,6 +22,7 @@ deadbeat:
   exchanges: 
     smokes: 
     - shoes
+    medallion:
     - shiv
   description: The deadbeat has watery eyes. He seems jumpy.
   hp: 6
