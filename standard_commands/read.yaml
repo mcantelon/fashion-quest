@@ -1,13 +1,16 @@
 syntax:
-- "read <prop>"
+- "read <prop:noun>"
+- "read <door:noun>"
 
 logic: |
 
+  noun = arg['noun']
+
   output = ''
 
-  if prop.traits['text']
+  if noun.traits['text']
 
-    text = prop.traits['text']
+    text = noun.traits['text']
 
     # if text begins with ">" use text as filename
     if text[0] == ?>
@@ -20,11 +23,11 @@ logic: |
 
     else
 
-      output << prop.traits['text']
+      output << noun.traits['text']
 
     end
 
-    on_read_output = @game.event(prop, 'on_read')
+    on_read_output = @game.event(noun, 'on_read')
 
     if on_read_output.class == String
 
