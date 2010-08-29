@@ -62,5 +62,9 @@ The bedroom photo at game/locations/images/bedroom.jpg is by Stacy Michelle,
 (c) Creative Commons Attribution 2.0 Generic. It was cropped. Her other
 photos can be seen at http://www.flickr.com/photos/stacymbass.
 
+The closet photo at game/locations/images/closet.jpg is by schizoform, (c)
+Attribution 2.0 Generic. It was cropped. His other photos can be seen at 
+http://www.flickr.com/photos/schizoform.
+
 Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative
 use of computers! We miss you!
