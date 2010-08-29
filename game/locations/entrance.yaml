@@ -8,6 +8,7 @@ entrance:
       destination: upstairs
     stairs:
       destination: upstairs
+      description: upstairs
 
   description: |
     You are in the sunlit entranceway of a sizeable home. The walls are clean and it smells pleasant. There is no air of sadness or decay.
