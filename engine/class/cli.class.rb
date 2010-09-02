@@ -279,9 +279,17 @@ class Cli
 
   def save_walkthrough
 
-    save_data_as_yaml_file(@command_history[0...-1], ask_save_file)
-    @output_text << "Walkthrough saved.\n"
+    if (filename = ask_save_file)
+
+      save_data_as_yaml_file(@command_history[0...-1], filename)
+      @output_text << "Walkthrough saved.\n"
+
+    else
+      alert('Aborted (or no free disk space).')
+    end
+
     @input_text = ''
+
   end
 
   def load_walkthrough
@@ -312,8 +320,12 @@ class Cli
       file.close
 
       @output_text << "History saved.\n"
-      @input_text = ''
+    else
+      alert('Aborted (or no free disk space).')
     end
+
+    @input_text = ''
+
   end
 
   def run_script
