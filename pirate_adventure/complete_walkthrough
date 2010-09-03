@@ -51,7 +51,6 @@
 - get rug
 - drop rug
 - get keys
-- l
 - go stairs
 - go window
 - say yoho
@@ -65,7 +64,6 @@
 - get water
 - get fish
 - s
-- get anchor
 - s
 - drop water wings
 - get torch
@@ -83,33 +81,46 @@
 - e
 - go shed
 - get shovel
-- l
 - n
 - go crack
-- drop bottle
-- d
 - w
+- go door
+- u
 - w
 - unlight torch
-- i
-- drop water
-- i
+- drop bottle
+- w
+- w
 - get water wings
 - e
 - e
 - go path
+- go crack
+- i
 - drop shovel
 - go crack
 - light torch
 - get sails
-- get lumber
 - go crack
+- drop sails
+- go crack
+- get lumber
+- w
+- go door
+- u
+- w
 - unlight torch
+- w
+- w
+- drop lumber
+- e
+- e
+- go path
+- get sails
 - d
 - w
 - w
 - drop sails
-- drop lumber
 - e
 - e
 - go path
@@ -117,7 +128,13 @@
 - d
 - w
 - w
-- n
+- i
+- unlight torch
+- drop torch
+- drop matches
+- go lagoon
+- wait
+- l
 - dig anchor
 - get anchor
 - s
@@ -132,7 +149,7 @@
 - w
 - w
 - drop matches
-- drop torch
+- drop plans
 - get book
 - get sneakers
 - say yoho
@@ -161,6 +178,8 @@
 - e
 - pace 30
 - dig
+- l
+- open box with hammer
 - open box with hammer
 - drop hammer
 - get stamps
@@ -172,8 +191,7 @@
 - wake pirate
 - n
 - go ship
-- wait
-- wait
+- set sail
 - wait
 - wait
 - set sail
@@ -182,8 +200,12 @@
 - drop shovel
 - get sneakers
 - get book
+- i
+- drop map
+- drop water
+- drop crackers
+- get book
+- i
 - say yoho
 - go window
 - d
-#- score
-
