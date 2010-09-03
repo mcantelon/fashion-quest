@@ -1,5 +1,6 @@
 --- 
 crackers:
+  plural: true
   location: apartment
 
 safety sneakers:
@@ -50,6 +51,7 @@ ship:
 
 dubloons:
   location: monastery
+  plural: true
   events:
     on_get: |
       if @characters['snakes'].location == 'monastery'
@@ -93,13 +95,16 @@ lumber:
 sails:
   description: The sails are in a pile.
   location: cavern
+  plural: true
 
 water wings:
   description: They float.
   location: shed
+  plural: true
 
 keys:
   description: The keys are shiny. You like that.
+  plural: true
 
 book:
   description: The book is large and blood-soaked.
@@ -151,6 +156,7 @@ fish:
     - water
 
 water:
+  plural: true
   location: ocean
   traits:
     get_with:
