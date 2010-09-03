@@ -4,7 +4,8 @@ width: 600
 height: 600
 image_height: 200
 resizable: true
-startup_message: "Welcome to Pirate Adventure Clone.\n\n"
+startup_message: "Welcome to Pirate Adventure Knockoff.\nThis is a port of the 1978 classic by Scott Adams.\n\n"
+
 startup_logic: |
 
   # set background color
