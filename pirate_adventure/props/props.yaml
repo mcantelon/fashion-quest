@@ -160,6 +160,11 @@ water:
   traits:
     get_with:
     - bottle
+  events:
+    on_get: |
+      "The bottle holds the water.\n"
+    on_drop: |
+      "The bottle is now empty.\n"
 
 bottles:
   name: bottles of rum
@@ -171,7 +176,13 @@ bottles:
     buried: true
 
 bottle:
-  description: The bottle is empty.
+  description: It's a glass bottle, alright.
+  events:
+    on_drop: |
+      if @props['water'].location == 'player'
+        @props['water'].location = @player.location
+      end
+      ""
 
 box:
   description: The box is made of wood.
