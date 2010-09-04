@@ -215,7 +215,7 @@ chest:
   traits:
     portable: false
     opened: false
-    opens_with: keys
+    open_with: keys
     contains:
       - prop: plans
 
