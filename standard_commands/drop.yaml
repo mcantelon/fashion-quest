@@ -18,6 +18,14 @@ logic: |
     prop.location = @player.location
     output << "You drop #{prop.noun}.\n"
 
+    on_drop_output = @game.event(prop, 'on_drop')
+
+    if on_drop_output
+
+      output << on_drop_output
+
+    end
+
   else
 
     output << @game.not_found(prop.noun_base)
