@@ -1,0 +1,7 @@
+treasure:
+  description: This treasure is really something else. It might be worth something, even!
+  location: yard
+  traits:
+    visible: false
+    buried: true
+    portable: false

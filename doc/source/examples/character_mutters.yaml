@@ -1,0 +1,7 @@
+child:
+  location: hallway
+  description: "The child look sad. The child has no shoes."
+  mutter_probability: 10
+  mutters:
+  - The child looks at you sadly.
+  - >Why is the world against me?

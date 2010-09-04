@@ -1,0 +1,10 @@
+---
+crack:
+  name: crack
+  description: The crack is big enough to squeeze through, but too narrow to bring large items through.
+  locations:
+  - top_of_hill
+  - cavern
+  traits:
+    size: 1
+    opened: true
