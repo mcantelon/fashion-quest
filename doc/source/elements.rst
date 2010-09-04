@@ -42,6 +42,74 @@ Props, such as the example below from the "Pirate Adventure" demonstration game,
 
 .. literalinclude:: examples/alias.yaml
 
+Props can have traits set that determine what can be done with them.
+
+Portability
+~~~~~~~~~~~
+
+If a prop has its `portable` trait set to true, the player will be able to take it. When props are defined using `props.yaml` the `portable` trait gets automatically set to true if not otherwise specified.
+
+Visibility
+~~~~~~~~~~
+
+If props have their `visible` trait set to true, these props will be automatically shown when the player looks. When props are defined using `props.yaml` the `visible` trait gets automatically set to true if not otherwise specified.
+
+Text
+~~~~
+
+If a prop has its `text` trait set, the prop can be read. `text` may be set to text to be shown to the player or, if the first character is ">", a text file in the game folder.
+
+Containers
+~~~~~~~~~~
+
+`open_with` `opens_with` ???
+If a prop has the `open` trait set to false it can contain other props. These props are specified using the `contains` trait. EXAMPLE
+
+Size
+~~~~
+
+The `size` trait can be used to prevent large props from passing through doors that have lesser `size` traits defined.
+
+The "crack" door in the Pirate Adventure demo game, for example, has a size of 1.
+
+.. literalinclude:: examples/door_size.yaml
+
+The size of the crack prevents the player from entering it if carrying props, such as the book and the shovel, that have a size of 2.
+
+Construction
+~~~~~~~~~~~~
+
+A prop can be specified as being built from other props. This is done by setting the `build_with` trait to the component props. If any of the component props should be taken out of play, they should be includes in the `build_consumes` trait.
+
+.. literalinclude:: doc/source/examples/prop_build.yaml
+
+Get With
+~~~~~~~~
+
+If you need to have one or more props to get another (a bottle, for example, to get water), you can set the `get_with` trait of a prop.
+
+Buried Props
+~~~~~~~~~~~~
+
+If a prop has its `can_dig` trait set to true it can be used to dig. If a prop has its `buried` trait set to true it can be dug up. When a prop is dug up its `portable` and `visible` traits get set to true. Below is an example of a buried prop.
+
+.. literalinclude:: examples/prop_buried.yaml
+
+Wearables
+~~~~~~~~~
+
+If a prop can be worn by the player, set the `wearable` trait to true.
+
+Flammables
+~~~~~~~~~~
+
+Locations can be set to be dark, in which case a player needs a source of illumination to see the description. If a prop has the trait `lit` set to false it can be lit on fire using a prop that has the `firestarter` trait set to true. If the prop has its `burn_turns` trait set to a number then it will only burn for that number of turns.
+
+Support
+~~~~~~~
+
+If a prop has the `supports` trait set to true, other props can be put on it. If the prop has the `supports_only` trait set to one or more props, only these props will be supported by it.
+
 Characters
 ----------
 
@@ -79,6 +147,10 @@ Characters can be asked questions about topics. Topics and responses are put int
 .. literalinclude:: examples/character_communication.yaml
 
 If the letter ">" is the first character of a response, double quotes will be put around the remaining characters of the response before outputting to the player.
+
+Characters can also be made to occasionally mutter random things or be described as doing random things. The example below shows a character that has a 10% chance, each turn, of either being described as looking at the player or as saying something.
+
+.. literalinclude:: examples/character_mutters.yaml
 
 Trade
 ~~~~~

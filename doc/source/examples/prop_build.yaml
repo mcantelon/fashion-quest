@@ -1,0 +1,10 @@
+table:
+  traits:
+    build_with:
+    - lumber
+    - nails
+    - saw
+    - hammer
+    build_consumes:
+    - lumber
+    - nails
