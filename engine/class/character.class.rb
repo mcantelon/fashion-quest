@@ -175,7 +175,9 @@ class Character < GameComponent
     # damage player accordingly and report
     if @player.hp
       @player.hp = @player.hp - damage
-      output << "You now have #{@player.hp.to_s} HP.\n"
+      if @player.hp > 0
+        output << "You now have #{@player.hp.to_s} HP.\n"
+      end
     end
 
     output
