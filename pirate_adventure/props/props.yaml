@@ -25,7 +25,6 @@ rug:
     portable: false
 
 ship:
-  location:
   traits:
     portable: false
     build_with:
