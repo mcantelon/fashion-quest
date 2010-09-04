@@ -14,8 +14,13 @@ logic: |
 
   # we should prolly change so just send the object, not id
   if (with_prop)
-    @game.attempt_open_item(prop.id, with_prop.id)
+    open_output = @game.attempt_open_item(prop.id, with_prop.id)
   else
-    @game.attempt_open_item(prop.id, nil)
+    open_output = @game.attempt_open_item(prop.id, nil)
   end
 
+  if open_output != ''
+    open_output
+  else
+    "You failed to open it.\n"
+  end
