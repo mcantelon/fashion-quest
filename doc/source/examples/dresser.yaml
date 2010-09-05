@@ -5,4 +5,4 @@ dresser:
     opened: false
     portable: false
     contains:
-      - prop: smokes
+      - smokes
