@@ -182,6 +182,7 @@ class Cli
     @output_stack.clear { }
 
     @command_history = []
+    @command_index = 0
 
     initial_command('look')
     display_prompt
