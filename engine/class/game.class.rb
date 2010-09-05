@@ -552,15 +552,11 @@ class Game
 
         @props[prop].traits['contains'].each do |contained_item|
 
-          type           = contained_item.keys[0]
-          contained_prop = contained_item.values[0]
+          if @props[contained_item]
 
-          # we leave open the possibility of having objects contain characters, etc.
-          # ...but maybe we should just have it be any key or any game component?
-          if type == 'prop'
+            output << "#{@props[prop].noun_cap} contains #{@props[contained_item].noun_direct}.\n"
+            @props[contained_item].location = @player.location
 
-            output << "#{@props[prop].noun_cap} contains #{@props[contained_prop].noun_direct}.\n"
-            @props[contained_prop].location = @player.location
           end
         end
 
