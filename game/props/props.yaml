@@ -85,7 +85,7 @@ dresser:
     opened: false
     portable: false
     contains: 
-      - prop: smokes
+      - smokes
 desk:
   description: The desk looks cheap.
   location: upstairs
@@ -116,6 +116,6 @@ book:
   traits:
     opened: false
     contains:
-      - prop: leaflet
+      - leaflet
     text: "The book is about the history of trainspotting.\n"
 
