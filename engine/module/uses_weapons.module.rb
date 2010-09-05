@@ -1,6 +1,6 @@
 module Uses_Weapons
 
-  attr_accessor :id, :hp, :strength, :dead
+  attr_accessor :id, :hp, :strength, :dead, :default_attack
 
   def determine_best_weapon
 

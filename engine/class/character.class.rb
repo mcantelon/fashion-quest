@@ -158,8 +158,10 @@ class Character < GameComponent
     best_weapon = determine_best_weapon
     if not best_weapon.empty?
       attack_strength += @props[best_weapon].traits['attack_strength']
+    elsif default_attack
+      best_weapon = default_attack
     else
-      best_weapon = 'fists'
+      best_weapon = 'punches and kicks'
     end
 
     # calculate damage based on attack strength
