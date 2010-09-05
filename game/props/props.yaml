@@ -30,8 +30,8 @@ tools:
 shovel:
   description: Although it has a touch of rust on it, this shovel still has a distinguished air about it.
   location: closet
-  attack strength: 6
   traits:
+    attack_strength: 6
     can_dig: true
 medallion:
   description: The medallion would look classy to you if you were a teenage stoner in the 1970s.
@@ -55,15 +55,17 @@ leaflet:
   traits:
     text: "The leafet is about men's rights. It thinks the child support is wrong.\n"
 shiv: 
-  attack strength: 9
   description: The shiv looks sharp... useful.
   location: deadbeat
+  traits:
+    attack_strength: 9
 walking stick: 
   aliases:
     - stick
-  attack strength: 5
   description: The walking stick is gnarled, but sturdy.
   location: player
+  traits:
+    attack_strength: 5
 shirt:
   aliases:
     - "t-shirt"
