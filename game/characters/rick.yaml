@@ -4,6 +4,7 @@ rick:
   mobility: 0
   gender: male
   strength: 7
+  default_attack: his fists
   discusses: 
     ?
       - hi

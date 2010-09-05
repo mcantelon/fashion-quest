@@ -6,6 +6,7 @@ cat:
   description: The cat is small and agile.
   hp: 2
   aggression: 5
+  default_attack: its claws
   events:
     on_attack:
     - "The cat yowls as he leaps at you.\n"

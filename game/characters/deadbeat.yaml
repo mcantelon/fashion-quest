@@ -2,6 +2,7 @@
 deadbeat:
   mobility: 50
   strength: 3
+  default_attack: his fists
   discusses: 
     ? 
       - rick
