@@ -12,9 +12,9 @@ Locations are places a player can visit during a game.
 
 Each location is defined in its own YAML file within the 'locations' subdirectory of the game directory.
 
-The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a location with two exits: an exit to the north and an open window. The unique indentifier of the location is `alcove`.
+The example below defines a location with a number of exits. The unique indentifier of the location is `entrance`. Each exit has a destination, which is the unique identifier of the location to which it leads. Note that the `stairs` exit has a description: "upstairs". This is used to describe travelling this way. For example a character taking this exit will be described using  "the hobo goes upstairs" rather than "the hobo goes stairs".
 
-.. literalinclude:: ../../pirate_adventure/locations/alcove.yaml
+.. literalinclude:: ../../game/locations/entrance.yaml
 
 Doors
 -----
@@ -34,11 +34,11 @@ Props are items that players can interact with in the game. They may be portable
 
 Props are defined in a file called `props.yaml` within the `props` subdirectory of the game directory.
 
-The example below, from the "Fashion Quest: Daydream" demonstration game, defines a dresser located in a location with the unique identifier `bedroom`. The dresser can be opened by the player and contains another prop, a pack of `smokes`.
+The example below defines a dresser located in a location with the unique identifier `bedroom`. The dresser can be opened by the player and contains another prop, a pack of `smokes`.
 
 .. literalinclude:: examples/dresser.yaml
 
-Props, such as the example below from the "Pirate Adventure" demonstration game, can have one or more aliases. The aliases can be used by players to refer to the prop.
+Props, as the example below shows, can have one or more aliases. The aliases can be used by players to refer to the prop.
 
 .. literalinclude:: examples/alias.yaml
 
@@ -110,7 +110,9 @@ If a prop can be worn by the player, set the `wearable` trait to true.
 Flammables
 ~~~~~~~~~~
 
-Locations can be set to be dark, in which case a player needs a source of illumination to see the description. If a prop has the trait `lit` set to false it can be lit on fire using a prop that has the `firestarter` trait set to true. If the prop has its `burn_turns` trait set to a number then it will only burn for that number of turns.
+Locations can be set to be dark, in which case a player needs a source of illumination to see the description. If a prop has the trait `lit` set to false the player will be able to light on fire using a prop that has the `firestarter` trait set to true. If the prop has its `burn_turns` trait set to a number then it will only burn for that number of turns.
+
+.. literalinclude:: examples/prop_flammable.yaml
 
 Support
 ~~~~~~~
@@ -126,7 +128,7 @@ Characters are beings that players can interact with in the game.
 
 Each character is defined in its own YAML file within the 'characters' subdirectory of the game directory.
 
-The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a character located in a location with the unique identifier `shack`. The pirate will accept the `rum` prop if the player gives it to him.
+The example below defines a character located in a location with the unique identifier `shack`. The pirate will accept the `rum` prop if the player gives it to him.
 
 .. literalinclude:: examples/character.yaml
 
@@ -195,7 +197,7 @@ State
 
 Game state is used to keep track of game conditions other than the state of other game elements. State can be referenced, or set, from logic within commands, transitions, and events.
 
-One example from the `Pirate Adventure Knockoff` demonstration is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.
+One example, from the `Pirate Adventure Knockoff` demonstration game, is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.
 
 .. code-block:: ruby
 

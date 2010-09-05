@@ -1,7 +1,7 @@
 Introduction
 ============
 
-Fashion Quest is an interactive fiction framework created to make `text adventure games`_ about fashion because we love fashion and we love text adventure games. Fashion Quest is written in the Ruby programming language and requires Shoes_, a cross-platform GUI framework created by `Why the Lucky Stiff`_.
+Fashion Quest is an interactive fiction framework created to make `text adventure games`_ about fashion because we love fashion and we love text adventure games. Fashion Quest is written in the Ruby programming language and requires Shoes_, a cross-platform GUI framework created by `Why the Lucky Stiff`_. Fashion Quest has been tested with Shoes 2.
 
 Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes three demonstration games. The game "Fashion Quest: Daydream" is very small and designed to demonstrate non-player character features. It lives in the `game` directory. The game "Pirate Adventure Knockoff" is a port of the 1978 text adventure `"Pirate Adventure"`_ by Scott and Alexis Adams and lives in the `pirate_adventure` directory. The game `"Cloak of Darkness"`_ is a port of a game that was created as a means of comparing different interaction fiction frameworks. It lives in the `cloak_of_darkness` directory. There is also a game skeleton exists primarily to serve as the basis of new games. It lives in the `new_game` directory. 
 
@@ -24,7 +24,7 @@ Fashion Quest is a relative newcomer. Established frameworks include *Inform*, *
 
 `ADRIFT`_ is one of the most user friendly of the frameworks. It allows games to be created using a GUI. It is not, however, extensible, cross-platform, or open source.
 
-`Inform`_ is one of the most elegant and established of the frameworks. It allows games to be developed either in natural language (Inform 7) or a specialize programming langague (Inform 6). It is extensible, cross-platform, open source, and supports automated game testing.
+`Inform`_ is one of the most elegant and established of the frameworks. It allows games to be developed either in natural language (Inform 7) or a specialize programming language (Inform 6). It is extensible, cross-platform, open source, and supports automated game testing.
 
 `TADS`_ is reputedly more powerful than Inform, but has a fairly steep learning curve.
 

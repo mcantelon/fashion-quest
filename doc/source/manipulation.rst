@@ -1,9 +1,7 @@
 Game World Manipulation
 =======================
 
-Game components are defined using YAML_, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.
-
-.. _YAML: http://www.yaml.org/
+Once game elements are defined, they can be manipulated in the game by commands, events, and transitions.
 
 Commands
 --------
@@ -113,7 +111,7 @@ Events
 
 Events enable Ruby logic to be triggered by happenings in the game world. Characters, props, and doors can all have event outcome associated with them.
 
-For example, the `cat` character in the "Fashion Quest: Daydream" demonstration game responds to two events: `on_attack` (when the cat is attacked) and `on_death` (when the cat is killed).
+For example, the `cat` character in the "Fashion Quest: Daydream" demonstration game responds to three events: `on_attack` (when the cat is attacked), `on_death` (when the cat is killed), and `on_pet` (when the player pets the cat).
 
 .. literalinclude:: ../../game/characters/cat.yaml
 
