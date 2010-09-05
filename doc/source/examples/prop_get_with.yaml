@@ -1,0 +1,11 @@
+water:
+  plural: true
+  location: ocean
+  traits:
+    get_with:
+    - bottle
+  events:
+    on_get: |
+      "The bottle holds the water.\n"
+    on_drop: |
+      "The bottle is now empty.\n"

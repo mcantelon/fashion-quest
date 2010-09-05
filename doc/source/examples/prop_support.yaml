@@ -1,0 +1,6 @@
+hook:
+  description: "A hook on which to hang a garment."
+  traits:
+    visible: false
+    portable: false
+    supports: true

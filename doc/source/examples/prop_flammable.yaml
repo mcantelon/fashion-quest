@@ -1,0 +1,5 @@
+torch:
+  location: attic
+  traits:
+    lit: false
+    burn_turns: 150

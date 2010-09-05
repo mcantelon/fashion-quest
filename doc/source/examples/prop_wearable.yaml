@@ -1,0 +1,4 @@
+shirt:
+  description: "The t-shirt evokes the desire to party."
+  traits:
+    wearable: true

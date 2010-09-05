@@ -1,0 +1,8 @@
+box:
+  description: The box is made of wood.
+  location: field
+  traits:
+    opened: false
+    open_with: hammer
+    contains:
+      - stamps
