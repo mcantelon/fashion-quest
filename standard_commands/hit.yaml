@@ -44,7 +44,7 @@ logic: |
 
       # if applicable, add weapon strength to attack strength
       if not weapon.empty?
-        attack_strength += @props[weapon].attack_strength
+        attack_strength += @props[weapon].traits['attack_strength']
       else
         weapon = 'your fists'
       end

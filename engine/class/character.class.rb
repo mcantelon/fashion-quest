@@ -157,7 +157,7 @@ class Character < GameComponent
     # determine best weapon, and add to attack strength
     best_weapon = determine_best_weapon
     if not best_weapon.empty?
-      attack_strength += @props[best_weapon].attack_strength
+      attack_strength += @props[best_weapon].traits['attack_strength']
     else
       best_weapon = 'fists'
     end

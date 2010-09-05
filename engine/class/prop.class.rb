@@ -3,7 +3,7 @@ class Prop < GameComponent
   include Has_Events
   include Has_Traits
 
-  attr_accessor :location, :attack_strength, :events
+  attr_accessor :location, :events
 
   def initialize
 
