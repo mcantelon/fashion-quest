@@ -23,9 +23,9 @@ Doors allow two or more locations to be connected. If a door connects more than 
 
 Doors are defined in a file called `doors.yaml` within the `doors` subdirectory of the game directory.
 
-The example below, from the "Fashion Quest: Daydream" demonstration game, defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the `brass key` prop. The unique indentifier of the door is `door`. 
+The example below defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the `brass key` prop. The unique indentifier of the door is `door`. 
 
-.. literalinclude:: ../../game/doors/doors.yaml
+.. literalinclude:: examples/door.yaml
 
 Props
 -----
@@ -59,11 +59,14 @@ Text
 
 If a prop has its `text` trait set, the prop can be read. `text` may be set to text to be shown to the player or, if the first character is ">", a text file in the game folder.
 
+.. literalinclude:: examples/prop_text.yaml
+
 Containers
 ~~~~~~~~~~
 
-`open_with` `opens_with` ???
-If a prop has the `open` trait set to false it can contain other props. These props are specified using the `contains` trait. EXAMPLE
+If a prop has the `open` trait set to false it can contain other props. These props are specified using the `contains` trait. The props may require other props to open them, if the `open_with` trait is set.
+
+.. literalinclude:: examples/prop_open_with.yaml
 
 Size
 ~~~~
@@ -81,12 +84,14 @@ Construction
 
 A prop can be specified as being built from other props. This is done by setting the `build_with` trait to the component props. If any of the component props should be taken out of play, they should be includes in the `build_consumes` trait.
 
-.. literalinclude:: doc/source/examples/prop_build.yaml
+.. literalinclude:: examples/prop_build.yaml
 
 Get With
 ~~~~~~~~
 
 If you need to have one or more props to get another (a bottle, for example, to get water), you can set the `get_with` trait of a prop.
+
+.. literalinclude:: examples/prop_get_with.yaml
 
 Buried Props
 ~~~~~~~~~~~~
@@ -100,6 +105,8 @@ Wearables
 
 If a prop can be worn by the player, set the `wearable` trait to true.
 
+.. literalinclude:: examples/prop_wearable.yaml
+
 Flammables
 ~~~~~~~~~~
 
@@ -109,6 +116,8 @@ Support
 ~~~~~~~
 
 If a prop has the `supports` trait set to true, other props can be put on it. If the prop has the `supports_only` trait set to one or more props, only these props will be supported by it.
+
+.. literalinclude:: examples/prop_support.yaml
 
 Characters
 ----------
@@ -131,7 +140,9 @@ Characters will wander from location to location if their `mobility` is set. Mob
 Aggression
 ~~~~~~~~~~
 
-Characters will be prone to attack the player if their `aggression` is set. Aggression is the probability (in percentage) that the character will start to attack each turn. A character's `strength` determines how much damage it can do each attack. The character example below has a 5% chance of turning hostile and will do one or two hit points of damage each turn.
+Characters will be prone to attack the player if their `aggression` is set. Aggression is the probability (in percentage) that the character will start to attack each turn. A character's `strength` determines how much damage it can do each attack if they don't posess a weapon prop (the `default_attack` property determines how the weaponless attack will be described). If a character does have a weapon prop with a greater attack strength than their default, the character will automatically use it in attacks.
+
+The character example below has a 5% chance of turning hostile and will do one or two hit points of damage each turn.
 
 .. literalinclude:: examples/character_aggression.yaml
 
