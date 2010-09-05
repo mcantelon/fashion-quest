@@ -86,7 +86,7 @@ setup_logic: |
   hook = @game.create(Prop, 'hook')
   hook.name = 'small brass hook'
   hook.aliases = ['small', 'brass', 'peg']
-  hook.description = 'Da coate hook!'
+  hook.description = 'A hook on which to hang a garment.'
   hook.location = 'cloakroom'
   hook.traits = {
     'visible' => false,
