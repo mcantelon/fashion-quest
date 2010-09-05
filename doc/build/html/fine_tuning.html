@@ -55,7 +55,6 @@
 <li><a class="reference internal" href="#transcripts">Transcripts</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#naming">Naming</a></li>
 </ul>
 </li>
 </ul>
@@ -117,8 +116,14 @@
 <tr><td>startup_message</td>
 <td>text to display to the player upon startup</td>
 </tr>
+<tr><td>background</td>
+<td>Background image for game</td>
+</tr>
+<tr><td>command_condition</td>
+<td>Ruby logic that determines whether any command should execute</td>
+</tr>
 <tr><td>setup_logic</td>
-<td>Ruby code to set up game (see demo games for examples)</td>
+<td>Ruby logic to set up game (see demo games for examples)</td>
 </tr>
 </tbody>
 </table>
@@ -202,7 +207,6 @@ examine: "look"
 - "that"
 - "this"
 - "at"
-- "to"
 </pre>
 </div>
 <p>Garbage words can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
@@ -211,7 +215,6 @@ examine: "look"
 - "that"
 - "this"
 - "at"
-- "to"
 </pre>
 </div>
 </div>
@@ -233,15 +236,6 @@ examine: "look"
 <p>While walkthroughs are good for confirming nothing is broken, transcripts provide a way to confirm no output in a game has changed.</p>
 <p>The built-in command <cite>save transcript</cite> will save the game output to a file. You can then make changes to your game, enter the commands needed to arrive at the point in the game where you originally saved the transcript, and use the built-in command <cite>compare transcript</cite> to compare the game output to the original transcript.</p>
 </div>
-</div>
-<div class="section" id="naming">
-<h2>Naming<a class="headerlink" href="#naming" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-noun      noun_cap</blockquote>
-<p>proper    Noun      Noun
-plural    the nouns The nouns
-general   a noun    A noun
-countable water     Water</p>
 </div>
 </div>
 

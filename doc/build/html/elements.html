@@ -49,8 +49,29 @@
 <li><a class="reference internal" href="#">Game World Elements</a><ul>
 <li><a class="reference internal" href="#locations">Locations</a></li>
 <li><a class="reference internal" href="#doors">Doors</a></li>
-<li><a class="reference internal" href="#props">Props</a></li>
-<li><a class="reference internal" href="#characters">Characters</a></li>
+<li><a class="reference internal" href="#props">Props</a><ul>
+<li><a class="reference internal" href="#portability">Portability</a></li>
+<li><a class="reference internal" href="#visibility">Visibility</a></li>
+<li><a class="reference internal" href="#text">Text</a></li>
+<li><a class="reference internal" href="#containers">Containers</a></li>
+<li><a class="reference internal" href="#size">Size</a></li>
+<li><a class="reference internal" href="#construction">Construction</a></li>
+<li><a class="reference internal" href="#get-with">Get With</a></li>
+<li><a class="reference internal" href="#buried-props">Buried Props</a></li>
+<li><a class="reference internal" href="#wearables">Wearables</a></li>
+<li><a class="reference internal" href="#flammables">Flammables</a></li>
+<li><a class="reference internal" href="#support">Support</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#characters">Characters</a><ul>
+<li><a class="reference internal" href="#mobility">Mobility</a></li>
+<li><a class="reference internal" href="#aggression">Aggression</a></li>
+<li><a class="reference internal" href="#communication">Communication</a></li>
+<li><a class="reference internal" href="#trade">Trade</a></li>
+<li><a class="reference internal" href="#id1">Portability</a></li>
+<li><a class="reference internal" href="#logic">Logic</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#state">State</a></li>
 </ul>
 </li>
@@ -90,21 +111,28 @@
             
   <div class="section" id="game-world-elements">
 <h1>Game World Elements<a class="headerlink" href="#game-world-elements" title="Permalink to this headline">¶</a></h1>
-<p>Game world elements are defined using <a class="reference external" href="http://www.yaml.org/">YAML</a>, a human-readable standard used to describe data structures using text. Each game component must have a globally unique identifier.</p>
+<p>Each game component must have a globally unique identifier. There are two ways to define game components: either using <a class="reference external" href="http://www.yaml.org/">YAML</a>, a human-readable standard used to describe data structures using text, or using Ruby. This documentation focuses on the use of YAML, but if you&#8217;re interested in using Ruby check out the <cite>Cloak of Darkness</cite> implementation for an example.</p>
 <div class="section" id="locations">
 <h2>Locations<a class="headerlink" href="#locations" title="Permalink to this headline">¶</a></h2>
 <p>Locations are places a player can visit during a game.</p>
 <p>Each location is defined in its own YAML file within the &#8216;locations&#8217; subdirectory of the game directory.</p>
-<p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a location with two exits: an exit to the north and an open window. The unique indentifier of the location is <cite>alcove</cite>.</p>
-<div class="highlight-python"><pre>alcove:
-  exits:
-    down:
-      destination: apartment
-    window:
-      destination: ledge
+<p>The example below defines a location with a number of exits. The unique indentifier of the location is <cite>entrance</cite>. Each exit has a destination, which is the unique identifier of the location to which it leads. Note that the <cite>stairs</cite> exit has a description: &#8220;upstairs&#8221;. This is used to describe travelling this way. For example a character taking this exit will be described using  &#8220;the hobo goes upstairs&#8221; rather than &#8220;the hobo goes stairs&#8221;.</p>
+<div class="highlight-python"><pre>entrance:
+  exits: 
+    north:
+      destination: yard
+    south:
+      destination: hallway
+    up:
+      destination: upstairs
+    stairs:
+      destination: upstairs
+      description: upstairs
 
   description: |
-    I'm in an alcove. There is an open window. There is a bookcase full of books.
+    You are in the sunlit entranceway of a sizeable home. The walls are clean and it smells pleasant. There is no air of sadness or decay.
+
+    To the north is a door leading outside. Stairs lead upwards. A hallway leads south.
 </pre>
 </div>
 </div>
@@ -112,17 +140,15 @@
 <h2>Doors<a class="headerlink" href="#doors" title="Permalink to this headline">¶</a></h2>
 <p>Doors allow two or more locations to be connected. If a door connects more than two locations, when entering from one location you will end up at a random pick of the other locations.</p>
 <p>Doors are defined in a file called <cite>doors.yaml</cite> within the <cite>doors</cite> subdirectory of the game directory.</p>
-<p>The example below, from the &#8220;Fashion Quest: Daydream&#8221; demonstration game, defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the <cite>brass key</cite> prop. The unique indentifier of the door is <cite>door</cite>.</p>
-<div class="highlight-python"><pre>---
-door:
-  name: door
+<p>The example below defines a door that allows the player to travel between two locations. The door is locked by default, but may be opened using the <cite>brass key</cite> prop. The unique indentifier of the door is <cite>door</cite>.</p>
+<div class="highlight-python"><pre>door:
   description: The door is made of dark-brown wood.
   locations:
   - hallway
   - bedroom
   traits:
     opened: false
-    opens_with:
+    open_with:
     - brass key
 </pre>
 </div>
@@ -131,7 +157,7 @@ door:
 <h2>Props<a class="headerlink" href="#props" title="Permalink to this headline">¶</a></h2>
 <p>Props are items that players can interact with in the game. They may be portable items, such as a pack of cigarettes, or items that can&#8217;t be carried, such as a dresser.</p>
 <p>Props are defined in a file called <cite>props.yaml</cite> within the <cite>props</cite> subdirectory of the game directory.</p>
-<p>The example below, from the &#8220;Fashion Quest: Daydream&#8221; demonstration game, defines a dresser located in a location with the unique identifier <cite>bedroom</cite>. The dresser can be opened by the player and contains another prop, a pack of <cite>smokes</cite>.</p>
+<p>The example below defines a dresser located in a location with the unique identifier <cite>bedroom</cite>. The dresser can be opened by the player and contains another prop, a pack of <cite>smokes</cite>.</p>
 <div class="highlight-python"><pre>dresser:
   description: The dresser looks like it has seen better days.
   location: bedroom
@@ -139,28 +165,277 @@ door:
     opened: false
     portable: false
     contains:
-      - prop: smokes
+      - smokes
 </pre>
+</div>
+<p>Props, as the example below shows, can have one or more aliases. The aliases can be used by players to refer to the prop.</p>
+<div class="highlight-python"><pre>safety sneakers:
+  aliases:
+  - sneakers
+</pre>
+</div>
+<p>Props can have traits set that determine what can be done with them.</p>
+<div class="section" id="portability">
+<h3>Portability<a class="headerlink" href="#portability" title="Permalink to this headline">¶</a></h3>
+<p>If a prop has its <cite>portable</cite> trait set to true, the player will be able to take it. When props are defined using <cite>props.yaml</cite> the <cite>portable</cite> trait gets automatically set to true if not otherwise specified.</p>
+</div>
+<div class="section" id="visibility">
+<h3>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h3>
+<p>If props have their <cite>visible</cite> trait set to true, these props will be automatically shown when the player looks. When props are defined using <cite>props.yaml</cite> the <cite>visible</cite> trait gets automatically set to true if not otherwise specified.</p>
+</div>
+<div class="section" id="text">
+<h3>Text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h3>
+<p>If a prop has its <cite>text</cite> trait set, the prop can be read. <cite>text</cite> may be set to text to be shown to the player or, if the first character is &#8220;&gt;&#8221;, a text file in the game folder.</p>
+<div class="highlight-python"><pre>leaflet:
+  description: The leaflet is faded yellow and seems to warn against something.
+  traits:
+    text: "The leafet is about men's rights. It thinks the child support is wrong.\n"
+</pre>
+</div>
+</div>
+<div class="section" id="containers">
+<h3>Containers<a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h3>
+<p>If a prop has the <cite>open</cite> trait set to false it can contain other props. These props are specified using the <cite>contains</cite> trait. The props may require other props to open them, if the <cite>open_with</cite> trait is set.</p>
+<div class="highlight-python"><pre>box:
+  description: The box is made of wood.
+  location: field
+  traits:
+    opened: false
+    open_with: hammer
+    contains:
+      - stamps
+</pre>
+</div>
+</div>
+<div class="section" id="size">
+<h3>Size<a class="headerlink" href="#size" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>size</cite> trait can be used to prevent large props from passing through doors that have lesser <cite>size</cite> traits defined.</p>
+<p>The &#8220;crack&#8221; door in the Pirate Adventure demo game, for example, has a size of 1.</p>
+<div class="highlight-python"><pre>---
+crack:
+  name: crack
+  description: The crack is big enough to squeeze through, but too narrow to bring large items through.
+  locations:
+  - top_of_hill
+  - cavern
+  traits:
+    size: 1
+    opened: true
+</pre>
+</div>
+<p>The size of the crack prevents the player from entering it if carrying props, such as the book and the shovel, that have a size of 2.</p>
+</div>
+<div class="section" id="construction">
+<h3>Construction<a class="headerlink" href="#construction" title="Permalink to this headline">¶</a></h3>
+<p>A prop can be specified as being built from other props. This is done by setting the <cite>build_with</cite> trait to the component props. If any of the component props should be taken out of play, they should be includes in the <cite>build_consumes</cite> trait.</p>
+<div class="highlight-python"><pre>table:
+  traits:
+    build_with:
+    - lumber
+    - nails
+    - saw
+    - hammer
+    build_consumes:
+    - lumber
+    - nails
+</pre>
+</div>
+</div>
+<div class="section" id="get-with">
+<h3>Get With<a class="headerlink" href="#get-with" title="Permalink to this headline">¶</a></h3>
+<p>If you need to have one or more props to get another (a bottle, for example, to get water), you can set the <cite>get_with</cite> trait of a prop.</p>
+<div class="highlight-python"><pre>water:
+  plural: true
+  location: ocean
+  traits:
+    get_with:
+    - bottle
+  events:
+    on_get: |
+      "The bottle holds the water.\n"
+    on_drop: |
+      "The bottle is now empty.\n"
+</pre>
+</div>
+</div>
+<div class="section" id="buried-props">
+<h3>Buried Props<a class="headerlink" href="#buried-props" title="Permalink to this headline">¶</a></h3>
+<p>If a prop has its <cite>can_dig</cite> trait set to true it can be used to dig. If a prop has its <cite>buried</cite> trait set to true it can be dug up. When a prop is dug up its <cite>portable</cite> and <cite>visible</cite> traits get set to true. Below is an example of a buried prop.</p>
+<div class="highlight-python"><pre>treasure:
+  description: This treasure is really something else. It might be worth something, even!
+  location: yard
+  traits:
+    visible: false
+    buried: true
+    portable: false
+</pre>
+</div>
+</div>
+<div class="section" id="wearables">
+<h3>Wearables<a class="headerlink" href="#wearables" title="Permalink to this headline">¶</a></h3>
+<p>If a prop can be worn by the player, set the <cite>wearable</cite> trait to true.</p>
+<div class="highlight-python"><pre>shirt:
+  description: "The t-shirt evokes the desire to party."
+  traits:
+    wearable: true
+</pre>
+</div>
+</div>
+<div class="section" id="flammables">
+<h3>Flammables<a class="headerlink" href="#flammables" title="Permalink to this headline">¶</a></h3>
+<p>Locations can be set to be dark, in which case a player needs a source of illumination to see the description. If a prop has the trait <cite>lit</cite> set to false the player will be able to light on fire using a prop that has the <cite>firestarter</cite> trait set to true. If the prop has its <cite>burn_turns</cite> trait set to a number then it will only burn for that number of turns.</p>
+<div class="highlight-python"><pre>torch:
+  location: attic
+  traits:
+    lit: false
+    burn_turns: 150
+</pre>
+</div>
+</div>
+<div class="section" id="support">
+<h3>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h3>
+<p>If a prop has the <cite>supports</cite> trait set to true, other props can be put on it. If the prop has the <cite>supports_only</cite> trait set to one or more props, only these props will be supported by it.</p>
+<div class="highlight-python"><pre>hook:
+  description: "A hook on which to hang a garment."
+  traits:
+    visible: false
+    portable: false
+    supports: true
+</pre>
+</div>
 </div>
 </div>
 <div class="section" id="characters">
 <h2>Characters<a class="headerlink" href="#characters" title="Permalink to this headline">¶</a></h2>
 <p>Characters are beings that players can interact with in the game.</p>
 <p>Each character is defined in its own YAML file within the &#8216;characters&#8217; subdirectory of the game directory.</p>
-<p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a character located in a location with the unique identifier <cite>shack</cite>. The pirate will accept the <cite>rum</cite> prop if the player gives it to him.</p>
-<div class="highlight-python"><pre>--- 
-pirate: 
+<p>The example below defines a character located in a location with the unique identifier <cite>shack</cite>. The pirate will accept the <cite>rum</cite> prop if the player gives it to him.</p>
+<div class="highlight-python"><pre>---
+pirate:
+  description: The pirate has a wicked look.
+  location: shack
+</pre>
+</div>
+<div class="section" id="mobility">
+<h3>Mobility<a class="headerlink" href="#mobility" title="Permalink to this headline">¶</a></h3>
+<p>Characters will wander from location to location if their <cite>mobility</cite> is set. Mobility is the probability (in percentage) that the character will move each turn. The character example below will go to a new location each turn.</p>
+<div class="highlight-python"><pre>---
+cat:
+  location: bedroom
+  mobility: 100
+</pre>
+</div>
+</div>
+<div class="section" id="aggression">
+<h3>Aggression<a class="headerlink" href="#aggression" title="Permalink to this headline">¶</a></h3>
+<p>Characters will be prone to attack the player if their <cite>aggression</cite> is set. Aggression is the probability (in percentage) that the character will start to attack each turn. A character&#8217;s <cite>strength</cite> determines how much damage it can do each attack if they don&#8217;t posess a weapon prop (the <cite>default_attack</cite> property determines how the weaponless attack will be described). If a character does have a weapon prop with a greater attack strength than their default, the character will automatically use it in attacks.</p>
+<p>The character example below has a 5% chance of turning hostile and will do one or two hit points of damage each turn.</p>
+<div class="highlight-python"><pre>--
+cat:
+  location: bedroom
+  mobility: 100
+  description: The cat is small and agile.
+  hp: 2
+  strength: 1
+  aggression: 5
+</pre>
+</div>
+<p>A prop can serve as a weapon if the prop&#8217;s <cite>attack strength</cite> is set. If a character possesses a weapon, this weapon will be used if its <cite>attack strength</cite> is greater than the character&#8217;s <cite>strength</cite>. The prop example below is possessed by the &#8220;deadbeat&#8221; character and gives the character a strength of 7.</p>
+<div class="highlight-python"><pre>shiv:
+  attack strength: 7
+  description: The shiv looks sharp... useful.
+  location: deadbeat
+</pre>
+</div>
+</div>
+<div class="section" id="communication">
+<h3>Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h3>
+<p>Characters can be asked questions about topics. Topics and responses are put into the <cite>discusses</cite> setting. The example below shows a character that, when asked about a &#8220;party&#8221;, &#8220;parties&#8221;, or &#8220;partying&#8221;, responds with one of two opinions about the topic.</p>
+<div class="highlight-python"><pre>---
+rick:
+  discusses:
+    ?
+      - party
+      - parties
+      - partying
+    :
+      - &gt;Parties are a real gas.
+      - &gt;I'd like to think that I'm in it for the party.
+</pre>
+</div>
+<p>If the letter &#8220;&gt;&#8221; is the first character of a response, double quotes will be put around the remaining characters of the response before outputting to the player.</p>
+<p>Characters can also be made to occasionally mutter random things or be described as doing random things. The example below shows a character that has a 10% chance, each turn, of either being described as looking at the player or as saying something.</p>
+<div class="highlight-python"><pre>child:
+  location: hallway
+  description: "The child look sad. The child has no shoes."
+  mutter_probability: 10
+  mutters:
+  - The child looks at you sadly.
+  - &gt;Why is the world against me?
+</pre>
+</div>
+</div>
+<div class="section" id="trade">
+<h3>Trade<a class="headerlink" href="#trade" title="Permalink to this headline">¶</a></h3>
+<p>Characters may be willing to accept props as gifts or for trade.</p>
+<p>In the example below the character will accept the gift of rum.</p>
+<div class="highlight-python"><pre>---
+pirate:
   description: The pirate has a wicked look.
   location: shack
   exchanges:
     rum: true
 </pre>
 </div>
+<p>In the example below the character will give a pair of shoes and a shiv in exchange for smokes.</p>
+<div class="highlight-python"><pre>---
+deadbeat:
+  exchanges:
+    smokes:
+    - shoes
+    - shiv
+</pre>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Portability<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Characters can be set to allow the player to carry them, as with the example below.</p>
+<div class="highlight-python"><pre>---
+parrot:
+  description: The parrot looks great.
+  location: shack
+  traits:
+    portable: true
+</pre>
+</div>
+</div>
+<div class="section" id="logic">
+<h3>Logic<a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h3>
+<p>Characters can execute custom Ruby logic each turn. In the example below the parrot character will, if in the same location as the player, occassionally eat a cracker if the player possesses crackers.</p>
+<div class="highlight-python"><pre>---
+parrot:
+  logic: |
+    output = ''
+
+    # Parrot interaction
+    if @location == @player.location
+
+      # The parrot occasionally eats a cracker if player has them
+      case rand(3) + 1
+        when 1:
+          if @props['crackers'].location == 'player'
+            output &lt;&lt; "The parrot ate a cracker.\n"
+          end
+      end
+    end
+</pre>
+</div>
+</div>
 </div>
 <div class="section" id="state">
 <h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
 <p>Game state is used to keep track of game conditions other than the state of other game elements. State can be referenced, or set, from logic within commands, transitions, and events.</p>
-<p>One example from the <cite>Pirate Adventure Knockoff</cite> demonstration is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.</p>
+<p>One example, from the <cite>Pirate Adventure Knockoff</cite> demonstration game, is tide state. Tide state is changed using transitions that set state using simple logic, such as the line shown below.</p>
 <div class="highlight-ruby"><div class="highlight"><pre><span class="vi">@state</span><span class="o">[</span><span class="s1">&#39;tide&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s1">&#39;in&#39;</span>
 </pre></div>
 </div>

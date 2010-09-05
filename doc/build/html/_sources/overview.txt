@@ -15,7 +15,7 @@ Commands and transitions rely on Ruby logic to manipulate the other game element
 Framework Directory Structure
 -----------------------------
 
-The `framework directory` is the directory containing `run.rb`. Its file structure is explained below.
+The `framework directory` is the directory containing `run.rb`. Its file structure is explained below. The `new_game` directory contains a skeleton you can use as the basis of a new game.
 
 .. list-table:: Framework directory file structure
    :widths: 20 80

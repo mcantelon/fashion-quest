@@ -18,9 +18,13 @@ Each game's `config.yaml` file allows fine-tuning of a number of elements.
      - whether or not the player should be able to resize the game window
    * - startup_message
      - text to display to the player upon startup
+   * - background
+     - Background image for game
+   * - command_condition
+     - Ruby logic that determines whether any command should execute
    * - setup_logic
-     - Ruby code to set up game (see demo games for examples)
-
+     - Ruby logic to set up game (see demo games for examples)
+ 
 Other elements that can be set in `config.yaml` are explained later in this section.
 
 Scoring
@@ -118,13 +122,3 @@ Transcripts
 While walkthroughs are good for confirming nothing is broken, transcripts provide a way to confirm no output in a game has changed.
 
 The built-in command `save transcript` will save the game output to a file. You can then make changes to your game, enter the commands needed to arrive at the point in the game where you originally saved the transcript, and use the built-in command `compare transcript` to compare the game output to the original transcript.
-
-Naming
-------
-
-          noun      noun_cap
-proper    Noun      Noun
-plural    the nouns The nouns
-general   a noun    A noun
-countable water     Water
-
