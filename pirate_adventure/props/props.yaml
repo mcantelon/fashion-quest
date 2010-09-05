@@ -135,7 +135,7 @@ bag:
   traits:
     opened: false
     contains:
-      - prop: matches
+      - matches
 
 matches:
   plural: true
@@ -194,7 +194,7 @@ box:
     opened: false
     open_with: hammer
     contains:
-      - prop: stamps
+      - stamps
 
 stamps:
   plural: true
@@ -217,7 +217,7 @@ chest:
     opened: false
     open_with: keys
     contains:
-      - prop: plans
+      - plans
 
 mongoose:
   location: meadow
