@@ -91,7 +91,9 @@ class Game
     # if confirmation is required, get user input a pop up dialogue
     restart_confirmed = (require_confirmation == true) ? confirm(prompt) : true
 
-    # zzzz
+    if (require_confirmation)
+      #zzzz
+    end
 
     if restart_confirmed
 
