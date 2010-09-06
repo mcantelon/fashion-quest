@@ -213,6 +213,8 @@ chest:
         @props['map'].traits['visible']  = true
         @props['map'].traits['portable'] = true
         "A map fall out.\n"
+      else
+        ""
       end
   traits:
     portable: false
