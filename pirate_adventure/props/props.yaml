@@ -97,7 +97,9 @@ sails:
   plural: true
 
 water wings:
-  description: They float.
+  aliases:
+  - wings
+  description: These water wings look like they could float.
   location: shed
   plural: true
 
@@ -198,7 +200,7 @@ box:
 
 stamps:
   plural: true
-  description: Rare stamps!
+  description: These stamps are rare!
 
 mongoose:
   location: meadow
@@ -223,7 +225,7 @@ mongoose:
   location: meadow
 
 plans:
-  description: These look like plans!
+  description: These appear to be plans to build a ship.
   plural: true
 
 map:
@@ -234,13 +236,16 @@ map:
     text: "It's a map to Treasure Island. At the bottom it says: `30 paces then dig!`\n"
 
 keel and mast:
+  aliases:
+  - keel
+  - mast
   description: The keel and mast look like they belonged to a small ship.
   location: beach
   traits:
     portable: false
 
 anchor:
-  description: The anchor!
+  description: The anchor is slightly rusty, but still looks strong.
   location: lagoon
   traits:
     portable: false
