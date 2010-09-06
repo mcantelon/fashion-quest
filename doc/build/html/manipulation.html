@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Game World Manipulation &mdash; Fashion Quest vPreview 2 documentation</title>
+    <title>Game World Manipulation &mdash; Fashion Quest v1.0 Alpha documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     'Preview 2',
+        VERSION:     '1.0 Alpha',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Fashion Quest vPreview 2 documentation" href="index.html" />
+    <link rel="top" title="Fashion Quest v1.0 Alpha documentation" href="index.html" />
     <link rel="next" title="Fine-Tuning" href="fine_tuning.html" />
     <link rel="prev" title="Game World Elements" href="elements.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="elements.html" title="Game World Elements"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest v1.0 Alpha documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -50,7 +50,13 @@
 <li><a class="reference internal" href="#commands">Commands</a><ul>
 <li><a class="reference internal" href="#syntax-forms">Syntax Forms</a></li>
 <li><a class="reference internal" href="#logic">Logic</a></li>
-<li><a class="reference internal" href="#noun-grammar-contexts">Noun Grammar Contexts</a></li>
+<li><a class="reference internal" href="#noun-grammar-contexts">Noun Grammar Contexts</a><ul>
+<li><a class="reference internal" href="#noun">noun</a></li>
+<li><a class="reference internal" href="#noun-cap">noun_cap</a></li>
+<li><a class="reference internal" href="#noun-direct">noun_direct</a></li>
+<li><a class="reference internal" href="#noun-direct-cap">noun_direct_cap</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#conditions">Conditions</a></li>
 </ul>
 </li>
@@ -154,38 +160,26 @@ logic: |
 <p>Characters, doors, and props can be referred to, when outputting messages to the user from commands, using noun grammar context functions. Checking out how noun grammar context functions are used in the standard commands may help you understand them.</p>
 <p>Noun grammar context functions work with three basic noun types: singular (&#8220;hammer&#8221;, &#8220;cat&#8221;, etc.), plural (&#8220;bottles&#8221;, &#8220;bullets&#8221;), and proper nouns (&#8220;Rick&#8221;). Proper nouns will always be capitalized.</p>
 <p>The four noun grammar context functions are explained below.</p>
-<table border="1" class="docutils">
-<caption>Noun grammar contexts</caption>
-<colgroup>
-<col width="20%" />
-<col width="80%" />
-</colgroup>
-<tbody valign="top">
-<tr><td><strong>Context</strong></td>
-<td><strong>Description</strong></td>
-</tr>
-<tr><td>noun</td>
-<td><p class="first"><cite>noun</cite> is the most used noun context. It prefixes with &#8220;the &#8221; for non-proper nouns. If a noun is proper, it is capitalized. If a specific <cite>name</cite> setting has been assigned to the object this will be used, otherwise the object&#8217;s unique ID will be used as a name.</p>
-<p class="last">Example: &#8220;You take #{prop.noun}.&#8221;</p>
-</td>
-</tr>
-<tr><td>noun_cap</td>
-<td><p class="first"><cite>noun_cap</cite> is generally used at the start of sentences. It works like <cite>noun</cite>, but capitalizes the first letter.</p>
-<p class="last">Example: &#8220;#{prop.noun_cap} contains something.&#8221;</p>
-</td>
-</tr>
-<tr><td>noun_direct</td>
-<td><p class="first"><cite>noun_direct</cite> works like <cite>noun</cite>, but prefixes with &#8220;a &#8221; (for singlular) or &#8220;some &#8221; for (plural) for non-proper nouns.</p>
-<p class="last">Example: &#8220;You find #{prop.noun_direct}.&#8221;</p>
-</td>
-</tr>
-<tr><td>noun_direct_cap</td>
-<td><p class="first"><cite>noun_direct_cap</cite> is gnerally used at the start of sentences. It would like <cite>noun_direct</cite>, but capitalizes the first letter.</p>
-<p class="last">Example: &#8220;#{prop.noun_direct_cap} falls from the sky.&#8221;</p>
-</td>
-</tr>
-</tbody>
-</table>
+<div class="section" id="noun">
+<h4>noun<a class="headerlink" href="#noun" title="Permalink to this headline">¶</a></h4>
+<p><cite>noun</cite> is the most used noun context. It prefixes with &#8220;the &#8221; for non-proper nouns. If a noun is proper, it is capitalized. If a specific <cite>name</cite> setting has been assigned to the object this will be used, otherwise the object&#8217;s unique ID will be used as a name.</p>
+<p>Example: &#8220;You take #{prop.noun}.&#8221;</p>
+</div>
+<div class="section" id="noun-cap">
+<h4>noun_cap<a class="headerlink" href="#noun-cap" title="Permalink to this headline">¶</a></h4>
+<p><cite>noun_cap</cite> is generally used at the start of sentences. It works like <cite>noun</cite>, but capitalizes the first letter.</p>
+<p>Example: &#8220;#{prop.noun_cap} contains something.&#8221;</p>
+</div>
+<div class="section" id="noun-direct">
+<h4>noun_direct<a class="headerlink" href="#noun-direct" title="Permalink to this headline">¶</a></h4>
+<p><cite>noun_direct</cite> works like <cite>noun</cite>, but prefixes with &#8220;a &#8221; (for singlular) or &#8220;some &#8221; for (plural) for non-proper nouns.</p>
+<p>Example: &#8220;You find #{prop.noun_direct}.&#8221;</p>
+</div>
+<div class="section" id="noun-direct-cap">
+<h4>noun_direct_cap<a class="headerlink" href="#noun-direct-cap" title="Permalink to this headline">¶</a></h4>
+<p><cite>noun_direct_cap</cite> is gnerally used at the start of sentences. It works like <cite>noun_direct</cite>, but capitalizes the first letter.</p>
+<p>Example: &#8220;#{prop.noun_direct_cap} falls from the sky.&#8221;</p>
+</div>
 </div>
 <div class="section" id="conditions">
 <h3>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h3>
@@ -239,7 +233,7 @@ cat:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
         @props['book'].traits['visible'] = true
-        @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
+        @locations['alcove'].add_to_description("You see a secret passage.\n")
         @locations['alcove'].set_exit('passage', 'passageway')
         "There's a strange sound.\n";
       end
@@ -298,12 +292,12 @@ outcomes:
         <li class="right" >
           <a href="elements.html" title="Game World Elements"
              >previous</a> |</li>
-        <li><a href="index.html">Fashion Quest vPreview 2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest v1.0 Alpha documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
-        &copy; Copyright 2009, Mike Cantelon.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.2.
+        &copy; Copyright 2009-2010, Mike Cantelon, GPL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.3.
     </div>
   </body>
 </html>

@@ -14,7 +14,7 @@ Each location is defined in its own YAML file within the 'locations' subdirector
 
 The example below defines a location with a number of exits. The unique indentifier of the location is `entrance`. Each exit has a destination, which is the unique identifier of the location to which it leads. Note that the `stairs` exit has a description: "upstairs". This is used to describe travelling this way. For example a character taking this exit will be described using  "the hobo goes upstairs" rather than "the hobo goes stairs".
 
-.. literalinclude:: ../../game/locations/entrance.yaml
+.. literalinclude:: examples/location.yaml
 
 Doors
 -----

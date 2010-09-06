@@ -5,7 +5,7 @@ book:
     on_get: |
       if not (@locations['alcove'].has_exit('passage'))
         @props['book'].traits['visible'] = true
-        @locations['alcove'].add_to_description("The bookcase is open to reveal a secret passage beyond.\n")
+        @locations['alcove'].add_to_description("You see a secret passage.\n")
         @locations['alcove'].set_exit('passage', 'passageway')
         "There's a strange sound.\n";
       end

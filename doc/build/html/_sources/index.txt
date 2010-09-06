@@ -9,9 +9,3 @@ Fashion Quest
    elements
    manipulation
    fine_tuning
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`

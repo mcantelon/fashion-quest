@@ -2,8 +2,8 @@
 \BOOKMARK [1][-]{section.1.1}{Why Use a Framework?}{chapter.1}
 \BOOKMARK [1][-]{section.1.2}{Design Goals of Fashion Quest}{chapter.1}
 \BOOKMARK [0][-]{chapter.2}{Overview}{}
-\BOOKMARK [1][-]{section.2.1}{Directory Structure}{chapter.2}
-\BOOKMARK [1][-]{section.2.2}{Game Elements}{chapter.2}
+\BOOKMARK [1][-]{section.2.1}{Game Elements}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{Framework Directory Structure}{chapter.2}
 \BOOKMARK [1][-]{section.2.3}{Game Directory Structure}{chapter.2}
 \BOOKMARK [1][-]{section.2.4}{Built-in Commands}{chapter.2}
 \BOOKMARK [0][-]{chapter.3}{Game World Elements}{}
@@ -17,7 +17,6 @@
 \BOOKMARK [1][-]{section.4.2}{Events}{chapter.4}
 \BOOKMARK [1][-]{section.4.3}{Transitions}{chapter.4}
 \BOOKMARK [0][-]{chapter.5}{Fine-Tuning}{}
-\BOOKMARK [1][-]{section.5.1}{Parsing}{chapter.5}
-\BOOKMARK [1][-]{section.5.2}{Testing}{chapter.5}
-\BOOKMARK [1][-]{section.5.3}{Naming}{chapter.5}
-\BOOKMARK [0][-]{chapter.6}{Indices and tables}{}
+\BOOKMARK [1][-]{section.5.1}{Scoring}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Parsing}{chapter.5}
+\BOOKMARK [1][-]{section.5.3}{Testing}{chapter.5}

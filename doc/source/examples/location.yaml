@@ -1,0 +1,16 @@
+entrance:
+  exits: 
+    north:
+      destination: yard
+    south:
+      destination: hallway
+    up:
+      destination: upstairs
+    stairs:
+      destination: upstairs
+      description: upstairs
+
+  description: |
+    You are in the sunlit entranceway of a sizeable home.
+
+    To the north is a door leading outside. Stairs lead upwards. A hallway leads south.
