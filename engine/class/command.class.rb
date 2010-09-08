@@ -145,7 +145,7 @@ class Command
 
         case reference_type
 
-          when 'any':
+          when 'any'
 
             potential_component = lexemes[lexeme_to_test]
 
@@ -154,7 +154,7 @@ class Command
             end
 
           # handle named or unnamed door references
-          when 'door':
+          when 'door'
 
             potential_door = lexemes[lexeme_to_test]
 
@@ -172,7 +172,7 @@ class Command
             end
 
           # handle named or unnamed prop references
-          when 'prop':
+          when 'prop'
 
             potential_prop = lexemes[lexeme_to_test]
 
@@ -191,7 +191,7 @@ class Command
             end
 
           # handle named or unnamed character references
-          when 'character':
+          when 'character'
 
             potential_character = lexemes[lexeme_to_test]
 

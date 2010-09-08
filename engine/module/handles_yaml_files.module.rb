@@ -24,7 +24,7 @@ module Handles_YAML_Files
 
       end
 
-    end
+    end rescue error "not found any files under #{path}"
 
     files
 

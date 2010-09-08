@@ -87,7 +87,7 @@ class Cli
     # should be loaded
     Find.find("#{@game.path}commands") do |command_path|
       command_paths << command_path
-    end
+    end rescue error "not found any files under #{@game.path}commands"
 
     # load commands
     command_paths.each do |command_path|
@@ -100,7 +100,7 @@ class Cli
         # if no command data has loaded, try to load from standard commands directory
         if not command_data
           command_filename = Pathname.new(command_path).basename
-          command_data = load_yaml_file(standard_command_path + '/' + command_filename)
+          command_data = load_yaml_file(File.join(standard_command_path, command_filename))
         end
 
         if command_data
@@ -208,42 +208,42 @@ class Cli
 
     case input_text
 
-      when 'restart':
+      when 'restart'
         restart
 
-      when 'clear':
+      when 'clear'
         @output_text = ''
         @input_text =  ''
 
-      when 'load':
+      when 'load'
         @game.load(ask_open_file)
         output_add("Game loaded.")
         @input_text = ''
 
-      when 'save':
+      when 'save'
         @game.save(ask_open_file)
         output_add("Game saved.")
         @input_text = ''
 
-      when 'save walkthrough':
+      when 'save walkthrough'
         save_walkthrough
 
-      when 'load walkthrough':
+      when 'load walkthrough'
         load_walkthrough
 
-      when 'save transcript':
+      when 'save transcript'
         save_transcript
 
-      when 'run script':
+      when 'run script'
         run_script
 
-      when 'compare to transcript':
+      when 'compare to transcript'
         compare_to_transcript
 
-      when 'vocab':
+      when 'vocab'
         show_vocabulary
 
-      when 'vocabulary':
+      when 'vocabulary'
         show_vocabulary
 
       else
@@ -255,7 +255,7 @@ class Cli
         result = parse(input_text, @command_abbreviations, @garbage_words, @global_synonyms)
 
         # look for lines of output indicating subcommands should be called
-        result.each do |line|
+        result.each_line do |line|
           # if the result of a command is prefixed with ">", redirect to another command
           if line[0] == ?>
             output << issue_command(line[1..-1], false)
