@@ -209,7 +209,9 @@ startup_logic: |
 
   @cli.commands['go'].condition = "@game.helpers.go_condition(@game, arg)"
 
-  def (@game.helpers).read_condition(game, prop)
+  def (@game.helpers).read_condition(game, arg)
+
+    prop = arg['noun']
 
     if prop.id == 'message' && game.player.location == 'bar' && game.state['trampling'] > 2
       @game.over = true
@@ -220,7 +222,7 @@ startup_logic: |
     end
   end
 
-  @cli.commands['read'].condition = "@game.helpers.read_condition(@game, prop)"
+  @cli.commands['read'].condition = "@game.helpers.read_condition(@game, arg)"
 
   def (@game.helpers).command_condition(game, command)
 
