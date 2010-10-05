@@ -10,9 +10,7 @@ You need Shoes to use this so download Shoes now to your computer:
  http://shoes.heroku.com/downloads
 
 Games created with the framework define the game using YAML files and bits of
-Ruby.
-
-The framework is creeping towards alpha. Four test games come with the source. 
+Ruby. Four test games come with the source. 
 
 The game "Fashion Quest: Daydream" is very small and mainly for demo purposes.
 It lives in the "game" directory.
