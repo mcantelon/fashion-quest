@@ -7,4 +7,4 @@ resizable: true
 startup_message: "Welcome to Some New Game.\n\n"
 startup_logic: |
   # start game by issueing "look" command
-  @cli.issue_command('look', false)
+  @cli.initial_command('look')

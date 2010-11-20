@@ -17,4 +17,4 @@ outcomes:
 
   death: |
     @over = true
-    output = "You have died.\n"
+    "You have died.\n"
