@@ -63,7 +63,11 @@ startup_message: "Hurrying through the rainswept November night, you're glad to 
 
 setup_logic: |
 
+  # Create game state variable to keep track of how much the message in the
+  # game is trampled
   @game.state['trampling'] = 0
+
+  # Start player in the foyer
 
   player = @game.create(Player)
   player.location = 'foyer'
@@ -153,6 +157,15 @@ startup_logic: |
 
   # Define transitions
 
+  # Transitions act as rules within a game. We define the following rules:
+  # 1. If the player has the cloak or the cloak is in the bar, the bar should be
+  #    dark.
+  # 2. If the player doesn't have the cloak and the cloak isn't in the bar, the
+  #    bar shouldn't be dark.
+  # 3. If the cloak is hanging on the hook, add to player's score and indicate
+  #    this when the player looks at the hook.
+  # 4. If the cloak isn't hanging on the hook, indicate this when the player
+  #    looks at the hook.
   @game.transitions = {
     "conditions"=> {
       ["@props['cloak'].location == 'player' || @props['cloak'].location == 'bar'"] \
@@ -179,11 +192,13 @@ startup_logic: |
         @props['hook'].description = "It's just a small brass hook, screwed to the wall."\n
         ''
       !
-   }
+    }
   }
 
   # Command conditions
 
+  # make helper function that prevents user from dropping the cloak anywhere
+  # but the cloakroom
   def (@game.helpers).drop_condition(game, prop)
 
     if prop.id == 'cloak' && game.player.location != 'cloakroom'
@@ -194,8 +209,11 @@ startup_logic: |
     end
   end
 
+  # set command condition for "drop" to our helper function
   @cli.commands['drop'].condition = "@game.helpers.drop_condition(@game, prop)"
 
+  # make helper function that tramples message if the user attempts to go
+  # anywhere except the north exit in a dark room
   def (@game.helpers).go_condition(game, arg)
 
     if game.locations[game.player.location].dark and arg['direction'] != 'north'
@@ -207,8 +225,11 @@ startup_logic: |
     end
   end
 
+  # set command condition for "go" to our helper function
   @cli.commands['go'].condition = "@game.helpers.go_condition(@game, arg)"
 
+  # make helper function that prevents message from being read in certain
+  # conditions
   def (@game.helpers).read_condition(game, arg)
 
     prop = arg['noun']
@@ -222,8 +243,11 @@ startup_logic: |
     end
   end
 
+  # set command condition for "read" to our helper function
   @cli.commands['read'].condition = "@game.helpers.read_condition(@game, arg)"
 
+  # make helper function that tramples message if player attempts to use certain
+  # commands in a dark room
   def (@game.helpers).command_condition(game, command)
 
     allowed_commands = ['look', 'quit', 'go']
@@ -239,6 +263,7 @@ startup_logic: |
     end
   end
 
+  # set global command condition to our helper function
   @cli.command_condition = "@game.helpers.command_condition(@game, command)"
 
   # Start game by issueing "look" command
