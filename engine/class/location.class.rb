@@ -1,6 +1,7 @@
 class Location
 
-  attr_accessor :id, :path, :loaded, :name, :description, :dark, :exits, :description_notes, :image_file
+  attr_accessor :id, :path, :loaded, :name, :description, :dark, :exits,
+                :description_notes, :image_file, :command_conditions
 
   include Handles_YAML_Files
 

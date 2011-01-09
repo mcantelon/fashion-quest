@@ -70,6 +70,28 @@ class Command
 
             command_result = ''
 
+            # Handle location-specific command conditions
+            if(@locations[@player.location].command_conditions)
+
+              location_conditions = @locations[@player.location].command_conditions
+
+              location_conditions.each do |commands,condition|
+                commands.split(',').each do |command|
+                  if command == @id || command == '*'
+                    result = instance_eval(condition)
+
+                    if result
+                      if !result['success']
+                        return result['message']
+                      elsif result['message']
+                        command_result << result['message']
+                      end
+                    end
+                  end
+                end
+              end
+            end
+
             # If command has a condition, evaluate it to see if a denial message is returned
             if @condition && result = instance_eval(@condition)
 
