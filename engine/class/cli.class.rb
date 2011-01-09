@@ -136,42 +136,43 @@ class Cli
   # the flow of this function seems weird
   def keystroke(k)
 
+    # add keystroke to input if it's not a special character
+    if k.class != Symbol and k != "\n"
+      @input_text << k
+    end
+
+    # allow user to backspace
     if k == :backspace
+      @input_text = (@input_text.length > 1) ? @input_text[0..-2] : ''
+    end
 
-      backspace
+    # allow user to cycle back in command history
+    if k == :up and @command_index > 0
+      @command_index = @command_index - 1
+      @input_text = @command_history[@command_index]
+    end
 
-    else
-
-      # add keystroke to input
-      if k.class != Symbol and k != "\n"
-        @input_text << k
-      end
-
-      if k == :up and @command_index > 0
-        @command_index = @command_index - 1
+    # allow user to cycle forward in command history
+    if k == :down and @command_index < @command_history.size
+      @command_index = @command_index + 1
+      if @command_index == @command_history.size
+        @input_text = ''
+      else
         @input_text = @command_history[@command_index]
       end
+    end
 
-      if k == :down and @command_index < @command_history.size
-        @command_index = @command_index + 1
-        if @command_index == @command_history.size
-          @input_text = ''
-        else
-          @input_text = @command_history[@command_index]
-        end
+    # update display prompt
+    display_prompt(@input_text)
+
+    # execute command
+    if (k == :enter or k == "\n") && @input_text != ''
+      if @input_text != 'load walkthrough'
+        @command_history << @input_text
+        @command_index = @command_history.size
       end
-
-      display_prompt(@input_text)
-
-      # execute command
-      if (k == :enter or k == "\n") && @input_text != ''
-        if @input_text != 'load walkthrough'
-          @command_history << @input_text
-          @command_index = @command_history.size
-        end
-        issue_command(@input_text)
-        display_prompt
-      end
+      issue_command(@input_text)
+      display_prompt
     end
 
   end
@@ -192,11 +193,8 @@ class Cli
   def restart
 
     if restarted = @game.restart
-
       reset
-
     else
-
       @input_text = ''
     end
 
@@ -373,13 +371,6 @@ class Cli
     end
 
     @input_text = ''
-
-  end
-
-  def backspace
-
-    @input_text = @input_text.length > 1 ? @input_text[0..-2] : ''
-    display_prompt(@input_text)
 
   end
 
