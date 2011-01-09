@@ -130,6 +130,18 @@ setup_logic: |
   bar.exits = {'north' => {'destination' => 'foyer'}}
   bar.description = "The bar, much rougher than you'd have guessed after the opulence of the foyer to the north, is completely empty. There seems to be some sort of message scrawled in the sawdust on the floor.\n"
   bar.dark = 'safe'
+  bar.command_conditions = {
+    '*' => "if @id !='look' && @id != 'go' && @id != 'quit' && @game.locations[@game.player.location].dark\n
+      @game.state['trampling'] = @game.state['trampling'] + 1\n
+      {\n
+        'message' => \"In the dark? You could easily disturb something!\\n\",\n
+        'success' => false\n
+      }\n
+    else\n
+      {'success' => true}\n
+    end"
+  }
+
   @game.locations['bar'] = bar
 
   foyer = @game.create(Location, 'foyer')
@@ -235,7 +247,7 @@ startup_logic: |
     prop = arg['noun']
 
     if prop.id == 'message' && game.player.location == 'bar' && game.state['trampling'] > 2
-      @game.over = true
+      game.over = true
       {
         'message' => "The message has been carelessly trampled, making it difficult to read. You can just distinguish the words...\n\nYou have lost.\n\n",
         'success' => false
@@ -245,26 +257,6 @@ startup_logic: |
 
   # set command condition for "read" to our helper function
   @cli.commands['read'].condition = "@game.helpers.read_condition(@game, arg)"
-
-  # make helper function that tramples message if player attempts to use certain
-  # commands in a dark room
-  def (@game.helpers).command_condition(game, command)
-
-    allowed_commands = ['look', 'quit', 'go']
-
-    if !allowed_commands.index(command.id) && game.locations[game.player.location].dark
-      game.state['trampling'] = game.state['trampling'] + 1
-      {
-        'message' => "In the dark? You could easily disturb something!\n",
-        'success' => false
-      }
-    else
-      {'success' => true}
-    end
-  end
-
-  # set global command condition to our helper function
-  @cli.command_condition = "@game.helpers.command_condition(@game, command)"
 
   # Start game by issueing "look" command
   @cli.initial_command('look')
