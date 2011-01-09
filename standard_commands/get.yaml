@@ -30,11 +30,22 @@ logic: |
 
       if can_get == true
 
-        # player is only allowed to carry 6 items
+        # make sure player isn't already carrying maximum
         if !@player.can_carry_number_of_items \
           || @player.carrying.size <= (@player.can_carry_number_of_items - 1)
 
           prop.location = 'player'
+
+          # if prop is supported by something, remove it from it
+          @props.each do |prop_to_check,data|
+              if @props[prop_to_check].traits['supporting']
+                if @props[prop_to_check].traits['supporting'].index(prop.id)
+                  @props[prop_to_check].traits['supporting'].delete(prop.id)
+                  output << "(Removing #{prop.noun} from #{@props[prop_to_check].noun}.)\n"
+                end
+              end
+          end
+
           output << "You take #{prop.noun}.\n"
 
           on_get_output = @game.event(prop, 'on_get')
