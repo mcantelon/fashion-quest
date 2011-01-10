@@ -51,10 +51,24 @@ Shoes.app(
         @cli.command_condition = config['command_condition']
       end
 
+      # Allow startup logic to be supplied as raw logic and/or a file
+      custom_startup_logic = false
+
+      # Include start logic from file, if one exists
+      path_to_startup_logic = game_path + '/startup_logic.rb'
+      if File.file?(path_to_startup_logic)
+        require(path_to_startup_logic)
+        custom_startup_logic = true
+      end
+
+      # Include startup logic form config, if specified
       if config['startup_logic']
         instance_eval(config['startup_logic'])
-      else
-        # Issue 'look' command to begin game (perhaps this should be a config option?)
+        custom_startup_logic = true
+      end
+
+      # if no startup logic has been specified, issue 'look' command
+      if !custom_startup_logic
         @cli.issue_command('look', false)
       end
 
