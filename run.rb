@@ -57,7 +57,7 @@ Shoes.app(
       # Include start logic from file, if one exists
       path_to_startup_logic = game_path + '/startup_logic.rb'
       if File.file?(path_to_startup_logic)
-        require(path_to_startup_logic)
+        instance_eval(File.read(path_to_startup_logic))
         custom_startup_logic = true
       end
 
