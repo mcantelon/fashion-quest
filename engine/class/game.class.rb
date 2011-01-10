@@ -121,6 +121,12 @@ class Game
     @doors      = {}
     @characters = {}
 
+    # Include setup logic from file, if one exists
+    path_to_setup_logic = @path + '/setup_logic.rb'
+    if File.file?(path_to_setup_logic)
+      require(path_to_setup_logic)
+    end
+
     if @config['setup_logic']
 
       instance_eval(@config['setup_logic'])
