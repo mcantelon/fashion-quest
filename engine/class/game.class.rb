@@ -124,27 +124,19 @@ class Game
     # Include setup logic from file, if one exists
     path_to_setup_logic = @path + 'setup_logic.rb'
     if File.file?(path_to_setup_logic)
-alert(@game)
       instance_eval(File.read(path_to_setup_logic))
-
-      #require(path_to_setup_logic)
-    end
-
-    if @config['setup_logic']
-
-      instance_eval(@config['setup_logic'])
-
     else
-
-      initialize_locations
-      @doors      = initialize_doors
-      @props      = initialize_props
-      @characters = {}
-      @player     = initialize_player
-      initialize_characters(@locations, @player, @props)
-
+      if @config['setup_logic']
+        instance_eval(@config['setup_logic'])
+      else
+        initialize_locations
+        @doors      = initialize_doors
+        @props      = initialize_props
+        @characters = {}
+        @player     = initialize_player
+        initialize_characters(@locations, @player, @props)
+      end
     end
-
   end
 
   def restart_or_exit
