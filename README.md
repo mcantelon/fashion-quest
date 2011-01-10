@@ -33,11 +33,10 @@ Documentation is slowly evolving and can be found in:
 
   docs/build/html/index.html
 
-Contributors
-==
+**Contributors**
 
-Mike Cantelon (http://github.com/mcantelon)
-ashbb (http://github.com/ashbb)
+* Mike Cantelon (http://github.com/mcantelon)
+* ashbb (http://github.com/ashbb)
 
 Acknowledgements
 ==
