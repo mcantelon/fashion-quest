@@ -9,13 +9,6 @@ def game_selector(app, app_base_path)
       message = "Loading " + game_directories.first
       game = game_directories.first
 
-      #text       = para ("Loading " + game_directories.first)
-      #text.align = 'center'
-
-      #btn = button 'OK' do
-      #  game_selector_launch(app, app_base_path, game_directories.first)
-      #end
-
     else
 
       message = "Choose game:"
