@@ -12,8 +12,8 @@
 
 
 \title{Fashion Quest Documentation}
-\date{September 06, 2010}
-\release{1.0 Alpha}
+\date{February 05, 2011}
+\release{1.0 Alpha 2}
 \author{Mike Cantelon}
 \newcommand{\sphinxlogo}{}
 \renewcommand{\releasename}{Release}
@@ -114,7 +114,7 @@
 \label{introduction:introduction}\label{introduction::doc}\label{introduction:fashion-quest}
 Fashion Quest is an interactive fiction framework created to make \href{http://en.wikipedia.org/wiki/Interactive\_fiction}{text adventure games} about fashion because we love fashion and we love text adventure games. Fashion Quest is written in the Ruby programming language and requires \href{http://shoes.heroku.com/}{Shoes}, a cross-platform GUI framework created by \href{http://en.wikipedia.org/wiki/Why\_the\_lucky\_stiff/}{Why the Lucky Stiff}. Fashion Quest has been tested with Shoes 2.
 
-Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes three demonstration games. The game ``Fashion Quest: Daydream'' is very small and designed to demonstrate non-player character features. It lives in the \emph{game} directory. The game ``Pirate Adventure Knockoff'' is a port of the 1978 text adventure \href{http://en.wikipedia.org/wiki/Pirate\_Adventure}{``Pirate Adventure''} by Scott and Alexis Adams and lives in the \emph{pirate\_adventure} directory. The game \href{http://www.firthworks.com/roger/cloak/}{``Cloak of Darkness''} is a port of a game that was created as a means of comparing different interaction fiction frameworks. It lives in the \emph{cloak\_of\_darkness} directory. There is also a game skeleton exists primarily to serve as the basis of new games. It lives in the \emph{new\_game} directory.
+Games are created in Fashion Quest by defining game elements using YAML and bits of Ruby. The framework includes three demonstration games. The game ``Fashion Quest: Daydream'' is very small and designed to demonstrate non-player character features. It lives in the \emph{daydream} directory. The game ``Pirate Adventure Knockoff'' is a port of the 1978 text adventure \href{http://en.wikipedia.org/wiki/Pirate\_Adventure}{``Pirate Adventure''} by Scott and Alexis Adams and lives in the \emph{pirate\_adventure} directory. The game \href{http://www.firthworks.com/roger/cloak/}{``Cloak of Darkness''} is a port of a game that was created as a means of comparing different interaction fiction frameworks. It lives in the \emph{cloak\_of\_darkness} directory. There is also a game skeleton exists primarily to serve as the basis of new games. It lives in the \emph{new\_game} directory.
 
 To play either of these use Shoes to run \emph{run.rb} and select which you’d like to play.
 
@@ -202,6 +202,11 @@ Directory containing developer documentation
 engine
  & 
 Directory containing framework engine logic
+\\
+
+games
+ & 
+Directory containing games
 \\
 
 standard\_commands
@@ -705,25 +710,6 @@ Symbolic links can also be used, instead of empty command files, to point to sta
 
 The example below, from the ``Pirate Adventure Knockoff'' demonstration game, defines a command that enables the player to wake up the pirate character. If the character's \emph{asleep} trait is \emph{true} the \emph{asleep} trait will be changed to \emph{false} if the player enters the command \emph{wake pirate}.
 
-\begin{Verbatim}[commandchars=@\[\]]
----
-syntax:
-- "wake @textless[]character@textgreater[]"
-- "wake up @textless[]character@textgreater[]"
-
-logic: @textbar[]
-
-  output = ''
-
-  if character.traits@PYGZlb[]'asleep'@PYGZrb[] == true
-    character.traits@PYGZlb[]'asleep'@PYGZrb[] = false
-  else
-    output @textless[]@textless[] "You can't wake up what is not asleep.\n"
-  end
-
-  output
-\end{Verbatim}
-
 Commands are made up of syntax and logic.
 
 TIP: Keep the idea of reusing commands between games in mind when creating commands. If logic is game-specific, try to use transitions instead of commands to implement the logic.
@@ -832,27 +818,6 @@ A global command condition can be specified in the \emph{command\_condition} ele
 Events enable Ruby logic to be triggered by happenings in the game world. Characters, props, and doors can all have event outcome associated with them.
 
 For example, the \emph{cat} character in the ``Fashion Quest: Daydream'' demonstration game responds to three events: \emph{on\_attack} (when the cat is attacked), \emph{on\_death} (when the cat is killed), and \emph{on\_pet} (when the player pets the cat).
-
-\begin{Verbatim}[commandchars=@\[\]]
---- 
-cat: 
-  location: bedroom
-  mobility: 100
-  strength: 1
-  description: The cat is small and agile.
-  hp: 2
-  aggression: 5
-  default@_attack: its claws
-  events:
-    on@_attack:
-    - "The cat yowls as he leaps at you.\n"
-    on@_death:
-    - "The cat shrieks as it crumples to the ground.\n"
-    on@_pet:
-    - "The cat purrs and rolls around.\n"
-    - "The cat makes a strange cooing sound.\n"
-    - "The cat stretches and purrs.\n"
-\end{Verbatim}
 
 Commands can be used to trigger events. For example, the standard get command triggers the \emph{on\_get} event on a prop (and collects event output into the variable \emph{on\_get\_output} by including the following line:
 
@@ -1027,16 +992,6 @@ Abbreviated commands reduce the amount of typing the user must do. One popular c
 
 The \emph{command\_abbreviations.yaml} file, in the \emph{parsing} subdirectory of each game's directory, allows a list of abbreviations for specific command instances to be defined using YAML. An example is shown below.
 
-\begin{Verbatim}[commandchars=@\[\]]
----
-n: "go north"
-s: "go south"
-e: "go east"
-w: "go west"
-u: "go up"
-d: "go down"
-\end{Verbatim}
-
 Command abbreviations can alternatively be specified in \emph{config.yaml}. An example is shown below.
 
 \begin{Verbatim}[commandchars=@\[\]]
@@ -1062,12 +1017,6 @@ For example, the word ``using'' can be replaced with the word ``with''. This syn
 
 Example YAML is shown below.
 
-\begin{Verbatim}[commandchars=@\[\]]
----
-using: "with"
-examine: "look"
-\end{Verbatim}
-
 Synonyms can alternatively be specified in \emph{config.yaml}. An example is shown below.
 
 \begin{Verbatim}[commandchars=@\[\]]
@@ -1082,14 +1031,6 @@ global@_synonyms:
 Garbage words are words with little or no semantic meaning (like ``the'' and ``a). By removing them from the user's command input we recude the number of command syntax forms needed to support command syntax variations. The \emph{garbage\_words.yaml} file, found in the \emph{parsing} subdirectory of each game's directory, can contain a list of words that should be discarded from player input.
 
 Example YAML is shown below.
-
-\begin{Verbatim}[commandchars=@\[\]]
----
-- "the"
-- "that"
-- "this"
-- "at"
-\end{Verbatim}
 
 Garbage words can alternatively be specified in \emph{config.yaml}. An example is shown below.
 

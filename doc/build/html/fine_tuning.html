@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Fine-Tuning &mdash; Fashion Quest v1.0 Alpha documentation</title>
+    <title>Fine-Tuning &mdash; Fashion Quest v1.0 Alpha 2 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0 Alpha',
+        VERSION:     '1.0 Alpha 2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Fashion Quest v1.0 Alpha documentation" href="index.html" />
+    <link rel="top" title="Fashion Quest v1.0 Alpha 2 documentation" href="index.html" />
     <link rel="prev" title="Game World Manipulation" href="manipulation.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
         <li class="right" >
           <a href="manipulation.html" title="Game World Manipulation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Fashion Quest v1.0 Alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest v1.0 Alpha 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -157,15 +157,6 @@
 <h3>Abbreviated Commands<a class="headerlink" href="#abbreviated-commands" title="Permalink to this headline">¶</a></h3>
 <p>Abbreviated commands reduce the amount of typing the user must do. One popular convention in interactive fiction is allowing a user simply to enter the first letter of the direction (s)he&#8217;d like to go in: <cite>n</cite> for <cite>go north</cite>, for example.</p>
 <p>The <cite>command_abbreviations.yaml</cite> file, in the <cite>parsing</cite> subdirectory of each game&#8217;s directory, allows a list of abbreviations for specific command instances to be defined using YAML. An example is shown below.</p>
-<div class="highlight-python"><pre>---
-n: "go north"
-s: "go south"
-e: "go east"
-w: "go west"
-u: "go up"
-d: "go down"
-</pre>
-</div>
 <p>Command abbreviations can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
 <div class="highlight-python"><pre>command_abbreviations:
   n: "go north"
@@ -186,11 +177,6 @@ d: "go down"
 <p>Synonyms help reduce the number of command syntax forms needed to support command syntax variations. The <cite>global_synonyms.yaml</cite> file, in the game <cite>parsing</cite> subdirectory of each game&#8217;s directory, can contain a list of word substitutions defined using YAML. These substitutions get applied to a user&#8217;s command input.</p>
 <p>For example, the word &#8220;using&#8221; can be replaced with the word &#8220;with&#8221;. This synonym would make the command syntax form &#8220;attack &lt;character&gt; with &lt;prop&gt;&#8221; work when the player enters the command &#8220;attack bear using hat&#8221;.</p>
 <p>Example YAML is shown below.</p>
-<div class="highlight-python"><pre>---
-using: "with"
-examine: "look"
-</pre>
-</div>
 <p>Synonyms can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
 <div class="highlight-python"><pre>global_synonyms:
   using: "with"
@@ -202,13 +188,6 @@ examine: "look"
 <h3>Garbage Words<a class="headerlink" href="#garbage-words" title="Permalink to this headline">¶</a></h3>
 <p>Garbage words are words with little or no semantic meaning (like &#8220;the&#8221; and &#8220;a). By removing them from the user&#8217;s command input we recude the number of command syntax forms needed to support command syntax variations. The <cite>garbage_words.yaml</cite> file, found in the <cite>parsing</cite> subdirectory of each game&#8217;s directory, can contain a list of words that should be discarded from player input.</p>
 <p>Example YAML is shown below.</p>
-<div class="highlight-python"><pre>---
-- "the"
-- "that"
-- "this"
-- "at"
-</pre>
-</div>
 <p>Garbage words can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
 <div class="highlight-python"><pre>garbage_words:
 - "the"
@@ -254,7 +233,7 @@ examine: "look"
         <li class="right" >
           <a href="manipulation.html" title="Game World Manipulation"
              >previous</a> |</li>
-        <li><a href="index.html">Fashion Quest v1.0 Alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest v1.0 Alpha 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

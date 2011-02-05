@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.5)  6 SEP 2010 12:48
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.9.5)  5 FEB 2011 13:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -884,7 +884,7 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ] [2]
 Chapter 2.
 
-Overfull \hbox (6.49052pt too wide) in paragraph at lines 187--215
+Overfull \hbox (6.49052pt too wide) in paragraph at lines 187--220
 [] 
  []
 
@@ -892,14 +892,14 @@ Overfull \hbox (6.49052pt too wide) in paragraph at lines 187--215
 
 ] [4]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 308.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 313.
 (/usr/share/texmf-texlive/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 ) [5
 
 ]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 379.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 384.
  [6] [7] [8] [9]
 [10] [11] [12]
 Chapter 4.
@@ -907,30 +907,30 @@ Chapter 4.
 
 ] [14] [15]
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <9> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 883.
- [16] [17] [18
-
-]
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 848.
+ [16]
 Chapter 5.
-[19] [20] [21] (./FashionQuest.ind) [22] (./FashionQuest.aux) ) 
+[17
+
+] [18] (./FashionQuest.ind) [19] (./FashionQuest.aux) ) 
 Here is how much of TeX's memory you used:
- 8017 strings out of 493848
- 108487 string characters out of 1152824
- 196086 words of memory out of 3000000
+ 8014 strings out of 493848
+ 108466 string characters out of 1152824
+ 194087 words of memory out of 3000000
  11019 multiletter control sequences out of 15000+50000
  55056 words of font info for 61 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 45i,12n,49p,922b,381s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texm
-f-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw
-/courier/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pf
-b></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/tex
-mf-texlive/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texmf-texlive/fonts
-/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utm
-r8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on FashionQuest.pdf (26 pages, 163786 bytes).
+ 45i,12n,49p,926b,381s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf-texliv
+e/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/urw/courier
+/ucrb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/ucrr8a.pfb></usr/
+share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-texli
+ve/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/share/texmf-texlive/fonts/type1/u
+rw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb>
+</usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
+Output written on FashionQuest.pdf (23 pages, 160446 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
+ 308 PDF objects out of 1000 (max. 8388607)
+ 84 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Game World Manipulation &mdash; Fashion Quest v1.0 Alpha documentation</title>
+    <title>Game World Manipulation &mdash; Fashion Quest v1.0 Alpha 2 documentation</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.0 Alpha',
+        VERSION:     '1.0 Alpha 2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Fashion Quest v1.0 Alpha documentation" href="index.html" />
+    <link rel="top" title="Fashion Quest v1.0 Alpha 2 documentation" href="index.html" />
     <link rel="next" title="Fine-Tuning" href="fine_tuning.html" />
     <link rel="prev" title="Game World Elements" href="elements.html" /> 
   </head>
@@ -39,7 +39,7 @@
         <li class="right" >
           <a href="elements.html" title="Game World Elements"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Fashion Quest v1.0 Alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest v1.0 Alpha 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -109,24 +109,6 @@
 <p class="last">Symbolic links can also be used, instead of empty command files, to point to standard commands but Windows doesn&#8217;t support symbolic links so the game won&#8217;t be cross platform.</p>
 </div>
 <p>The example below, from the &#8220;Pirate Adventure Knockoff&#8221; demonstration game, defines a command that enables the player to wake up the pirate character. If the character&#8217;s <cite>asleep</cite> trait is <cite>true</cite> the <cite>asleep</cite> trait will be changed to <cite>false</cite> if the player enters the command <cite>wake pirate</cite>.</p>
-<div class="highlight-python"><pre>---
-syntax:
-- "wake &lt;character&gt;"
-- "wake up &lt;character&gt;"
-
-logic: |
-
-  output = ''
-
-  if character.traits['asleep'] == true
-    character.traits['asleep'] = false
-  else
-    output &lt;&lt; "You can't wake up what is not asleep.\n"
-  end
-
-  output
-</pre>
-</div>
 <p>Commands are made up of syntax and logic.</p>
 <p>TIP: Keep the idea of reusing commands between games in mind when creating commands. If logic is game-specific, try to use transitions instead of commands to implement the logic.</p>
 <div class="section" id="syntax-forms">
@@ -201,26 +183,6 @@ logic: |
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
 <p>Events enable Ruby logic to be triggered by happenings in the game world. Characters, props, and doors can all have event outcome associated with them.</p>
 <p>For example, the <cite>cat</cite> character in the &#8220;Fashion Quest: Daydream&#8221; demonstration game responds to three events: <cite>on_attack</cite> (when the cat is attacked), <cite>on_death</cite> (when the cat is killed), and <cite>on_pet</cite> (when the player pets the cat).</p>
-<div class="highlight-python"><pre>--- 
-cat: 
-  location: bedroom
-  mobility: 100
-  strength: 1
-  description: The cat is small and agile.
-  hp: 2
-  aggression: 5
-  default_attack: its claws
-  events:
-    on_attack:
-    - "The cat yowls as he leaps at you.\n"
-    on_death:
-    - "The cat shrieks as it crumples to the ground.\n"
-    on_pet:
-    - "The cat purrs and rolls around.\n"
-    - "The cat makes a strange cooing sound.\n"
-    - "The cat stretches and purrs.\n"
-</pre>
-</div>
 <p>Commands can be used to trigger events. For example, the standard get command triggers the <cite>on_get</cite> event on a prop (and collects event output into the variable <cite>on_get_output</cite> by including the following line:</p>
 <div class="highlight-ruby"><div class="highlight"><pre><span class="n">on_get_output</span> <span class="o">=</span> <span class="vi">@game</span><span class="o">.</span><span class="n">event</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="s1">&#39;on_get&#39;</span><span class="p">)</span>
 </pre></div>
@@ -292,7 +254,7 @@ outcomes:
         <li class="right" >
           <a href="elements.html" title="Game World Elements"
              >previous</a> |</li>
-        <li><a href="index.html">Fashion Quest v1.0 Alpha documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest v1.0 Alpha 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
