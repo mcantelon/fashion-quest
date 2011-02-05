@@ -26,6 +26,8 @@ The `framework directory` is the directory containing `run.rb`. Its file structu
      - Directory containing developer documentation
    * - engine
      - Directory containing framework engine logic
+   * - games
+     - Directory containing games
    * - standard_commands
      - Directory containing standard game command definitions that can be shared between games
 
