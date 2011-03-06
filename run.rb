@@ -3,7 +3,7 @@ require 'engine/setup.rb'
 Shoes.app(
   :title     => '',
   :width     => 300,
-  :height    => 100,
+  :height    => 170,
   :resizable => true
 ) {
 

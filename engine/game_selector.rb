@@ -2,7 +2,12 @@ def game_selector(app, app_base_path)
 
   game_directories = game_selector_directories(app_base_path)
 
-  stack do
+  stack :align => 'center' do
+
+    flow do
+      style(:margin_left => '20')
+      image "engine/fashion_quest_logo.png"
+    end
 
     if game_directories.size == 1
 
@@ -16,16 +21,20 @@ def game_selector(app, app_base_path)
     end
 
     text       = para message
-    text.align = 'center'
+    text.margin_left = '95'
 
-    if !game
-      game_select = list_box :items => game_directories
-    end
+    flow do
+      style(:margin_left => '25')
 
-    btn = button 'OK' do
-      if game || game_select.text()
-        load_game = game ? game : game_select.text()
-        game_selector_launch(app, app_base_path, load_game)
+      if !game
+        game_select = list_box :items => game_directories
+      end
+
+      btn = button 'OK' do
+        if game || game_select.text()
+          load_game = game ? game : game_select.text()
+          game_selector_launch(app, app_base_path, load_game)
+        end
       end
     end
   end
