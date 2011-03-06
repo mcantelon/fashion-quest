@@ -1,5 +1,7 @@
 def game_selector(app, app_base_path)
 
+  background '#ffffff'
+
   game_directories = game_selector_directories(app_base_path)
 
   stack :align => 'center' do
