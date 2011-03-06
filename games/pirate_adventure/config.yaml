@@ -9,7 +9,7 @@ startup_message: "Welcome to Pirate Adventure Knockoff.\nThis is a port of the 1
 startup_logic: |
 
   # set background color
-  background '#e3e09f'..'#f6ffd0'
+  background '#e3e09f'
 
   # monkey patch the CLI output method to change the font style
   def @cli.output(output_text, input_text = '')
