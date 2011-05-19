@@ -7,7 +7,7 @@ adventure games.
 
 You need Shoes to use this so download Shoes now to your computer:
 
- http://shoes.heroku.com/downloads
+ http://shoesrb.com/downloads
 
 Games created with the framework define the game using YAML files and bits of
 Ruby. Four test games come with the source. 
