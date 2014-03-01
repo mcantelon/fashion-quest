@@ -13,7 +13,7 @@ You need Shoes to use this so download Shoes now to your computer:
 
  http://shoesrb.com/downloads.html
 
-Run shoes then open `run.rb` to try one of the sample games.
+Run Shoes then open `run.rb` and you'll be able to select a sample game to run.
 
 Sample games
 ------------
