@@ -1,9 +1,6 @@
-Fashion Quest
-===
-
 ![Fashion Quest](https://raw.github.com/mcantelon/fashion-quest/master/engine/fashion_quest_logo.png "Fashion Quest")
 
-*Fancy website with docs:* <http://mcantelon.github.io/fashion-quest/>
+**Fancy website with docs:** <http://mcantelon.github.io/fashion-quest/>
 
 Fashion Quest is an interactive fiction framework being created so we can make
 a text adventure game about fashion because we love fashion and we love text
