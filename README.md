@@ -34,6 +34,18 @@ Documentation can be found in:
 
   docs/build/html/index.html
 
+Platform-specific issues:
+
+* Linux:
+
+  Scrolling is jerky when a game incorporates images.
+
+* Windows:
+
+  When output window contains a lot of text, the game slows down.
+
+  Workaround: Use "clear" command to clear the output window.
+
 **Contributors**
 
 * Mike Cantelon (http://github.com/mcantelon)
