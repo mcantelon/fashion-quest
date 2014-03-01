@@ -11,7 +11,7 @@ Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative use 
 
 .. _text adventure games: http://en.wikipedia.org/wiki/Interactive_fiction
 .. _Shoes: http://shoesrb.com/
-.. _Why the Lucky Stiff: http://en.wikipedia.org/wiki/Why_the_lucky_stiff/
+.. _Why the Lucky Stiff: http://en.wikipedia.org/wiki/Why_the_lucky_stiff
 .. _"Pirate Adventure": http://en.wikipedia.org/wiki/Pirate_Adventure
 .. _"Cloak of Darkness": http://www.firthworks.com/roger/cloak/
 
@@ -30,7 +30,7 @@ Fashion Quest is a relative newcomer. Established frameworks include *Inform*, *
 
 The `Cloak of Darkness`_ site is useful for comparing interaction fiction frameworks as it contains implementations of the same simple interactive fiction game created using twenty different IF frameworks.
 
-.. _Inform: http://www.inform-fiction.org/I7/Welcome.html
+.. _Inform: http://inform7.com/
 .. _ADRIFT: http://www.adrift.org.uk/
 .. _TADS: http://www.tads.org/
 .. _Cloak of Darkness: http://www.firthworks.com/roger/cloak/index.html
