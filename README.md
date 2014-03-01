@@ -13,6 +13,8 @@ You need Shoes to use this so download Shoes now to your computer:
 
  http://shoesrb.com/downloads.html
 
+Run shoes then open `run.rb` to try one of the sample games.
+
 Sample games
 ------------
 
@@ -33,12 +35,10 @@ with games written using Inform and other frameworks). It lives in the
 There is game stump in the "games/new_game" directory that can be used as a blank
 slate when starting development of a new game. 
 
-To try any of these use Shoes to open run.rb and select which you'd like
-to play.
+Documentation
+-------------
 
-Documentation can be found in:
-
-  docs/build/html/index.html
+Documentation can be found online at <http://mcantelon.github.io/fashion-quest/doc/build/html/index.html>.
 
 Known issues
 ------------
