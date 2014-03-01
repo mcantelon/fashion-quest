@@ -1,6 +1,8 @@
 Fashion Quest
 ===
 
+Fancy website: <http://mcantelon.github.io/fashion-quest/>
+
 Fashion Quest is an interactive fiction framework being created so we can make
 a text adventure game about fashion because we love fashion and we love text
 adventure games.
