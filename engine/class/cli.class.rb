@@ -232,9 +232,6 @@ class Cli
       when 'save transcript'
         save_transcript
 
-      when 'run script'
-        run_script
-
       when 'compare to transcript'
         compare_to_transcript
 
@@ -325,19 +322,6 @@ class Cli
 
     @input_text = ''
 
-  end
-
-  def run_script
-
-    if (filename = ask_open_file)
-
-      File.open(filename, 'r') do |f|
-        instance_eval(f.read)
-      end
-
-      @input_text = ''
-
-    end
   end
 
   def compare_to_transcript
