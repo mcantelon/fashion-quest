@@ -16,20 +16,21 @@ You need Shoes to use this so download Shoes now to your computer:
 Sample games
 ------------
 
-Four test games come with the source. 
+Four test games come with the source and are location in the "games" directory.
 
 The game *"Fashion Quest: Daydream"* is very small and mainly for demo purposes.
-It lives in the "game" directory.
+It lives in the "games/daydream" directory.
 
 The game *"Pirate Adventure Knockoff"* is a port of the 1978 text adventure 
-"Pirate Adventure" by Scott Adams and lives in the "pirate_adventure" directory.
+"Pirate Adventure" by Scott Adams and lives in the "games/pirate_adventure"
+directory.
 
 The game *"Cloak of Darkness"* is a port of a game that is used to compare IF
 frameworks. It shows how a game can be defined using one file (as is possible
 with games written using Inform and other frameworks). It lives in the
-"cloak_of_darkness" directory.
+"games/cloak_of_darkness" directory.
 
-There is game stump in the *"new_game"* directory that can be used as a blank
+There is game stump in the "games/new_game" directory that can be used as a blank
 slate when starting development of a new game. 
 
 To try any of these use Shoes to open run.rb and select which you'd like
