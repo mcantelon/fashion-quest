@@ -14,7 +14,7 @@ Each command is defined in its own YAML file within the 'commands' subdirectory 
 
 The example below, from the "Pirate Adventure Knockoff" demonstration game, defines a command that enables the player to wake up the pirate character. If the character's `asleep` trait is `true` the `asleep` trait will be changed to `false` if the player enters the command `wake pirate`.
 
-.. literalinclude:: ../../pirate_adventure/commands/wake.yaml
+.. literalinclude:: ../../games/pirate_adventure/commands/wake.yaml
 
 Commands are made up of syntax and logic.
 
@@ -118,7 +118,7 @@ Events enable Ruby logic to be triggered by happenings in the game world. Charac
 
 For example, the `cat` character in the "Fashion Quest: Daydream" demonstration game responds to three events: `on_attack` (when the cat is attacked), `on_death` (when the cat is killed), and `on_pet` (when the player pets the cat).
 
-.. literalinclude:: ../../game/characters/cat.yaml
+.. literalinclude:: ../../games/daydream/characters/cat.yaml
 
 Commands can be used to trigger events. For example, the standard get command triggers the `on_get` event on a prop (and collects event output into the variable `on_get_output` by including the following line:
 
