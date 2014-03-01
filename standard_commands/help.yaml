@@ -1,7 +1,0 @@
----
-syntax:
-- "help"
-
-logic: |
-
-  "Enter simple commands to play the game. For example 'go north' (or just 'n') or 'get hat'. Enter 'vocab' for a list of commands or 'quit' to quit.\n"

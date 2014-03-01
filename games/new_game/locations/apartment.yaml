@@ -1,8 +1,0 @@
-pit: 
-  exits:
-    up:
-      condition: |
-        "The ladder is broken.\n"
-
-  description: |
-    I'm in a pit of sorrow. A ladder leads up partway, but the top half of it has been broken off and is nowhere to be seen. A feeling deep inside tells me I should create a new game. There is a sign here.

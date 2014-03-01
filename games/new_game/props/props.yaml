@@ -1,7 +1,0 @@
---- 
-sign:
-  description: The signs looks like it could be read.
-  location: pit
-  traits:
-    portable: false
-    text: "The sign says \"Welcome, brave developer\".\n"

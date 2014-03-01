@@ -1,9 +1,0 @@
-graveyard:
-  exits:
-    north:
-      destination: shore
-    east:
-      destination: field
-
-  description: |
-    I'm in a spooky old graveyard filled with piles of empty and broken rum bottles. A path leads north. You see a field to the east.

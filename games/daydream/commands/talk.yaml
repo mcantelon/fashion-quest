@@ -1,8 +1,0 @@
----
-syntax:
-- "talk <character>"
-- "ask <character>"
-
-logic: |
-
-  "What do you want to talk about?\n"

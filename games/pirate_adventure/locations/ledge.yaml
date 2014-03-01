@@ -1,7 +1,0 @@
-ledge: 
-  exits:
-    window:
-      destination: alcove
-
-  description: |
-    I'm outside an open window on the ledge of a very tall building.

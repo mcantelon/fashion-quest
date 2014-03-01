@@ -1,5 +1,0 @@
---- 
-snakes: 
-  plural: true
-  description: The snakes are scary.
-  location: monastery

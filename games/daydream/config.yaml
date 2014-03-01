@@ -1,9 +1,0 @@
----
-title: "Fashion Quest: Daydream"
-width: 600
-height: 600
-image_height: 200
-resizable: true
-startup_message: "Welcome to 'Fashion Quest: Daydream'. You can be a big help in the world!\n\nEnter 'help' for a quick intro to gameplay.\n\n"
-startup_logic: @cli.initial_command('look')
-background: 'game/background.jpg'

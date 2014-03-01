@@ -1,7 +1,0 @@
-shed: 
-  exits:
-    north:
-      destination: cavern
-
-  description: |
-    I'm in a shed. There's an exit to the north.

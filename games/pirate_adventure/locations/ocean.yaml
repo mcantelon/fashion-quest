@@ -1,9 +1,0 @@
-ocean: 
-  exits:
-    north:
-      destination: ocean
-    south:
-      destination: lagoon
-
-  description: |
-    I'm in the ocean.

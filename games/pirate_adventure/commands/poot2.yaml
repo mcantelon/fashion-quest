@@ -1,7 +1,0 @@
----
-syntax:
-- "poot2"
-
-logic: |
-
-  alert(@output_text)

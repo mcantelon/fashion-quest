@@ -1,8 +1,0 @@
----
-syntax:
-- "debug <any>"
-
-logic: |
-
-  alert('aaaa')
-  instance_eval 'pp(' + any + ')'

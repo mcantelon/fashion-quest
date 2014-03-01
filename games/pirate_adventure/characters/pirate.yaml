@@ -1,6 +1,0 @@
---- 
-pirate: 
-  description: The pirate has a wicked look.
-  location: shack
-  exchanges:
-    rum: true

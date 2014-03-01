@@ -1,7 +1,0 @@
-pit: 
-  exits:
-    up:
-      destination: cave1
-
-  description: |
-    I'm in a pit. A ladder leads up.

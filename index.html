@@ -1,1 +1,165 @@
-Hello there!
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8"/>
+	<title>Fashion Quest: Write Interactive Fiction Using Ruby and YAML</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!-- The 1140px Grid -->
+	<link rel="stylesheet" href="css/1140.css" type="text/css" media="screen" />
+	
+	<!--[if lte IE 9]>
+	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	
+	<!-- Type and image presets -->
+	<link rel="stylesheet" href="css/typeimg.css" type="text/css" media="screen" />
+	<!-- Make minor type adjustments for 1024 monitors -->
+	<link rel="stylesheet" href="css/smallerscreen.css" media="only screen and (max-width: 1023px)" />
+	<!-- Resets grid for mobile -->
+	<link rel="stylesheet" href="css/mobile.css" media="handheld, only screen and (max-width: 767px)" />
+  <!-- My layout -->
+	<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen" />
+
+  <link media="screen" rel="stylesheet" href="css/colorbox.css" />
+
+  <!-- Google web fonts -->
+  <link href='http://fonts.googleapis.com/css?family=UnifrakturCook:bold' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Tinos:regular,bold' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="row header shadow">
+    <div class="twelvecol">
+      <a href='http://github.com/mcantelon/fashion-quest/zipball/master' title='Download ZIP archive'><img src='https://github.com/images/modules/download/zip.png' alt='Download ZIP archive'></a>
+      <a href='http://github.com/mcantelon/fashion-quest/tarball/master' title='Download tarball'><img src='https://github.com/images/modules/download/tar.png' alt='Download tarball'></a>
+      <h1>fashion quest</h1>
+      <h2>There is no way forward. Only looking so good.</h2>
+    </div>
+  </div>
+
+	<div class="row intro">
+		<div class="threecol">
+      <h4>What is going on?</h4>
+        <p>
+        <a href='http://github.com/mcantelon/fashion-quest' target='_blank'>Fashion Quest</a> is an
+        interactive fiction framework created to make text adventure games about fashion because we love
+        fashion and we love text adventure games.
+        <p>
+        <p> Fashion Quest is written in the
+        <a href='http://www.ruby-lang.org/en/' target='_blank'>Ruby programming language</a> and requires
+        <a href='http://shoes.heroku.com/' target='_blank'>Shoes</a>, a cross-platform GUI engine created
+        by <a href='http://en.wikipedia.org/wiki/Why_the_lucky_stiff' target='_blank'>Why the Lucky Stiff</a>.
+        </p>
+		</div>
+		<div class="threecol">
+      <h4>Design Goals</h4>
+      <p>
+      Fashion Quest was created with the following goals in mind:
+      </p>
+      <ul style='margin-left: 1.5em'>
+        <li>
+          <span class='goal'>Minimalist</span><br />Lightweight and easy to learn.
+        </li>
+        <li>
+          <span class='goal'>Cross-platform</span><br />Mac, Linux, and Windows.
+        </li>
+        <li>
+          <span class='goal'>Programmer-friendly</span><br />Leverage Ruby and YAML.
+        </li>
+        <li>
+          <span class='goal'>Extensible</span><br />Monkey patch. Fork. I see you.
+        </li>
+      </ul>
+		</div>
+		<div class="threecol">
+      <h4>How does it work?</h4>
+      <p>
+      Games are created in Fashion Quest by defining game elements using
+      <a href='http://www.yaml.org/' target='_blank'>YAML</a> and bits of Ruby.
+      Game elements include locations, doors, props, characters, and state.
+      </p>
+      <p>
+      Fashion Quest comes with three demo games you can dissect to see how things work
+      (and also an empty game that you can use as a template).
+      </p>
+		</div>
+		<div class="threecol last">
+      <a href="images/fashion_quest_screenshot.png" class="colorbox" title="Fashion Quest screenshot"><img src='images/fashion_quest_screenshot_thumb.png' alt='Fashion Quest screenshot'></a>
+      <p>
+      Online documentation is available <a href='doc/build/html/index.html'>here</a> (or <a href='https://github.com/mcantelon/fashion-quest/raw/master/doc/build/latex/FashionQuest.pdf'>PDF</a>). To run any of the demo games, open
+      <b>run.rb</b> using Shoes.
+      </p>
+		</div>
+	</div>
+
+  <div class="row example">
+
+    <div class="fivecol">
+      <img src='images/girl.jpg' alt='The nightmare is in your mind.' style='float:none;'>
+    </div>
+
+    <div class="sevencol last">
+      <h3>Example Location YAML</h3>
+      <pre>
+<span class='label'>graveyard:</span>
+  <span class='label'>exits:</span>
+    <span class='label'>north:</span>
+      <span class='label'>destination:</span> shore
+    <span class='label'>east:</span>
+      <span class='label'>destination:</span> field
+
+  <span class='label'>description:</span> |
+    I'm in a spooky old graveyard covered
+    in snow and filth. Low frequency sounds
+    are occasionally emitted from varied,
+    undiscernable directions.
+      </pre>
+    </div>
+  </div>
+
+  <div class="row action shadow">
+    <div class="twelvecol">
+      <div class="buttons">
+        <span class='button'><a href='build/html/index.html'>Documentation?</a></span>
+        <span class='button'><a href='https://github.com/mcantelon/fashion-quest/archives/master' target='_blank'>Download?</a></span>
+        <span class='button'><a href='http://shoes.heroku.com/downloads' target='_blank'>Need Shoes?</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row credits">
+    <div class="twelvecol">
+      <div style="float:right">
+        Content/design (c) 2010 <a href='http://mikecantelon.com' target='_blank'>Mike Cantelon</a>.
+        Powered by <a href='http://cssgrid.net/' target='_blank'>CSS Grid</a>,
+        <a href='http://code.google.com/webfonts' target='_blank'>Google Web Fonts</a>,
+        and <a href='http://colorpowered.com/colorbox/' target='_blank'>ColorBox</a>.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+Todo:
+-add mobile specific styling
+
+-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script src="js/jquery.colorbox-min.js"></script>
+<script>
+$(document).ready(function(){
+    $("a.colorbox").colorbox();
+})
+</script>
+
+</body>
+</html>

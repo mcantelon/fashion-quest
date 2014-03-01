@@ -1,9 +1,0 @@
-alcove:
-  exits:
-    down:
-      destination: apartment
-    window:
-      destination: ledge
-
-  description: |
-    I'm in an alcove. There is an open window. There is a bookcase full of books.

@@ -1,7 +1,0 @@
-yard:
-  exits: 
-    south:
-      destination: entrance
-
-  description: |
-    You are in the yard. It is a fairly pleasant place. You get the impression that you could have a good time here. You could invite some friends over or just sit by yourself contemplating. Either way, it would very likely be a positive experience.

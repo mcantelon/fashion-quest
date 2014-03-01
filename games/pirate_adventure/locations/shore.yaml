@@ -1,9 +1,0 @@
-shore: 
-  exits:
-    south:
-      destination: graveyard
-    ship:
-      destination: ship
-
-  description: |
-    I'm on the shore. A path leads south.
