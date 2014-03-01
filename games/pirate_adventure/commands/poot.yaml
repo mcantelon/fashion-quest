@@ -1,9 +1,0 @@
----
-syntax:
-- "poot <any>"
-
-logic: |
-
-  alert("N:" + any.name)
-  alert(any)
-  any.description = 'goats'
