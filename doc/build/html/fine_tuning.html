@@ -3,13 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Fine-Tuning &mdash; Fashion Quest v1.0 Alpha 2 documentation</title>
+    <title>Fine-Tuning &mdash; Fashion Quest 1.0 Alpha 2 documentation</title>
+    
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
@@ -22,7 +25,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Fashion Quest v1.0 Alpha 2 documentation" href="index.html" />
+    <link rel="top" title="Fashion Quest 1.0 Alpha 2 documentation" href="index.html" />
     <link rel="prev" title="Game World Manipulation" href="manipulation.html" /> 
   </head>
   <body>
@@ -35,7 +38,7 @@
         <li class="right" >
           <a href="manipulation.html" title="Game World Manipulation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Fashion Quest v1.0 Alpha 2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest 1.0 Alpha 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -70,7 +73,7 @@
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" size="18" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
@@ -98,31 +101,31 @@
 <col width="80%" />
 </colgroup>
 <tbody valign="top">
-<tr><td><strong>Setting</strong></td>
+<tr class="row-odd"><td><strong>Setting</strong></td>
 <td><strong>Description</strong></td>
 </tr>
-<tr><td>title</td>
+<tr class="row-even"><td>title</td>
 <td>title of the game (displayed in the window bar)</td>
 </tr>
-<tr><td>width</td>
+<tr class="row-odd"><td>width</td>
 <td>width of game window</td>
 </tr>
-<tr><td>image_height</td>
+<tr class="row-even"><td>image_height</td>
 <td>maximum height of images</td>
 </tr>
-<tr><td>resizable</td>
+<tr class="row-odd"><td>resizable</td>
 <td>whether or not the player should be able to resize the game window</td>
 </tr>
-<tr><td>startup_message</td>
+<tr class="row-even"><td>startup_message</td>
 <td>text to display to the player upon startup</td>
 </tr>
-<tr><td>background</td>
+<tr class="row-odd"><td>background</td>
 <td>Background image for game</td>
 </tr>
-<tr><td>command_condition</td>
+<tr class="row-even"><td>command_condition</td>
 <td>Ruby logic that determines whether any command should execute</td>
 </tr>
-<tr><td>setup_logic</td>
+<tr class="row-odd"><td>setup_logic</td>
 <td>Ruby logic to set up game (see demo games for examples)</td>
 </tr>
 </tbody>
@@ -157,6 +160,15 @@
 <h3>Abbreviated Commands<a class="headerlink" href="#abbreviated-commands" title="Permalink to this headline">¶</a></h3>
 <p>Abbreviated commands reduce the amount of typing the user must do. One popular convention in interactive fiction is allowing a user simply to enter the first letter of the direction (s)he&#8217;d like to go in: <cite>n</cite> for <cite>go north</cite>, for example.</p>
 <p>The <cite>command_abbreviations.yaml</cite> file, in the <cite>parsing</cite> subdirectory of each game&#8217;s directory, allows a list of abbreviations for specific command instances to be defined using YAML. An example is shown below.</p>
+<div class="highlight-python"><pre>---
+n: "go north"
+s: "go south"
+e: "go east"
+w: "go west"
+u: "go up"
+d: "go down"
+</pre>
+</div>
 <p>Command abbreviations can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
 <div class="highlight-python"><pre>command_abbreviations:
   n: "go north"
@@ -177,6 +189,11 @@
 <p>Synonyms help reduce the number of command syntax forms needed to support command syntax variations. The <cite>global_synonyms.yaml</cite> file, in the game <cite>parsing</cite> subdirectory of each game&#8217;s directory, can contain a list of word substitutions defined using YAML. These substitutions get applied to a user&#8217;s command input.</p>
 <p>For example, the word &#8220;using&#8221; can be replaced with the word &#8220;with&#8221;. This synonym would make the command syntax form &#8220;attack &lt;character&gt; with &lt;prop&gt;&#8221; work when the player enters the command &#8220;attack bear using hat&#8221;.</p>
 <p>Example YAML is shown below.</p>
+<div class="highlight-python"><pre>---
+using: "with"
+examine: "look"
+</pre>
+</div>
 <p>Synonyms can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
 <div class="highlight-python"><pre>global_synonyms:
   using: "with"
@@ -188,6 +205,13 @@
 <h3>Garbage Words<a class="headerlink" href="#garbage-words" title="Permalink to this headline">¶</a></h3>
 <p>Garbage words are words with little or no semantic meaning (like &#8220;the&#8221; and &#8220;a). By removing them from the user&#8217;s command input we recude the number of command syntax forms needed to support command syntax variations. The <cite>garbage_words.yaml</cite> file, found in the <cite>parsing</cite> subdirectory of each game&#8217;s directory, can contain a list of words that should be discarded from player input.</p>
 <p>Example YAML is shown below.</p>
+<div class="highlight-python"><pre>---
+- "the"
+- "that"
+- "this"
+- "at"
+</pre>
+</div>
 <p>Garbage words can alternatively be specified in <cite>config.yaml</cite>. An example is shown below.</p>
 <div class="highlight-python"><pre>garbage_words:
 - "the"
@@ -233,12 +257,12 @@
         <li class="right" >
           <a href="manipulation.html" title="Game World Manipulation"
              >previous</a> |</li>
-        <li><a href="index.html">Fashion Quest v1.0 Alpha 2 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Fashion Quest 1.0 Alpha 2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2009-2010, Mike Cantelon, GPL.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.3.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
