@@ -8,7 +8,7 @@ adventure games.
 
 You need Shoes to use this so download Shoes now to your computer:
 
- http://shoes.heroku.com/downloads
+ http://shoesrb.com/downloads.html
 
 Games created with the framework define the game using YAML files and bits of
 Ruby. Four test games come with the source. 
@@ -30,7 +30,7 @@ slate when starting development of a new game.
 To try any of these use Shoes to open run.rb and select which you'd like
 to play.
 
-Documentation is slowly evolving and can be found in:
+Documentation can be found in:
 
   docs/build/html/index.html
 
