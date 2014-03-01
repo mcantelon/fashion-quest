@@ -1,30 +1,20 @@
 These are my notes... you can ingore.
 
-To-do:
--check out 404ing in get, drop, give
-  -maybe make function specially for objects that utilizes noun functions? :/
-*-try to get PDF rendering working
--what is player name for? maybe if set make things third-person
-
 Possible Future Improvements:
--Make Fashion quest site
+-what is player name for? maybe if set make things third-person
 -For attacking, add agility to character, the higher it is the harder it is to hit the character
  (no agility or agility 1 will always hit, 2 = 50% of the time, 3 = 33.3% of the time, etc.)
  actually, what can be done is subtract the agility of the attacker from the agility of the attackee
--Change readme from markdown to rst for consistancy.
 -Characters could have "patrols" (paths they walk back and forth along)
 -A "put" command exists so "put in" might be easy to add for refillable containers 
-     -put together gun and silencer
-      -put cake in oven
-      -look in oven
-      -get cake from oven
+  -put together gun and silencer
+  -put cake in oven
+  -look in oven
+  -get cake from oven
 -Add supoprt for pics for props, characters, doors
--Do some kind of background animation for pirate adventure
--Try out Shoes packager again
 -Make a way to create a ruby script for issuing commands, for testing the Daydream game
- ...maybe the command will be "run script" or "load script"
+  ...maybe the command will be "run script" or "load script"
 -Maybe have a way of opening a directory to run an adventure in it with a "Browse..." button on the selector
--The selector gets weird if you resize it... fix?
 -if character is dead and has stuff on him, hint at that during look
 -save everything to YAML and binhex graphics? use that like ZCODE
 
