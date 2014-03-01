@@ -10,7 +10,7 @@ To play either of these use Shoes to run `run.rb` and select which you’d like 
 Thanks to Why the Lucky Stiff for creating Shoes and inspiring the creative use of computers!
 
 .. _text adventure games: http://en.wikipedia.org/wiki/Interactive_fiction
-.. _Shoes: http://shoes.heroku.com/
+.. _Shoes: http://shoesrb.com/
 .. _Why the Lucky Stiff: http://en.wikipedia.org/wiki/Why_the_lucky_stiff/
 .. _"Pirate Adventure": http://en.wikipedia.org/wiki/Pirate_Adventure
 .. _"Cloak of Darkness": http://www.firthworks.com/roger/cloak/

@@ -58,7 +58,7 @@ Abbreviated commands reduce the amount of typing the user must do. One popular c
 
 The `command_abbreviations.yaml` file, in the `parsing` subdirectory of each game's directory, allows a list of abbreviations for specific command instances to be defined using YAML. An example is shown below.
 
-.. literalinclude:: ../../pirate_adventure/parsing/command_abbreviations.yaml
+.. literalinclude:: ../../games/pirate_adventure/parsing/command_abbreviations.yaml
 
 Command abbreviations can alternatively be specified in `config.yaml`. An example is shown below.
 
@@ -77,7 +77,7 @@ For example, the word "using" can be replaced with the word "with". This synonym
 
 Example YAML is shown below.
 
-.. literalinclude:: ../../pirate_adventure/parsing/global_synonyms.yaml
+.. literalinclude:: ../../games/pirate_adventure/parsing/global_synonyms.yaml
 
 Synonyms can alternatively be specified in `config.yaml`. An example is shown below.
 
@@ -90,7 +90,7 @@ Garbage words are words with little or no semantic meaning (like "the" and "a). 
 
 Example YAML is shown below.
 
-.. literalinclude:: ../../pirate_adventure/parsing/garbage_words.yaml
+.. literalinclude:: ../../games/pirate_adventure/parsing/garbage_words.yaml
 
 Garbage words can alternatively be specified in `config.yaml`. An example is shown below.
 
