@@ -1,3 +1,8 @@
+#
+# The Referred_To_Using_English module support a number of English language 
+# contexts in which a noun can be used.
+#
+
 module Referred_To_Using_English
 
   attr_accessor :name, :proper, :plural

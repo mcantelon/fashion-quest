@@ -1,3 +1,7 @@
+#
+# The Command class represents a game command.
+#
+
 class Command
 
   include Handles_YAML_Files
@@ -7,9 +11,7 @@ class Command
   def initialize(params)
 
     @id           = params[:id]
-
     @game         = params[:game]
-
     @image_stack  = params[:image_stack]
     @output_stack = params[:output_stack]
 

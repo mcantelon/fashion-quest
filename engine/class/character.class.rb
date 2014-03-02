@@ -1,3 +1,7 @@
+#
+# The Character class represents a non-player character. 
+#
+
 class Character < GameComponent
 
   include Uses_Weapons

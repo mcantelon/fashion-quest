@@ -1,3 +1,7 @@
+#
+# The Player class represents a game player.
+#
+
 class Player
 
   include Uses_Weapons

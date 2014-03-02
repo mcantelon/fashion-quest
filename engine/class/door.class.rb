@@ -1,3 +1,7 @@
+#
+# The Door class represents a conditionally available location exit.
+#
+
 class Door < GameComponent
 
   include Has_Events

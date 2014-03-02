@@ -1,3 +1,7 @@
+#
+# The Location class represents a location in a game.
+#
+
 class Location
 
   attr_accessor :id, :path, :loaded, :name, :description, :dark, :exits,

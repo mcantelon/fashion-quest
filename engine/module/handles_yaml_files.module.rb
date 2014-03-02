@@ -1,3 +1,8 @@
+#
+# The Handles_YAML_Files module handles the loading and saving of data from
+# and to YAML and recursiv discover of YAML files.
+#
+
 module Handles_YAML_Files
 
   def load_yaml_file(file_path)

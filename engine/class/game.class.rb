@@ -1,3 +1,7 @@
+#
+# The Game class represents the game as a whole.
+#
+
 class Game
 
   attr_accessor :state, :helpers, :app_base_path, :path, :config, :player, :characters, :locations, :doors, :props, :turns, :over, :transitions

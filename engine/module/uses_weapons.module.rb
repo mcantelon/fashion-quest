@@ -1,3 +1,9 @@
+#
+# The Uses_Weapons module allows combat-related properties to be set
+# and provides a method that return the best weapons that an entity
+# possesses.
+#
+
 module Uses_Weapons
 
   attr_accessor :id, :hp, :strength, :dead, :default_attack

@@ -1,3 +1,8 @@
+#
+# The Handles_Scoring module handles adding to the player's score and
+# reporting scoring.
+#
+
 module Handles_Scoring
 
   include Handles_YAML_Files

@@ -1,3 +1,8 @@
+#
+# The Parses_Commands module handles the parsing of an input string, breaking
+# it into lexemes and seeing if it matches the syntax of a command.
+#
+
 module Parses_Commands
 
   include Handles_YAML_Files

@@ -1,3 +1,7 @@
+#
+# The Prop class represents an item in the game.
+#
+
 class Prop < GameComponent
 
   include Has_Events

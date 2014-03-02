@@ -1,3 +1,8 @@
+#
+# The Has_Events module handles event responses. A random response will
+# be selected and executed, if it's logic, or returned as a string, if not.
+#
+
 module Has_Events
 
   def event(type)
