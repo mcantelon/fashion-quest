@@ -1,4 +1,10 @@
-error('loaded cli')
+#
+# The Cli manages parsing of commands and presentation of output.
+#
+# Commands are loaded from YAML files, input keystrokes are handled
+# and parsed, and parsed commands are interpreted (including system
+# commands built into the Cli class itself).
+#
 
 class Cli
 
